@@ -1,13 +1,13 @@
-####Frontend Engeniering
+#### Frontend Engeniering
 IMD St. Gallen 2017 
 
-##Einzelarbeit
+## Einzelarbeit
 Oliver Steiner
 
 ## Idee
 Für die Präsentation meiner App "Nicer & Boss" brauche ich eine interaktive HTML-Seite, die anhand eines visualisierten 2-Tages-Ablaufes die Nutzung der App erklärt.
 
-##Selbsteinschätzug
+## Selbsteinschätzug
 Ich will in den zwei Unterrichtstagen den grundsätzlichen Code für die Präsentations-Webseite erstellt haben.
 Bei der Präsentation am 10. Juni soll die Webseite folgenden Stand haben:
  - Die Funktionalität ist ersichtlich
@@ -24,7 +24,7 @@ Nicht vollstädig ausgearbeit werden sein:
 
 ## Umfang und Funktionen der Webseite
 
-###Elemente:
+### Elemente:
 #### Hintergrund (Timeline)
   - Ein langer Scroll-Hintergrund mit einem dreifachen Paralax Effekt:
   1) vorne schnell
@@ -52,7 +52,7 @@ Nicht vollstädig ausgearbeit werden sein:
  - Coden und testen
  - Grafiken erstellen (Wenn Zeit)
  
- ##Technisches
+ ## Technisches
  - für ein zügiges Coden nutze ich **jQuery** und **Bootstrap**
  - Die Daten für die Timeline werde ich wohl als JSON definieren oder in einer CouchDB ablegen
  - Da dies kein Projekt ist, welches nach der Semesterarbeit weitergebraucht wird, werde ich zwar sauberen Code schreiben, aber nicht ein übertriebenes Engeniering betreiben. (Kein Atomic-Code, keine Unit-Tests, minimale Dokumentation)

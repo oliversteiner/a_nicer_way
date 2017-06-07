@@ -1,10 +1,3 @@
-/*
- / <reference path="controllers/debugDisplayController.ts"/>
- / <reference path="controllers/phoneSimController.ts"/>
- / <reference path="controllers/statusDisplayController.ts"/>
- / <reference path="controllers/timewayController.ts"/>
- / <reference path="controllers/navigationController.ts"/>
- */
 /**
  *  aNicerWay
  *
@@ -19,11 +12,12 @@ var aNicerWay = (function () {
             aNicerWay.showDebug();
         }
         // load all Controllers
-        var debug_display_controller = new debugDisplayController();
-        var phone_sim_controller = new phoneSimController();
-        var status_display_controller = new statusDisplayController();
-        var timeway_controller = new timewayController();
-        var navigation_controller = new navigationController();
+        var debugDisplayController = new DebugDisplayController();
+        var phoneSimController = new PhoneSimController();
+        var statusDisplayController = new StatusDisplayController();
+        var timewayController = new TimewayController();
+        var navigationController = new NavigationController();
+        var dataDisplayController = new DataDisplayController();
     }
     /**
      * get
@@ -44,12 +38,14 @@ var aNicerWay = (function () {
         var elem_phone_sim = document.getElementById('phone-sim');
         var elem_timeway = document.getElementById('timeway');
         var elem_navigation = document.getElementById('navigation');
+        var elem_data_display = document.getElementById('data-display');
         elem_debug_display.style.display = 'block';
         elem_debug_display.classList.add('debug');
         elem_status_display.classList.add('debug');
         elem_phone_sim.classList.add('debug');
         elem_timeway.classList.add('debug');
         elem_navigation.classList.add('debug');
+        elem_data_display.classList.add('debug');
         return true;
     };
     return aNicerWay;

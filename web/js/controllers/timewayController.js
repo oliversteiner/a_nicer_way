@@ -2,31 +2,31 @@
  *  timewayController
  *
  */
-var timewayController = (function () {
+var TimewayController = (function () {
     /**
      * constructor
      */
-    function timewayController() {
-        // debug
-        console.log(this.className);
+    function TimewayController() {
         // Vars
         this.className = 'timewayController';
         this.idName = 'timeway';
         this.elem = document.getElementById(this.idName);
         // functions
         this.addAllEventsListeners();
+        // debug
+        console.log(this.className);
     }
     /**
      * addAllEventsListeners
      */
-    timewayController.prototype.addAllEventsListeners = function () {
+    TimewayController.prototype.addAllEventsListeners = function () {
         this.elem.addEventListener('click', this.testClick.bind(this), false);
     };
     /**
      * set
      *
      */
-    timewayController.prototype.set = function () {
+    TimewayController.prototype.set = function () {
         // Test
         console.log(' - ' + this.className + '.set()');
     };
@@ -34,7 +34,7 @@ var timewayController = (function () {
      * get
      *
      */
-    timewayController.prototype.get = function () {
+    TimewayController.prototype.get = function () {
         // Test
         console.log(' - ' + this.className + '.get()');
     };
@@ -42,9 +42,9 @@ var timewayController = (function () {
      * testClick
      *
      */
-    timewayController.prototype.testClick = function () {
+    TimewayController.prototype.testClick = function () {
         this.get();
         $(this.elem).effect("bounce", "slow");
     };
-    return timewayController;
+    return TimewayController;
 }());

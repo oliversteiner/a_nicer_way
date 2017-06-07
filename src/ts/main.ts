@@ -1,12 +1,3 @@
-/*
- / <reference path="controllers/debugDisplayController.ts"/>
- / <reference path="controllers/phoneSimController.ts"/>
- / <reference path="controllers/statusDisplayController.ts"/>
- / <reference path="controllers/timewayController.ts"/>
- / <reference path="controllers/navigationController.ts"/>
- */
-
-
 /**
  *  aNicerWay
  *
@@ -14,7 +5,7 @@
 class aNicerWay {
     public className: string;
 
-    constructor( parameters: { debug: any } ) {
+    constructor(parameters: { debug: any }) {
         let debug = parameters.debug;
 
         this.className = 'aNicerWay';
@@ -26,11 +17,13 @@ class aNicerWay {
         }
 
         // load all Controllers
-        let debug_display_controller = new debugDisplayController();
-        let phone_sim_controller = new phoneSimController();
-        let status_display_controller = new statusDisplayController();
-        let timeway_controller = new timewayController();
-        let navigation_controller = new navigationController();
+        let debugDisplayController = new DebugDisplayController();
+        let phoneSimController = new PhoneSimController();
+        let statusDisplayController = new StatusDisplayController();
+        let timewayController = new TimewayController();
+        let navigationController = new NavigationController();
+        let dataDisplayController = new DataDisplayController();
+
     }
 
 
@@ -54,6 +47,7 @@ class aNicerWay {
         let elem_phone_sim: any = document.getElementById('phone-sim');
         let elem_timeway: any = document.getElementById('timeway');
         let elem_navigation: any = document.getElementById('navigation');
+        let elem_data_display: any = document.getElementById('data-display');
 
         elem_debug_display.style.display = 'block';
 
@@ -62,6 +56,7 @@ class aNicerWay {
         elem_phone_sim.classList.add('debug');
         elem_timeway.classList.add('debug');
         elem_navigation.classList.add('debug');
+        elem_data_display.classList.add('debug');
 
         return true;
     }

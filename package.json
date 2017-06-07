@@ -7,7 +7,7 @@
   "author": "Oliver Steiner",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^7.0.28",
+    "@types/node": "^7.0.29",
     "gulp": "^3.9.1",
     "gulp-typescript": "^3.1.7",
     "typescript": "^2.3.4"
@@ -15,11 +15,13 @@
   "dependencies": {
     "@types/jquery": "^2.0.46",
     "@types/jqueryui": "^1.11.32",
+    "@types/pouchdb": "^6.1.0",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-cssnano": "^2.1.2",
     "gulp-debug": "^3.1.0",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.0",
-    "merge2": "^1.0.3"
+    "merge2": "^1.0.3",
+    "pouchdb": "^6.2.0"
   }
 }

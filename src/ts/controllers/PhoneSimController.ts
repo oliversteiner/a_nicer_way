@@ -1,9 +1,9 @@
 
 /**
- *  debugDisplayController
+ *  phoneSimController
  *
  */
-class statusDisplayController {
+class PhoneSimController {
     public className: string;
     private elem: any;
     public  idName: string;
@@ -12,18 +12,20 @@ class statusDisplayController {
      * constructor
      */
     constructor() {
-        // debug
-        console.log(this.className);
+
 
         // Vars
-        this.className = 'statusDisplayController';
-        this.idName = 'status-display';
+        this.className = 'phoneSimController';
+        this.idName = 'phone-sim';
         this.elem = document.getElementById(this.idName);
 
 
 
         // functions
         this.addAllEventsListeners();
+
+        // debug
+        console.log(this.className);
     }
 
     /**

@@ -1,4 +1,4 @@
-#Dokumentation
+# Dokumentation
 
 Die Aufgabenstellung und Motivation sind im File "readme.md" zu finden
 
@@ -41,10 +41,15 @@ https://www.npmjs.com/package/gulp-sass
 - gulp-cssnano
 - merge2
 
-für die Kombination Typescript / jQuery
-- --save @types/node
-- --save @types/jquery
-- --save @types/jqueryui
+#### für die Kombination Typescript / jQuery
+- @types/node
+- @types/jquery
+- @types/jqueryui
+
+#### für die Datenbank
+- pouchdb
+@types/pouchdb
+
 
 
 ### set up app
@@ -59,13 +64,22 @@ für die Kombination Typescript / jQuery
 - jquery gridhelper
 
 
-## Programmierung
+## Time-Way Daten
+- TimeWayId
+- Time
+- Date
+- Place
+- Feeling
+- Message
+- Notic
 
+
+## ablauf
 - alle Files (noch ohne Inhalt) erstellt.
 - index.html mit allen files verlinkt.
 - index.html mit SCSS und Typescript gestestet.
-
-
+- Alle Controller erstellt und getestet
+- Pouchdb installiert, Form gebaut, mit Musterdaten gefüllt
 
 
 

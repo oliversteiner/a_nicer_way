@@ -3,7 +3,7 @@
  *  debugDisplayController
  *
  */
-class debugDisplayController {
+class StatusDisplayController {
     public className: string;
     private elem: any;
     public  idName: string;
@@ -12,18 +12,20 @@ class debugDisplayController {
      * constructor
      */
     constructor() {
-        // debug
-        console.log(this.className);
+
 
         // Vars
-        this.className = 'debugDisplayController';
-        this.idName = 'debug-display';
+        this.className = 'statusDisplayController';
+        this.idName = 'status-display';
         this.elem = document.getElementById(this.idName);
 
 
 
         // functions
         this.addAllEventsListeners();
+
+        // debug
+        console.log(this.className);
     }
 
     /**

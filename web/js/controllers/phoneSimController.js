@@ -2,31 +2,31 @@
  *  phoneSimController
  *
  */
-var phoneSimController = (function () {
+var PhoneSimController = (function () {
     /**
      * constructor
      */
-    function phoneSimController() {
-        // debug
-        console.log(this.className);
+    function PhoneSimController() {
         // Vars
         this.className = 'phoneSimController';
         this.idName = 'phone-sim';
         this.elem = document.getElementById(this.idName);
         // functions
         this.addAllEventsListeners();
+        // debug
+        console.log(this.className);
     }
     /**
      * addAllEventsListeners
      */
-    phoneSimController.prototype.addAllEventsListeners = function () {
+    PhoneSimController.prototype.addAllEventsListeners = function () {
         this.elem.addEventListener('click', this.testClick.bind(this), false);
     };
     /**
      * set
      *
      */
-    phoneSimController.prototype.set = function () {
+    PhoneSimController.prototype.set = function () {
         // Test
         console.log(' - ' + this.className + '.set()');
     };
@@ -34,7 +34,7 @@ var phoneSimController = (function () {
      * get
      *
      */
-    phoneSimController.prototype.get = function () {
+    PhoneSimController.prototype.get = function () {
         // Test
         console.log(' - ' + this.className + '.get()');
     };
@@ -42,9 +42,9 @@ var phoneSimController = (function () {
      * testClick
      *
      */
-    phoneSimController.prototype.testClick = function () {
+    PhoneSimController.prototype.testClick = function () {
         this.get();
         $(this.elem).effect("bounce", "slow");
     };
-    return phoneSimController;
+    return PhoneSimController;
 }());

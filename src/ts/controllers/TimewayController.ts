@@ -1,9 +1,9 @@
 
 /**
- *  phoneSimController
+ *  timewayController
  *
  */
-class phoneSimController {
+class TimewayController {
     public className: string;
     private elem: any;
     public  idName: string;
@@ -12,18 +12,20 @@ class phoneSimController {
      * constructor
      */
     constructor() {
-        // debug
-        console.log(this.className);
+
 
         // Vars
-        this.className = 'phoneSimController';
-        this.idName = 'phone-sim';
+        this.className = 'timewayController';
+        this.idName = 'timeway';
         this.elem = document.getElementById(this.idName);
 
 
 
         // functions
         this.addAllEventsListeners();
+
+        // debug
+        console.log(this.className);
     }
 
     /**

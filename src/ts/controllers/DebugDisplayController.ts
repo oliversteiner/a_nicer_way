@@ -1,9 +1,12 @@
 
+
+
+
 /**
- *  navigationController
+ *  debugDisplayController
  *
  */
-class navigationController {
+class DebugDisplayController {
     public className: string;
     private elem: any;
     public  idName: string;
@@ -12,18 +15,20 @@ class navigationController {
      * constructor
      */
     constructor() {
-        // debug
-        console.log(this.className);
+
 
         // Vars
-        this.className = 'navigationController';
-        this.idName = 'navigation';
+        this.className = 'debugDisplayController';
+        this.idName = 'debug-display';
         this.elem = document.getElementById(this.idName);
 
 
 
         // functions
         this.addAllEventsListeners();
+
+        // debug
+        console.log(this.className);
     }
 
     /**

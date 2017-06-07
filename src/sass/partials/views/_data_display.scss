@@ -1,0 +1,32 @@
+@import "../design/colors";
+@import "../design/fonts";
+
+#data-display {
+  position: absolute;
+  top: 100px;
+
+  width: 300px;
+  left: 400px;
+  -webkit-box-shadow: 10px 10px 30px -3px rgba(0, 0, 0, 0.51);
+  -moz-box-shadow: 10px 10px 30px -3px rgba(0, 0, 0, 0.51);
+  box-shadow: 10px 10px 30px -3px rgba(0, 0, 0, 0.51);
+
+
+}
+
+#data-display:after {
+  content: ""
+}
+
+#data-display.debug {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid gray;
+  background: white;
+}
+
+#info_id{
+  height: 20px;
+  font-size: 0.8em;
+  color: gray;
+}

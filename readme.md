@@ -52,7 +52,7 @@ Nicht vollstädig ausgearbeit werden sein:
  - Coden und testen
  - Grafiken erstellen (Wenn Zeit)
  
- ##Technisches
+ ## Technisches
  - für ein zügiges Coden nutze ich **jQuery** und **Bootstrap**
  - Die Daten für die Timeline werde ich wohl als JSON definieren oder in einer CouchDB ablegen
  - Da dies kein Projekt ist, welches nach der Semesterarbeit weitergebraucht wird, werde ich zwar sauberen Code schreiben, aber nicht ein übertriebenes Engeniering betreiben. (Kein Atomic-Code, keine Unit-Tests, minimale Dokumentation)

@@ -1,0 +1,19 @@
+// Design
+@import 'partials/design/colors';
+@import 'partials/design/fonts';
+
+// Views
+@import 'partials/views/debug_display';
+@import 'partials/views/phone_sim';
+@import 'partials/views/status_display';
+@import 'partials/views/timeway';
+@import 'partials/views/navigation';
+
+// Utilitis
+@import 'partials/utilities/debug';
+@import 'partials/utilities/messages';
+
+
+h1{
+  margin-left: 20px;
+}

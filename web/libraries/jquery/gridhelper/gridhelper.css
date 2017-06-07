@@ -1,0 +1,334 @@
+#gridhelper-monitor {
+    top: 0;
+    display: inline-block;
+    position: fixed;
+    z-index: 3000;
+    border: solid #0d093a 1px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    border-radius: 0 0 12px 0;
+
+}
+
+#gridhelper-monitor.left {
+    left: 0;
+    border-radius: 0 0 12px 0;
+
+}
+
+#gridhelper-monitor.right {
+    right: 0;
+    border-radius: 0 0 0 12px;
+
+}
+
+#gridhelper-monitor.center {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    border-radius: 0 0 12px 12px;
+
+}
+
+#gridhelper-monitor a {
+    position: relative;
+    color: silver;
+    margin: 0;
+    padding: 0;
+}
+
+#gridhelper-onoff-text {
+    padding-right: 5px;
+}
+
+#gridhelper-monitor a:hover {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+#gridhelper-popover-button {
+    position: relative;
+    left: 6px;
+    top: -8px;
+
+}
+
+#gridhelper-popover-picto {
+    color: #605c69;
+}
+
+#gridhelper-popover-picto.active {
+    color: #ffffff;
+}
+
+#gridhelper-popover-picto:hover {
+    color: #a6a6ae;
+}
+
+#responsive-status {
+    font-size: 30px;
+}
+
+.row {
+}
+
+.row .row {
+
+}
+
+[class*="col-"] {
+
+}
+
+/*Col Info Panel*/
+.row div.ghb-infopanel {
+    position: absolute;
+    left: 0;
+    font-size: 12px;
+    color: white;
+    padding: 0 8px 0 8px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-right: solid rgba(0, 0, 0, 0.8) 1px;
+    border-bottom: solid rgba(0, 0, 0, 0.8) 1px;
+    border-radius: 0 0 8px 0;
+    z-index: 400;
+}
+
+/* TODO - check this - this cold be evil: */
+.row > div {
+    position: relative;
+}
+
+.ghb-infopanel:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.ghb-infopanel > div {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/*nested cols*/
+.row .row .ghb-infopanel {
+    margin-top: 25px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-right: solid rgba(0, 0, 0, 0.4) 1px;
+    border-bottom: solid rgba(0, 0, 0, 0.4) 1px;
+    left: 10px;
+
+}
+
+.inseldebug:hover,
+.gridhelper-col-container-click:hover,
+.inseldebug-offset:hover,
+.gridhelper-col-container-offset-click:hover {
+
+    background-color: rgba(0, 0, 0, 1);
+
+}
+
+.inseldebug,
+.gridhelper-col-container-click {
+
+}
+
+.inseldebug-offset,
+.gridhelper-col-container-offset-click {
+    background-color: rgba(100, 0, 0, 0.1);
+
+}
+
+.inseldebug-offset,
+.inseldebug {
+
+}
+
+.ghb-info-code {
+    color: black;
+}
+
+.ghb-info-code a:hover {
+    color: white;
+}
+
+.ghb-info-code a span {
+    top: 3px;
+    margin: 0 0 0 0;
+    padding: 3px 6px 1px 6px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+
+}
+
+.ghb-select select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-progress-appearance: bar;
+    appearance: none;
+    background-color: transparent;
+    color: white;
+    padding: 0 0 0 0;
+    margin: 2px;
+    border: none;
+    text-align: right;
+    cursor: pointer;
+}
+
+.ghb-select select:hover {
+    color: #0078ff;
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+.ghb-info-code > .popover.right > .arrow::after {
+    border-right-color: rgba(0, 0, 0, 0.8);
+}
+
+.ghb-info-code > .popover {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    min-width: 200px;
+    font-family: monospace;
+    font-weight: 300;
+}
+
+.ghb-info-offset,
+.ghb-info-pull {
+    border-right: solid rgba(0, 0, 0, 0.3) 1px;
+}
+
+.ghb-info-push select,
+.ghb-info-pull select {
+    color: #989898;
+}
+
+/* Thanks to http://www.xurei-design.be/blog/2013/10/how-to-accurately-detect-responsive-breakpoints/ */
+
+/* green
+     Large desktops and laptops */
+@media (min-width: 1200px) {
+    div.row > div.ghb-col {
+        border: solid green 1px;
+    }
+
+    #responsive-status:after {
+        content: 'lg';
+    }
+
+}
+
+/* BLUE
+Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+    div.row > div.ghb-col {
+        border: solid #676aff 1px;
+    }
+
+    #responsive-status:after {
+        content: 'md';
+    }
+
+}
+
+/* RED
+Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+    div.row > div.ghb-col {
+        border: solid red 1px;
+    }
+
+    #responsive-status:after {
+        content: 'sm';
+    }
+
+}
+
+/* Yellow
+Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+    div.row > div.ghb-col {
+        border: solid #ffc229 1px;
+    }
+
+    #responsive-status:after {
+        content: 'xs';
+    }
+
+}
+
+/* Magenta
+Landscape phones and smaller */
+@media (max-width: 480px) {
+    div.row > div.ghb-col {
+        border: solid magenta 1px;
+    }
+
+    #responsive-status:after {
+        content: 'xxs';
+    }
+}
+
+/* green
+     Large desktops and laptops */
+.lg {
+    color: #54805c;
+
+}
+
+.popover {
+    z-index: 3000;
+}
+
+.popover-list {
+    margin: 0;
+    padding: 0;
+}
+
+.popover-list li {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* Blue
+Portrait tablets and medium desktops */
+.md {
+    color: #0078ff;
+}
+
+/* RED
+Portrait tablets and small desktops */
+.sm {
+    color: #c56b70;
+
+}
+
+/* Yellow
+Landscape phones and portrait tablets */
+.xs {
+    color: #d4a222;
+
+}
+
+/* Magenta
+Landscape phones and smaller */
+.xxs {
+    color: magenta;
+
+}
+
+.ghb-marc-active {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 200;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+

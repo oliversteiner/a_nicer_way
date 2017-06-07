@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "target": "es5",
+    "sourceMap": true
+  },
+  "filesGlob": [
+    "./**/*.ts",
+    "!./node_modules/**/*.ts"
+  ],
+  "include": [
+    "src/ts/**/*"
+  ]
+}

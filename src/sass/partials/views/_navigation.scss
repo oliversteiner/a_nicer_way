@@ -1,0 +1,19 @@
+@import "../design/colors";
+@import "../design/fonts";
+
+#navigation {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid gray;
+}
+
+#navigation:after {
+  content: "Navigation"
+}
+
+#navigation.debug {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: $color-message;
+}

@@ -1,0 +1,19 @@
+@import "../design/colors";
+@import "../design/fonts";
+
+#timeway {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid gray;
+}
+
+#timeway:after {
+  content: "Time Way"
+}
+
+#timeway.debug {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: $color-message;
+}

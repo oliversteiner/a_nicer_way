@@ -1,0 +1,19 @@
+@import "../design/colors";
+@import "../design/fonts";
+
+// Messages
+.message {
+  color: $color-message;
+}
+
+.message-ok {
+  color: $color-message-ok;
+}
+
+.message-warning {
+  color: $color-message-warning;
+}
+
+.message-error {
+  color: $color-message-error;
+}

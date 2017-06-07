@@ -1,0 +1,18 @@
+@import "../design/colors";
+@import "../design/fonts";
+
+
+#debug-display{
+background-color: $color-debug-background;
+  color: $color-message;
+}
+
+#debug-display:after{
+  content: ""
+}
+
+#debug-display.debug{
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid gray;
+}

@@ -14,7 +14,7 @@
 <main>
     <h1>A Nicer Way</h1>
 
-    <div id="debug-display" style="display: none">
+    <div id="console-display" style="display: none">
         <ul>
             <li class="message">text</li>
             <li class="message-ok">ok</li>
@@ -23,118 +23,17 @@
         </ul>
     </div>
 
-    <div id="status-display"></div>
-    <div id="phone-sim"></div>
     <div id="timeway"></div>
+    <div id="status-display"></div>
+    <div id="smartphone-sim" class="smartphone-close"></div>
     <div id="navigation"></div>
-    <div id="data-display">
-
-        <div class="well">
-
-            <p id="info_id"></p>
-            <form id="data-display-form" class="form-horizontal">
-
-                <!-- _id -->
-                <input type="hidden" class="form-control" name="_id" id="_id">
-
-
-                <!--TimeWayId-->
-                <div class="form-group form-group-sm">
-                    <label class="col-sm-2 control-label" for="TimeWayId">ID</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="TimeWayId" id="TimeWayId" placeholder="ID">
-                    </div>
-
-                </div>
-
-
-                <!--Time-->
-                <div class="form-group form-group-sm">
-                    <label class="col-sm-2 control-label" for="Time">Time</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="Time" id="Time" placeholder="Time">
-                    </div>
-                </div>
-
-
-                <!--Date-->
-                <div class="form-group form-group-sm">
-                    <label class="col-sm-2 control-label" for="Date">Date</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="Date" id="Date" placeholder="Date">
-                    </div>
-                </div>
-
-
-                <!--Place-->
-                <div class="form-group form-group-sm">
-                    <label class="col-sm-2 control-label" for="Place">Place</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="Place" id="Place" placeholder="Place">
-                    </div>
-                </div>
-
-
-                <!--Feeling-->
-                <div class="form-group form-group-sm">
-                    <label class="col-sm-2 control-label" for="Feeling">Feeling</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="Feeling" id="Feeling" placeholder="Feeling">
-                    </div>
-                </div>
-
-
-                <!--Message-->
-                <div class="form-group form-group-sm">
-                    <label class="col-sm-2 control-label" for="Message">Message</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="Message" id="Message" placeholder="Message">
-                    </div>
-                </div>
-
-
-                <!--Notice-->
-                <div class="form-group form-group-sm">
-
-                    <label class="col-sm-2 control-label" for="Notice">Notice</label>
-                    <div class="col-sm-10">
-                        <textarea class="form-control" rows="3" name="Notice" id="Notice">TEST</textarea>
-                    </div>
-
-                </div>
-                <div class="btn-group btn-sm" role="group" aria-label="...">
-
-                    <button type="button" id="data-display-button-save" class="btn btn-success btn-sm">
-                        <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>
-                    </button>
-
-                    <button type="button" id="data-display-button-new" class="btn btn-default  btn-sm">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </button>
-
-                    <button type="button" id="data-display-button-delete" class="btn btn-sm btn-danger">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    </button>
-
-                    <button type="button" id="data-display-button" class="btn btn-sm btn-default">
-&nbsp;
-                    </button>
-
-                    <button type="button" id="data-display-button-erase-db" class="btn btn-sm btn-default">
-                         E
-                    </button>
-
-                    <button type="button" id="data-display-button-load-default" class="btn btn-sm btn-default">
-                         L
-                    </button>
-                </div>
-
-            </form>
-        </div>
-    </div>
+    <div id="data-display"></div>
 
 </main>
 <footer>
+    <button class="btn btn-default btn-sm" id="data-display-button-toggle">Show Data-Display</button>
+    <button class="btn btn-default btn-sm" id="navigation-button-toggle">Show Navigation</button>
+    <button class="btn btn-default btn-sm" id="phone-sim-button-toggle">Show iPhone-Simulator</button>
 </footer>
 <!-- Libraries -->
 <script src="libraries/jquery/jquery-3.2.1.min.js"></script>
@@ -145,8 +44,8 @@
 
 <!-- A Nicer Way -->
 <script src="js/utilities.js"></script>
-<script src="js/controllers/DebugDisplayController.js"></script>
-<script src="js/controllers/PhoneSimController.js"></script>
+<script src="js/controllers/ConsoleDisplayController.js"></script>
+<script src="js/controllers/SmartphoneSimController.js"></script>
 <script src="js/controllers/StatusDisplayController.js"></script>
 <script src="js/controllers/TimewayController.js"></script>
 <script src="js/controllers/NavigationController.js"></script>

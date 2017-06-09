@@ -5,7 +5,7 @@
  */
 class PhoneSimController {
     public className: string;
-    private elem: any;
+    private elemRoot: any;
     public  idName: string;
 
     /**
@@ -17,7 +17,7 @@ class PhoneSimController {
         // Vars
         this.className = 'phoneSimController';
         this.idName = 'phone-sim';
-        this.elem = document.getElementById(this.idName);
+        this.elemRoot = document.getElementById(this.idName);
 
 
 
@@ -32,7 +32,7 @@ class PhoneSimController {
      * addAllEventsListeners
      */
     addAllEventsListeners(){
-        this.elem.addEventListener('click', this.testClick.bind(this), false);
+        this.elemRoot.addEventListener('click', this.testClick.bind(this), false);
     }
     /**
      * set
@@ -58,7 +58,7 @@ class PhoneSimController {
      */
     testClick(){
         this.get();
-        $(this.elem).effect( "bounce", "slow" );
+        $(this.elemRoot).effect( "bounce", "slow" );
 
     }
 }

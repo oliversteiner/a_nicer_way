@@ -1,121 +1,426 @@
 /**
- * Created by ost on 07.06.17.
+ * Class DbController
+ *  - Sammelt alle Funktionen für die Speicherung der Daten
+ *
+ *
  */
 class DbController {
 
-    data: any;
-    db: any;
-    remote: any;
+    remote: any;    // die DB unter localhost / mollo.ch
+    waypoint: object;  // ein einzelner Waypoint (Eintrag zu einem Punkt in der Zeit/Wegleiste)
+    waypoints: object; // die Liste aller Waypoints
 
+    // Wird aufgerufen beim erstellen der Klasse (new DbController)
     constructor() {
+        console.log('DbController.constructor');
 
-        this.db = new PouchDB('anicerway');
-        this.remote = 'http://localhost:5984/anicerway';
-        let options = {
+
+        let db = new PouchDB('anicerway');
+
+        // wird immer ausgeführt, wenn änderugen an der Datenbank erfolgt sind
+        db.changes().on('change', function () {
+            // debug
+            console.log('db Changes');
+
+        });
+
+
+    }
+
+    /**
+     * addWayPoint
+     * - Einen Waypoint in die Datenbank schreiben
+     *
+     * @param data
+     */
+    static addWayPoint(data: any) {
+        console.log('DbController.addWayPoint' + ' - data');
+        console.log(data);
+
+        // Rückgabewert ist als Falsch voreingestellt
+        let status: boolean = false;
+        let db = new PouchDB('anicerway');
+        let waypoint: any;
+
+        // Datensatz zusammenstellen
+
+        waypoint = {
+            _id: 'TimeWayPoint-' + new Date().toISOString(),
+            active: true,
+        };
+
+        // alle Werte von "data" in  "doc" fügen.
+        console.log('- Data (add)');
+        for (let key in data) {
+            if (data.hasOwnProperty(key)) {
+
+                let value = data[key];
+                if (key != "_id") {   // _id herausfiltern
+
+                    console.log("--- " + key + " : " + value);
+                    waypoint[key] = value;
+                }
+            }
+        }
+
+        // Datensatz in die DB speichern
+        db.put(waypoint).then(function (response: any) {
+            // handle response
+            console.log(response);
+
+            setTimeout(function () {
+                DbController.sync();
+            }, 1000);
+
+        }).catch(function (err) {
+
+            console.error(err);
+        });
+
+        return status;
+
+    }
+
+    /**
+     *
+     * updateWayPoint
+     *  - ändert einen Eintrag in der DB
+     *
+     * @param data
+     *
+     */
+    static updateWayPoint(data: any) {
+        console.log('DbController.updateWayPoint' + '- data: ');
+        console.log(data);
+        let status = false;
+
+        let db = new PouchDB('anicerway');
+
+        // Dokument laden, dann updaten
+        db.get(data._id).catch(function (err) {
+            if (err.name === 'not_found') {
+                console.log('- not found');
+                return {
+                    // hier kann ein Standartdokument angegeben werden
+                    // _id: 'default',
+
+                };
+            } else { // hm, some other error
+                throw err;
+            }
+        }).then(function (doc: any) {
+
+            console.log('- found:');
+            console.log(doc);
+
+            for (let key in data) {
+                if (data.hasOwnProperty(key)) {
+
+                    let value = data[key];
+                    if (key != "_id") {   // _id herausfiltern
+
+                        console.log("--- " + key + " : " + value);
+                        doc[key] = value;
+                    }
+                }
+            }
+
+            DbController.sync();
+
+            return db.put(doc);
+
+        }).catch(function (err) {
+            // handle any errors
+            console.error(err);
+
+        });
+
+        return status;
+    }
+
+    /**
+     * loadAllWayPoints
+     *  - holt alle Waypoints aus der Datenbank
+     *
+     *
+     */
+    static loadAllWayPoints() {
+        console.log('DbController.loadAllWayPoints');
+
+        let db = new PouchDB('anicerway');
+
+        let docs = db.allDocs({
+            include_docs: true,
+            startkey: 'TimeWayPoint',
+            endkey: 'TimeWayPoint\uffff'
+        }).then(function (result) {
+
+            console.log(result);
+            return result;
+            // handle result
+        }).catch(function (err) {
+            console.log(err);
+        });
+
+        // Auf die Zeilen kann zugegriffen werden über:
+        //    .then( function(doc){ doc.rows })
+        return docs;
+    }
+
+
+
+
+    /**
+     * loadWayPoint
+     *  - lädt nur den Waypoint mit der gewählten ID
+     *
+     * @param id
+     */
+    static loadWayPoint(id: string) {
+        console.log('DbController.loadWayPoint' + '- id: ');
+        console.log(id);
+        let db = new PouchDB('anicerway');
+
+        let doc = db.get(id).catch(function (err) {
+            if (err.name === 'not_found') {
+                console.log('- not found');
+                return {
+                    // hier kann ein Standartdokument angegeben werden
+                    // _id: 'default',
+
+                };
+            } else { // hm, some other error
+                throw err;
+            }
+        }).then(function (doc: any) {
+
+            console.log('- found:');
+            console.log(doc);
+
+            return doc;
+
+        }).catch(function (err) {
+            // handle any errors
+            console.error(err);
+
+        });
+
+        // Auf das Dokument kann zugegriffen werden über:
+        //    .then( function(doc){ doc })
+        return doc;
+    }
+
+    /**
+     * deleteWayPoint
+     * - Löscht einen Waypoint aus der DB
+     *
+     * @param id
+     *
+     */
+    static deleteWayPoint(id: string): boolean {
+        console.log('DbController.deleteWayPoint' + ' - id');
+        console.log(id);
+
+        let status: boolean = true;
+        let db = new PouchDB('anicerway');
+
+        // Dokument laden, dann den Löschbefehl schicken
+        db.get(id).catch(function (err) {
+            if (err.name === 'not_found') {
+                console.log('- not found');
+                return {
+                    // hier kann ein Standartdokument angegeben werden
+                    // _id: 'default',
+
+                };
+            } else { // hm, some other error
+                throw err;
+            }
+        }).then(function (doc: any) {
+
+            console.log('- found:');
+            console.log(doc);
+
+            doc._deleted = true;
+
+            DbController.sync();
+
+            return db.put(doc);
+
+
+        }).catch(function (err) {
+            // handle any errors
+            console.error(err);
+
+        });
+
+        return status;
+    }
+
+    /**
+     * sync
+     *  - synchronisiert die lokale DB im Browser mit der BS-datenbank (couchDB)
+     */
+    static sync() {
+
+        let remote = 'http://localhost:5984/anicerway';
+        let sync_options = {
             live: true,
             retry: true,
             continuonus: true
         };
 
-        this.db.sync(this.remote, options);
-
-    }
-
-
-    addWayPoint(data: any) {
-        let waypoint = {
-            _id: 'waypoint-' + new Date().toISOString(),
-
-            timewayid: data.timewayid,
-            date: data.date,
-            place: data.place,
-            feeling: data.feeling,
-            message: data.message,
-            notice: data.notice,
-            active: true,
-
-        };
-        this.db.put(waypoint, function callback(err: string, result: any) {
-            if (!err) {
-                console.log('Successfully posted a waypoint!');
-            }
-        });
+        let db = new PouchDB('anicerway');
+        db.sync(remote, sync_options);
     }
 
     /**
      *
      *
      */
-    // Show items from the database
-    loadAllWayPoints() {
-        this.db.allDocs({include_docs: true, descending: true},
-            function (err: string, doc: any) {
-                return (doc.row);
-            });
+    static eraseDB() {
 
-    }
+        let db = new PouchDB('anicerway');
 
-    /**
-     *
-     *
-     * @param id
-     */
-    loadWayPoint(id: string) {
+        db.destroy().then(function () {
+            // database destroyed
+            console.log('database destroyed');
 
-
-        this.db.get(id).then(function (doc: any) {
-            return (doc);
-        });
-    }
-
-
-    /**
-     *   UNGETESTET
-     *
-     *
-     */
-    updateWayPoint(data: any) {
-        this.db.get(data._id).then(function (doc: any) {
-
-            // update their age
-            doc.timewayid = data.timewayid;
-            doc.date = data.date;
-            doc.place = data.place;
-            doc.feeling = data.feeling;
-            doc.message = data.message;
-            doc.notice = data.notice;
-
-
-            // put them back
-            return this.db.put(doc);
+        }).catch(function (error: object) {
+            // error occurred
         })
-            .then(function () {
-                // fetch mittens again
-                return this.db.get(data._id);
-
-            })
-            .then(function (doc: object) {
-
-                console.log(doc);
-            });
     }
 
-    /**
-     *  Untested
-     * deleteWayPoint
-     *
-     */
-    deleteWayPoint(data: any) {
+    static loadDefault(){
 
 
-        this.db.get(data._id)
-            .then(function (doc: any) {
-                return this.db.remove(doc._id, doc._rev)
-                    .catch(function (err: any) {
-                        // error!
-                        console.log(err)
-                    });
-            });
-        return true; // Todo
+        // Musterdaten:
+        let db = new PouchDB('anicerway');
+
+        // Aktuelle Zeit
+        let timestamp = Date.now();
+
+        // Vorgaben für die Daten
+        let defaultData: any = [
+
+            // Config
+            {
+                _id: 'config',
+                title: 'Konfiguration',
+                notiz: 'Eine einfache Notiz',
+                profilePic: 'assets/img/kunden/eagle.jpg',
+                type: 'Configuration',
+                createdOn: timestamp,
+
+            },
+            // TimeWayPoint
+            {
+                _id: 'TimeWayPoint-1',
+                timewayid: 1,
+                date: '2017.10.08',
+                place: 'St.Gallen - Stadt',
+                feeling: 'Gut',
+                message: 'Nachricht 1',
+                notice: '',
+                type: 'TimeWayPoint',
+                createdOn: timestamp,
+            }
+            ,
+            {
+                _id: 'TimeWayPoint-2',
+                timewayid: 1,
+                date: '2017.10.08',
+                place: 'St.Gallen - Stadt',
+                feeling: 'Gut',
+                message: 'Nachricht 1',
+                notice: '',
+                type: 'TimeWayPoint',
+                createdOn: timestamp,
+            }
+            ,
+            {
+                _id: 'TimeWayPoint-3',
+                timewayid: 1,
+                date: '2017.10.08',
+                place: 'St.Gallen - Stadt',
+                feeling: 'Gut',
+                message: 'Nachricht 1',
+                notice: '',
+                type: 'TimeWayPoint',
+                createdOn: timestamp,
+            },
+            {
+                _id: 'TimeWayPoint-4',
+                timewayid: 1,
+                date: '2017.10.08',
+                place: 'St.Gallen - Stadt',
+                feeling: 'Gut',
+                message: 'Nachricht 1',
+                notice: '',
+                type: 'TimeWayPoint',
+                createdOn: timestamp,
+            }
+
+
+
+        ];
+
+
+        db.bulkDocs(defaultData).then(function ( result: object ) {
+            // handle result
+
+            //  console.log("mustereintraege");
+            //  console.log(result);
+
+        }).catch(function ( error: object ) {
+            console.log("defaultData exists already");
+        });
+
+
+
+            // define _design Configuration
+        let designDocConfiguration:any = {
+                _id: '_design/Configuration',
+                views: {
+                    "Configuration": {
+                        "map": "function (doc, meta) {  if (doc.type == 'Configuration') {   emit(doc.createdOn,doc);  }}"
+                    }
+                }
+            };
+
+        // define _design TimeWayPoint
+        let designDocTimeWayPoint:any = {
+            _id: '_design/TimeWayPoint',
+            views: {
+                "TimeWayPoint": {
+                    "map": "function (doc, meta) {  if (doc.type == 'TimeWayPoint') {   emit(doc.createdOn,doc);  }}"
+                }
+            }
+        };
+
+
+        // put _designs
+        // kunde
+        db.put(designDocConfiguration).then(function ( info: any ) {
+            console.log("Design Doc 'Configuration' created");
+            // design doc created
+        }).catch(function ( error: any ) {
+            console.log("design doc 'Configuration' already exists");
+            // if err.name === 'conflict', then
+            // design doc already exists
+        });
+
+        // TimeWayPoint
+        db.put(designDocTimeWayPoint).then(function ( info: any ) {
+            console.log("Design Doc 'TimeWayPoint' created");
+            // design doc created
+        }).catch(function ( error: any ) {
+            console.log("design doc 'TimeWayPoint' already exists");
+            // if err.name === 'conflict', then
+            // design doc already exists
+        });
+
+
     }
+
 }

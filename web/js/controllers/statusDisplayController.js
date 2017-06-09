@@ -10,7 +10,7 @@ var StatusDisplayController = (function () {
         // Vars
         this.className = 'statusDisplayController';
         this.idName = 'status-display';
-        this.elem = document.getElementById(this.idName);
+        this.elemRoot = document.getElementById(this.idName);
         // functions
         this.addAllEventsListeners();
         // debug
@@ -20,22 +20,13 @@ var StatusDisplayController = (function () {
      * addAllEventsListeners
      */
     StatusDisplayController.prototype.addAllEventsListeners = function () {
-        this.elem.addEventListener('click', this.testClick.bind(this), false);
-    };
-    /**
-     * set
-     *
-     */
-    StatusDisplayController.prototype.set = function () {
-        // Test
-        console.log(' - ' + this.className + '.set()');
+        this.elemRoot.addEventListener('click', this.testClick.bind(this), false);
     };
     /**
      * get
      *
      */
     StatusDisplayController.prototype.get = function () {
-        // Test
         console.log(' - ' + this.className + '.get()');
     };
     /**
@@ -44,7 +35,7 @@ var StatusDisplayController = (function () {
      */
     StatusDisplayController.prototype.testClick = function () {
         this.get();
-        $(this.elem).effect("bounce", "slow");
+        $(this.elemRoot).effect("bounce", "slow");
     };
     return StatusDisplayController;
 }());

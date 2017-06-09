@@ -1,14 +1,10 @@
-
-
-
-
 /**
  *  debugDisplayController
  *
  */
 class DebugDisplayController {
     public className: string;
-    private elem: any;
+    private elemRoot: any;
     public  idName: string;
 
     /**
@@ -20,7 +16,7 @@ class DebugDisplayController {
         // Vars
         this.className = 'debugDisplayController';
         this.idName = 'debug-display';
-        this.elem = document.getElementById(this.idName);
+        this.elemRoot = document.getElementById(this.idName);
 
 
 
@@ -35,7 +31,7 @@ class DebugDisplayController {
      * addAllEventsListeners
      */
     addAllEventsListeners(){
-        this.elem.addEventListener('click', this.testClick.bind(this), false);
+        this.elemRoot.addEventListener('click', this.testClick.bind(this), false);
     }
     /**
      * set
@@ -61,7 +57,7 @@ class DebugDisplayController {
      */
     testClick(){
         this.get();
-        $(this.elem).effect( "bounce", "slow" );
+        $(this.elemRoot).effect( "bounce", "slow" );
 
     }
 }

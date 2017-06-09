@@ -5,7 +5,7 @@
  */
 class TimewayController {
     public className: string;
-    private elem: any;
+    private elemRoot: any;
     public  idName: string;
 
     /**
@@ -17,7 +17,7 @@ class TimewayController {
         // Vars
         this.className = 'timewayController';
         this.idName = 'timeway';
-        this.elem = document.getElementById(this.idName);
+        this.elemRoot = document.getElementById(this.idName);
 
 
 
@@ -32,7 +32,7 @@ class TimewayController {
      * addAllEventsListeners
      */
     addAllEventsListeners(){
-        this.elem.addEventListener('click', this.testClick.bind(this), false);
+        this.elemRoot.addEventListener('click', this.testClick.bind(this), false);
     }
     /**
      * set
@@ -58,7 +58,7 @@ class TimewayController {
      */
     testClick(){
         this.get();
-        $(this.elem).effect( "bounce", "slow" );
+        $(this.elemRoot).effect( "bounce", "slow" );
 
     }
 }

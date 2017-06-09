@@ -10,7 +10,7 @@ var PhoneSimController = (function () {
         // Vars
         this.className = 'phoneSimController';
         this.idName = 'phone-sim';
-        this.elem = document.getElementById(this.idName);
+        this.elemRoot = document.getElementById(this.idName);
         // functions
         this.addAllEventsListeners();
         // debug
@@ -20,7 +20,7 @@ var PhoneSimController = (function () {
      * addAllEventsListeners
      */
     PhoneSimController.prototype.addAllEventsListeners = function () {
-        this.elem.addEventListener('click', this.testClick.bind(this), false);
+        this.elemRoot.addEventListener('click', this.testClick.bind(this), false);
     };
     /**
      * set
@@ -44,7 +44,7 @@ var PhoneSimController = (function () {
      */
     PhoneSimController.prototype.testClick = function () {
         this.get();
-        $(this.elem).effect("bounce", "slow");
+        $(this.elemRoot).effect("bounce", "slow");
     };
     return PhoneSimController;
 }());

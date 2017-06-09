@@ -9,13 +9,14 @@ var NavigationController = (function () {
      * constructor
      */
     function NavigationController() {
+        // Datenbankverbindung aufbauen und verfügbarmachen
         this.dbController = new DbController();
-        // Vars
+        // Eigenschaften setzen
         this.className = 'navigationController';
         this.idName = 'navigation';
-        this.elem = document.getElementById(this.idName);
+        this.elemRoot = document.getElementById(this.idName);
         // functions
-        this.listAllWayPoints();
+        NavigationController.listAllWayPoints();
         this.addAllEventsListeners();
         // debug
         console.log(this.className);
@@ -28,18 +29,24 @@ var NavigationController = (function () {
     };
     /**
      * listAllWayPoints
+     * - Listet alle Waypoints als klickbare Nav-Liste auf
+     *
+     * - Statische Funktion, kann direkt im aufgerufen werden
      *
      */
-    NavigationController.prototype.listAllWayPoints = function () {
-        // nav
-        var nav = document.getElementById('navigation');
+    NavigationController.listAllWayPoints = function () {
+        // STATIC
+        var elemNav = document.getElementById('navigation');
+        // reset nav
+        elemNav.innerHTML = '';
         // ul
         var ul = document.createElement('ul');
         // nav > ul
-        nav.appendChild(ul);
+        elemNav.appendChild(ul);
         // ul > li*
-        this.dbController.db.allDocs({ include_docs: true, descending: true }, function (err, doc) {
-            // aus den rows eine html Liste generieren:
+        var promise = DbController.loadAllWayPoints();
+        promise.then(function (doc) {
+            var anzahl = doc.total_rows;
             var zeilen = doc.rows;
             $.each(zeilen, function (index, data) {
                 // li
@@ -54,7 +61,8 @@ var NavigationController = (function () {
                 // a.click(func)
                 a.setAttribute('onclick', 'NavigationController.loadWayPoint(\'' + data.doc._id + '\')');
                 // Text
-                var text = document.createTextNode(data.doc.notice);
+                var title = data.doc.timewayid + ' - ' + data.doc.date + ' - ' + data.doc.place;
+                var text = document.createTextNode(title);
                 // li > a > text
                 li.appendChild(a);
                 a.appendChild(text);
@@ -63,19 +71,15 @@ var NavigationController = (function () {
     };
     ;
     /**
+     * loadWayPoint
      *
+     * @param id
      *
      */
     NavigationController.loadWayPoint = function (id) {
-        console.log(id);
+        console.log('NavigationController.loadWaypoint');
+        console.log('-' + id);
         DataDisplayController.loadData(id);
-    };
-    /**
-     * get
-     *
-     */
-    NavigationController.prototype.get = function () {
-        console.log(' - ' + this.className + '.get()');
     };
     return NavigationController;
 }());

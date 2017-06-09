@@ -10,7 +10,7 @@ var DebugDisplayController = (function () {
         // Vars
         this.className = 'debugDisplayController';
         this.idName = 'debug-display';
-        this.elem = document.getElementById(this.idName);
+        this.elemRoot = document.getElementById(this.idName);
         // functions
         this.addAllEventsListeners();
         // debug
@@ -20,7 +20,7 @@ var DebugDisplayController = (function () {
      * addAllEventsListeners
      */
     DebugDisplayController.prototype.addAllEventsListeners = function () {
-        this.elem.addEventListener('click', this.testClick.bind(this), false);
+        this.elemRoot.addEventListener('click', this.testClick.bind(this), false);
     };
     /**
      * set
@@ -44,7 +44,7 @@ var DebugDisplayController = (function () {
      */
     DebugDisplayController.prototype.testClick = function () {
         this.get();
-        $(this.elem).effect("bounce", "slow");
+        $(this.elemRoot).effect("bounce", "slow");
     };
     return DebugDisplayController;
 }());

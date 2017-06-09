@@ -5,7 +5,7 @@
  */
 class StatusDisplayController {
     public className: string;
-    private elem: any;
+    private elemRoot: any;
     public  idName: string;
 
     /**
@@ -13,13 +13,10 @@ class StatusDisplayController {
      */
     constructor() {
 
-
         // Vars
         this.className = 'statusDisplayController';
         this.idName = 'status-display';
-        this.elem = document.getElementById(this.idName);
-
-
+        this.elemRoot = document.getElementById(this.idName);
 
         // functions
         this.addAllEventsListeners();
@@ -32,23 +29,15 @@ class StatusDisplayController {
      * addAllEventsListeners
      */
     addAllEventsListeners(){
-        this.elem.addEventListener('click', this.testClick.bind(this), false);
+        this.elemRoot.addEventListener('click', this.testClick.bind(this), false);
     }
-    /**
-     * set
-     *
-     */
-    set() {
-        // Test
-        console.log(' - ' + this.className + '.set()');
-    }
+
 
     /**
      * get
      *
      */
     get() {
-        // Test
         console.log(' - ' + this.className + '.get()');
     }
 
@@ -58,7 +47,7 @@ class StatusDisplayController {
      */
     testClick(){
         this.get();
-        $(this.elem).effect( "bounce", "slow" );
+        $(this.elemRoot).effect( "bounce", "slow" );
 
     }
 }

@@ -1,4 +1,5 @@
 /// <reference path="DbController.ts"/>
+/// <reference path="NavigationController.ts"/>
 
 /**
  *  dataDisplayController
@@ -7,7 +8,7 @@
 class DataDisplayController {
 
     public className: string;
-    private elem: any;
+    private elemRoot: any;
     public idName: string;
 
     /**
@@ -19,7 +20,7 @@ class DataDisplayController {
         // Vars
         this.className = 'dataDisplayController';
         this.idName = 'data-display';
-        this.elem = document.getElementById(this.idName);
+        this.elemRoot = document.getElementById(this.idName);
 
 
         // functions
@@ -36,13 +37,26 @@ class DataDisplayController {
     addAllEventsListeners() {
 
 
-        // Button Submit Form
+        // Button SAVE
         let buttonSave = document.getElementById('data-display-button-save');
-        buttonSave.addEventListener('click', this.sendData, false);
+        buttonSave.addEventListener('click', DataDisplayController.saveData, false);
 
-        // Button Submit Form
+        // Button DELETE
         let buttonDelete = document.getElementById('data-display-button-delete');
-        buttonDelete.addEventListener('click', this.deleteData, false);
+        buttonDelete.addEventListener('click', DataDisplayController.deleteData.bind(this), false);
+
+        // Button NEW
+        let buttonNew = document.getElementById('data-display-button-new');
+        buttonNew.addEventListener('click', DataDisplayController.newForm.bind(this), false);
+
+        // Button Erase DB
+        let buttonErase = document.getElementById('data-display-button-erase-db');
+        buttonErase.addEventListener('click', DbController.eraseDB, false);
+
+
+        // Button Load Default
+        let buttonDefault = document.getElementById('data-display-button-load-default');
+        buttonDefault.addEventListener('click', DbController.loadDefault, false);
 
     }
 
@@ -50,17 +64,50 @@ class DataDisplayController {
      * madeDraggable
      */
     madeDraggable() {
-        $(this.elem).draggable();
+        $(this.elemRoot).draggable();
+    }
+
+    /**
+     * resetform
+     *  - Leert das Formular
+     *
+     */
+    static resetForm() {
+        console.log('DataDisplayController.resetForm');
+
+
+        $('#_id').val('');
+        $('#TimeWayId').val('');
+        $('#Date').val('');
+        $('#Place').val('');
+        $('#Feeling').val('');
+        $('#Message').val('');
+        $('#Notice').val('');
+    }
+
+    /**
+     * newForm
+     *  - Leert das Formular
+     *
+     */
+    static newForm() {
+        console.log('DataDisplayController.newForm');
+
+        DataDisplayController.resetForm();
+
+        $('#info_id').text('NEU');
+
     }
 
     /**
      *
      *
      */
-    sendData() {
+    static saveData() {
+        console.log('DataDisplayController.saveData');
 
-        // load Form
-
+        // load values from Form
+        let _id = $('#_id').val();
         let timewayid = $('#TimeWayId').val();
         let date = $('#Date').val();
         let place = $('#Place').val();
@@ -70,6 +117,7 @@ class DataDisplayController {
 
 
         let data = {
+            _id: _id,
             timewayid: timewayid,
             date: date,
             place: place,
@@ -78,13 +126,26 @@ class DataDisplayController {
             notice: notice,
         };
 
-        let dbController = new DbController();
+        // Wenn _id leer ist, wird es ein neuer Eintrag in die DB
+        console.log('--- _id= ' + _id);
 
-        dbController.addWayPoint(data);
+        if (_id == "") {
+            // New
+            console.log('--- new');
+            DbController.addWayPoint(data);
+        }
+        else {
+            // Update
+            console.log('--- update');
+            DbController.updateWayPoint(data);
 
-        // alert(form);
-        console.log('sendData:');
-        console.log('-' + notice);
+        }
+
+        // Die Liste aktualisieren
+        setTimeout(function () {
+            NavigationController.listAllWayPoints();
+        }, 1000);
+
     }
 
 
@@ -95,11 +156,8 @@ class DataDisplayController {
     static loadData(id: string) {
 
 
-        let dbController = new DbController();
-
-        dbController.db.get(id).then(function (doc: any) {
-
-
+        let promise = DbController.loadWayPoint(id);
+        promise.then(function (doc: any) {
 
             // load
 
@@ -112,8 +170,6 @@ class DataDisplayController {
             $('#Notice').attr('placeholder', '').val(doc.notice);
 
             $('#info_id').html(doc._id);
-
-
         });
 
 
@@ -122,51 +178,21 @@ class DataDisplayController {
     /**
      *
      *
-     * @param id
+     *
      */
-    deleteData() {
+    static deleteData() {
 
         let _id = $('#_id').val();
 
-        let data = {
-            _id: _id,
-        };
+        DbController.deleteWayPoint(_id);
 
-        let dbController = new DbController();
-
-        let result = dbController.deleteWayPoint(data);
-
-        if (result) {
-
-            $('#_id').val('');
-            $('#TimeWayId').val('');
-            $('#Date').val('');
-            $('#Place').val('');
-            $('#Feeling').val('');
-            $('#Message').val('');
-            $('#Notice').val('');
-        }
-        // alert(form);
-        console.log('deleteData');
-    }
+        DataDisplayController.resetForm();
 
 
-    /**
-     * set
-     *
-     */
-    set() {
-        // Test
-        console.log(' - ' + this.className + '.set()');
-    }
-
-    /**
-     * get
-     *
-     */
-    get() {
-        // Test
-        console.log(' - ' + this.className + '.get()');
+        // Die Liste aktualisieren
+        setTimeout(function () {
+            NavigationController.listAllWayPoints();
+        }, 1000);
     }
 
 

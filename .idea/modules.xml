@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/a-nicer-way.iml" filepath="$PROJECT_DIR$/.idea/a-nicer-way.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/nicer-way.iml" filepath="$PROJECT_DIR$/.idea/nicer-way.iml" />
     </modules>
   </component>

@@ -11,7 +11,7 @@ class NavigationController {
     public className: string;
     public idName: string;
 
-    private elem: any;
+    private elemRoot: any;
     private dbController: any;
 
 
@@ -20,17 +20,17 @@ class NavigationController {
      */
     constructor() {
 
-
+        // Datenbankverbindung aufbauen und verfügbarmachen
         this.dbController = new DbController();
 
-        // Vars
+        // Eigenschaften setzen
         this.className = 'navigationController';
         this.idName = 'navigation';
-        this.elem = document.getElementById(this.idName);
+        this.elemRoot = document.getElementById(this.idName);
 
 
         // functions
-        this.listAllWayPoints();
+        NavigationController.listAllWayPoints();
         this.addAllEventsListeners();
 
         // debug
@@ -49,76 +49,77 @@ class NavigationController {
 
     /**
      * listAllWayPoints
+     * - Listet alle Waypoints als klickbare Nav-Liste auf
+     *
+     * - Statische Funktion, kann direkt im aufgerufen werden
      *
      */
-    listAllWayPoints() {
+    static listAllWayPoints() {
 
+        // STATIC
+        let elemNav = document.getElementById('navigation');
 
-        // nav
-        let nav = document.getElementById('navigation');
+        // reset nav
+        elemNav.innerHTML = '';
 
         // ul
         let ul = document.createElement('ul');
 
         // nav > ul
-        nav.appendChild(ul);
+        elemNav.appendChild(ul);
 
         // ul > li*
-        this.dbController.db.allDocs({include_docs: true, descending: true},
-            function (err: any, doc: any) {
+        let promise = DbController.loadAllWayPoints();
 
-                // aus den rows eine html Liste generieren:
-                let zeilen = doc.rows;
+        promise.then(function (doc: any) {
 
-                $.each(zeilen, function (index, data) {
+            let anzahl = doc.total_rows;
+            let zeilen = doc.rows;
 
-                    // li
-                    let li = document.createElement('li');
-                    ul.appendChild(li);
+            $.each(zeilen, function (index, data) {
 
-                    // a
-                    let a = document.createElement('a');
+                // li
+                let li = document.createElement('li');
+                ul.appendChild(li);
 
-                    // a.class
-                    a.setAttribute('class', 'waypoint-list');
+                // a
+                let a = document.createElement('a');
 
-                    // a.data-id
-                    a.setAttribute('data-id', data.doc._id);
+                // a.class
+                a.setAttribute('class', 'waypoint-list');
 
-                    // a.click(func)
-                    a.setAttribute('onclick', 'NavigationController.loadWayPoint(\'' + data.doc._id + '\')');
+                // a.data-id
+                a.setAttribute('data-id', data.doc._id);
 
-                    // Text
-                    let text = document.createTextNode(data.doc.notice);
+                // a.click(func)
+                a.setAttribute('onclick', 'NavigationController.loadWayPoint(\'' + data.doc._id + '\')');
 
-                    // li > a > text
-                    li.appendChild(a);
-                    a.appendChild(text);
+                // Text
+                let title = data.doc.timewayid + ' - ' + data.doc.date + ' - ' + data.doc.place;
+                let text = document.createTextNode(title);
 
-                });
-
+                // li > a > text
+                li.appendChild(a);
+                a.appendChild(text);
             });
+        });
+
     };
 
     /**
+     * loadWayPoint
      *
+     * @param id
      *
      */
-    static  loadWayPoint(id: string) {
+    static loadWayPoint(id: string) {
 
-        console.log(id);
+        console.log('NavigationController.loadWaypoint');
+        console.log('-' + id);
 
         DataDisplayController.loadData(id);
 
     }
 
-
-    /**
-     * get
-     *
-     */
-    get() {
-        console.log(' - ' + this.className + '.get()');
-    }
 
 }

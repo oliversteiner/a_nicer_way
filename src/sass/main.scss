@@ -19,7 +19,7 @@ h1 {
 }
 
 .shadow-display {
-  box-shadow: 7px 7px 7px 7px rgba(0, 0, 0,  0.2);
+  box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.2);
 }
 
 .well-display {
@@ -34,11 +34,33 @@ h1 {
   left: 5px;
 }
 
-.navbar-default{
+.navbar-default {
   background-color: #222222;
 }
 
-.navbar-default .navbar-nav>li>a{
- color: #222222;
+.navbar-default .navbar-nav > li > a {
+  color: $color-nav-text;
 
+}
+
+.pager {
+  padding: 0;
+  margin: 0;
+  padding-top: 12px;
+
+}
+
+// Pager
+.pager li {
+  padding: 0;
+  margin: 0;
+  margin-left: 10px;
+}
+
+.pager li > a {
+  font-size: 1em;
+  padding: 2px 10px;
+  margin: 0;
+  border-radius: 10px;
+  background-color: $color-nav-text
 }

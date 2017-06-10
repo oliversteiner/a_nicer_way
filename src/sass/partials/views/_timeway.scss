@@ -1,11 +1,10 @@
 @import "../design/colors";
 @import "../design/fonts";
 
-$color-timeway-ebene-viewport: rgb(22, 38, 41);
+$color-timeway-ebene-viewport: rgb(164, 213, 237);
 
 #timeway {
-  height:600px;
-  background-color: $color-timeway-ebene-viewport;
+  height: 600px;
   overflow: hidden;
 }
 
@@ -16,12 +15,43 @@ $color-timeway-ebene-viewport: rgb(22, 38, 41);
   background-color: $color-message;
 }
 
-#timeway-content{
-  overflow: scroll;
+#timeway-content {
+  position: relative;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 600px;
+
 }
 
-#layer-1{
-  width: 4400px;
+#layer-1-himmel {
+  background: url("../images/timeway/ANW_Himmel.jpg");
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  background-size: 4000px;
+
+  width: 8000px;
+  height: 600px;
+}
+
+#layer-2-berge {
+  background: url("../images/timeway/ANW_Berge.png");
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  background-size: 4000px;
+
+  width: 8000px;
+  height: 600px;
+}
+
+#layer-3-aktuell {
+
+  width: 8000px;
+  height: 600px;
+}
+
+#layer-4-baume {
+  width: 8000px;
+  height: 600px;
 }
 
 .timeway-point {
@@ -29,7 +59,54 @@ $color-timeway-ebene-viewport: rgb(22, 38, 41);
   padding: 0;
   position: relative;
   display: inline-block;
-  border: 1px solid yellow;
-  width: 400px;
+  width: 700px;
   height: 600px;
+}
+
+.ost-parallax {
+  left: 1px;
+  top: 0;
+  height: 600px;
+  position: absolute;
+
+}
+
+// Bäume:
+
+.baum-1 {
+  background: url("../images/timeway/ANW_Baum_1.png");
+}
+
+.baum-2 {
+  background: url("../images/timeway/ANW_Baum_2.png");
+}
+
+.baum-3 {
+  background: url("../images/timeway/ANW_Baum_3.png");
+}
+
+.busch-1 {
+  background: url("../images/timeway/ANW_Busch_1.png");
+}
+
+.busch-2 {
+  background: url("../images/timeway/ANW_Busch_2.png");
+}
+
+.deko {
+  display: inline-block;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: 300px;
+
+  width: 300px;
+  height: 600px;
+}
+
+.kurz {
+  margin-right: 300px;
+}
+
+.breit {
+  margin-right: 500px;
 }

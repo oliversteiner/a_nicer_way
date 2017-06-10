@@ -166,7 +166,7 @@ class DataDisplayController {
      *
      *
      */
-    static loadData(id: string) {
+    static setData(id: string) {
 
 
         let promise = DbController.loadWayPoint(id);

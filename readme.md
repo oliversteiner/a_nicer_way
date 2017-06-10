@@ -44,6 +44,9 @@ Nicht vollstädig ausgearbeit werden sein:
  - ein einblendbares iPhone, das mit dem Demo der Nicer-App gefüllt wird und seinen Inhalt je nach Ort in der Timeline seinen Zustand wechselt
  - Für die Präsentation am 10. ist noch nicht die App-Demo zu sehen, aber auf dem Screen des iPhones soll der aktuelle Status der Timeline erscheinen.
 
+#### Remote-Kontrolle
+ - eine weitere Idee ist es, die Präsentation über mein iPhone fernzusteuern. Dazu werde ich die Webseite über einen node.js server laufen lassen, den  ich per socket.io fernsteueren kann. 
+
 ## Ablauf der Erstellung
  - Daten und Content definieren und in Struktur bringen
  - Timeline-Abschnitte festlegen
@@ -57,3 +60,6 @@ Nicht vollstädig ausgearbeit werden sein:
  - Die Daten für die Timeline werde ich wohl als JSON definieren oder in einer CouchDB ablegen
  - Da dies kein Projekt ist, welches nach der Semesterarbeit weitergebraucht wird, werde ich zwar sauberen Code schreiben, aber nicht ein übertriebenes Engeniering betreiben. (Kein Atomic-Code, keine Unit-Tests, minimale Dokumentation)
  - Ich habe mich nach langem hin- und her nun doch entschieden, einen SASS / Typescript Weg zu gehen. Obwohl der Aufwand, eine entsprechende Umgebung aufzubauen einen halben Tag gebraucht hat, bin ich überzeugt damit schneller und sauberer ans Ziel zu kommen. 
+
+## Dokumentation
+ weitere Details sind im Dokument **documentation.md** zu finden.

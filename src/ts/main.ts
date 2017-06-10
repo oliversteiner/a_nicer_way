@@ -2,8 +2,9 @@
  *  aNicerWay
  *
  */
-class aNicerWay {
+class ANicerWay {
     public className: string;
+    public timePointAktuell = 0;
 
     constructor(parameters: { debug_modus: any }) {
         let debug_modus = parameters.debug_modus;
@@ -13,7 +14,7 @@ class aNicerWay {
 
         // debug-modus ein ?
         if (debug_modus) {
-            aNicerWay.debugModus();
+            //   this.debugModus();
         }
 
         // alle html-views zusammensetzen
@@ -21,6 +22,8 @@ class aNicerWay {
         $('#smartphone-sim').load('views/smartphone_sim.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
         $('#navigation').load('views/navigation_display.html').hide();
         $('#timeway').load('views/timeway.html');
+        $('#main_navigation').load('views/main_navigation.html');
+        $('#status-display').load('views/status_display.html');
 
         // load all Controllers
         console.log('load');
@@ -32,7 +35,9 @@ class aNicerWay {
             let timewayController = new TimewayController();
             let navigationController = new NavigationController();
             let dataDisplayController = new DataDisplayController();
-           // alert('ready');
+            //alert('ready');
+
+
             console.log('ready');
         }, 1000);
 
@@ -47,6 +52,16 @@ class aNicerWay {
         // Test
         console.log(' - ' + this.className + '.get()');
         return this.className;
+    }
+
+    setTimePoint(point: number) {
+        // Test
+        this.timePointAktuell = point;
+        console.log('Timepoint: ' + point);
+    }
+
+    getTimePoint() {
+        return this.timePointAktuell;
     }
 
     /**
@@ -78,8 +93,54 @@ class aNicerWay {
 
 // init
 let options = {debug_modus: false};
-let a_nicer_way = new aNicerWay(options);
+let aNicerWay = new ANicerWay(options);
+
+
+setTimeout(function () {
+
+    let parent_old = 0;
+
+    function ostParallax(parent: any, elem: string, faktor: string, richtung: string) {
+
+        let child: any = $(elem).css('left');
+
+        $(elem).css("left", richtung + "=" + faktor);
+
+
+    }
+
+
+    $('#timeway-content').scroll(function () {
+        let richtung = '';
+
+        let parent = $('#timeway-content').scrollLeft();
+
+
+        if (parent_old < parent) {
+            richtung = '+';
+        } else {
+            richtung = '-';
+        }
+        ostParallax(parent, '#layer-1-himmel', '2', richtung);
+        ostParallax(parent, '#layer-2-berge', '3', richtung);
+        ostParallax(parent, '#layer-3-aktiv', '5', richtung);
+        ostParallax(parent, '#layer-4-baume', '6', richtung);
+
+        parent_old = parent;
+    });
 
 
 
+    window.addEventListener('keypress', function(event) {
+        if (event.keyCode == 37) {
+            NavigationController.scrollToPreviews;
+        }
+    });
 
+    window.addEventListener('keypress', function(event) {
+        if (event.keyCode == 39) {
+            NavigationController.scrollToPreviews;
+        }
+    });
+
+}, 2000);

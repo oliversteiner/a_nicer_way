@@ -10,7 +10,11 @@ var PhoneSimController = (function () {
         // Vars
         this.className = 'phoneSimController';
         this.idName = 'phone-sim';
-        this.elemRoot = document.getElementById(this.idName);
+        this.elem_Root = document.getElementById(this.idName);
+        this.elem_Debug = document.getElementById('smartphone-debug');
+        this.elem_Home = document.getElementById('smartphone-home-button');
+        this.elem_Close = document.getElementById('smartphone-close');
+        this.elem_Screen = document.getElementById('smartphone-screen-inner');
         // functions
         this.addAllEventsListeners();
         // debug
@@ -20,31 +24,11 @@ var PhoneSimController = (function () {
      * addAllEventsListeners
      */
     PhoneSimController.prototype.addAllEventsListeners = function () {
-        this.elemRoot.addEventListener('click', this.testClick.bind(this), false);
+        this.elem_Home.addEventListener('click', this.home.bind(this), false);
     };
-    /**
-     * set
-     *
-     */
-    PhoneSimController.prototype.set = function () {
-        // Test
-        console.log(' - ' + this.className + '.set()');
-    };
-    /**
-     * get
-     *
-     */
-    PhoneSimController.prototype.get = function () {
-        // Test
-        console.log(' - ' + this.className + '.get()');
-    };
-    /**
-     * testClick
-     *
-     */
-    PhoneSimController.prototype.testClick = function () {
-        this.get();
-        $(this.elemRoot).effect("bounce", "slow");
+    PhoneSimController.prototype.home = function () {
+        console.log('Homebutton gedrückt');
+        $(this.elem_Debug).text('Home');
     };
     return PhoneSimController;
 }());

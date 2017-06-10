@@ -9,20 +9,22 @@ var DataDisplayController = (function () {
      * constructor
      */
     function DataDisplayController() {
+        console.log(this.className);
         // Vars
         this.className = 'dataDisplayController';
         this.idName = 'data-display';
-        this.elemRoot = document.getElementById(this.idName);
+        this.elem_Root = document.getElementById(this.idName);
+        this.buttonShowDisplay = document.getElementById('data-display-button-toggle');
+        this.displayActive = false;
         // functions
-        this.addAllEventsListeners();
         this.madeDraggable();
-        // debug
-        console.log(this.className);
+        this.addAllEventsListeners();
     }
     /**
      * addAllEventsListeners
      */
     DataDisplayController.prototype.addAllEventsListeners = function () {
+        // Load all HTML and add EventListeners
         // Button SAVE
         var buttonSave = document.getElementById('data-display-button-save');
         buttonSave.addEventListener('click', DataDisplayController.saveData, false);
@@ -38,12 +40,18 @@ var DataDisplayController = (function () {
         // Button Load Default
         var buttonDefault = document.getElementById('data-display-button-load-default');
         buttonDefault.addEventListener('click', DbController.loadDefault, false);
+        // Button Close Display
+        var buttonCloseDisplay = document.getElementById('data-display-button-close-display');
+        buttonCloseDisplay.addEventListener('click', this.closeDisplay.bind(this), false);
+        // Button Show Display
+        var buttonShowDisplay = document.getElementById('data-display-button-toggle');
+        buttonShowDisplay.addEventListener('click', this.toggleDisplay.bind(this), false);
     };
     /**
      * madeDraggable
      */
     DataDisplayController.prototype.madeDraggable = function () {
-        $(this.elemRoot).draggable();
+        $(this.elem_Root).draggable();
     };
     /**
      * resetform
@@ -114,7 +122,7 @@ var DataDisplayController = (function () {
      *
      *
      */
-    DataDisplayController.loadData = function (id) {
+    DataDisplayController.setData = function (id) {
         var promise = DbController.loadWayPoint(id);
         promise.then(function (doc) {
             // load
@@ -141,6 +149,25 @@ var DataDisplayController = (function () {
         setTimeout(function () {
             NavigationController.listAllWayPoints();
         }, 1000);
+    };
+    DataDisplayController.prototype.closeDisplay = function () {
+        this.displayActive = false;
+        $(this.elem_Root).hide();
+        $(this.buttonShowDisplay).text('Show Datadisplay');
+    };
+    DataDisplayController.prototype.showDisplay = function () {
+        this.displayActive = true;
+        $(this.elem_Root).show();
+        $(this.buttonShowDisplay).text('Hide Datadisplay');
+    };
+    DataDisplayController.prototype.toggleDisplay = function () {
+        if (this.displayActive) {
+            this.closeDisplay();
+        }
+        else {
+            this.showDisplay();
+        }
+        return false;
     };
     return DataDisplayController;
 }());

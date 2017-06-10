@@ -51,6 +51,11 @@ https://www.npmjs.com/package/gulp-sass
 @types/pouchdb
 
 
+#### für die Remote-Kontrolle
+- expressjs
+- socket.io
+
+
 
 ### set up app
 - gulp init
@@ -63,6 +68,10 @@ https://www.npmjs.com/package/gulp-sass
 - jquery parallax
 - jquery gridhelper
 
+- scrollTo (serialScroll)
+  http://demos.flesler.com/jquery/serialScroll/
+- stellar.js
+  http://markdalgleish.com/projects/stellar.js/
 
 ## Time-Way Daten
 - TimeWayId
@@ -74,7 +83,7 @@ https://www.npmjs.com/package/gulp-sass
 - Notic
 
 
-## ablauf
+## Ablauf
 - alle Files (noch ohne Inhalt) erstellt.
 - index.html mit allen files verlinkt.
 - index.html mit SCSS und Typescript gestestet.

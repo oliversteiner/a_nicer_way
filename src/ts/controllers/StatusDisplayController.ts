@@ -1,4 +1,3 @@
-
 /**
  *  consoleDisplayController
  *
@@ -6,7 +5,7 @@
 class StatusDisplayController {
     public className: string;
     private elemRoot: any;
-    public  idName: string;
+    public idName: string;
 
     /**
      * constructor
@@ -28,8 +27,23 @@ class StatusDisplayController {
     /**
      * addAllEventsListeners
      */
-    addAllEventsListeners(){
+    addAllEventsListeners() {
         this.elemRoot.addEventListener('click', this.testClick.bind(this), false);
+    }
+
+
+    static setData(id: string) {
+
+        let promise = DbController.loadWayPoint(id);
+        promise.then(function (doc: any) {
+
+            $('#Date_status').text(doc.date);
+            $('#Place_status').text(doc.place);
+            $('#Feeling_status').text(doc.feeling);
+
+        });
+
+
     }
 
 
@@ -45,9 +59,9 @@ class StatusDisplayController {
      * testClick
      *
      */
-    testClick(){
+    testClick() {
         this.get();
-        $(this.elemRoot).effect( "bounce", "slow" );
+        $(this.elemRoot).effect("bounce", "slow");
 
     }
 }

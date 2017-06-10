@@ -67,6 +67,15 @@ class NavigationController {
         let buttonShowDisplay = document.getElementById('navigation-button-toggle');
         buttonShowDisplay.addEventListener('click', this.toggleDisplay.bind(this), false);
 
+        // Button Show Display
+        let nextTimePoint = document.getElementById('button-next');
+        nextTimePoint.addEventListener('click', NavigationController.scrollToNext, false);
+
+        // Button Show Display
+        let prevTimePoint = document.getElementById('button-previous');
+        prevTimePoint.addEventListener('click', NavigationController.scrollToPreviews, false);
+
+
     }
 
 
@@ -141,14 +150,16 @@ class NavigationController {
         console.log('NavigationController.loadWaypoint');
         console.log('-' + id);
 
-        DataDisplayController.loadData(id);
-        NavigationController.setSmartphoneSimContent(id)
+        DataDisplayController.setData(id);
+        StatusDisplayController.setData(id);
+        NavigationController.setSmartphoneSimContent(id);
+        NavigationController.scrollToTarget(id);
 
     }
 
     static showDataDisplay(id: string) {
 
-        DataDisplayController.loadData(id);
+        DataDisplayController.setData(id);
         $('#data-display').show();
 
     }
@@ -189,5 +200,46 @@ class NavigationController {
         return false;
     }
 
+    static  scrollToTarget(target: string) {
+
+        console.log('target:' + target);
+
+        let promise = DbController.loadWayPoint(target);
+        promise.then(function (doc: any) {
+
+            let point = doc.timewayid;
+            aNicerWay.setTimePoint(point);
+
+        });
+
+        $('#timeway-content').scrollTo('#' + target, 1000);
+
+    }
+
+    static  scrollToNumber(point: number) {
+        let target = 'TimeWayPoint-' + point;
+        $('#timeway-content').scrollTo('#' + target, 1000);
+        aNicerWay.setTimePoint(point);
+        NavigationController.setSmartphoneSimContent(target);
+        StatusDisplayController.setData(target);
+
+    }
+
+
+    static scrollToNext() {
+        let point: number = aNicerWay.getTimePoint();
+
+        let next = point + 1;
+        NavigationController.scrollToNumber(next);
+
+    }
+
+    static scrollToPreviews() {
+        let point: number = aNicerWay.getTimePoint();
+
+        let prev = point - 1;
+        NavigationController.scrollToNumber(prev);
+
+    }
 
 }

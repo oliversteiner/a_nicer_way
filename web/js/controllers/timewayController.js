@@ -7,44 +7,19 @@ var TimewayController = (function () {
      * constructor
      */
     function TimewayController() {
+        console.log(this.className);
         // Vars
         this.className = 'timewayController';
         this.idName = 'timeway';
-        this.elemRoot = document.getElementById(this.idName);
+        this.elem_Root = document.getElementById(this.idName);
         // functions
         this.addAllEventsListeners();
-        // debug
-        console.log(this.className);
+        // console
     }
     /**
      * addAllEventsListeners
      */
     TimewayController.prototype.addAllEventsListeners = function () {
-        this.elemRoot.addEventListener('click', this.testClick.bind(this), false);
-    };
-    /**
-     * set
-     *
-     */
-    TimewayController.prototype.set = function () {
-        // Test
-        console.log(' - ' + this.className + '.set()');
-    };
-    /**
-     * get
-     *
-     */
-    TimewayController.prototype.get = function () {
-        // Test
-        console.log(' - ' + this.className + '.get()');
-    };
-    /**
-     * testClick
-     *
-     */
-    TimewayController.prototype.testClick = function () {
-        this.get();
-        $(this.elemRoot).effect("bounce", "slow");
     };
     return TimewayController;
 }());

@@ -11,14 +11,20 @@ class NavigationController {
     public className: string;
     public idName: string;
 
-    private elemRoot: any;
     private dbController: any;
+
+    private elem_Root: HTMLElement | any;
+    private elem_Content: HTMLElement | any;
+    private elem_button_toggle: HTMLElement | any;
+
+    private displayActive: boolean;
 
 
     /**
      * constructor
      */
     constructor() {
+        console.log(this.className);
 
         // Datenbankverbindung aufbauen und verfügbarmachen
         this.dbController = new DbController();
@@ -26,23 +32,40 @@ class NavigationController {
         // Eigenschaften setzen
         this.className = 'navigationController';
         this.idName = 'navigation';
-        this.elemRoot = document.getElementById(this.idName);
+        this.elem_Root = document.getElementById('navigation');
+        this.elem_Content = document.getElementById('navigation-content');
+        this.elem_button_toggle = document.getElementById('navigation-button-toggle');
+        this.displayActive = false;
 
 
         // functions
+        this.madeDraggable();
+
         NavigationController.listAllWayPoints();
         this.addAllEventsListeners();
 
-        // debug
-        console.log(this.className);
     }
 
+    /**
+     * madeDraggable
+     */
+    madeDraggable() {
+        $(this.elem_Root).draggable();
+    }
 
     /**
      * addAllEventsListeners
      *
      */
     addAllEventsListeners() {
+
+        // Button Close Display
+        let buttonCloseDisplay = document.getElementById('navigation-button-close');
+        buttonCloseDisplay.addEventListener('click', this.closeDisplay.bind(this), false);
+
+        // Button Show Display
+        let buttonShowDisplay = document.getElementById('navigation-button-toggle');
+        buttonShowDisplay.addEventListener('click', this.toggleDisplay.bind(this), false);
 
     }
 
@@ -57,7 +80,7 @@ class NavigationController {
     static listAllWayPoints() {
 
         // STATIC
-        let elemNav = document.getElementById('navigation');
+        let elemNav = document.getElementById('navigation-content');
 
         // reset nav
         elemNav.innerHTML = '';
@@ -93,6 +116,7 @@ class NavigationController {
 
                 // a.click(func)
                 a.setAttribute('onclick', 'NavigationController.loadWayPoint(\'' + data.doc._id + '\')');
+                a.setAttribute('ondblclick', 'NavigationController.showDataDisplay(\'' + data.doc._id + '\')');
 
                 // Text
                 let title = data.doc.timewayid + ' - ' + data.doc.date + ' - ' + data.doc.place;
@@ -118,7 +142,51 @@ class NavigationController {
         console.log('-' + id);
 
         DataDisplayController.loadData(id);
+        NavigationController.setSmartphoneSimContent(id)
 
+    }
+
+    static showDataDisplay(id: string) {
+
+        DataDisplayController.loadData(id);
+        $('#data-display').show();
+
+    }
+
+    static setSmartphoneSimContent(id: string) {
+        let promise = DbController.loadWayPoint(id);
+        promise.then(function (doc: any) {
+
+            let content = doc.timewayid;
+            SmartphoneSimController.setContent(content);
+
+        });
+
+    }
+
+
+    closeDisplay() {
+        this.displayActive = false;
+
+        $(this.elem_Root).hide();
+        $(this.elem_button_toggle).text('Show Navigation');
+    }
+
+    showDisplay() {
+        this.displayActive = true;
+
+        $(this.elem_Root).show();
+        $(this.elem_button_toggle).text('Hide Navigation');
+    }
+
+    toggleDisplay() {
+        if (this.displayActive) {
+            this.closeDisplay();
+        }
+        else {
+            this.showDisplay();
+        }
+        return false;
     }
 
 

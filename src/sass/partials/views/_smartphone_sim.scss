@@ -1,0 +1,123 @@
+@import "../design/colors";
+@import "../design/fonts";
+
+$color-smartphone: rgb(0, 0, 0);
+$color-smartphone-border: rgb(45, 45, 45);
+$color-smartphone-border-bright: rgb(133, 133, 133);
+$color-smartphone-screen: rgb(195, 209, 255);
+$color-smartphone-homebutton: rgb(68, 68, 68);
+$color-smartphone-pictos: rgb(45,45,45);
+$color-smartphone-pictos-bright: rgb(130, 130, 130);
+$color-smartphone-screen: rgb(63, 64, 130);
+
+
+#smartphone-sim {
+  position: absolute;
+  right: 100px;
+  bottom: 50px;
+  transition: all 100ms ease-in-out;
+
+}
+
+#smartphone-frame {
+  position: relative;
+  display: block;
+
+  background-color: black;
+  height: 500px;
+
+  width: 250px;
+  border-radius: 25px;
+  border: 1px solid $color-smartphone-border;
+
+
+}
+
+#smartphone-frame:hover {
+  cursor: move;
+}
+
+#smartphone-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 20% 5%;
+}
+
+#smartphone-screen {
+  position: relative;
+  background-color: $color-smartphone-screen;
+  width: 100%;
+  height: 100%;
+  border-radius: 2%;
+  border: 1px solid $color-smartphone-border;
+
+}
+
+// Homebutton
+#smartphone-home-button {
+  position: relative;
+  background-color: $color-smartphone-homebutton;
+  width: 15%;
+  height: 7.5%;
+  bottom: 9%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 100%;
+  border: 1px solid $color-smartphone-border;
+}
+
+#smartphone-home-button:hover {
+  border: 1px solid $color-smartphone-border-bright;
+  cursor: pointer;
+
+}
+
+#smartphone-close {
+  position: absolute;
+  width: 99%;
+  height: 12%;
+  text-align: center;
+  padding: 5%;
+  color: black;
+  font-size: 20px;
+  z-index: +1;
+}
+
+#smartphone-close:hover {
+  color: $color-smartphone-pictos-bright;
+  cursor: pointer;
+}
+
+#smartphone-close:active {
+  color: white;
+  cursor: pointer;
+}
+
+#smartphone-console {
+  position: absolute;
+  padding: 30px;
+
+}
+
+#smartphone-console {
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: $color-console-background;
+  color: $color-message;
+}
+
+#smartphone-content {
+
+}
+
+// animate
+#smartphone-sim.smartphone-close {
+bottom: -450px;
+}
+
+#smartphone-sim.smartphone-close:hover {
+  bottom: -440px;
+}

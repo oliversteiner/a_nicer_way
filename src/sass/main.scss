@@ -1,21 +1,44 @@
+@import "partials/views/footer";
 // Design
 @import 'partials/design/colors';
 @import 'partials/design/fonts';
-
 // Views
-@import 'partials/views/debug_display';
-@import 'partials/views/phone_sim';
+@import 'partials/views/console_display';
+@import 'partials/views/smartphone_sim';
 @import 'partials/views/status_display';
 @import 'partials/views/timeway';
 @import 'partials/views/navigation';
 @import 'partials/views/data_display';
-
-
+@import 'partials/views/footer';
 // Utilitis
-@import 'partials/utilities/debug';
+@import 'partials/utilities/console';
 @import 'partials/utilities/messages';
 
-
-h1{
+h1 {
   margin-left: 20px;
+}
+
+.shadow-display {
+  box-shadow: 7px 7px 7px 7px rgba(0, 0, 0,  0.2);
+}
+
+.well-display {
+  border-radius: 15px;
+  padding: 15px;
+
+}
+
+.well-display > .close {
+  position: relative;
+  top: -10px;
+  left: 5px;
+}
+
+.navbar-default{
+  background-color: #222222;
+}
+
+.navbar-default .navbar-nav>li>a{
+ color: #222222;
+
 }

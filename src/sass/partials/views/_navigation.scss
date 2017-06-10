@@ -2,20 +2,37 @@
 @import "../design/fonts";
 
 #navigation {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid gray;
 
-  a{
+  position: absolute;
+  left: 100px;
+  top: 100px;
+
+  a {
     cursor: pointer;
+  }
+
+  ul {
+    padding: 20px 0 0;
+  }
+
+  li {
+    list-style: none;
+    border-bottom: 1px solid #b8b8b8;
+  }
+
+  a {
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+
+  }
+
+  a:hover {
+    background-color: #dddddd;
   }
 }
 
-#navigation:after {
-  content: "Navigation"
-}
-
-#navigation.debug {
+#navigation.debug-modus {
   margin: 20px;
   padding: 20px;
   border: 1px solid black;

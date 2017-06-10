@@ -5,24 +5,36 @@
 class aNicerWay {
     public className: string;
 
-    constructor(parameters: { debug: any }) {
-        let debug = parameters.debug;
+    constructor(parameters: { debug_modus: any }) {
+        let debug_modus = parameters.debug_modus;
 
         this.className = 'aNicerWay';
         console.log(this.className);
 
-        // Debugmodus ein ?
-        if (debug) {
-            aNicerWay.showDebug();
+        // debug-modus ein ?
+        if (debug_modus) {
+            aNicerWay.debugModus();
         }
 
+        // alle html-views zusammensetzen
+        $('#data-display').load('views/data_display.html').hide(); // aus dem View-Verzeichnis laden, und gleich ausblenden
+        $('#smartphone-sim').load('views/smartphone_sim.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
+        $('#navigation').load('views/navigation_display.html').hide();
+        $('#timeway').load('views/timeway.html');
+
         // load all Controllers
-        let debugDisplayController = new DebugDisplayController();
-        let phoneSimController = new PhoneSimController();
-        let statusDisplayController = new StatusDisplayController();
-        let timewayController = new TimewayController();
-        let navigationController = new NavigationController();
-        let dataDisplayController = new DataDisplayController();
+        console.log('load');
+        // Warte kurz, damit die dynamisch eingefügten HTML-dokument schon geladen sind.
+        setTimeout(function () {
+            let consoleDisplayController = new ConsoleDisplayController();
+            let smartphoneSimController = new SmartphoneSimController();
+            let statusDisplayController = new StatusDisplayController();
+            let timewayController = new TimewayController();
+            let navigationController = new NavigationController();
+            let dataDisplayController = new DataDisplayController();
+           // alert('ready');
+            console.log('ready');
+        }, 1000);
 
     }
 
@@ -38,25 +50,25 @@ class aNicerWay {
     }
 
     /**
-     * debug
+     * debugModus
      *
      */
-    public static showDebug() {
-        let elem_debug_display: any = document.getElementById('debug-display');
+    public static debugModus() {
+        let elem_console_display: any = document.getElementById('console-display');
         let elem_status_display: any = document.getElementById('status-display');
-        let elem_phone_sim: any = document.getElementById('phone-sim');
+        let elem_smartphone_sim: any = document.getElementById('smartphone-sim');
         let elem_timeway: any = document.getElementById('timeway');
         let elem_navigation: any = document.getElementById('navigation');
         let elem_data_display: any = document.getElementById('data-display');
 
-        elem_debug_display.style.display = 'block';
+        elem_console_display.style.display = 'block';
 
-        elem_debug_display.classList.add('debug');
-        elem_status_display.classList.add('debug');
-        elem_phone_sim.classList.add('debug');
-        elem_timeway.classList.add('debug');
-        elem_navigation.classList.add('debug');
-        elem_data_display.classList.add('debug');
+        elem_console_display.classList.add('debug-modus');
+        elem_status_display.classList.add('debug-modus');
+        elem_smartphone_sim.classList.add('debug-modus');
+        elem_timeway.classList.add('debug-modus');
+        elem_navigation.classList.add('debug-modus');
+        elem_data_display.classList.add('debug-modus');
 
         return true;
     }
@@ -65,7 +77,7 @@ class aNicerWay {
 }
 
 // init
-let options = {debug: true};
+let options = {debug_modus: false};
 let a_nicer_way = new aNicerWay(options);
 
 

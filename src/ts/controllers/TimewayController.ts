@@ -5,60 +5,34 @@
  */
 class TimewayController {
     public className: string;
-    private elemRoot: any;
+    private elem_Root: any;
     public  idName: string;
 
     /**
      * constructor
      */
     constructor() {
+        console.log(this.className);
 
 
         // Vars
         this.className = 'timewayController';
         this.idName = 'timeway';
-        this.elemRoot = document.getElementById(this.idName);
+        this.elem_Root = document.getElementById(this.idName);
 
 
 
         // functions
         this.addAllEventsListeners();
 
-        // debug
-        console.log(this.className);
+        // console
     }
 
     /**
      * addAllEventsListeners
      */
     addAllEventsListeners(){
-        this.elemRoot.addEventListener('click', this.testClick.bind(this), false);
-    }
-    /**
-     * set
-     *
-     */
-    set() {
-        // Test
-        console.log(' - ' + this.className + '.set()');
     }
 
-    /**
-     * get
-     *
-     */
-    get() {
-        // Test
-        console.log(' - ' + this.className + '.get()');
-    }
 
-    /**
-     * testClick
-     *
-     */
-    testClick(){
-        this.get();
-        $(this.elemRoot).effect( "bounce", "slow" );
-
-    }
 }

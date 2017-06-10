@@ -7,10 +7,6 @@
 
   width: 300px;
   left: 400px;
-  -webkit-box-shadow: 10px 10px 30px -3px rgba(0, 0, 0, 0.51);
-  -moz-box-shadow: 10px 10px 30px -3px rgba(0, 0, 0, 0.51);
-  box-shadow: 10px 10px 30px -3px rgba(0, 0, 0, 0.51);
-
 
 }
 
@@ -18,7 +14,7 @@
   content: ""
 }
 
-#data-display.debug {
+#data-display.console {
   margin: 20px;
   padding: 20px;
   border: 1px solid gray;

@@ -1,6 +1,6 @@
 
 /**
- *  debugDisplayController
+ *  consoleDisplayController
  *
  */
 class StatusDisplayController {
@@ -21,7 +21,7 @@ class StatusDisplayController {
         // functions
         this.addAllEventsListeners();
 
-        // debug
+        // console
         console.log(this.className);
     }
 

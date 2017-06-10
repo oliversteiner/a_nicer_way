@@ -8,33 +8,39 @@
 class DataDisplayController {
 
     public className: string;
-    private elemRoot: any;
+    private elem_Root: any;
     public idName: string;
+    public buttonShowDisplay: any;
+    public displayActive: boolean;
 
     /**
      * constructor
      */
     constructor() {
+        console.log(this.className);
 
 
         // Vars
         this.className = 'dataDisplayController';
         this.idName = 'data-display';
-        this.elemRoot = document.getElementById(this.idName);
-
+        this.elem_Root = document.getElementById(this.idName);
+        this.buttonShowDisplay = document.getElementById('data-display-button-toggle');
+        this.displayActive = false;
 
         // functions
-        this.addAllEventsListeners();
-        this.madeDraggable();
 
-        // debug
-        console.log(this.className);
+        this.madeDraggable();
+        this.addAllEventsListeners();
+
+
     }
 
     /**
      * addAllEventsListeners
      */
     addAllEventsListeners() {
+
+        // Load all HTML and add EventListeners
 
 
         // Button SAVE
@@ -53,10 +59,17 @@ class DataDisplayController {
         let buttonErase = document.getElementById('data-display-button-erase-db');
         buttonErase.addEventListener('click', DbController.eraseDB, false);
 
-
         // Button Load Default
         let buttonDefault = document.getElementById('data-display-button-load-default');
         buttonDefault.addEventListener('click', DbController.loadDefault, false);
+
+        // Button Close Display
+        let buttonCloseDisplay = document.getElementById('data-display-button-close-display');
+        buttonCloseDisplay.addEventListener('click', this.closeDisplay.bind(this), false);
+
+        // Button Show Display
+        let buttonShowDisplay = document.getElementById('data-display-button-toggle');
+        buttonShowDisplay.addEventListener('click', this.toggleDisplay.bind(this), false);
 
     }
 
@@ -64,7 +77,7 @@ class DataDisplayController {
      * madeDraggable
      */
     madeDraggable() {
-        $(this.elemRoot).draggable();
+        $(this.elem_Root).draggable();
     }
 
     /**
@@ -194,6 +207,32 @@ class DataDisplayController {
             NavigationController.listAllWayPoints();
         }, 1000);
     }
+
+
+    closeDisplay() {
+        this.displayActive = false;
+
+        $(this.elem_Root).hide();
+        $(this.buttonShowDisplay).text('Show Datadisplay');
+    }
+
+    showDisplay() {
+        this.displayActive = true;
+
+        $(this.elem_Root).show();
+        $(this.buttonShowDisplay).text('Hide Datadisplay');
+    }
+
+    toggleDisplay() {
+        if (this.displayActive) {
+            this.closeDisplay();
+        }
+        else {
+            this.showDisplay();
+        }
+        return false;
+    }
+
 
 
 }

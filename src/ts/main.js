@@ -1,19 +1,19 @@
-/// <reference path="controllers/debugDisplayController.ts"/>
+/// <reference path="controllers/consoleDisplayController.ts"/>
 /**
  *  aNicerWay
  *
  */
 var aNicerWay = (function () {
     function aNicerWay(parameters) {
-        var debug = parameters.debug;
+        var console = parameters.console;
         this.className = 'aNicerWay';
         console.log(this.className);
-        // Debugmodus ein ?
-        if (debug) {
-            aNicerWay.showDebug();
+        // consolemodus ein ?
+        if (console) {
+            aNicerWay.showconsole();
         }
         // load all Controllers
-        var debug_display_controller = new debugDisplayController();
+        var console_display_controller = new consoleDisplayController();
     }
     /**
      * get
@@ -25,24 +25,24 @@ var aNicerWay = (function () {
         return this.className;
     };
     /**
-     * debug
+     * console
      *
      */
-    aNicerWay.showDebug = function () {
-        var elem_debug_display = document.getElementById('debug-display');
+    aNicerWay.showconsole = function () {
+        var elem_console_display = document.getElementById('console-display');
         var elem_status_display = document.getElementById('status-display');
         var elem_phone_sim = document.getElementById('phone-sim');
         var elem_timeway = document.getElementById('timeway');
-        elem_debug_display.style.display = 'block';
-        elem_debug_display.classList.add('debug');
-        elem_status_display.classList.add('debug');
-        elem_phone_sim.classList.add('debug');
-        elem_timeway.classList.add('debug');
+        elem_console_display.style.display = 'block';
+        elem_console_display.classList.add('console');
+        elem_status_display.classList.add('console');
+        elem_phone_sim.classList.add('console');
+        elem_timeway.classList.add('console');
         return true;
     };
     return aNicerWay;
 }());
 // init
-var options = { debug: true };
+var options = { console: true };
 var a_nicer_way = new aNicerWay(options);
 //# sourceMappingURL=main.js.map

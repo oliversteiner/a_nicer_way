@@ -4,6 +4,10 @@ IMD St. Gallen 2017
 ## Einzelarbeit
 Oliver Steiner
 
+DEMO: 
+http://mollo.ch/a-nicer-way/
+
+
 ## Idee
 Für die Präsentation meiner App "Nicer & Boss" brauche ich eine interaktive HTML-Seite, die anhand eines visualisierten 2-Tages-Ablaufes die Nutzung der App erklärt.
 

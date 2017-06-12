@@ -53,6 +53,24 @@
 
 </main>
 <footer>
+
+
+
+    <form class="form-inline" name="sockettest">
+
+        <div class="form-group">
+            <input type="text" class="form-control" id="testtext" placeholder="bla bla">
+        </div>
+
+        <button type="button" id="botton-socket-test-message" class="btn btn-default">Send</button>
+
+        <button type="button" id="botton-socket-test-ping_2" class="btn btn-default">ping</button>
+        <button type="button" id="botton-socket-test-steuerbefehl" class="btn btn-default">steuerbefehl</button>
+
+    </form>
+
+
+
 </footer>
 <!-- Libraries -->
 <script src="libraries/jquery/jquery-3.2.1.min.js"></script>
@@ -60,6 +78,8 @@
 <script src="libraries/jquery/jquery-ui/jquery-ui.min.js"></script>
 <script src="libraries/pouchdb/pouchdb-6.2.0.min.js"></script>
 <script src="libraries/jquery/jquery.scrollTo.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
 
 <!-- A Nicer Way -->
 <script src="js/utilities.js"></script>
@@ -70,6 +90,8 @@
 <script src="js/controllers/NavigationController.js"></script>
 <script src="js/controllers/DataDisplayController.js"></script>
 <script src="js/controllers/DbController.js"></script>
+<script src="js/controllers/RemoteController.js"></script>
+
 <script src="js/main.js"></script>
 
 

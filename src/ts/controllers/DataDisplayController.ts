@@ -68,10 +68,10 @@ class DataDisplayController {
         $('#data-display-button-load-default').click(DbController.loadDefault);
 
         // Button Close Display
-        $('#data-display-button-close').click(DataDisplayController.modalClose);
+        $('.data-display-button-close').click(DataDisplayController.modalClose);
 
         // Button Show Display
-        $('#data-display-button-toggle').click(DataDisplayController.modalToggle);
+        $('.data-display-button-toggle').click(DataDisplayController.modalToggle);
 
     }
 
@@ -81,6 +81,8 @@ class DataDisplayController {
     static  makeDraggable() {
 
         $('#' + _dataDisplayContentName).draggable();
+        $('#' + _dataDisplayContentName).dblclick(DataDisplayController.modalClose);
+
     }
 
     /**

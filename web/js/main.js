@@ -31,7 +31,6 @@ var ANicerWay = (function () {
         // $('.navigation-display-button-close').click(NavigationController.modalClose);
         // Keystrokes
         $('body').keypress(function (event) {
-            console.log(event.which);
             var key = 104; // Taste "h"
             if (event.which == key) {
                 event.preventDefault();
@@ -75,15 +74,5 @@ setTimeout(function () {
         ostParallax(parent, '#layer-3-aktiv', '5', richtung);
         ostParallax(parent, '#layer-4-baume', '6', richtung);
         parent_old = parent;
-    });
-    window.addEventListener('keypress', function (event) {
-        if (event.keyCode == 37) {
-            NavigationController.scrollToPreviews;
-        }
-    });
-    window.addEventListener('keypress', function (event) {
-        if (event.keyCode == 39) {
-            NavigationController.scrollToPreviews;
-        }
     });
 }, 2000);

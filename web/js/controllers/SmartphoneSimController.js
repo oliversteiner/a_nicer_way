@@ -29,6 +29,7 @@ var SmartphoneSimController = (function () {
             SmartphoneSimController.addAllEventsListeners();
             SmartphoneSimController.open();
             SmartphoneSimController.consoleOpen();
+            SmartphoneSimController.consoleClear();
             // Tests
             //
             console.log('- Smartphone Simulator ready');

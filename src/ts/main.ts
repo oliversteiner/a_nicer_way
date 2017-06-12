@@ -52,7 +52,6 @@ class ANicerWay {
         // Keystrokes
         $('body').keypress(function (event: any) {
 
-            console.log(event.which);
             let key:number = 104;  // Taste "h"
 
             if(event.which == key){
@@ -120,16 +119,5 @@ setTimeout(function () {
     });
 
 
-    window.addEventListener('keypress', function (event) {
-        if (event.keyCode == 37) {
-            NavigationController.scrollToPreviews;
-        }
-    });
-
-    window.addEventListener('keypress', function (event) {
-        if (event.keyCode == 39) {
-            NavigationController.scrollToPreviews;
-        }
-    });
 
 }, 2000);

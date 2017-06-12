@@ -43,6 +43,7 @@ class NavigationController {
                 console.log('- Navigation Display load');
 
                 // functions
+                NavigationController.modalClose()
                 NavigationController.listAllWayPoints();
                 NavigationController.addAllEventsListeners();
                 NavigationController.makeDraggable();
@@ -80,21 +81,44 @@ class NavigationController {
         $('.navigation-button-previous').click(NavigationController.scrollToPreviews);
 
 
-        // close on dubbleclick
-        $('#navigation-content').dblclick(NavigationController.modalClose);
+        // Keystrokes (kein jQuery weil schneller)
+        document.onkeydown = function (event: any) {
+            event = event || window.event;
+
+            let key = {
+                arrow_left: 37,
+                arrow_right: 39,
+
+                arrow_up: 38,
+                arrow_down: 40,
+
+                n: 78
+            };
 
 
-        // Keystrokes
-        $('body').keypress(function (event: any) {
+            switch (event.which || event.keyCode) {
 
-            console.log(event.which);
-            let key:number = 110;  // Taste "N"
+                // Pfeil nach Links
+                case key.arrow_left:
+                    NavigationController.scrollToPreviews();
+                    break;
 
-            if(event.which == key){
-                event.preventDefault();
-                NavigationController.modalToggle();
+                // Pfeil nach rechts
+                case key.arrow_right:
+                    NavigationController.scrollToNext();
+                    break;
+
+                // N - Navigation einblenden
+                case key.n:
+                    console.log('n gedrückt');
+                    NavigationController.modalToggle();
+                    break;
+
+                default:
+                    return; // exit this handler for other keys
             }
-        });
+            event.preventDefault(); // prevent the default action (scroll / move caret)
+        }
 
     }
 
@@ -180,8 +204,7 @@ class NavigationController {
     static showDataDisplay(id: string) {
 
         DataDisplayController.setData(id);
-        $('#data-display').show();
-
+        DataDisplayController.modalOpen();
     }
 
     static setSmartphoneSimContent(id: string) {
@@ -189,7 +212,8 @@ class NavigationController {
         promise.then(function (doc: any) {
 
             let content = doc.timewayid;
-            SmartphoneSimController.setContent(content);
+            let message = 'TimeWayPoint: <span class="message-ok">' + content + '</span>';
+            SmartphoneSimController.message(message);
 
         });
 
@@ -245,7 +269,9 @@ class NavigationController {
         let target = 'TimeWayPoint-' + point;
         $('#timeway-content').scrollTo('#' + target, 1000);
         aNicerWay.setTimePoint(point);
+
         NavigationController.setSmartphoneSimContent(target);
+
         StatusDisplayController.setData(target);
 
     }

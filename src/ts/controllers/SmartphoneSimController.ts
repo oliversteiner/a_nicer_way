@@ -1,4 +1,3 @@
-
 // Global
 const _smartphoneSimName: string = 'smartphone-sim';
 const _smartphoneSimContentName: string = 'smartphone-sim-content';
@@ -52,6 +51,7 @@ class SmartphoneSimController {
                 SmartphoneSimController.open();
 
                 SmartphoneSimController.consoleOpen();
+                SmartphoneSimController.consoleClear();
 
                 // Tests
 
@@ -100,9 +100,9 @@ class SmartphoneSimController {
         // Keystrokes
         $('body').keypress(function (event: any) {
 
-            let key:number = 115;  // Taste "S"
+            let key: number = 115;  // Taste "S"
 
-            if(event.which == key){
+            if (event.which == key) {
                 event.preventDefault();
                 SmartphoneSimController.toggle();
             }
@@ -170,7 +170,6 @@ class SmartphoneSimController {
         // Sim Console ein/ausblenden
         SmartphoneSimController.consoleToggle();
     }
-
 
 
     static setContent(content: any) {

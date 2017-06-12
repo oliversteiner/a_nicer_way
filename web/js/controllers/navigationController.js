@@ -26,6 +26,7 @@ var NavigationController = (function () {
         $('#navigation-display-ready').ready(function () {
             console.log('- Navigation Display load');
             // functions
+            NavigationController.modalClose();
             NavigationController.listAllWayPoints();
             NavigationController.addAllEventsListeners();
             NavigationController.makeDraggable();
@@ -52,17 +53,35 @@ var NavigationController = (function () {
         $('.navigation-button-next').click(NavigationController.scrollToNext);
         //
         $('.navigation-button-previous').click(NavigationController.scrollToPreviews);
-        // close on dubbleclick
-        $('#navigation-content').dblclick(NavigationController.modalClose);
-        // Keystrokes
-        $('body').keypress(function (event) {
-            console.log(event.which);
-            var key = 110; // Taste "N"
-            if (event.which == key) {
-                event.preventDefault();
-                NavigationController.modalToggle();
+        // Keystrokes (kein jQuery weil schneller)
+        document.onkeydown = function (event) {
+            event = event || window.event;
+            var key = {
+                arrow_left: 37,
+                arrow_right: 39,
+                arrow_up: 38,
+                arrow_down: 40,
+                n: 78
+            };
+            switch (event.which || event.keyCode) {
+                // Pfeil nach Links
+                case key.arrow_left:
+                    NavigationController.scrollToPreviews();
+                    break;
+                // Pfeil nach rechts
+                case key.arrow_right:
+                    NavigationController.scrollToNext();
+                    break;
+                // N - Navigation einblenden
+                case key.n:
+                    console.log('n gedrückt');
+                    NavigationController.modalToggle();
+                    break;
+                default:
+                    return; // exit this handler for other keys
             }
-        });
+            event.preventDefault(); // prevent the default action (scroll / move caret)
+        };
     };
     /**
      * listAllWayPoints
@@ -124,13 +143,14 @@ var NavigationController = (function () {
     };
     NavigationController.showDataDisplay = function (id) {
         DataDisplayController.setData(id);
-        $('#data-display').show();
+        DataDisplayController.modalOpen();
     };
     NavigationController.setSmartphoneSimContent = function (id) {
         var promise = DbController.loadWayPoint(id);
         promise.then(function (doc) {
             var content = doc.timewayid;
-            SmartphoneSimController.setContent(content);
+            var message = 'TimeWayPoint: <span class="message-ok">' + content + '</span>';
+            SmartphoneSimController.message(message);
         });
     };
     /**

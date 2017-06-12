@@ -33,6 +33,7 @@ class DataDisplayController {
 
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         $('#data-display-ready').ready(function () {
+                console.log('- Data Display load');
 
                 // Aktionen verknüpfen
                 DataDisplayController.makeDraggable();

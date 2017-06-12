@@ -22,6 +22,7 @@ var DataDisplayController = (function () {
         // Das geladene Element ausblenden
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         $('#data-display-ready').ready(function () {
+            console.log('- Data Display load');
             // Aktionen verknüpfen
             DataDisplayController.makeDraggable();
             DataDisplayController.addAllEventsListeners();

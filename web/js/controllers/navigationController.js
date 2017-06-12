@@ -6,59 +6,51 @@
  *
  */
 // Global
-var _navigationName = 'navigation';
-var _navigationContentName = 'navigation-content';
-var _navigationOpen = false;
+var _navigationDisplayName = 'navigation';
+var _navigationDisplayContentName = 'navigation-content';
+var _navigationModalOpen = false;
 // Class
 var NavigationController = (function () {
     /**
      * constructor
      */
     function NavigationController() {
-        console.log(this.className);
         // Vars
-        this.className = 'dnavigationController';
-        this.elem_Root = document.getElementById(_navigationName);
-        this.elem_Content = document.getElementById(_navigationContentName);
-        // Datenbankverbindung aufbauen und verfügbarmachen
-        this.dbController = new DbController();
-        // Eigenschaften setzen
-        this.className = 'navigationController';
-        this.idName = 'navigation';
-        this.elem_Root = document.getElementById('navigation');
-        this.elem_Content = document.getElementById('navigation-content');
-        // functions
-        this.makeDraggable();
-        NavigationController.listAllWayPoints();
-        NavigationController.addAllEventsListeners();
+        this.elem_Root = document.getElementById(_navigationDisplayName);
+        this.elem_Content = document.getElementById(_navigationDisplayContentName);
+        // Views laden
+        $(this.elem_Root).load('../views/navigation_display.html');
+        // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
+        $('#navigation-display-ready').ready(function () {
+            console.log('- Navigation Display load');
+            // functions
+            NavigationController.addAllEventsListeners();
+            NavigationController.listAllWayPoints();
+            NavigationController.makeDraggable();
+            // Tests
+            // Meldung
+            console.log('- Navigation Display  ready');
+        });
     }
     /**
      * makeDraggable
      */
-    NavigationController.prototype.makeDraggable = function () {
-        $(this.elem_Root).draggable();
+    NavigationController.makeDraggable = function () {
+        $('#' + _navigationDisplayContentName).draggable();
     };
     /**
      * addAllEventsListeners
      *
      */
     NavigationController.addAllEventsListeners = function () {
-        // Button Close Display
-        var buttonCloseDisplay = document.getElementById('navigation-button-close');
-        buttonCloseDisplay.addEventListener('click', this.modalClose.bind(this), false);
+        //
         $('#navigation-button-close').click(NavigationController.modalClose);
+        //
         $('#navigation-button-toggle').click(NavigationController.toggleDisplay);
+        //
         $('#button-next').click(NavigationController.scrollToNext);
+        //
         $('#button-previous').click(NavigationController.scrollToPreviews);
-        // Button Show Display
-        var buttonShowDisplay = document.getElementById('navigation-button-toggle');
-        buttonShowDisplay.addEventListener('click', this.toggleDisplay.bind(this), false);
-        // Button Show Display
-        var nextTimePoint = document.getElementById('');
-        nextTimePoint.addEventListener('click', NavigationController.scrollToNext, false);
-        // Button Show Display
-        var prevTimePoint = document.getElementById('');
-        prevTimePoint.addEventListener('click', NavigationController.scrollToPreviews, false);
     };
     /**
      * listAllWayPoints
@@ -134,15 +126,15 @@ var NavigationController = (function () {
      *
      */
     NavigationController.modalClose = function () {
-        _navigationOpen = false;
-        $('#' + _navigationContentName).hide();
+        _navigationModalOpen = false;
+        $('#' + _navigationDisplayContentName).hide();
     };
     NavigationController.modalOpen = function () {
-        _navigationOpen = true;
-        $('#' + _navigationContentName).show();
+        _navigationModalOpen = true;
+        $('#' + _navigationDisplayContentName).show();
     };
     NavigationController.toggleDisplay = function () {
-        if (_navigationOpen) {
+        if (_navigationModalOpen) {
             NavigationController.modalClose();
         }
         else {

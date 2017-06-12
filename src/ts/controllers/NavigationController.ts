@@ -9,16 +9,14 @@
 
 
 // Global
-const _navigationName: string = 'navigation';
-const _navigationContentName: string = 'navigation-content';
-let _navigationOpen: boolean = false;
+const _navigationDisplayName: string = 'navigation';
+const _navigationDisplayContentName: string = 'navigation-content';
+
+let _navigationModalOpen: boolean = false;
 
 // Class
 class NavigationController {
-    dbController: DbController;
 
-    public className: string;
-    public idName: string;
     private elem_Root: HTMLElement | any;
     private elem_Content: HTMLElement | any;
 
@@ -26,38 +24,39 @@ class NavigationController {
      * constructor
      */
     constructor() {
-        console.log(this.className);
-
 
         // Vars
-        this.className = 'dnavigationController';
-        this.elem_Root = document.getElementById(_navigationName);
-        this.elem_Content = document.getElementById(_navigationContentName);
+        this.elem_Root = document.getElementById(_navigationDisplayName);
+        this.elem_Content = document.getElementById(_navigationDisplayContentName);
+
+        // Views laden
+        $(this.elem_Root).load('../views/navigation_display.html');
+
+        // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
+        $('#navigation-display-ready').ready(function () {
+                console.log('- Navigation Display load');
+
+                // functions
+                NavigationController.addAllEventsListeners();
+                NavigationController.listAllWayPoints();
+                NavigationController.makeDraggable();
 
 
-        // Datenbankverbindung aufbauen und verfügbarmachen
-        this.dbController = new DbController();
+                // Tests
 
-        // Eigenschaften setzen
-        this.className = 'navigationController';
-        this.idName = 'navigation';
-        this.elem_Root = document.getElementById('navigation');
-        this.elem_Content = document.getElementById('navigation-content');
+                // Meldung
+                console.log('- Navigation Display  ready');
+            }
+        )
 
-
-        // functions
-        this.makeDraggable();
-
-        NavigationController.listAllWayPoints();
-        NavigationController.addAllEventsListeners();
 
     }
 
     /**
      * makeDraggable
      */
-    makeDraggable() {
-        $(this.elem_Root).draggable();
+    static makeDraggable() {
+        $('#' + _navigationDisplayContentName).draggable();
     }
 
     /**
@@ -66,26 +65,14 @@ class NavigationController {
      */
     static addAllEventsListeners() {
 
-        // Button Close Display
-        let buttonCloseDisplay = document.getElementById('navigation-button-close');
-        buttonCloseDisplay.addEventListener('click', this.modalClose.bind(this), false);
-
+        //
         $('#navigation-button-close').click(NavigationController.modalClose);
+        //
         $('#navigation-button-toggle').click(NavigationController.toggleDisplay);
+        //
         $('#button-next').click(NavigationController.scrollToNext);
+        //
         $('#button-previous').click(NavigationController.scrollToPreviews);
-
-        // Button Show Display
-        let buttonShowDisplay = document.getElementById('navigation-button-toggle');
-        buttonShowDisplay.addEventListener('click', this.toggleDisplay.bind(this), false);
-
-        // Button Show Display
-        let nextTimePoint = document.getElementById('');
-        nextTimePoint.addEventListener('click', NavigationController.scrollToNext, false);
-
-        // Button Show Display
-        let prevTimePoint = document.getElementById('');
-        prevTimePoint.addEventListener('click', NavigationController.scrollToPreviews, false);
 
     }
 
@@ -188,21 +175,21 @@ class NavigationController {
 
 
     /**
-     * 
-     * 
+     *
+     *
      */
     static modalClose() {
-        _navigationOpen = false;
-        $('#' + _navigationContentName).hide();
+        _navigationModalOpen = false;
+        $('#' + _navigationDisplayContentName).hide();
     }
 
     static modalOpen() {
-        _navigationOpen = true;
-        $('#' + _navigationContentName).show();
+        _navigationModalOpen = true;
+        $('#' + _navigationDisplayContentName).show();
     }
 
     static toggleDisplay() {
-        if (_navigationOpen) {
+        if (_navigationModalOpen) {
             NavigationController.modalClose();
         }
         else {

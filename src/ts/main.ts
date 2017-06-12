@@ -18,8 +18,9 @@ class ANicerWay {
         let dataDisplayController = new DataDisplayController();
         let smartphoneSimController = new SmartphoneSimController(simulator_size);
         let statusDisplayController = new StatusDisplayController();
+        let navigationController = new NavigationController();
 
-          $('#navigation').load('views/navigation_display.html').hide();
+
         //  $('#timeway').load('views/timeway.html');
         //  $('#status-display').load('views/status_display.html');
 
@@ -31,7 +32,6 @@ class ANicerWay {
         //    let consoleDisplayController = new ConsoleDisplayController();
         //    let statusDisplayController = new StatusDisplayController();
         //    let timewayController = new TimewayController();
-        //    let navigationController = new NavigationController();
         //alert('ready');
 
 

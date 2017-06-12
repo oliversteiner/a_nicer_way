@@ -12,7 +12,7 @@ var ANicerWay = (function () {
         var dataDisplayController = new DataDisplayController();
         var smartphoneSimController = new SmartphoneSimController(simulator_size);
         var statusDisplayController = new StatusDisplayController();
-        $('#navigation').load('views/navigation_display.html').hide();
+        var navigationController = new NavigationController();
         //  $('#timeway').load('views/timeway.html');
         //  $('#status-display').load('views/status_display.html');
         // load all Controllers
@@ -21,7 +21,6 @@ var ANicerWay = (function () {
         //    let consoleDisplayController = new ConsoleDisplayController();
         //    let statusDisplayController = new StatusDisplayController();
         //    let timewayController = new TimewayController();
-        //    let navigationController = new NavigationController();
         //alert('ready');
     }
     /**

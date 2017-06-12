@@ -155,7 +155,6 @@ class DbController {
             endkey: 'TimeWayPoint\uffff'
         }).then(function (result) {
 
-            console.log(result);
             return result;
             // handle result
         }).catch(function (err) {
@@ -166,8 +165,6 @@ class DbController {
         //    .then( function(doc){ doc.rows })
         return docs;
     }
-
-
 
 
     /**
@@ -193,9 +190,6 @@ class DbController {
                 throw err;
             }
         }).then(function (doc: any) {
-
-            console.log('- found:');
-            console.log(doc);
 
             return doc;
 
@@ -238,8 +232,6 @@ class DbController {
             }
         }).then(function (doc: any) {
 
-            console.log('- found:');
-            console.log(doc);
 
             doc._deleted = true;
 
@@ -291,8 +283,8 @@ class DbController {
         })
     }
 
-    static loadDefault(){
-
+    static loadDefault() {
+        console.log('neue DB Einträge');
 
         // Musterdaten:
         let db = new PouchDB('anicerway');
@@ -440,34 +432,32 @@ class DbController {
             }
 
 
-
         ];
 
 
-        db.bulkDocs(defaultData).then(function ( result: object ) {
+        db.bulkDocs(defaultData).then(function (result: object) {
             // handle result
 
             //  console.log("mustereintraege");
             //  console.log(result);
 
-        }).catch(function ( error: object ) {
+        }).catch(function (error: object) {
             console.log("defaultData exists already");
         });
 
 
-
-            // define _design Configuration
-        let designDocConfiguration:any = {
-                _id: '_design/Configuration',
-                views: {
-                    "Configuration": {
-                        "map": "function (doc, meta) {  if (doc.type == 'Configuration') {   emit(doc.createdOn,doc);  }}"
-                    }
+        // define _design Configuration
+        let designDocConfiguration: any = {
+            _id: '_design/Configuration',
+            views: {
+                "Configuration": {
+                    "map": "function (doc, meta) {  if (doc.type == 'Configuration') {   emit(doc.createdOn,doc);  }}"
                 }
-            };
+            }
+        };
 
         // define _design TimeWayPoint
-        let designDocTimeWayPoint:any = {
+        let designDocTimeWayPoint: any = {
             _id: '_design/TimeWayPoint',
             views: {
                 "TimeWayPoint": {
@@ -479,20 +469,20 @@ class DbController {
 
         // put _designs
         // kunde
-        db.put(designDocConfiguration).then(function ( info: any ) {
+        db.put(designDocConfiguration).then(function (info: any) {
             console.log("Design Doc 'Configuration' created");
             // design doc created
-        }).catch(function ( error: any ) {
+        }).catch(function (error: any) {
             console.log("design doc 'Configuration' already exists");
             // if err.name === 'conflict', then
             // design doc already exists
         });
 
         // TimeWayPoint
-        db.put(designDocTimeWayPoint).then(function ( info: any ) {
+        db.put(designDocTimeWayPoint).then(function (info: any) {
             console.log("Design Doc 'TimeWayPoint' created");
             // design doc created
-        }).catch(function ( error: any ) {
+        }).catch(function (error: any) {
             console.log("design doc 'TimeWayPoint' already exists");
             // if err.name === 'conflict', then
             // design doc already exists

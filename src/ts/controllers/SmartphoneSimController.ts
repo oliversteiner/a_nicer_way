@@ -11,10 +11,6 @@ let _smartphoneSimConsoleOpen: boolean = true;
  *
  */
 class SmartphoneSimController {
-    public className: string;
-    public idName: string;
-    public isOpen: boolean;
-    public console: boolean;
 
     // DOM
     private elem_Root: any;
@@ -29,7 +25,6 @@ class SmartphoneSimController {
 
 
         // Vars
-        this.className = 'SmartphoneSimController';
         this.elem_Root = document.getElementById(_smartphoneSimName);
         this.elem_Content = document.getElementById(_smartphoneSimContentName);
         this.simulator_size = simulator_size;

@@ -14,7 +14,6 @@ var SmartphoneSimController = (function () {
      */
     function SmartphoneSimController(simulator_size) {
         // Vars
-        this.className = 'SmartphoneSimController';
         this.elem_Root = document.getElementById(_smartphoneSimName);
         this.elem_Content = document.getElementById(_smartphoneSimContentName);
         this.simulator_size = simulator_size;

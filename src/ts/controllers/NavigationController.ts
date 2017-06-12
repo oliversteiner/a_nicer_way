@@ -108,6 +108,18 @@ class NavigationController {
                     NavigationController.scrollToNext();
                     break;
 
+
+                // Pfeil nach oben
+                case key.arrow_up:
+                    NavigationController.scrollToFirst();
+                    break;
+
+                // Pfeil nach unten
+                case key.arrow_down:
+                    NavigationController.scrollToLast();
+                    break;
+
+
                 // N - Navigation einblenden
                 case key.n:
                     console.log('n gedrückt');
@@ -290,6 +302,21 @@ class NavigationController {
 
         let prev = point - 1;
         NavigationController.scrollToNumber(prev);
+
+    }
+
+    static scrollToFirst() {
+        let first: number = aNicerWay.getFirstTimePoint();
+
+        NavigationController.scrollToNumber(first);
+        SmartphoneSimController.message('first TimePoint')
+
+    }
+
+    static scrollToLast() {
+        let last: number = aNicerWay.getLastTimePoint();
+        NavigationController.scrollToNumber(last);
+        SmartphoneSimController.message('last TimePoint')
 
     }
 

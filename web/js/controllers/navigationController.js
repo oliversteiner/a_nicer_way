@@ -72,6 +72,14 @@ var NavigationController = (function () {
                 case key.arrow_right:
                     NavigationController.scrollToNext();
                     break;
+                // Pfeil nach oben
+                case key.arrow_up:
+                    NavigationController.scrollToFirst();
+                    break;
+                // Pfeil nach unten
+                case key.arrow_down:
+                    NavigationController.scrollToLast();
+                    break;
                 // N - Navigation einblenden
                 case key.n:
                     console.log('n gedrückt');
@@ -203,6 +211,16 @@ var NavigationController = (function () {
         var point = aNicerWay.getTimePoint();
         var prev = point - 1;
         NavigationController.scrollToNumber(prev);
+    };
+    NavigationController.scrollToFirst = function () {
+        var first = aNicerWay.getFirstTimePoint();
+        NavigationController.scrollToNumber(first);
+        SmartphoneSimController.message('first TimePoint');
+    };
+    NavigationController.scrollToLast = function () {
+        var last = aNicerWay.getLastTimePoint();
+        NavigationController.scrollToNumber(last);
+        SmartphoneSimController.message('last TimePoint');
     };
     return NavigationController;
 }());

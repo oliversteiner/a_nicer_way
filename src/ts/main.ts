@@ -1,14 +1,23 @@
+let _aNicerWayVersion = '1.1b';
+
 /**
  *  aNicerWay
  *
  */
 class ANicerWay {
-    public className: string;
-    public timePointAktuell = 1;
-    public dataDisplayController: any;
-    public smartphoneSimController: any;
-    public statusDisplayController: any;
-    public navigationController: any;
+
+    public version:string = _aNicerWayVersion;
+    public timePointAktuell = 0;
+    public firstTimePoint = 1;
+    public lastTimePoint =0;
+
+
+    public dataDisplayController: DataDisplayController;
+    public smartphoneSimController: SmartphoneSimController;
+    public statusDisplayController: StatusDisplayController;
+    public navigationController: NavigationController;
+    public timewayController: TimewayController;
+
     public options: any;
 
     constructor(options?: { simulator_size?: string }) {
@@ -19,8 +28,14 @@ class ANicerWay {
         $('#main_navigation').load('views/main_navigation.html');
         $('#help-container').load('views/help.html');
 
+        this.loadTimePoints();
         this.loadComponents();
         this.addAllEventsListeners();
+
+
+        $('#help-ready').ready(function () {
+            ANicerWay.setVersion();
+        })
 
 
     }
@@ -35,6 +50,7 @@ class ANicerWay {
         this.smartphoneSimController = new SmartphoneSimController(this.options.simulator_size);
         this.statusDisplayController = new StatusDisplayController();
         this.navigationController = new NavigationController();
+        this.timewayController = new TimewayController();
 
     }
 
@@ -43,24 +59,43 @@ class ANicerWay {
      * addAllEventsListeners
      *
      */
-     addAllEventsListeners() {
+    addAllEventsListeners() {
 
         // Button Close Display
-       // $('.navigation-display-button-close').click(NavigationController.modalClose);
+        // $('.navigation-display-button-close').click(NavigationController.modalClose);
 
 
         // Keystrokes
         $('body').keypress(function (event: any) {
 
-            let key:number = 104;  // Taste "h"
+            let key: number = 104;  // Taste "h"
 
-            if(event.which == key){
+            if (event.which == key) {
                 event.preventDefault();
 
                 // Das Hilfsfenster ein / ausblenden
                 $('#help-modal').modal('toggle');
             }
         });
+
+    }
+
+    loadTimePoints() {
+        let promise = DbController.loadAllWayPoints();
+
+        promise.then(function (doc: any) {
+
+            aNicerWay.lastTimePoint = doc.rows.length;
+
+
+            console.log(doc.rows);
+            // Wenn keine Timepoints vorhanden, standart einlesen:
+
+            if( doc.rows.length == 0){
+                reset();
+            }
+
+        })
 
     }
 
@@ -71,53 +106,45 @@ class ANicerWay {
         console.log('Timepoint: ' + point);
     }
 
+
     getTimePoint() {
         return this.timePointAktuell;
     }
+
+
+    getLastTimePoint() {
+        return this.lastTimePoint;
+    }
+
+
+    getFirstTimePoint() {
+        return this.firstTimePoint;
+    }
+
+
+    static setVersion(){
+
+        $('.version').text(_aNicerWayVersion);
+    }
+
+
+
 
 
 }
 
 // init
 let options = {
-    simulator_size: 'gross' // ohne, klein, gross
+    simulator_size: 'gross' // klein, gross
 };
+
 let aNicerWay = new ANicerWay(options);
 
 
-setTimeout(function () {
 
-    let parent_old = 0;
+function reset(){
 
-    function ostParallax(parent: any, elem: string, faktor: string, richtung: string) {
+    DbController.loadDefault();
+    aNicerWay = new ANicerWay(options);
 
-        let child: any = $(elem).css('left');
-
-        $(elem).css("left", richtung + "=" + faktor);
-
-
-    }
-
-
-    $('#timeway-content').scroll(function () {
-        let richtung = '';
-
-        let parent = $('#timeway-content').scrollLeft();
-
-
-        if (parent_old < parent) {
-            richtung = '+';
-        } else {
-            richtung = '-';
-        }
-        ostParallax(parent, '#layer-1-himmel', '2', richtung);
-        ostParallax(parent, '#layer-2-berge', '3', richtung);
-        ostParallax(parent, '#layer-3-aktiv', '5', richtung);
-        ostParallax(parent, '#layer-4-baume', '6', richtung);
-
-        parent_old = parent;
-    });
-
-
-
-}, 2000);
+}

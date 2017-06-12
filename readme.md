@@ -1,4 +1,4 @@
-#### Frontend Engeniering
+ #### Frontend Engeniering
 IMD St. Gallen 2017 
 
 ## Einzelarbeit
@@ -70,6 +70,9 @@ Nicht vollstädig ausgearbeit werden sein:
 
 
  ## Installation
+ - im Installationsverzeichnis  wechseln
+  npm install
+  gulp
  
  
  

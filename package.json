@@ -21,6 +21,7 @@
     "gulp-debug": "^3.1.0",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.0",
+    "has-flag": "^2.0.0",
     "merge2": "^1.0.3",
     "pouchdb": "^6.2.0"
   }

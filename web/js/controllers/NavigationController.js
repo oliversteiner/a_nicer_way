@@ -6,9 +6,9 @@
  *
  */
 // Global
-var _navigationDisplayName = 'navigation';
-var _navigationDisplayContentName = 'navigation-content';
-var _navigationModalOpen = false;
+var _navigationName = 'navigation-display';
+var _navigationContentName = 'navigation-display-content';
+var _navigationOpen = false;
 // Class
 var NavigationController = (function () {
     /**
@@ -16,41 +16,76 @@ var NavigationController = (function () {
      */
     function NavigationController() {
         // Vars
-        this.elem_Root = document.getElementById(_navigationDisplayName);
-        this.elem_Content = document.getElementById(_navigationDisplayContentName);
-        // Views laden
-        $(this.elem_Root).load('../views/navigation_display.html');
+        this.elem_Root = document.getElementById(_navigationName);
+        this.elem_Content = document.getElementById(_navigationContentName);
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         $('#navigation-display-ready').ready(function () {
             console.log('- Navigation Display load');
             // functions
-            NavigationController.addAllEventsListeners();
+            NavigationController.modalClose();
             NavigationController.listAllWayPoints();
+            NavigationController.addAllEventsListeners();
             NavigationController.makeDraggable();
-            // Tests
-            // Meldung
-            console.log('- Navigation Display  ready');
+            //
+            console.log('- Navigation Display ready');
         });
     }
     /**
      * makeDraggable
      */
     NavigationController.makeDraggable = function () {
-        $('#' + _navigationDisplayContentName).draggable();
+        $('#' + _navigationContentName).draggable();
     };
     /**
      * addAllEventsListeners
      *
      */
     NavigationController.addAllEventsListeners = function () {
+        // Button Close Display
+        $('.navigation-display-button-close').click(NavigationController.modalClose);
         //
-        $('#navigation-button-close').click(NavigationController.modalClose);
+        $('.navigation-display-button-toggle').click(NavigationController.modalToggle);
         //
-        $('#navigation-button-toggle').click(NavigationController.toggleDisplay);
+        $('.navigation-button-next').click(NavigationController.scrollToNext);
         //
-        $('#button-next').click(NavigationController.scrollToNext);
-        //
-        $('#button-previous').click(NavigationController.scrollToPreviews);
+        $('.navigation-button-previous').click(NavigationController.scrollToPreviews);
+        // Keystrokes (kein jQuery weil schneller)
+        document.onkeydown = function (event) {
+            event = event || window.event;
+            var key = {
+                arrow_left: 37,
+                arrow_right: 39,
+                arrow_up: 38,
+                arrow_down: 40,
+                n: 78
+            };
+            switch (event.which || event.keyCode) {
+                // Pfeil nach Links
+                case key.arrow_left:
+                    NavigationController.scrollToPreviews();
+                    break;
+                // Pfeil nach rechts
+                case key.arrow_right:
+                    NavigationController.scrollToNext();
+                    break;
+                // Pfeil nach oben
+                case key.arrow_up:
+                    NavigationController.scrollToFirst();
+                    break;
+                // Pfeil nach unten
+                case key.arrow_down:
+                    NavigationController.scrollToLast();
+                    break;
+                // N - Navigation einblenden
+                case key.n:
+                    console.log('n gedrückt');
+                    NavigationController.modalToggle();
+                    break;
+                default:
+                    return; // exit this handler for other keys
+            }
+            event.preventDefault(); // prevent the default action (scroll / move caret)
+        };
     };
     /**
      * listAllWayPoints
@@ -112,13 +147,14 @@ var NavigationController = (function () {
     };
     NavigationController.showDataDisplay = function (id) {
         DataDisplayController.setData(id);
-        $('#data-display').show();
+        DataDisplayController.modalOpen();
     };
     NavigationController.setSmartphoneSimContent = function (id) {
         var promise = DbController.loadWayPoint(id);
         promise.then(function (doc) {
             var content = doc.timewayid;
-            SmartphoneSimController.setContent(content);
+            var message = 'TimeWayPoint: <span class="message-ok">' + content + '</span>';
+            SmartphoneSimController.message(message);
         });
     };
     /**
@@ -126,15 +162,15 @@ var NavigationController = (function () {
      *
      */
     NavigationController.modalClose = function () {
-        _navigationModalOpen = false;
-        $('#' + _navigationDisplayContentName).hide();
+        _navigationOpen = false;
+        $('#' + _navigationContentName).hide();
     };
     NavigationController.modalOpen = function () {
-        _navigationModalOpen = true;
-        $('#' + _navigationDisplayContentName).show();
+        _navigationOpen = true;
+        $('#' + _navigationContentName).show();
     };
-    NavigationController.toggleDisplay = function () {
-        if (_navigationModalOpen) {
+    NavigationController.modalToggle = function () {
+        if (_navigationOpen) {
             NavigationController.modalClose();
         }
         else {
@@ -171,6 +207,16 @@ var NavigationController = (function () {
         var point = aNicerWay.getTimePoint();
         var prev = point - 1;
         NavigationController.scrollToNumber(prev);
+    };
+    NavigationController.scrollToFirst = function () {
+        var first = aNicerWay.getFirstTimePoint();
+        NavigationController.scrollToNumber(first);
+        SmartphoneSimController.message('first TimePoint');
+    };
+    NavigationController.scrollToLast = function () {
+        var last = aNicerWay.getLastTimePoint();
+        NavigationController.scrollToNumber(last);
+        SmartphoneSimController.message('last TimePoint');
     };
     return NavigationController;
 }());

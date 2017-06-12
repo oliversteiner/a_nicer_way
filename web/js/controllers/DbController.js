@@ -112,7 +112,6 @@ var DbController = (function () {
             startkey: 'TimeWayPoint',
             endkey: 'TimeWayPoint\uffff'
         }).then(function (result) {
-            console.log(result);
             return result;
             // handle result
         }).catch(function (err) {
@@ -141,8 +140,6 @@ var DbController = (function () {
                 throw err;
             }
         }).then(function (doc) {
-            console.log('- found:');
-            console.log(doc);
             return doc;
         }).catch(function (err) {
             // handle any errors
@@ -174,8 +171,6 @@ var DbController = (function () {
                 throw err;
             }
         }).then(function (doc) {
-            console.log('- found:');
-            console.log(doc);
             doc._deleted = true;
             DbController.sync();
             return db.put(doc);
@@ -213,6 +208,7 @@ var DbController = (function () {
         });
     };
     DbController.loadDefault = function () {
+        console.log('neue DB Einträge');
         // Musterdaten:
         var db = new PouchDB('anicerway');
         // Aktuelle Zeit

@@ -8,24 +8,389 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default" id="main_navigation">
+<nav class="navbar navbar-default navbar-nicer" id="main_navigation">
+    <!-- inject:views/main_navigation.html -->
+    <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header ">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">A Nicer Way</a>
+        <div class="visible-xs">
+            <ul class="nav  navbar-right">
+                <nav aria-label="">
+                    <ul class="pager">
+                        <li class="previous"><a class="navigation-button-previous"><span
+                                aria-hidden="true">&larr;</span> </a></li>
+                        <li class="next"><a class="navigation-button-next"> <span aria-hidden="true">&rarr;</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            </ul>
+        </div>
+    </div>
 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse   navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav  navbar-nav">
+            <li><a class="navigation-display-button-toggle">Navigation</a></li>
+            <li><a class="data-display-button-toggle">Data</a></li>
+            <li><a class="smartphone-sim-button-toggle"><span class="glyphicon glyphicon-phone"></span> </a></li>
+            <li><a class="console-button-toggle"><span class="glyphicon glyphicon-console"></span></a></li>
+            <li><a class="help-button-toggle " data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></a></li>
+        </ul>
+
+        <ul class="nav  navbar-right">
+            <nav aria-label="">
+                <ul class="pager">
+                    <li class="previous"><a class="navigation-button-previous"><span aria-hidden="true">&larr;</span>
+                    </a></li>
+                    <li class="next"><a class="navigation-button-next"> <span aria-hidden="true">&rarr;</span></a></li>
+                </ul>
+            </nav>
+        </ul>
+
+    </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+    <!-- endinject -->
 </nav>
 <header>
 
 </header>
 <main>
 
-    <div id="console-display"></div>
+    <div id="console-display" style="display: none">
+    </div>
 
-    <div id="timeway"></div>
-    <div id="status-display"></div>
-    <div id="smartphone-sim"></div>
-    <div id="navigation"></div>
-    <div id="data-display"></div>
+    <div id="timeway">
+        <!-- inject:views/timeway.html -->
+        <div id="timeway-content">
+    <div id="layer-1-himmel" class="ost-parallax"></div>
+    <div id="layer-2-berge" class="ost-parallax"></div>
+    <div id="layer-3-aktuell" class="ost-parallax">
+
+    </div>
+    <div id="layer-4-baume" class="ost-parallax">
+        <div class="baum-1 deko breit"></div>
+        <div class="busch-1 deko breit"></div>
+
+        <div class="baum-2 deko breit"></div>
+        <div class="busch-1 deko breit"></div>
+
+        <div class="baum-3 deko kurz"></div>
+        <div class="busch-1 deko breit"></div>
+        <div class="busch-2 deko kurz"></div>
+
+    </div>
+
+</div>
+        <!-- endinject -->
+    </div>
+
+    <div id="status-display">
+        <!-- inject:views/status_display.html -->
+        <div id="status-display-content">
+    <div class="status-display-navbar">
+        <div class="status-display-elem" id="status-display-feeling" >Feeling</div>
+        <div class="status-display-elem" id="status-display-date" >Datum</div>
+        <div class="status-display-elem" id="status-display-place" >Ort</div>
+        <div class="status-display-elem smartphone-sim-button-toggle" >
+            <span id="status-display-smartphone"></span>
+        </div>
+
+    </div>
+</div>
+<div id="status-display-ready"></div>
+        <!-- endinject -->
+    </div>
+
+    <div id="smartphone-sim">
+        <!-- inject:views/smartphone_sim.html -->
+        <div id="smartphone-sim-content">
+
+    <div id="smartphone-frame" class="shadow-display">
+        <div id="smartphone-inner">
+            <div id="smartphone-head">
+                <div id="smartphone-toolbar">
+                        <span id="smartphone-toolbar-move" class="smartphone-sim-button-toggle">
+
+                    <a>
+                        <span class="smartphone-toolbar-item ">×</span>
+                    </a>
+                    </span>
+
+                    <span class="smartphone-toolbar-group smartphone-toolbar-group-resize">
+                        <a><span class="smartphone-toolbar-item glyphicon glyphicon-minus-sign"
+                                 id="smartphone-toolbar-smaler"></span></a>
+                    <a><span class="smartphone-toolbar-item glyphicon glyphicon-plus-sign"
+                             id="smartphone-toolbar-bigger"></span></a>
+
+                    </span>
+                </div>
+            </div>
+            <div id="smartphone-screen">
+                <div id="smartphone-content">
+                </div>
+                <div id="smartphone-console">
+                    <div id="smartphone-console-toolbar">
+                        <div class="smartphone-console-toolbar-item smartphone-console-status"
+                             id="smartphone-console-toolbar-status">console
+                        </div>
+                        <div class="smartphone-console-toolbar-item" id="smartphone-console-toolbar-test"><a
+                                class="smartphone-console-test">[test]</a></div>
+                        <div class="smartphone-console-toolbar-item" id="smartphone-console-toolbar-clear"><a
+                                class="smartphone-console-clear">[clear]</a></div>
+
+                    </div>
+                    <div id="smartphone-console-content">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="smartphone-home-button"></div>
+        <div id="smartphone-sim-ready"></div>
+    </div>
+</div>
+        <!-- endinject -->
+    </div>
+
+    <div id="navigation-display">
+        <!-- inject:views/navigation_display.html -->
+        <div id="navigation-display-content">
+    <div class="well well-display shadow-display">
+
+        <span class="close navigation-display-button-close">&times;</span>
+        <div id="navigation-content">
+            content
+        </div>
+    </div>
+    <div id="navigation-display-ready"></div>
+</div>
+        <!-- endinject -->
+    </div>
+
+    <div id="data-display">
+        <!-- inject:views/data_display.html -->
+        <div id="data-display-content">
+    <div class="well well-display shadow-display">
+
+        <span class="close data-display-button-close">&times;</span>
+
+
+        <p id="info_id"></p>
+
+        <form id="data-display-form" class="form-horizontal">
+
+            <!-- _id -->
+            <input type="hidden" class="form-control" name="_id" id="_id">
+
+
+            <!--TimeWayId-->
+            <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="TimeWayId">ID</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="TimeWayId" id="TimeWayId" placeholder="ID">
+                </div>
+
+            </div>
+
+
+            <!--Time-->
+            <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="Time">Time</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Time" id="Time" placeholder="Time">
+                </div>
+            </div>
+
+
+            <!--Date-->
+            <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="Date">Date</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Date" id="Date" placeholder="Date">
+                </div>
+            </div>
+
+
+            <!--Place-->
+            <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="Place">Place</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Place" id="Place" placeholder="Place">
+                </div>
+            </div>
+
+
+            <!--Feeling-->
+            <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="Feeling">Feeling</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Feeling" id="Feeling" placeholder="Feeling">
+                </div>
+            </div>
+
+
+            <!--Message-->
+            <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="Message">Message</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Message" id="Message" placeholder="Message">
+                </div>
+            </div>
+
+
+            <!--Notice-->
+            <div class="form-group form-group-sm">
+
+                <label class="col-sm-2 control-label" for="Notice">Notice</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="3" name="Notice" id="Notice">TEST</textarea>
+                </div>
+
+            </div>
+            <div class="btn-group btn-sm" role="group" aria-label="...">
+
+                <button type="button" id="data-display-button-save" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>
+                </button>
+
+                <button type="button" id="data-display-button-new" class="btn btn-default  btn-sm">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+
+                <button type="button" id="data-display-button-delete" class="btn btn-sm btn-danger">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </button>
+
+                <button type="button" id="data-display-button" class="btn btn-sm btn-default">
+                    &nbsp;
+                </button>
+
+                <button type="button" id="data-display-button-erase-db" class="btn btn-sm btn-default">
+                    E
+                </button>
+
+                <button type="button" id="data-display-button-load-default" class="btn btn-sm btn-default">
+                    L
+                </button>
+            </div>
+            <div id="data-display-ready"></div>
+        </form>
+    </div>
+</div>
+        <!-- endinject -->
+    </div>
+
+    <div id="help-container">
+        <!-- inject:views/help.html -->
+        <!-- Modal -->
+<div class="modal" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">A Niver Way <span class="version"></span></h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <h4>Tastaturkürzel:</h4>
+                        <div class="spalten">
+
+
+                                <table class="help-keystroke">
+                                    <tr>
+                                        <th>s</th>
+                                        <td>Simulator</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>h</th>
+                                        <td>Diese Hilfe</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>n</th>
+                                        <td>Navigation</td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+
+
+
+
+                                <table class="help-keystroke">
+                                    <tr>
+                                        <th><span class="glyphicon glyphicon-arrow-left"></span></th>
+                                        <td>vorheriger Zeitpunkt</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th><span class="glyphicon glyphicon-arrow-right"></span></th>
+                                        <td>nächster Zeitpunkt</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th><span class="glyphicon glyphicon-arrow-up"></span></th>
+                                        <td>letzter Zeitpunkt</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th><span class="glyphicon glyphicon-arrow-down"></span></th>
+                                        <td>erster Zeitpunkt</td>
+                                        <td></td>
+                                    </tr>
+
+                                </table>
+
+
+
+                        </div>
+
+
+                        <p class="copywright">© Oliver Steiner | IMD 2017 | St. Gallen</p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <!-- endinject -->
+    </div>
+
 
 </main>
 <footer>
+
+
+
+    <form class="form-inline" name="sockettest">
+
+        <div class="form-group">
+            <input type="text" class="form-control" id="testtext" placeholder="bla bla">
+        </div>
+
+        <button type="button" id="botton-socket-test-message" class="btn btn-default">Send</button>
+
+        <button type="button" id="botton-socket-test-ping_2" class="btn btn-default">ping</button>
+        <button type="button" id="botton-socket-test-steuerbefehl" class="btn btn-default">steuerbefehl</button>
+
+    </form>
+
+
+
 </footer>
 <!-- Libraries -->
 <script src="libraries/jquery/jquery-3.2.1.min.js"></script>
@@ -33,8 +398,8 @@
 <script src="libraries/jquery/jquery-ui/jquery-ui.min.js"></script>
 <script src="libraries/pouchdb/pouchdb-6.2.0.min.js"></script>
 <script src="libraries/jquery/jquery.scrollTo.min.js"></script>
-<script src="libraries/jquery/jquery.serialScroll.min.js"></script>
-<script src="libraries/scrollmagic/minified/ScrollMagic.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
 
 <!-- A Nicer Way -->
 <script src="js/utilities.js"></script>
@@ -45,15 +410,13 @@
 <script src="js/controllers/NavigationController.js"></script>
 <script src="js/controllers/DataDisplayController.js"></script>
 <script src="js/controllers/DbController.js"></script>
+<script src="js/controllers/RemoteController.js"></script>
+
 <script src="js/main.js"></script>
 
 
+
 <script src="js/test.js"></script>
-<script>
-
-
-</script>
-
 
 </body>
 </html>

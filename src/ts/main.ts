@@ -1,51 +1,103 @@
+let aNicerWay: any;
+let _aNicerWayVersion = '1.2b';
+let _lastTimePoint = 0;
+
 /**
  *  aNicerWay
  *
  */
 class ANicerWay {
-    public className: string;
+
+    public version: string = _aNicerWayVersion;
     public timePointAktuell = 0;
+    public firstTimePoint = 1;
+    public lastTimePoint: number = 0;
+
+
+    public dbController: DbController;
+    public dataDisplayController: DataDisplayController;
+    public smartphoneSimController: SmartphoneSimController;
+    public statusDisplayController: StatusDisplayController;
+    public navigationController: NavigationController;
+    public timewayController: TimewayController;
+
+    public options: any;
 
     constructor(options?: { simulator_size?: string }) {
-        let simulator_size = options.simulator_size;
+        this.options = options.simulator_size;
 
-        this.className = 'aNicerWay';
+        this.loadTimePoints();
 
-
-        // alle html-views zusammensetzen
-        $('#main_navigation').load('views/main_navigation.html');
-
-        let dataDisplayController = new DataDisplayController();
-        let smartphoneSimController = new SmartphoneSimController(simulator_size);
-        let statusDisplayController = new StatusDisplayController();
-        let navigationController = new NavigationController();
+        this.loadComponents();
+        this.addAllEventsListeners();
+        ANicerWay.setVersion();
 
 
-        //  $('#timeway').load('views/timeway.html');
-        //  $('#status-display').load('views/status_display.html');
+    }
 
-        // load all Controllers
-        console.log('load');
+    /**
+     *
+     *
+     */
+    loadComponents() {
 
-        // Warte kurz, damit die dynamisch eingefügten HTML-dokument schon geladen sind.
-
-        //    let consoleDisplayController = new ConsoleDisplayController();
-        //    let statusDisplayController = new StatusDisplayController();
-        //    let timewayController = new TimewayController();
-        //alert('ready');
-
+        this.dbController = new DbController();
+        this.dataDisplayController = new DataDisplayController();
+        this.smartphoneSimController = new SmartphoneSimController(this.options.simulator_size);
+        this.statusDisplayController = new StatusDisplayController();
+        this.navigationController = new NavigationController();
+        this.timewayController = new TimewayController();
 
     }
 
 
     /**
-     * get
+     * addAllEventsListeners
      *
      */
-    get() {
-        // Test
-        console.log(' - ' + this.className + '.get()');
-        return this.className;
+    addAllEventsListeners() {
+
+        // Button Close Display
+        // $('.navigation-display-button-close').click(NavigationController.modalClose);
+
+
+        // Keystrokes
+        $('body').keypress(function (event: any) {
+
+            let key: number = 104;  // Taste "h"
+
+            if (event.which == key) {
+                event.preventDefault();
+
+                // Das Hilfsfenster ein / ausblenden
+                $('#help-modal').modal('toggle');
+            }
+        });
+
+    }
+
+    loadTimePoints() {
+        console.log('loadTimePoints');
+        let promise = DbController.loadAllWayPoints();
+
+        return promise.then(function (doc: any) {
+
+            let lastTimePoint = doc.rows.length;
+             _lastTimePoint = doc.rows.length;
+
+
+            // Wenn keine Timepoints vorhanden, standart einlesen:
+            if (doc.rows.length == 0) {
+                reset();
+            }
+
+            aNicerWay.lastTimePoint = lastTimePoint;
+            _lastTimePoint = lastTimePoint;
+
+            return lastTimePoint;
+
+        });
+
     }
 
 
@@ -55,64 +107,50 @@ class ANicerWay {
         console.log('Timepoint: ' + point);
     }
 
+
     getTimePoint() {
         return this.timePointAktuell;
     }
 
 
-}
-
-// init
-let options = {
-    simulator_size: 'gross' // ohne, klein, gross
-};
-let aNicerWay = new ANicerWay(options);
-
-
-setTimeout(function () {
-
-    let parent_old = 0;
-
-    function ostParallax(parent: any, elem: string, faktor: string, richtung: string) {
-
-        let child: any = $(elem).css('left');
-
-        $(elem).css("left", richtung + "=" + faktor);
-
-
+    getLastTimePoint() {
+        return this.lastTimePoint;
     }
 
 
-    $('#timeway-content').scroll(function () {
-        let richtung = '';
-
-        let parent = $('#timeway-content').scrollLeft();
-
-
-        if (parent_old < parent) {
-            richtung = '+';
-        } else {
-            richtung = '-';
-        }
-        ostParallax(parent, '#layer-1-himmel', '2', richtung);
-        ostParallax(parent, '#layer-2-berge', '3', richtung);
-        ostParallax(parent, '#layer-3-aktiv', '5', richtung);
-        ostParallax(parent, '#layer-4-baume', '6', richtung);
-
-        parent_old = parent;
-    });
+    getFirstTimePoint() {
+        return this.firstTimePoint;
+    }
 
 
-    window.addEventListener('keypress', function (event) {
-        if (event.keyCode == 37) {
-            NavigationController.scrollToPreviews;
-        }
-    });
+    static setVersion() {
 
-    window.addEventListener('keypress', function (event) {
-        if (event.keyCode == 39) {
-            NavigationController.scrollToPreviews;
-        }
-    });
+        $('.version').text(_aNicerWayVersion);
+    }
 
-}, 2000);
+
+}
+
+
+function reset() {
+
+    let options = {
+        simulator_size: 'gross' // klein, gross
+    };
+
+
+    DbController.loadDefault();
+    let aNicerWay = new ANicerWay(options);
+
+}
+
+
+$(document).ready(function () {
+    let options = {
+        simulator_size: 'gross' // klein, gross
+    };
+
+
+    aNicerWay = new ANicerWay(options);
+
+});

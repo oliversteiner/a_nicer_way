@@ -22,10 +22,6 @@ class StatusDisplayController {
         this.elem_Content = document.getElementById(_statusDisplayContentName);
 
 
-        // Views laden
-        $(this.elem_Root).load('../views/status_display.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
-
-
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         $('#status-display-ready').ready(function () {
                 console.log('- Status Display load');
@@ -60,9 +56,9 @@ class StatusDisplayController {
         let promise = DbController.loadWayPoint(id);
         promise.then(function (doc: any) {
 
-            $('#Date_status').text(doc.date);
-            $('#Place_status').text(doc.place);
-            $('#Feeling_status').text(doc.feeling);
+            $('#status-display-date').text(doc.date);
+            $('#status-display-place').text(doc.place);
+            $('#status-display-feeling').text(doc.feeling);
 
         });
 

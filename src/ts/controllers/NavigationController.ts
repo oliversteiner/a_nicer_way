@@ -9,14 +9,15 @@
 
 
 // Global
-const _navigationDisplayName: string = 'navigation';
-const _navigationDisplayContentName: string = 'navigation-content';
+const _navigationName: string = 'navigation-display';
+const _navigationContentName: string = 'navigation-display-content';
 
-let _navigationModalOpen: boolean = false;
+let _navigationOpen: boolean = false;
 
 // Class
 class NavigationController {
 
+    public className: string;
     private elem_Root: HTMLElement | any;
     private elem_Content: HTMLElement | any;
 
@@ -25,27 +26,23 @@ class NavigationController {
      */
     constructor() {
 
-        // Vars
-        this.elem_Root = document.getElementById(_navigationDisplayName);
-        this.elem_Content = document.getElementById(_navigationDisplayContentName);
 
-        // Views laden
-        $(this.elem_Root).load('../views/navigation_display.html');
+        // Vars
+        this.elem_Root = document.getElementById(_navigationName);
+        this.elem_Content = document.getElementById(_navigationContentName);
+
 
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         $('#navigation-display-ready').ready(function () {
                 console.log('- Navigation Display load');
 
                 // functions
-                NavigationController.addAllEventsListeners();
+                NavigationController.modalClose()
                 NavigationController.listAllWayPoints();
+                NavigationController.addAllEventsListeners();
                 NavigationController.makeDraggable();
-
-
-                // Tests
-
-                // Meldung
-                console.log('- Navigation Display  ready');
+                //
+                console.log('- Navigation Display ready');
             }
         )
 
@@ -56,7 +53,7 @@ class NavigationController {
      * makeDraggable
      */
     static makeDraggable() {
-        $('#' + _navigationDisplayContentName).draggable();
+        $('#' + _navigationContentName).draggable();
     }
 
     /**
@@ -65,14 +62,69 @@ class NavigationController {
      */
     static addAllEventsListeners() {
 
+        // Button Close Display
+        $('.navigation-display-button-close').click(NavigationController.modalClose);
+
         //
-        $('#navigation-button-close').click(NavigationController.modalClose);
+        $('.navigation-display-button-toggle').click(NavigationController.modalToggle);
+
         //
-        $('#navigation-button-toggle').click(NavigationController.toggleDisplay);
+        $('.navigation-button-next').click(NavigationController.scrollToNext);
+
         //
-        $('#button-next').click(NavigationController.scrollToNext);
-        //
-        $('#button-previous').click(NavigationController.scrollToPreviews);
+        $('.navigation-button-previous').click(NavigationController.scrollToPreviews);
+
+
+        // Keystrokes (kein jQuery weil schneller)
+        document.onkeydown = function (event: any) {
+            event = event || window.event;
+
+            let key = {
+                arrow_left: 37,
+                arrow_right: 39,
+
+                arrow_up: 38,
+                arrow_down: 40,
+
+                n: 78
+            };
+
+
+            switch (event.which || event.keyCode) {
+
+                // Pfeil nach Links
+                case key.arrow_left:
+                    NavigationController.scrollToPreviews();
+                    break;
+
+                // Pfeil nach rechts
+                case key.arrow_right:
+                    NavigationController.scrollToNext();
+                    break;
+
+
+                // Pfeil nach oben
+                case key.arrow_up:
+                    NavigationController.scrollToFirst();
+                    break;
+
+                // Pfeil nach unten
+                case key.arrow_down:
+                    NavigationController.scrollToLast();
+                    break;
+
+
+                // N - Navigation einblenden
+                case key.n:
+                    console.log('n gedrückt');
+                    NavigationController.modalToggle();
+                    break;
+
+                default:
+                    return; // exit this handler for other keys
+            }
+            event.preventDefault(); // prevent the default action (scroll / move caret)
+        }
 
     }
 
@@ -135,6 +187,7 @@ class NavigationController {
             });
         });
 
+
     };
 
     /**
@@ -158,8 +211,7 @@ class NavigationController {
     static showDataDisplay(id: string) {
 
         DataDisplayController.setData(id);
-        $('#data-display').show();
-
+        DataDisplayController.modalOpen();
     }
 
     static setSmartphoneSimContent(id: string) {
@@ -167,7 +219,8 @@ class NavigationController {
         promise.then(function (doc: any) {
 
             let content = doc.timewayid;
-            SmartphoneSimController.setContent(content);
+            let message = 'TimeWayPoint: <span class="message-ok">' + content + '</span>';
+            SmartphoneSimController.message(message);
 
         });
 
@@ -179,17 +232,17 @@ class NavigationController {
      *
      */
     static modalClose() {
-        _navigationModalOpen = false;
-        $('#' + _navigationDisplayContentName).hide();
+        _navigationOpen = false;
+        $('#' + _navigationContentName).hide();
     }
 
     static modalOpen() {
-        _navigationModalOpen = true;
-        $('#' + _navigationDisplayContentName).show();
+        _navigationOpen = true;
+        $('#' + _navigationContentName).show();
     }
 
-    static toggleDisplay() {
-        if (_navigationModalOpen) {
+    static modalToggle() {
+        if (_navigationOpen) {
             NavigationController.modalClose();
         }
         else {
@@ -223,7 +276,9 @@ class NavigationController {
         let target = 'TimeWayPoint-' + point;
         $('#timeway-content').scrollTo('#' + target, 1000);
         aNicerWay.setTimePoint(point);
+
         NavigationController.setSmartphoneSimContent(target);
+
         StatusDisplayController.setData(target);
 
     }
@@ -242,6 +297,21 @@ class NavigationController {
 
         let prev = point - 1;
         NavigationController.scrollToNumber(prev);
+
+    }
+
+    static scrollToFirst() {
+        let first: number = aNicerWay.getFirstTimePoint();
+
+        NavigationController.scrollToNumber(first);
+        SmartphoneSimController.message('first TimePoint')
+
+    }
+
+    static scrollToLast() {
+        let last: number = aNicerWay.getLastTimePoint();
+        NavigationController.scrollToNumber(last);
+        SmartphoneSimController.message('last TimePoint')
 
     }
 

@@ -1,36 +1,65 @@
+var aNicerWay;
+var _aNicerWayVersion = '1.2b';
+var _lastTimePoint = 0;
 /**
  *  aNicerWay
  *
  */
 var ANicerWay = (function () {
     function ANicerWay(options) {
+        this.version = _aNicerWayVersion;
         this.timePointAktuell = 0;
-        var simulator_size = options.simulator_size;
-        this.className = 'aNicerWay';
-        // alle html-views zusammensetzen
-        $('#main_navigation').load('views/main_navigation.html');
-        var dataDisplayController = new DataDisplayController();
-        var smartphoneSimController = new SmartphoneSimController(simulator_size);
-        var statusDisplayController = new StatusDisplayController();
-        var navigationController = new NavigationController();
-        //  $('#timeway').load('views/timeway.html');
-        //  $('#status-display').load('views/status_display.html');
-        // load all Controllers
-        console.log('load');
-        // Warte kurz, damit die dynamisch eingefügten HTML-dokument schon geladen sind.
-        //    let consoleDisplayController = new ConsoleDisplayController();
-        //    let statusDisplayController = new StatusDisplayController();
-        //    let timewayController = new TimewayController();
-        //alert('ready');
+        this.firstTimePoint = 1;
+        this.lastTimePoint = 0;
+        this.options = options.simulator_size;
+        this.loadTimePoints();
+        this.loadComponents();
+        this.addAllEventsListeners();
+        ANicerWay.setVersion();
     }
     /**
-     * get
+     *
      *
      */
-    ANicerWay.prototype.get = function () {
-        // Test
-        console.log(' - ' + this.className + '.get()');
-        return this.className;
+    ANicerWay.prototype.loadComponents = function () {
+        this.dbController = new DbController();
+        this.dataDisplayController = new DataDisplayController();
+        this.smartphoneSimController = new SmartphoneSimController(this.options.simulator_size);
+        this.statusDisplayController = new StatusDisplayController();
+        this.navigationController = new NavigationController();
+        this.timewayController = new TimewayController();
+    };
+    /**
+     * addAllEventsListeners
+     *
+     */
+    ANicerWay.prototype.addAllEventsListeners = function () {
+        // Button Close Display
+        // $('.navigation-display-button-close').click(NavigationController.modalClose);
+        // Keystrokes
+        $('body').keypress(function (event) {
+            var key = 104; // Taste "h"
+            if (event.which == key) {
+                event.preventDefault();
+                // Das Hilfsfenster ein / ausblenden
+                $('#help-modal').modal('toggle');
+            }
+        });
+    };
+    ANicerWay.prototype.loadTimePoints = function () {
+        console.log('loadTimePoints');
+        var promise = DbController.loadAllWayPoints();
+        return promise.then(function (doc) {
+            var lastTimePoint = doc.rows.length;
+            _lastTimePoint = doc.rows.length;
+            // Wenn keine Timepoints vorhanden, standart einlesen:
+            if (doc.rows.length == 0) {
+                reset();
+            }
+            aNicerWay.lastTimePoint = lastTimePoint;
+            _lastTimePoint = lastTimePoint;
+            return lastTimePoint;
+        });
     };
     ANicerWay.prototype.setTimePoint = function (point) {
         // Test
@@ -40,42 +69,27 @@ var ANicerWay = (function () {
     ANicerWay.prototype.getTimePoint = function () {
         return this.timePointAktuell;
     };
+    ANicerWay.prototype.getLastTimePoint = function () {
+        return this.lastTimePoint;
+    };
+    ANicerWay.prototype.getFirstTimePoint = function () {
+        return this.firstTimePoint;
+    };
+    ANicerWay.setVersion = function () {
+        $('.version').text(_aNicerWayVersion);
+    };
     return ANicerWay;
 }());
-// init
-var options = {
-    simulator_size: 'gross' // ohne, klein, gross
-};
-var aNicerWay = new ANicerWay(options);
-setTimeout(function () {
-    var parent_old = 0;
-    function ostParallax(parent, elem, faktor, richtung) {
-        var child = $(elem).css('left');
-        $(elem).css("left", richtung + "=" + faktor);
-    }
-    $('#timeway-content').scroll(function () {
-        var richtung = '';
-        var parent = $('#timeway-content').scrollLeft();
-        if (parent_old < parent) {
-            richtung = '+';
-        }
-        else {
-            richtung = '-';
-        }
-        ostParallax(parent, '#layer-1-himmel', '2', richtung);
-        ostParallax(parent, '#layer-2-berge', '3', richtung);
-        ostParallax(parent, '#layer-3-aktiv', '5', richtung);
-        ostParallax(parent, '#layer-4-baume', '6', richtung);
-        parent_old = parent;
-    });
-    window.addEventListener('keypress', function (event) {
-        if (event.keyCode == 37) {
-            NavigationController.scrollToPreviews;
-        }
-    });
-    window.addEventListener('keypress', function (event) {
-        if (event.keyCode == 39) {
-            NavigationController.scrollToPreviews;
-        }
-    });
-}, 2000);
+function reset() {
+    var options = {
+        simulator_size: 'gross' // klein, gross
+    };
+    DbController.loadDefault();
+    var aNicerWay = new ANicerWay(options);
+}
+$(document).ready(function () {
+    var options = {
+        simulator_size: 'gross' // klein, gross
+    };
+    aNicerWay = new ANicerWay(options);
+});

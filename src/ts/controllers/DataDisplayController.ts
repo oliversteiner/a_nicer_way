@@ -27,9 +27,7 @@ class DataDisplayController {
         this.elem_Content = document.getElementById(_dataDisplayContentName);
 
         // Views laden
-        $(this.elem_Root).load('../views/data_display.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
 
-        // Das geladene Element ausblenden
 
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         $('#data-display-ready').ready(function () {
@@ -70,10 +68,10 @@ class DataDisplayController {
         $('#data-display-button-load-default').click(DbController.loadDefault);
 
         // Button Close Display
-        $('#data-display-button-close').click(DataDisplayController.modalClose);
+        $('.data-display-button-close').click(DataDisplayController.modalClose);
 
         // Button Show Display
-        $('#data-display-button-toggle').click(DataDisplayController.modalToggle);
+        $('.data-display-button-toggle').click(DataDisplayController.modalToggle);
 
     }
 
@@ -82,7 +80,8 @@ class DataDisplayController {
      */
     static  makeDraggable() {
 
-        $('#' + _dataDisplayContentName).draggable();
+        $('#' + _dataDisplayContentName).draggable().dblclick(DataDisplayController.modalClose);
+
     }
 
     /**

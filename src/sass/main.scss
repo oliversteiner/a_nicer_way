@@ -1,7 +1,8 @@
-@import "partials/views/footer";
+
 // Design
 @import 'partials/design/colors';
 @import 'partials/design/fonts';
+
 // Views
 @import 'partials/views/console_display';
 @import 'partials/views/smartphone_sim';
@@ -10,21 +11,26 @@
 @import 'partials/views/navigation';
 @import 'partials/views/data_display';
 @import 'partials/views/footer';
+@import "partials/views/help";
+
 // Utilitis
 @import 'partials/utilities/console';
 @import 'partials/utilities/messages';
 
-h1 {
-  margin-left: 20px;
-}
+
+
+
+
+
+// Modal Displays
 
 .shadow-display {
   box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.2);
 }
 
 .well-display {
-  border-radius: 15px;
-  padding: 15px;
+  border-radius: 7px;
+  padding: 14px;
 
 }
 
@@ -32,25 +38,55 @@ h1 {
   position: relative;
   top: -10px;
   left: 5px;
-}
+  color: #000;}
 
-.navbar-default {
-  background-color: #222222;
-}
+.well-display > .close:hover {
 
-.navbar-default .navbar-nav > li > a {
   color: $color-nav-text;
+}
+.well-display > .close:active {
+
+  color: $color-nav-text;
+  border: none;
+}
+
+
+// Navigation
+
+.navbar-nicer {
+  background-color:$color-background;;
+}
+
+.navbar-nicer:hover .navbar-nav > li > a {
+  color: $color-nav-text;
+}
+.navbar-nicer:hover .navbar-nav > li > a:hover {
+  color: $color-text-link-hover
+}
+.navbar-nicer:hover .navbar-nav > li > a:active {
+  color: $color-text-link-active
+}
+
+.navbar-nicer .navbar-nav > li > a {
+  color: $color-nav-text;
+  color: $color-background;
 
 }
+
+
+// Pfeilnavigation im Menu
+
 
 .pager {
+  float: right;
+  position: relative;
   padding: 0;
   margin: 0;
   padding-top: 12px;
+  margin-right: 50px;
 
 }
 
-// Pager
 .pager li {
   padding: 0;
   margin: 0;
@@ -59,8 +95,10 @@ h1 {
 
 .pager li > a {
   font-size: 1em;
-  padding: 2px 10px;
+  padding: 1px 20px;
   margin: 0;
-  border-radius: 10px;
-  background-color: $color-nav-text
+  border-radius: 5px;
+  background-color: $color-background;
+  color: $color-text-link;
+  cursor:pointer;
 }

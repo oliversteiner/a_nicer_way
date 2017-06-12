@@ -1,4 +1,4 @@
-#### Frontend Engeniering
+ #### Frontend Engeniering
 IMD St. Gallen 2017 
 
 ## Einzelarbeit
@@ -6,6 +6,7 @@ Oliver Steiner
 
 DEMO: 
 http://mollo.ch/a-nicer-way/
+Die Demoseite 2x laden, damit die Datenbank gefüllt wird!
 
 
 ## Idee
@@ -70,6 +71,9 @@ Nicht vollstädig ausgearbeit werden sein:
 
 
  ## Installation
+ - im Installationsverzeichnis  wechseln
+  npm install
+  gulp
  
  
  
@@ -80,6 +84,9 @@ Nicht vollstädig ausgearbeit werden sein:
  
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
+## Quellen
+Piktogramme: https://thenounproject.com/
+ - Smartphone: https://thenounproject.com/search/?q=iphone%206&i=660535
 
 
 ## Erkentnisse

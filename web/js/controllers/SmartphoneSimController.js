@@ -1,13 +1,13 @@
-/**
- *  SmartphoneSimController
- *
- */
 // Global
 var _smartphoneSimName = 'smartphone-sim';
 var _smartphoneSimContentName = 'smartphone-sim-content';
 var _smartphoneSimOpen = true;
 var _smartphoneSimUp = false;
 var _smartphoneSimConsoleOpen = true;
+/**
+ *  SmartphoneSimController
+ *
+ */
 var SmartphoneSimController = (function () {
     /**
      * constructor
@@ -28,9 +28,7 @@ var SmartphoneSimController = (function () {
             SmartphoneSimController.makeDraggable();
             SmartphoneSimController.addAllEventsListeners();
             SmartphoneSimController.open();
-            SmartphoneSimController.moveUp();
             SmartphoneSimController.consoleOpen();
-            SmartphoneSimController.message('bereit...');
             // Tests
             //
             console.log('- Smartphone Simulator ready');
@@ -40,8 +38,6 @@ var SmartphoneSimController = (function () {
      * addAllEventsListeners
      */
     SmartphoneSimController.addAllEventsListeners = function () {
-        // Move Sim up / Down
-        $('#smartphone-toolbar-move').click(SmartphoneSimController.moveToggle);
         // Main-Menu : Show / Hide Simulator
         $('.smartphone-sim-button-toggle').click(SmartphoneSimController.toggle);
         // press home button
@@ -49,19 +45,30 @@ var SmartphoneSimController = (function () {
         // Sim Console consoleClear
         $('.smartphone-console-clear').click(SmartphoneSimController.consoleClear);
         $('.smartphone-console-test').click(SmartphoneSimController.consoleTest);
-        // resize
+        // resize bigger
         $('#smartphone-toolbar-bigger').click(function () {
             SmartphoneSimController.setSize('groesser');
         });
+        // resize smaler
         $('#smartphone-toolbar-smaler').click(function () {
             SmartphoneSimController.setSize('kleiner');
+        });
+        // close on dubbleclick
+        $('#smartphone-frame').dblclick(SmartphoneSimController.close);
+        // Keystrokes
+        $('body').keypress(function (event) {
+            var key = 115; // Taste "S"
+            if (event.which == key) {
+                event.preventDefault();
+                SmartphoneSimController.toggle();
+            }
         });
     };
     /**
      * makeDraggable
      */
     SmartphoneSimController.makeDraggable = function () {
-        $('#' + _smartphoneSimContentName).draggable();
+        $('#smartphone-frame').draggable();
     };
     SmartphoneSimController.setSize = function (faktor) {
         // Devs
@@ -101,24 +108,6 @@ var SmartphoneSimController = (function () {
         // Sim Console ein/ausblenden
         SmartphoneSimController.consoleToggle();
     };
-    SmartphoneSimController.moveDown = function () {
-        _smartphoneSimUp = false;
-        $('#' + _smartphoneSimContentName).addClass('smartphone-close');
-        $('#smartphone-toolbar-move .smartphone-toolbar-item').removeClass('glyphicon-arrow-down').addClass('glyphicon-arrow-up');
-    };
-    SmartphoneSimController.moveUp = function () {
-        _smartphoneSimUp = true;
-        $('#' + _smartphoneSimContentName).removeClass('smartphone-close');
-        $('#smartphone-toolbar-move .smartphone-toolbar-item').removeClass('glyphicon-arrow-up').addClass('glyphicon-arrow-down');
-    };
-    SmartphoneSimController.moveToggle = function () {
-        if (_smartphoneSimUp) {
-            SmartphoneSimController.moveDown();
-        }
-        else {
-            SmartphoneSimController.moveUp();
-        }
-    };
     SmartphoneSimController.setContent = function (content) {
         var elem_Content = document.getElementById('smartphone-console');
         $(elem_Content).html(content);
@@ -150,7 +139,7 @@ var SmartphoneSimController = (function () {
         var class_status;
         var class_tab;
         var message;
-        // Die Class erstellen, die die nachrichten formatiert
+        // Die Class erstellen, die die Nachrichten formatiert
         // sass/utillities/_messages.scss
         class_status = 'message-' + status;
         // Spezielle Textauszeichnungen
@@ -212,7 +201,7 @@ var SmartphoneSimController = (function () {
         }
     };
     SmartphoneSimController.consoleTest = function () {
-        SmartphoneSimController.moveUp();
+        SmartphoneSimController.open();
         $('.smartphone-console-status').text('test running...');
         var testmessages = [
             // ['status', 'text', 'tab'],

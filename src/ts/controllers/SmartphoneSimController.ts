@@ -1,15 +1,16 @@
-/**
- *  SmartphoneSimController
- *
- */
+
 // Global
 const _smartphoneSimName: string = 'smartphone-sim';
 const _smartphoneSimContentName: string = 'smartphone-sim-content';
+
 let _smartphoneSimOpen: boolean = true;
 let _smartphoneSimUp: boolean = false;
 let _smartphoneSimConsoleOpen: boolean = true;
 
-
+/**
+ *  SmartphoneSimController
+ *
+ */
 class SmartphoneSimController {
     public className: string;
     public idName: string;
@@ -49,10 +50,8 @@ class SmartphoneSimController {
                 SmartphoneSimController.addAllEventsListeners();
 
                 SmartphoneSimController.open();
-                SmartphoneSimController.moveUp();
 
                 SmartphoneSimController.consoleOpen();
-                SmartphoneSimController.message('bereit...');
 
                 // Tests
 
@@ -71,8 +70,6 @@ class SmartphoneSimController {
      */
     static    addAllEventsListeners() {
 
-        // Move Sim up / Down
-        $('#smartphone-toolbar-move').click(SmartphoneSimController.moveToggle);
 
         // Main-Menu : Show / Hide Simulator
         $('.smartphone-sim-button-toggle').click(SmartphoneSimController.toggle);
@@ -84,12 +81,29 @@ class SmartphoneSimController {
         $('.smartphone-console-clear').click(SmartphoneSimController.consoleClear);
         $('.smartphone-console-test').click(SmartphoneSimController.consoleTest);
 
-        // resize
+        // resize bigger
         $('#smartphone-toolbar-bigger').click(function () {
             SmartphoneSimController.setSize('groesser')
         });
+
+        // resize smaler
         $('#smartphone-toolbar-smaler').click(function () {
             SmartphoneSimController.setSize('kleiner')
+        });
+
+        // close on dubbleclick
+        $('#smartphone-frame').dblclick(SmartphoneSimController.close);
+
+
+        // Keystrokes
+        $('body').keypress(function (event: any) {
+
+            let key:number = 115;  // Taste "S"
+
+            if(event.which == key){
+                event.preventDefault();
+                SmartphoneSimController.toggle();
+            }
         });
 
     }
@@ -99,7 +113,7 @@ class SmartphoneSimController {
      */
     static  makeDraggable() {
 
-        $('#' + _smartphoneSimContentName).draggable();
+        $('#smartphone-frame').draggable();
     }
 
     static setSize(faktor?: string) {
@@ -155,27 +169,7 @@ class SmartphoneSimController {
         SmartphoneSimController.consoleToggle();
     }
 
-    static moveDown() {
-        _smartphoneSimUp = false;
-        $('#' + _smartphoneSimContentName).addClass('smartphone-close');
-        $('#smartphone-toolbar-move .smartphone-toolbar-item').removeClass('glyphicon-arrow-down').addClass('glyphicon-arrow-up');
-    }
 
-    static moveUp() {
-        _smartphoneSimUp = true;
-        $('#' + _smartphoneSimContentName).removeClass('smartphone-close');
-        $('#smartphone-toolbar-move .smartphone-toolbar-item').removeClass('glyphicon-arrow-up').addClass('glyphicon-arrow-down');
-
-    }
-
-    static moveToggle() {
-
-        if (_smartphoneSimUp) {
-            SmartphoneSimController.moveDown()
-        } else {
-            SmartphoneSimController.moveUp();
-        }
-    }
 
     static setContent(content: any) {
 
@@ -222,7 +216,7 @@ class SmartphoneSimController {
         let class_tab: string;
         let message: string;
 
-        // Die Class erstellen, die die nachrichten formatiert
+        // Die Class erstellen, die die Nachrichten formatiert
         // sass/utillities/_messages.scss
         class_status = 'message-' + status;
 
@@ -299,7 +293,7 @@ class SmartphoneSimController {
     }
 
     static consoleTest() {
-        SmartphoneSimController.moveUp();
+        SmartphoneSimController.open();
         $('.smartphone-console-status').text('test running...');
 
         let testmessages = [

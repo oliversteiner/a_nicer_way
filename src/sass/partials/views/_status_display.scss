@@ -2,10 +2,10 @@
 @import "../design/fonts";
 
 #status-display {
-
+  border-top: dashed 1px $color-gray;
 }
 
-#status-content {
+#status-display-content {
   margin-top: 40px;
   margin-left: 40px;
 }
@@ -17,12 +17,41 @@
   background-color: $color-message;
 
 }
+.status-display-navbar{
+  border: solid 1px green;
+  position: relative;
 
-.status-date,
-.status-feeling,
-.status-place {
+}
 
-  display: inline-block;
+.status-display-elem {
+
+  display: inline;
   margin-right: 50px;
+  top: 0;
+  border: solid 1px green;
 
+}
+
+
+// Smartphone-Sim Picto
+
+#status-display-smartphone {
+  position: absolute;
+  right: 200px;
+  display: inline-block;
+  width: 30px;
+  height: 50px;
+  background: url('../images/smartphone_white.svg');
+  background-position: top center;
+  background-size: 100%;
+  opacity: 0.3;
+}
+
+#status-display-smartphone:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+#status-display-smartphone:active {
+  background: url('../images/smartphone_black.svg');
 }

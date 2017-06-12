@@ -2,6 +2,9 @@
  *  consoleDisplayController
  *
  */
+// Global
+var _statusDisplayName = 'status-display';
+var _statusDisplayContentName = 'status-display-content';
 var StatusDisplayController = (function () {
     /**
      * constructor
@@ -10,18 +13,30 @@ var StatusDisplayController = (function () {
         // Vars
         this.className = 'statusDisplayController';
         this.idName = 'status-display';
-        this.elemRoot = document.getElementById(this.idName);
-        // functions
-        this.addAllEventsListeners();
-        // console
-        console.log(this.className);
+        this.elem_Root = document.getElementById(_statusDisplayName);
+        this.elem_Content = document.getElementById(_statusDisplayContentName);
+        // Views laden
+        $(this.elem_Root).load('../views/status_display.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
+        // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
+        $('#status-display-ready').ready(function () {
+            console.log('- Status Display load');
+            // functions
+            StatusDisplayController.addAllEventsListeners();
+            // Tests
+            //
+            console.log('- Status Display  ready');
+        });
     }
     /**
      * addAllEventsListeners
      */
-    StatusDisplayController.prototype.addAllEventsListeners = function () {
-        this.elemRoot.addEventListener('click', this.testClick.bind(this), false);
+    StatusDisplayController.addAllEventsListeners = function () {
     };
+    /**
+     *
+     *
+     * @param id
+     */
     StatusDisplayController.setData = function (id) {
         var promise = DbController.loadWayPoint(id);
         promise.then(function (doc) {
@@ -29,21 +44,6 @@ var StatusDisplayController = (function () {
             $('#Place_status').text(doc.place);
             $('#Feeling_status').text(doc.feeling);
         });
-    };
-    /**
-     * get
-     *
-     */
-    StatusDisplayController.prototype.get = function () {
-        console.log(' - ' + this.className + '.get()');
-    };
-    /**
-     * testClick
-     *
-     */
-    StatusDisplayController.prototype.testClick = function () {
-        this.get();
-        $(this.elemRoot).effect("bounce", "slow");
     };
     return StatusDisplayController;
 }());

@@ -6,8 +6,8 @@ class ANicerWay {
     public className: string;
     public timePointAktuell = 0;
 
-    constructor(parameters: { simulator_size: number }) {
-        let simulator_size = parameters.simulator_size;
+    constructor(options?: { simulator_size?: string }) {
+        let simulator_size = options.simulator_size;
 
         this.className = 'aNicerWay';
 
@@ -16,9 +16,10 @@ class ANicerWay {
         $('#main_navigation').load('views/main_navigation.html');
 
         let dataDisplayController = new DataDisplayController();
-        let smartphoneSimController = new SmartphoneSimController(2);
+        let smartphoneSimController = new SmartphoneSimController(simulator_size);
+        let statusDisplayController = new StatusDisplayController();
 
-        //  $('#navigation').load('views/navigation_display.html').hide();
+          $('#navigation').load('views/navigation_display.html').hide();
         //  $('#timeway').load('views/timeway.html');
         //  $('#status-display').load('views/status_display.html');
 
@@ -63,7 +64,7 @@ class ANicerWay {
 
 // init
 let options = {
-    simulator_size: 1
+    simulator_size: 'gross' // ohne, klein, gross
 };
 let aNicerWay = new ANicerWay(options);
 

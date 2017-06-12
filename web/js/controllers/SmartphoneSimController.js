@@ -13,7 +13,6 @@ var SmartphoneSimController = (function () {
      * constructor
      */
     function SmartphoneSimController(simulator_size) {
-        this.simulator_size = 1;
         // Vars
         this.className = 'SmartphoneSimController';
         this.elem_Root = document.getElementById(_smartphoneSimName);
@@ -25,14 +24,14 @@ var SmartphoneSimController = (function () {
         $('#smartphone-sim-ready').ready(function () {
             console.log('- Smartphone Simulator load');
             // Aktionen verknüpfen
-            //   SmartphoneSimController.makeDraggable();
+            SmartphoneSimController.setSize(this.simulator_size);
+            SmartphoneSimController.makeDraggable();
             SmartphoneSimController.addAllEventsListeners();
             SmartphoneSimController.open();
             SmartphoneSimController.moveUp();
             SmartphoneSimController.consoleOpen();
             SmartphoneSimController.message('bereit...');
             // Tests
-            //  SmartphoneSimController.consoleTest();
             //
             console.log('- Smartphone Simulator ready');
         });
@@ -42,7 +41,7 @@ var SmartphoneSimController = (function () {
      */
     SmartphoneSimController.addAllEventsListeners = function () {
         // Move Sim up / Down
-        $('#smartphone-toolbar').click(SmartphoneSimController.moveToggle);
+        $('#smartphone-toolbar-move').click(SmartphoneSimController.moveToggle);
         // Main-Menu : Show / Hide Simulator
         $('.smartphone-sim-button-toggle').click(SmartphoneSimController.toggle);
         // press home button
@@ -50,6 +49,13 @@ var SmartphoneSimController = (function () {
         // Sim Console consoleClear
         $('.smartphone-console-clear').click(SmartphoneSimController.consoleClear);
         $('.smartphone-console-test').click(SmartphoneSimController.consoleTest);
+        // resize
+        $('#smartphone-toolbar-bigger').click(function () {
+            SmartphoneSimController.setSize('groesser');
+        });
+        $('#smartphone-toolbar-smaler').click(function () {
+            SmartphoneSimController.setSize('kleiner');
+        });
     };
     /**
      * makeDraggable
@@ -57,10 +63,38 @@ var SmartphoneSimController = (function () {
     SmartphoneSimController.makeDraggable = function () {
         $('#' + _smartphoneSimContentName).draggable();
     };
-    SmartphoneSimController.setSize = function () {
-        console.log('setSize');
-        // die höhe und Breite vom smartphone ausrechnen
-        // das Phone an den
+    SmartphoneSimController.setSize = function (faktor) {
+        // Devs
+        var height;
+        var width;
+        var html;
+        // die höhe und Breite vom smartphone holen
+        var elem_height = $('#smartphone-frame').css('height');
+        // vom rückgabewert "0000px" das "px"-suffix wegnehmen
+        elem_height = elem_height.slice(0, -2);
+        // in eine Zahl umwandeln
+        var height_now = Number(elem_height);
+        // Den übergabewert auswerten
+        switch (faktor) {
+            case 'klein':
+                height = 400;
+                break;
+            case 'gross':
+                height = 700;
+                break;
+            case 'kleiner':
+                height = height_now - 100;
+                break;
+            case 'groesser':
+                height = height_now + 100;
+                break;
+            default:
+                height = 500;
+        }
+        // Das Smartphone ist halb so breit wie hoch
+        width = height / 2;
+        // Als CSS zuweisen
+        $('#smartphone-frame').css('height', height).css('width', width);
     };
     SmartphoneSimController.homeButton = function () {
         console.log('Homebutton gedrückt');
@@ -70,12 +104,12 @@ var SmartphoneSimController = (function () {
     SmartphoneSimController.moveDown = function () {
         _smartphoneSimUp = false;
         $('#' + _smartphoneSimContentName).addClass('smartphone-close');
-        $('.smartphone-toolbar-move span').removeClass('glyphicon-arrow-down').addClass('glyphicon-arrow-up');
+        $('#smartphone-toolbar-move .smartphone-toolbar-item').removeClass('glyphicon-arrow-down').addClass('glyphicon-arrow-up');
     };
     SmartphoneSimController.moveUp = function () {
         _smartphoneSimUp = true;
         $('#' + _smartphoneSimContentName).removeClass('smartphone-close');
-        $('.smartphone-toolbar-move span').removeClass('glyphicon-arrow-up').addClass('glyphicon-arrow-down');
+        $('#smartphone-toolbar-move .smartphone-toolbar-item').removeClass('glyphicon-arrow-up').addClass('glyphicon-arrow-down');
     };
     SmartphoneSimController.moveToggle = function () {
         if (_smartphoneSimUp) {

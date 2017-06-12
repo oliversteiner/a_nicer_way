@@ -2,9 +2,14 @@
  *  consoleDisplayController
  *
  */
+// Global
+const _statusDisplayName: string = 'status-display';
+const _statusDisplayContentName: string = 'status-display-content';
+
 class StatusDisplayController {
+    public elem_Content: HTMLElement;
     public className: string;
-    private elemRoot: any;
+    private elem_Root: any;
     public idName: string;
 
     /**
@@ -15,23 +20,45 @@ class StatusDisplayController {
         // Vars
         this.className = 'statusDisplayController';
         this.idName = 'status-display';
-        this.elemRoot = document.getElementById(this.idName);
+        this.elem_Root = document.getElementById(_statusDisplayName);
+        this.elem_Content = document.getElementById(_statusDisplayContentName);
 
-        // functions
-        this.addAllEventsListeners();
 
-        // console
-        console.log(this.className);
+        // Views laden
+        $(this.elem_Root).load('../views/status_display.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
+
+
+        // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
+        $('#status-display-ready').ready(function () {
+                console.log('- Status Display load');
+
+
+                // functions
+                StatusDisplayController.addAllEventsListeners();
+
+                // Tests
+
+                //
+                console.log('- Status Display  ready');
+
+            }
+        )
+
+
     }
 
     /**
      * addAllEventsListeners
      */
-    addAllEventsListeners() {
-        this.elemRoot.addEventListener('click', this.testClick.bind(this), false);
+    static  addAllEventsListeners() {
     }
 
 
+    /**
+     *
+     *
+     * @param id
+     */
     static setData(id: string) {
 
         let promise = DbController.loadWayPoint(id);
@@ -47,21 +74,4 @@ class StatusDisplayController {
     }
 
 
-    /**
-     * get
-     *
-     */
-    get() {
-        console.log(' - ' + this.className + '.get()');
-    }
-
-    /**
-     * testClick
-     *
-     */
-    testClick() {
-        this.get();
-        $(this.elemRoot).effect("bounce", "slow");
-
-    }
 }

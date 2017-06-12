@@ -3,15 +3,16 @@
  *
  */
 var ANicerWay = (function () {
-    function ANicerWay(parameters) {
+    function ANicerWay(options) {
         this.timePointAktuell = 0;
-        var simulator_size = parameters.simulator_size;
+        var simulator_size = options.simulator_size;
         this.className = 'aNicerWay';
         // alle html-views zusammensetzen
         $('#main_navigation').load('views/main_navigation.html');
         var dataDisplayController = new DataDisplayController();
-        var smartphoneSimController = new SmartphoneSimController(2);
-        //  $('#navigation').load('views/navigation_display.html').hide();
+        var smartphoneSimController = new SmartphoneSimController(simulator_size);
+        var statusDisplayController = new StatusDisplayController();
+        $('#navigation').load('views/navigation_display.html').hide();
         //  $('#timeway').load('views/timeway.html');
         //  $('#status-display').load('views/status_display.html');
         // load all Controllers
@@ -44,7 +45,7 @@ var ANicerWay = (function () {
 }());
 // init
 var options = {
-    simulator_size: 1
+    simulator_size: 'gross' // ohne, klein, gross
 };
 var aNicerWay = new ANicerWay(options);
 setTimeout(function () {

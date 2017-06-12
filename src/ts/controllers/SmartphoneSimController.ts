@@ -19,13 +19,13 @@ class SmartphoneSimController {
     // DOM
     private elem_Root: any;
     private elem_Content: any;
-    private simulator_size: number = 1;
+    public simulator_size: string;
 
 
     /**
      * constructor
      */
-    constructor(simulator_size: number) {
+    constructor(simulator_size?: string) {
 
 
         // Vars
@@ -44,7 +44,8 @@ class SmartphoneSimController {
                 console.log('- Smartphone Simulator load');
 
                 // Aktionen verknüpfen
-                //   SmartphoneSimController.makeDraggable();
+                SmartphoneSimController.setSize(this.simulator_size);
+                SmartphoneSimController.makeDraggable();
                 SmartphoneSimController.addAllEventsListeners();
 
                 SmartphoneSimController.open();
@@ -54,8 +55,6 @@ class SmartphoneSimController {
                 SmartphoneSimController.message('bereit...');
 
                 // Tests
-
-                //  SmartphoneSimController.consoleTest();
 
                 //
                 console.log('- Smartphone Simulator ready');
@@ -73,7 +72,7 @@ class SmartphoneSimController {
     static    addAllEventsListeners() {
 
         // Move Sim up / Down
-        $('#smartphone-toolbar').click(SmartphoneSimController.moveToggle);
+        $('#smartphone-toolbar-move').click(SmartphoneSimController.moveToggle);
 
         // Main-Menu : Show / Hide Simulator
         $('.smartphone-sim-button-toggle').click(SmartphoneSimController.toggle);
@@ -85,6 +84,14 @@ class SmartphoneSimController {
         $('.smartphone-console-clear').click(SmartphoneSimController.consoleClear);
         $('.smartphone-console-test').click(SmartphoneSimController.consoleTest);
 
+        // resize
+        $('#smartphone-toolbar-bigger').click(function () {
+            SmartphoneSimController.setSize('groesser')
+        });
+        $('#smartphone-toolbar-smaler').click(function () {
+            SmartphoneSimController.setSize('kleiner')
+        });
+
     }
 
     /**
@@ -95,12 +102,50 @@ class SmartphoneSimController {
         $('#' + _smartphoneSimContentName).draggable();
     }
 
-    static setSize() {
-        console.log('setSize');
+    static setSize(faktor?: string) {
 
-        // die höhe und Breite vom smartphone ausrechnen
+        // Devs
+        let height: number;
+        let width: number;
+        let html: string;
 
-        // das Phone an den
+        // die höhe und Breite vom smartphone holen
+        let elem_height: string = $('#smartphone-frame').css('height');
+
+        // vom rückgabewert "0000px" das "px"-suffix wegnehmen
+        elem_height = elem_height.slice(0, -2);
+
+        // in eine Zahl umwandeln
+        let height_now: number = Number(elem_height);
+
+        // Den übergabewert auswerten
+        switch (faktor) {
+            case 'klein':
+                height = 400;
+                break;
+
+            case 'gross':
+                height = 700;
+                break;
+
+            case 'kleiner':
+                height = height_now - 100;
+                break;
+
+            case 'groesser':
+                height = height_now + 100;
+                break;
+
+            default:
+                height = 500;
+        }
+
+        // Das Smartphone ist halb so breit wie hoch
+        width = height / 2;
+
+        // Als CSS zuweisen
+        $('#smartphone-frame').css('height', height).css('width', width);
+
     }
 
     static homeButton() {
@@ -113,14 +158,13 @@ class SmartphoneSimController {
     static moveDown() {
         _smartphoneSimUp = false;
         $('#' + _smartphoneSimContentName).addClass('smartphone-close');
-
-        $('.smartphone-toolbar-move span').removeClass('glyphicon-arrow-down').addClass('glyphicon-arrow-up');
+        $('#smartphone-toolbar-move .smartphone-toolbar-item').removeClass('glyphicon-arrow-down').addClass('glyphicon-arrow-up');
     }
 
     static moveUp() {
         _smartphoneSimUp = true;
         $('#' + _smartphoneSimContentName).removeClass('smartphone-close');
-        $('.smartphone-toolbar-move span').removeClass('glyphicon-arrow-up').addClass('glyphicon-arrow-down');
+        $('#smartphone-toolbar-move .smartphone-toolbar-item').removeClass('glyphicon-arrow-up').addClass('glyphicon-arrow-down');
 
     }
 

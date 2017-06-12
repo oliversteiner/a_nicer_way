@@ -7,8 +7,10 @@ $color-smartphone-border-bright: rgb(133, 133, 133);
 $color-smartphone-screen: rgb(195, 209, 255);
 $color-smartphone-homebutton: rgb(15, 16, 51);
 $color-smartphone-homebutton-bright: rgb(24, 25, 81);
-$color-smartphone-pictos: rgb(45, 45, 45);
-$color-smartphone-pictos-bright: rgb(130, 130, 130);
+$color-smartphone-pictos-hidden: rgb(15, 16, 51);
+$color-smartphone-pictos-bright: rgb(58, 58, 116);
+$color-smartphone-pictos-brighter: rgb(62, 107, 169);
+$color-smartphone-pictos-active: rgb(1, 1, 1);
 $color-smartphone-screen: rgb(63, 64, 130);
 
 #smartphone-sim-content {
@@ -28,13 +30,14 @@ $color-smartphone-screen: rgb(63, 64, 130);
 }
 
 #smartphone-frame {
+  height: 700px;
+  width: 350px;
+}
+
+#smartphone-frame {
   position: relative;
   display: block;
-
   background-color: black;
-  height: 700px;
-
-  width: 350px;
   border-radius: 25px;
 
 }
@@ -90,8 +93,7 @@ $color-smartphone-screen: rgb(63, 64, 130);
   position: absolute;
   width: 90%;
   height: 12%;
-  text-align: center;
-  padding: 5%;
+  padding: 2%;
   color: #000;
   font-size: 20px;
   top: 4px;
@@ -99,14 +101,46 @@ $color-smartphone-screen: rgb(63, 64, 130);
 
 #smartphone-head:hover {
   color: $color-smartphone-pictos-bright;
-  cursor: pointer;
+}
+
+// toolbar
+#smartphone-toolbar {
+  padding: 0 5px;
+}
+
+#smartphone-head:hover a {
+  color: $color-smartphone-pictos-bright;
+}
+
+#smartphone-toolbar a {
+  color: $color-smartphone-pictos-hidden;
+  padding: 0 5px;
+}
+
+#smartphone-toolbar a:hover {
+  color: $color-smartphone-pictos-brighter;
+  padding: 0 5px;
 }
 
 #smartphone-toolbar {
+  padding: 0 5px;
 }
 
-.smartphone-toolbar {
+.smartphone-toolbar-item {
+  position: relative;
+  cursor: pointer;
+}
 
+.smartphone-toolbar-group-resize {
+  float: right;
+}
+
+#smartphone-toolbar-move {
+  position: relative;
+
+  display: inline-block;
+  width: 60%;
+  cursor: pointer;
 }
 
 #smartphone-close:active {

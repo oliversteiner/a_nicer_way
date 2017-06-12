@@ -23,8 +23,7 @@ class ConsoleDisplayController {
         // functions
         this.addAllEventsListeners();
 
-        // console
-        console.log(this.className);
+
     }
 
     /**

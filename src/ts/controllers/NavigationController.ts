@@ -1,30 +1,39 @@
 /// <reference path='DbController.ts'/>
 /// <reference path='DataDisplayController.ts'/>
-
+/// <reference path="../definitions/jquery-scrollTo/jquery-scrollTo.d.ts" />
 
 /**
  *  navigationController
  *
  */
+
+
+// Global
+const _navigationName: string = 'navigation';
+const _navigationContentName: string = 'navigation-content';
+let _navigationOpen: boolean = false;
+
+// Class
 class NavigationController {
+    dbController: DbController;
 
     public className: string;
     public idName: string;
-
-    private dbController: any;
-
     private elem_Root: HTMLElement | any;
     private elem_Content: HTMLElement | any;
-    private elem_button_toggle: HTMLElement | any;
-
-    private displayActive: boolean;
-
 
     /**
      * constructor
      */
     constructor() {
         console.log(this.className);
+
+
+        // Vars
+        this.className = 'dnavigationController';
+        this.elem_Root = document.getElementById(_navigationName);
+        this.elem_Content = document.getElementById(_navigationContentName);
+
 
         // Datenbankverbindung aufbauen und verfügbarmachen
         this.dbController = new DbController();
@@ -34,22 +43,20 @@ class NavigationController {
         this.idName = 'navigation';
         this.elem_Root = document.getElementById('navigation');
         this.elem_Content = document.getElementById('navigation-content');
-        this.elem_button_toggle = document.getElementById('navigation-button-toggle');
-        this.displayActive = false;
 
 
         // functions
-        this.madeDraggable();
+        this.makeDraggable();
 
         NavigationController.listAllWayPoints();
-        this.addAllEventsListeners();
+        NavigationController.addAllEventsListeners();
 
     }
 
     /**
-     * madeDraggable
+     * makeDraggable
      */
-    madeDraggable() {
+    makeDraggable() {
         $(this.elem_Root).draggable();
     }
 
@@ -57,24 +64,28 @@ class NavigationController {
      * addAllEventsListeners
      *
      */
-    addAllEventsListeners() {
+    static addAllEventsListeners() {
 
         // Button Close Display
         let buttonCloseDisplay = document.getElementById('navigation-button-close');
-        buttonCloseDisplay.addEventListener('click', this.closeDisplay.bind(this), false);
+        buttonCloseDisplay.addEventListener('click', this.modalClose.bind(this), false);
+
+        $('#navigation-button-close').click(NavigationController.modalClose);
+        $('#navigation-button-toggle').click(NavigationController.toggleDisplay);
+        $('#button-next').click(NavigationController.scrollToNext);
+        $('#button-previous').click(NavigationController.scrollToPreviews);
 
         // Button Show Display
         let buttonShowDisplay = document.getElementById('navigation-button-toggle');
         buttonShowDisplay.addEventListener('click', this.toggleDisplay.bind(this), false);
 
         // Button Show Display
-        let nextTimePoint = document.getElementById('button-next');
+        let nextTimePoint = document.getElementById('');
         nextTimePoint.addEventListener('click', NavigationController.scrollToNext, false);
 
         // Button Show Display
-        let prevTimePoint = document.getElementById('button-previous');
+        let prevTimePoint = document.getElementById('');
         prevTimePoint.addEventListener('click', NavigationController.scrollToPreviews, false);
-
 
     }
 
@@ -176,30 +187,35 @@ class NavigationController {
     }
 
 
-    closeDisplay() {
-        this.displayActive = false;
-
-        $(this.elem_Root).hide();
-        $(this.elem_button_toggle).text('Show Navigation');
+    /**
+     * 
+     * 
+     */
+    static modalClose() {
+        _navigationOpen = false;
+        $('#' + _navigationContentName).hide();
     }
 
-    showDisplay() {
-        this.displayActive = true;
-
-        $(this.elem_Root).show();
-        $(this.elem_button_toggle).text('Hide Navigation');
+    static modalOpen() {
+        _navigationOpen = true;
+        $('#' + _navigationContentName).show();
     }
 
-    toggleDisplay() {
-        if (this.displayActive) {
-            this.closeDisplay();
+    static toggleDisplay() {
+        if (_navigationOpen) {
+            NavigationController.modalClose();
         }
         else {
-            this.showDisplay();
+            NavigationController.modalOpen();
         }
-        return false;
     }
 
+
+    /**
+     *
+     *
+     * @param target
+     */
     static  scrollToTarget(target: string) {
 
         console.log('target:' + target);

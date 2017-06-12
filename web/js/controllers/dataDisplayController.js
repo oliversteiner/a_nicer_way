@@ -4,54 +4,56 @@
  *  dataDisplayController
  *
  */
+// Global
+var _dataDisplayName = 'data-display';
+var _dataDisplayContentName = 'data-display-content';
+var _dataDisplayModalOpen = false;
+// Class
 var DataDisplayController = (function () {
     /**
      * constructor
      */
     function DataDisplayController() {
-        console.log(this.className);
         // Vars
-        this.className = 'dataDisplayController';
-        this.idName = 'data-display';
-        this.elem_Root = document.getElementById(this.idName);
-        this.buttonShowDisplay = document.getElementById('data-display-button-toggle');
-        this.displayActive = false;
-        // functions
-        this.madeDraggable();
-        this.addAllEventsListeners();
+        this.elem_Root = document.getElementById(_dataDisplayName);
+        this.elem_Content = document.getElementById(_dataDisplayContentName);
+        // Views laden
+        $(this.elem_Root).load('../views/data_display.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
+        // Das geladene Element ausblenden
+        // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
+        $('#data-display-ready').ready(function () {
+            // Aktionen verknüpfen
+            DataDisplayController.makeDraggable();
+            DataDisplayController.addAllEventsListeners();
+            DataDisplayController.modalClose();
+            //
+            console.log('- Data Display ready');
+        });
     }
     /**
      * addAllEventsListeners
      */
-    DataDisplayController.prototype.addAllEventsListeners = function () {
-        // Load all HTML and add EventListeners
+    DataDisplayController.addAllEventsListeners = function () {
         // Button SAVE
-        var buttonSave = document.getElementById('data-display-button-save');
-        buttonSave.addEventListener('click', DataDisplayController.saveData, false);
+        $('#data-display-button-save').click(DataDisplayController.saveData);
         // Button DELETE
-        var buttonDelete = document.getElementById('data-display-button-delete');
-        buttonDelete.addEventListener('click', DataDisplayController.deleteData.bind(this), false);
+        $('#data-display-button-delete').click(DataDisplayController.deleteData);
         // Button NEW
-        var buttonNew = document.getElementById('data-display-button-new');
-        buttonNew.addEventListener('click', DataDisplayController.newForm.bind(this), false);
+        $('#data-display-button-new').click(DataDisplayController.newForm);
         // Button Erase DB
-        var buttonErase = document.getElementById('data-display-button-erase-db');
-        buttonErase.addEventListener('click', DbController.eraseDB, false);
+        $('#data-display-button-erase-db').click(DbController.eraseDB);
         // Button Load Default
-        var buttonDefault = document.getElementById('data-display-button-load-default');
-        buttonDefault.addEventListener('click', DbController.loadDefault, false);
+        $('#data-display-button-load-default').click(DbController.loadDefault);
         // Button Close Display
-        var buttonCloseDisplay = document.getElementById('data-display-button-close-display');
-        buttonCloseDisplay.addEventListener('click', this.closeDisplay.bind(this), false);
+        $('#data-display-button-close').click(DataDisplayController.modalClose);
         // Button Show Display
-        var buttonShowDisplay = document.getElementById('data-display-button-toggle');
-        buttonShowDisplay.addEventListener('click', this.toggleDisplay.bind(this), false);
+        $('#data-display-button-toggle').click(DataDisplayController.modalToggle);
     };
     /**
-     * madeDraggable
+     * makeDraggable
      */
-    DataDisplayController.prototype.madeDraggable = function () {
-        $(this.elem_Root).draggable();
+    DataDisplayController.makeDraggable = function () {
+        $('#' + _dataDisplayContentName).draggable();
     };
     /**
      * resetform
@@ -150,24 +152,25 @@ var DataDisplayController = (function () {
             NavigationController.listAllWayPoints();
         }, 1000);
     };
-    DataDisplayController.prototype.closeDisplay = function () {
-        this.displayActive = false;
-        $(this.elem_Root).hide();
-        $(this.buttonShowDisplay).text('Show Datadisplay');
+    /**
+     * Fenster
+     *
+     */
+    DataDisplayController.modalClose = function () {
+        _dataDisplayModalOpen = false;
+        $('#' + _dataDisplayContentName).hide();
     };
-    DataDisplayController.prototype.showDisplay = function () {
-        this.displayActive = true;
-        $(this.elem_Root).show();
-        $(this.buttonShowDisplay).text('Hide Datadisplay');
+    DataDisplayController.modalOpen = function () {
+        _dataDisplayModalOpen = true;
+        $('#' + _dataDisplayContentName).show();
     };
-    DataDisplayController.prototype.toggleDisplay = function () {
-        if (this.displayActive) {
-            this.closeDisplay();
+    DataDisplayController.modalToggle = function () {
+        if (_dataDisplayModalOpen) {
+            DataDisplayController.modalClose();
         }
         else {
-            this.showDisplay();
+            DataDisplayController.modalOpen();
         }
-        return false;
     };
     return DataDisplayController;
 }());

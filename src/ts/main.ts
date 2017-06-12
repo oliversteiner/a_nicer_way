@@ -6,40 +6,33 @@ class ANicerWay {
     public className: string;
     public timePointAktuell = 0;
 
-    constructor(parameters: { debug_modus: any }) {
-        let debug_modus = parameters.debug_modus;
+    constructor(parameters: { simulator_size: number }) {
+        let simulator_size = parameters.simulator_size;
 
         this.className = 'aNicerWay';
-        console.log(this.className);
 
-        // debug-modus ein ?
-        if (debug_modus) {
-            //   this.debugModus();
-        }
 
         // alle html-views zusammensetzen
-        $('#data-display').load('views/data_display.html').hide(); // aus dem View-Verzeichnis laden, und gleich ausblenden
-        $('#smartphone-sim').load('views/smartphone_sim.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
-        $('#navigation').load('views/navigation_display.html').hide();
-        $('#timeway').load('views/timeway.html');
         $('#main_navigation').load('views/main_navigation.html');
-        $('#status-display').load('views/status_display.html');
+
+        let dataDisplayController = new DataDisplayController();
+        let smartphoneSimController = new SmartphoneSimController(2);
+
+        //  $('#navigation').load('views/navigation_display.html').hide();
+        //  $('#timeway').load('views/timeway.html');
+        //  $('#status-display').load('views/status_display.html');
 
         // load all Controllers
         console.log('load');
+
         // Warte kurz, damit die dynamisch eingefügten HTML-dokument schon geladen sind.
-        setTimeout(function () {
-            let consoleDisplayController = new ConsoleDisplayController();
-            let smartphoneSimController = new SmartphoneSimController();
-            let statusDisplayController = new StatusDisplayController();
-            let timewayController = new TimewayController();
-            let navigationController = new NavigationController();
-            let dataDisplayController = new DataDisplayController();
-            //alert('ready');
 
+        //    let consoleDisplayController = new ConsoleDisplayController();
+        //    let statusDisplayController = new StatusDisplayController();
+        //    let timewayController = new TimewayController();
+        //    let navigationController = new NavigationController();
+        //alert('ready');
 
-            console.log('ready');
-        }, 1000);
 
     }
 
@@ -54,6 +47,7 @@ class ANicerWay {
         return this.className;
     }
 
+
     setTimePoint(point: number) {
         // Test
         this.timePointAktuell = point;
@@ -64,35 +58,13 @@ class ANicerWay {
         return this.timePointAktuell;
     }
 
-    /**
-     * debugModus
-     *
-     */
-    public static debugModus() {
-        let elem_console_display: any = document.getElementById('console-display');
-        let elem_status_display: any = document.getElementById('status-display');
-        let elem_smartphone_sim: any = document.getElementById('smartphone-sim');
-        let elem_timeway: any = document.getElementById('timeway');
-        let elem_navigation: any = document.getElementById('navigation');
-        let elem_data_display: any = document.getElementById('data-display');
-
-        elem_console_display.style.display = 'block';
-
-        elem_console_display.classList.add('debug-modus');
-        elem_status_display.classList.add('debug-modus');
-        elem_smartphone_sim.classList.add('debug-modus');
-        elem_timeway.classList.add('debug-modus');
-        elem_navigation.classList.add('debug-modus');
-        elem_data_display.classList.add('debug-modus');
-
-        return true;
-    }
-
 
 }
 
 // init
-let options = {debug_modus: false};
+let options = {
+    simulator_size: 1
+};
 let aNicerWay = new ANicerWay(options);
 
 
@@ -130,14 +102,13 @@ setTimeout(function () {
     });
 
 
-
-    window.addEventListener('keypress', function(event) {
+    window.addEventListener('keypress', function (event) {
         if (event.keyCode == 37) {
             NavigationController.scrollToPreviews;
         }
     });
 
-    window.addEventListener('keypress', function(event) {
+    window.addEventListener('keypress', function (event) {
         if (event.keyCode == 39) {
             NavigationController.scrollToPreviews;
         }

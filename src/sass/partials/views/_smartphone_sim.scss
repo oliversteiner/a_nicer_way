@@ -5,18 +5,26 @@ $color-smartphone: rgb(0, 0, 0);
 $color-smartphone-border: rgb(45, 45, 45);
 $color-smartphone-border-bright: rgb(133, 133, 133);
 $color-smartphone-screen: rgb(195, 209, 255);
-$color-smartphone-homebutton: rgb(68, 68, 68);
-$color-smartphone-pictos: rgb(45,45,45);
+$color-smartphone-homebutton: rgb(15, 16, 51);
+$color-smartphone-homebutton-bright: rgb(24, 25, 81);
+$color-smartphone-pictos: rgb(45, 45, 45);
 $color-smartphone-pictos-bright: rgb(130, 130, 130);
 $color-smartphone-screen: rgb(63, 64, 130);
 
-
-#smartphone-sim {
+#smartphone-sim-content {
   position: absolute;
   right: 100px;
   bottom: 50px;
   transition: all 100ms ease-in-out;
+}
 
+// animate
+#smartphone-sim-content.smartphone-close {
+  bottom: -450px;
+}
+
+#smartphone-sim-content.smartphone-close:hover {
+  bottom: -440px;
 }
 
 #smartphone-frame {
@@ -28,13 +36,10 @@ $color-smartphone-screen: rgb(63, 64, 130);
 
   width: 350px;
   border-radius: 25px;
-  border: 1px solid $color-smartphone-border;
-
 
 }
 
 #smartphone-frame:hover {
-  cursor: move;
 }
 
 #smartphone-inner {
@@ -50,7 +55,7 @@ $color-smartphone-screen: rgb(63, 64, 130);
   width: 100%;
   height: 100%;
   border-radius: 2%;
-  border: 1px solid $color-smartphone-border;
+  overflow-x: scroll;
 
 }
 
@@ -73,20 +78,35 @@ $color-smartphone-screen: rgb(63, 64, 130);
 
 }
 
-#smartphone-close {
+#smartphone-home-button:active {
+  border: 1px solid $color-smartphone-border-bright;
+  background-color: $color-smartphone-homebutton-bright;
+
+  cursor: pointer;
+
+}
+
+#smartphone-head {
   position: absolute;
-  width: 99%;
+  width: 90%;
   height: 12%;
   text-align: center;
   padding: 5%;
-  color: black;
+  color: #000;
   font-size: 20px;
-  z-index: +1;
+  top: 4px;
 }
 
-#smartphone-close:hover {
+#smartphone-head:hover {
   color: $color-smartphone-pictos-bright;
   cursor: pointer;
+}
+
+#smartphone-toolbar {
+}
+
+.smartphone-toolbar {
+
 }
 
 #smartphone-close:active {
@@ -96,28 +116,70 @@ $color-smartphone-screen: rgb(63, 64, 130);
 
 #smartphone-console {
   position: absolute;
-  padding: 30px;
-
-}
-
-#smartphone-console {
   width: 100%;
+  padding: 0;
   margin: 0;
-  padding: 20px;
-  border: 1px solid black;
   background-color: $color-console-background;
   color: $color-message;
 }
 
-#smartphone-content {
+#smartphone-console-content {
+  padding: 10px;
 
 }
 
-// animate
-#smartphone-sim.smartphone-close {
-bottom: -450px;
+#smartphone-console {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 0.7em;
+
+  .message,
+  .message-default,
+  .message-error,
+  .message-warning,
+  .message-ok {
+
+    padding-bottom: 2px;
+  }
 }
 
-#smartphone-sim.smartphone-close:hover {
-  bottom: -440px;
+#smartphone-console-toolbar {
+  border-bottom: 1px solid $color-console-background-bright;
+  background-color: $color-console-background;
+  padding: 5px 10px 10px 10px;
+
 }
+
+.smartphone-console-toolbar-item {
+  float: right;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.smartphone-console-status {
+  float: none;
+
+}
+
+#smartphone-console a {
+  cursor: pointer;
+}
+
+@-webkit-keyframes pulsate {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+
+.prompt-pulse {
+
+  -webkit-animation: pulsate 2s ease-out;
+  -webkit-animation-iteration-count: infinite;
+}
+
+

@@ -8117,8 +8117,8 @@ $.widget( "ui.autocomplete", {
 						this.close( event );
 
 						// Different browsers have different default behavior for escape
-						// Single press can mean undo or clear
-						// Double press in IE means clear the whole form
+						// Single press can mean undo or consoleClear
+						// Double press in IE means consoleClear the whole form
 						event.preventDefault();
 					}
 					break;
@@ -10201,12 +10201,12 @@ $.extend( Datepicker.prototype, {
 							$.datepicker._clearDate( event.target );
 						}
 						handled = event.ctrlKey || event.metaKey;
-						break; // clear on ctrl or command +end
+						break; // consoleClear on ctrl or command +end
 				case 36: if ( event.ctrlKey || event.metaKey ) {
 							$.datepicker._gotoToday( event.target );
 						}
 						handled = event.ctrlKey || event.metaKey;
-						break; // current on ctrl or command +home
+						break; // current on ctrl or command +goHome
 				case 37: if ( event.ctrlKey || event.metaKey ) {
 							$.datepicker._adjustDate( event.target, ( isRTL ? +1 : -1 ), "D" );
 						}
@@ -10247,7 +10247,7 @@ $.extend( Datepicker.prototype, {
 						break; // +1 week on ctrl or command +down
 				default: handled = false;
 			}
-		} else if ( event.keyCode === 36 && event.ctrlKey ) { // display the date picker on ctrl+home
+		} else if ( event.keyCode === 36 && event.ctrlKey ) { // display the date picker on ctrl+goHome
 			$.datepicker._showDatepicker( this );
 		} else {
 			handled = false;
@@ -11225,7 +11225,7 @@ $.extend( Datepicker.prototype, {
 			printDate, dRow, tbody, daySettings, otherMonth, unselectable,
 			tempDate = new Date(),
 			today = this._daylightSavingAdjust(
-				new Date( tempDate.getFullYear(), tempDate.getMonth(), tempDate.getDate() ) ), // clear time
+				new Date( tempDate.getFullYear(), tempDate.getMonth(), tempDate.getDate() ) ), // consoleClear time
 			isRTL = this._get( inst, "isRTL" ),
 			showButtonPanel = this._get( inst, "showButtonPanel" ),
 			hideIfNoPrevNext = this._get( inst, "hideIfNoPrevNext" ),
@@ -15877,7 +15877,7 @@ $.widget( "ui.tooltip", {
 			return;
 		}
 
-		// If we have a title, clear it to prevent the native tooltip
+		// If we have a title, consoleClear it to prevent the native tooltip
 		// we have to check first to avoid defining a title if none exists
 		// (we don't want to cause an element to start matching [title])
 		//
@@ -16980,7 +16980,7 @@ $.effects.animateClass = function( value, duration, easing, callback ) {
 			applyClassChange();
 
 			// For each animated element,
-			// clear all css properties that were animated
+			// consoleClear all css properties that were animated
 			$.each( arguments, function() {
 				var el = this.el;
 				$.each( this.diff, function( key ) {

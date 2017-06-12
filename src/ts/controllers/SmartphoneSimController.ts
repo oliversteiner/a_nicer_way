@@ -2,95 +2,310 @@
  *  SmartphoneSimController
  *
  */
+// Global
+const _smartphoneSimName: string = 'smartphone-sim';
+const _smartphoneSimContentName: string = 'smartphone-sim-content';
+let _smartphoneSimOpen: boolean = true;
+let _smartphoneSimUp: boolean = false;
+let _smartphoneSimConsoleOpen: boolean = true;
+
+
 class SmartphoneSimController {
     public className: string;
     public idName: string;
     public isOpen: boolean;
+    public console: boolean;
 
     // DOM
     private elem_Root: any;
-    private elem_console: any;
-    private elem_Home: any;
-    private elem_Close: any;
-    private elem_Screen: any;
-    private elem_Frame: any;
+    private elem_Content: any;
+    private simulator_size: number = 1;
 
 
     /**
      * constructor
      */
-    constructor() {
-        console.log(this.className);
+    constructor(simulator_size: number) {
 
 
         // Vars
-        this.isOpen = false;
         this.className = 'SmartphoneSimController';
-        this.idName = 'smartphone-sim';
-        this.elem_Root = document.getElementById(this.idName);
-        this.elem_Frame = document.getElementById('smartphone-frame');
-
-        this.elem_console = document.getElementById('smartphone-console');
-        this.elem_Home = document.getElementById('smartphone-home-button');
-        this.elem_Close = document.getElementById('smartphone-close');
-        this.elem_Screen = document.getElementById('smartphone-screen');
+        this.elem_Root = document.getElementById(_smartphoneSimName);
+        this.elem_Content = document.getElementById(_smartphoneSimContentName);
+        this.simulator_size = simulator_size;
 
 
-        // functions
-        this.addAllEventsListeners();
-        $(this.elem_Frame).draggable();
+        // Views laden
+        $(this.elem_Root).load('../views/smartphone_sim.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
 
-        // blinkender Cursor
+
+        // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
+        $('#smartphone-sim-ready').ready(function () {
+                console.log('- Smartphone Simulator load');
+
+                // Aktionen verknüpfen
+                //   SmartphoneSimController.makeDraggable();
+                SmartphoneSimController.addAllEventsListeners();
+
+                SmartphoneSimController.open();
+                SmartphoneSimController.moveUp();
+
+                SmartphoneSimController.consoleOpen();
+                SmartphoneSimController.message('bereit...');
+
+                // Tests
+
+                //  SmartphoneSimController.consoleTest();
+
+                //
+                console.log('- Smartphone Simulator ready');
+
+            }
+        )
+
 
     }
+
 
     /**
      * addAllEventsListeners
      */
-    addAllEventsListeners() {
-        this.elem_Home.addEventListener('click', this.home.bind(this), false);
-        this.elem_Close.addEventListener('click', this.toggle.bind(this), false);
+    static    addAllEventsListeners() {
+
+        // Move Sim up / Down
+        $('#smartphone-toolbar').click(SmartphoneSimController.moveToggle);
+
+        // Main-Menu : Show / Hide Simulator
+        $('.smartphone-sim-button-toggle').click(SmartphoneSimController.toggle);
+
+        // press home button
+        $('#smartphone-home-button').click(SmartphoneSimController.homeButton);
+
+        // Sim Console consoleClear
+        $('.smartphone-console-clear').click(SmartphoneSimController.consoleClear);
+        $('.smartphone-console-test').click(SmartphoneSimController.consoleTest);
 
     }
 
-    home() {
+    /**
+     * makeDraggable
+     */
+    static  makeDraggable() {
+
+        $('#' + _smartphoneSimContentName).draggable();
+    }
+
+    static setSize() {
+        console.log('setSize');
+
+        // die höhe und Breite vom smartphone ausrechnen
+
+        // das Phone an den
+    }
+
+    static homeButton() {
         console.log('Homebutton gedrückt');
-        $(this.elem_console).text('Home');
+
+        // Sim Console ein/ausblenden
+        SmartphoneSimController.consoleToggle();
     }
 
-    close() {
-        console.log('SmartponeSim: Close');
-        this.isOpen = false;
-        $(this.elem_Root).addClass('smartphone-close');
-        $('#smartphone-close-icon').removeClass('glyphicon-arrow-down').addClass('glyphicon-arrow-up');
+    static moveDown() {
+        _smartphoneSimUp = false;
+        $('#' + _smartphoneSimContentName).addClass('smartphone-close');
+
+        $('.smartphone-toolbar-move span').removeClass('glyphicon-arrow-down').addClass('glyphicon-arrow-up');
+    }
+
+    static moveUp() {
+        _smartphoneSimUp = true;
+        $('#' + _smartphoneSimContentName).removeClass('smartphone-close');
+        $('.smartphone-toolbar-move span').removeClass('glyphicon-arrow-up').addClass('glyphicon-arrow-down');
 
     }
 
-    open() {
-        console.log('SmartponeSim: Open');
-        this.isOpen = true;
-        $(this.elem_Root).removeClass('smartphone-close');
+    static moveToggle() {
 
-        $('#smartphone-close-icon').removeClass('glyphicon-arrow-up').addClass('glyphicon-arrow-down');
-        $(".console-cursor").effect("pulsate", {times: 10}, 20000);
-
-    }
-
-    toggle() {
-        console.log('SmartponeSim: toggle');
-
-        if (this.isOpen) {
-            this.close()
+        if (_smartphoneSimUp) {
+            SmartphoneSimController.moveDown()
         } else {
-            this.open();
+            SmartphoneSimController.moveUp();
         }
     }
 
     static setContent(content: any) {
 
-        let elem_Content = document.getElementById('smartphone-console')
+        let elem_Content = document.getElementById('smartphone-console');
         $(elem_Content).html(content);
     }
 
 
+    // Console
+
+
+    static message(text: string, tab?: number) {
+        status = 'default';
+        SmartphoneSimController.addToConsole(text, status, tab);
+    }
+
+
+    static ok(text: string, tab?: number) {
+        status = 'ok';
+        SmartphoneSimController.addToConsole(text, status, tab);
+    }
+
+    static warning(text: string, tab?: number) {
+        status = 'warning';
+        SmartphoneSimController.addToConsole(text, status, tab);
+    }
+
+
+    static error(text: string, tab?: number) {
+        status = 'error';
+        SmartphoneSimController.addToConsole(text, status, tab);
+    }
+
+    static consoleClear() {
+        let html = '<div id="smartphone-console-prompt" class="prompt-pulse">_</div>';
+        $('#smartphone-console-content').html(html);
+        $('.smartphone-console-status').text('console');
+
+    }
+
+    static addToConsole(text: string, status?: any, tab?: number) {
+        let elem_prompt = '#smartphone-console-prompt';
+        let class_status: string;
+        let class_tab: string;
+        let message: string;
+
+        // Die Class erstellen, die die nachrichten formatiert
+        // sass/utillities/_messages.scss
+        class_status = 'message-' + status;
+
+
+        // Spezielle Textauszeichnungen
+        switch (text) {
+            case '-':
+                message = '<hr class="console">';
+                break;
+            default:
+                message = text;
+        }
+
+        // Text einrücken
+        if (tab) {
+            class_tab = 'tab-' + tab;
+        } else {
+            class_tab = '';
+        }
+
+
+        // beim ersten Aufruf die Console mit dem Promt versehen
+        if (!$(elem_prompt).length) {
+            SmartphoneSimController.consoleClear();
+        }
+        // Zeile hinzufügen
+        $(elem_prompt).before('<div class="' + class_status + ' ' + class_tab + '">' + message + '</div>');
+    }
+
+
+    static consoleOpen() {
+        _smartphoneSimConsoleOpen = true;
+
+        $('#smartphone-console').slideDown('fast', function () {
+            $('#smartphone-console-content').css('visibility', 'visible');
+
+        });
+    }
+
+    static consoleClose() {
+        _smartphoneSimConsoleOpen = false;
+        $('#smartphone-console-content').css('visibility', 'hidden');
+
+        $('#smartphone-console').slideUp('fast');
+    }
+
+    static consoleToggle() {
+        if (_smartphoneSimConsoleOpen) {
+            SmartphoneSimController.consoleClose();
+        }
+        else {
+            SmartphoneSimController.consoleOpen();
+        }
+    }
+
+// Simulator Window
+    static open() {
+        _smartphoneSimOpen = true;
+        $('#' + _smartphoneSimContentName).show();
+    }
+
+    static close() {
+        _smartphoneSimOpen = false;
+        $('#' + _smartphoneSimContentName).hide();
+    }
+
+    static toggle() {
+        if (_smartphoneSimOpen) {
+            SmartphoneSimController.close();
+        }
+        else {
+            SmartphoneSimController.open();
+        }
+    }
+
+    static consoleTest() {
+        SmartphoneSimController.moveUp();
+        $('.smartphone-console-status').text('test running...');
+
+        let testmessages = [
+            // ['status', 'text', 'tab'],
+            ['default', 'Start Test'],
+            ['default', '-'],
+            ['default', 'da kommt was'],
+            ['warning', 'sieht nicht gut aus'],
+            ['default', 'oder doch?'],
+            ['warning', 'nein, gar nicht gut'],
+            ['error', 'Hilfe es kommt auf mich zu', 0],
+            ['default', '3', 1],
+            ['default', '2', 2],
+            ['default', '1', 3],
+            ['default', ''],
+            ['warning', 'uff! knapp daneben'],
+            ['ok', 'und wieder alles gut'],
+            ['default', '-'],
+            ['default', 'End Test <a onclick="SmartphoneSimController.consoleClear()">[clear]</a>'],
+            ['default', '-']
+        ];
+
+        const speed = 500;
+        let timer = setInterval(lineAfterLine, speed);
+        let length = testmessages.length;
+        let index = 0;
+
+        function lineAfterLine() {
+            let message = testmessages[index];
+
+            let text: any = message[1];
+            let status: any = message[0];
+            let tab: any = 0;
+            if (message[2]) {
+                tab = message[2];
+            }
+            SmartphoneSimController.addToConsole(text, status, tab);
+
+            index++;
+
+            // remove timer after interating through all articles
+            if (index >= length) {
+                clearInterval(timer);
+                $('.smartphone-console-status').text('test end');
+
+            }
+        }
+
+    }
 }
+
+
+

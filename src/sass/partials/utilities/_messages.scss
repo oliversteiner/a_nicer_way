@@ -2,9 +2,11 @@
 @import "../design/fonts";
 
 // Messages
-.message {
+.message,
+.message-default {
   color: $color-message;
 }
+
 
 .message-ok {
   color: $color-message-ok;
@@ -16,4 +18,21 @@
 
 .message-error {
   color: $color-message-error;
+}
+
+.tab-1{
+  padding-left: 10px;
+}
+.tab-2{
+  padding-left: 20px;
+}
+.tab-3{
+  padding-left: 30px;
+}
+
+hr.console{
+  padding: 0;
+  margin: 4px 0;
+  border: none;
+  border-bottom: 1px solid $color-console-background-bright;
 }

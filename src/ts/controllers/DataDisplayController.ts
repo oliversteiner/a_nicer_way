@@ -5,32 +5,44 @@
  *  dataDisplayController
  *
  */
+
+// Global
+const _dataDisplayName: string = 'data-display';
+const _dataDisplayContentName: string = 'data-display-content';
+let _dataDisplayModalOpen: boolean = false;
+
+// Class
 class DataDisplayController {
 
-    public className: string;
-    private elem_Root: any;
-    public idName: string;
-    public buttonShowDisplay: any;
-    public displayActive: boolean;
+    private elem_Root: HTMLElement | any;
+    private elem_Content: HTMLElement | any;
 
     /**
      * constructor
      */
     constructor() {
-        console.log(this.className);
-
 
         // Vars
-        this.className = 'dataDisplayController';
-        this.idName = 'data-display';
-        this.elem_Root = document.getElementById(this.idName);
-        this.buttonShowDisplay = document.getElementById('data-display-button-toggle');
-        this.displayActive = false;
+        this.elem_Root = document.getElementById(_dataDisplayName);
+        this.elem_Content = document.getElementById(_dataDisplayContentName);
 
-        // functions
+        // Views laden
+        $(this.elem_Root).load('../views/data_display.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
 
-        this.madeDraggable();
-        this.addAllEventsListeners();
+        // Das geladene Element ausblenden
+
+        // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
+        $('#data-display-ready').ready(function () {
+
+                // Aktionen verknüpfen
+                DataDisplayController.makeDraggable();
+                DataDisplayController.addAllEventsListeners();
+                DataDisplayController.modalClose();
+
+                //
+                console.log('- Data Display ready');
+            }
+        )
 
 
     }
@@ -38,46 +50,38 @@ class DataDisplayController {
     /**
      * addAllEventsListeners
      */
-    addAllEventsListeners() {
-
-        // Load all HTML and add EventListeners
+    static addAllEventsListeners() {
 
 
         // Button SAVE
-        let buttonSave = document.getElementById('data-display-button-save');
-        buttonSave.addEventListener('click', DataDisplayController.saveData, false);
+        $('#data-display-button-save').click(DataDisplayController.saveData);
 
         // Button DELETE
-        let buttonDelete = document.getElementById('data-display-button-delete');
-        buttonDelete.addEventListener('click', DataDisplayController.deleteData.bind(this), false);
+        $('#data-display-button-delete').click(DataDisplayController.deleteData);
 
         // Button NEW
-        let buttonNew = document.getElementById('data-display-button-new');
-        buttonNew.addEventListener('click', DataDisplayController.newForm.bind(this), false);
+        $('#data-display-button-new').click(DataDisplayController.newForm);
 
         // Button Erase DB
-        let buttonErase = document.getElementById('data-display-button-erase-db');
-        buttonErase.addEventListener('click', DbController.eraseDB, false);
+        $('#data-display-button-erase-db').click(DbController.eraseDB);
 
         // Button Load Default
-        let buttonDefault = document.getElementById('data-display-button-load-default');
-        buttonDefault.addEventListener('click', DbController.loadDefault, false);
+        $('#data-display-button-load-default').click(DbController.loadDefault);
 
         // Button Close Display
-        let buttonCloseDisplay = document.getElementById('data-display-button-close-display');
-        buttonCloseDisplay.addEventListener('click', this.closeDisplay.bind(this), false);
+        $('#data-display-button-close').click(DataDisplayController.modalClose);
 
         // Button Show Display
-        let buttonShowDisplay = document.getElementById('data-display-button-toggle');
-        buttonShowDisplay.addEventListener('click', this.toggleDisplay.bind(this), false);
+        $('#data-display-button-toggle').click(DataDisplayController.modalToggle);
 
     }
 
     /**
-     * madeDraggable
+     * makeDraggable
      */
-    madeDraggable() {
-        $(this.elem_Root).draggable();
+    static  makeDraggable() {
+
+        $('#' + _dataDisplayContentName).draggable();
     }
 
     /**
@@ -168,7 +172,6 @@ class DataDisplayController {
      */
     static setData(id: string) {
 
-
         let promise = DbController.loadWayPoint(id);
         promise.then(function (doc: any) {
 
@@ -198,9 +201,7 @@ class DataDisplayController {
         let _id = $('#_id').val();
 
         DbController.deleteWayPoint(_id);
-
         DataDisplayController.resetForm();
-
 
         // Die Liste aktualisieren
         setTimeout(function () {
@@ -209,30 +210,28 @@ class DataDisplayController {
     }
 
 
-    closeDisplay() {
-        this.displayActive = false;
-
-        $(this.elem_Root).hide();
-        $(this.buttonShowDisplay).text('Show Datadisplay');
+    /**
+     * Fenster
+     *
+     */
+    static modalClose() {
+        _dataDisplayModalOpen = false;
+        $('#' + _dataDisplayContentName).hide();
     }
 
-    showDisplay() {
-        this.displayActive = true;
-
-        $(this.elem_Root).show();
-        $(this.buttonShowDisplay).text('Hide Datadisplay');
+    static modalOpen() {
+        _dataDisplayModalOpen = true;
+        $('#' + _dataDisplayContentName).show();
     }
 
-    toggleDisplay() {
-        if (this.displayActive) {
-            this.closeDisplay();
+    static modalToggle() {
+        if (_dataDisplayModalOpen) {
+            DataDisplayController.modalClose();
         }
         else {
-            this.showDisplay();
+            DataDisplayController.modalOpen();
         }
-        return false;
     }
-
 
 
 }

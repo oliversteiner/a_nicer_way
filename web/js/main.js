@@ -5,33 +5,23 @@
 var ANicerWay = (function () {
     function ANicerWay(parameters) {
         this.timePointAktuell = 0;
-        var debug_modus = parameters.debug_modus;
+        var simulator_size = parameters.simulator_size;
         this.className = 'aNicerWay';
-        console.log(this.className);
-        // debug-modus ein ?
-        if (debug_modus) {
-            //   this.debugModus();
-        }
         // alle html-views zusammensetzen
-        $('#data-display').load('views/data_display.html').hide(); // aus dem View-Verzeichnis laden, und gleich ausblenden
-        $('#smartphone-sim').load('views/smartphone_sim.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
-        $('#navigation').load('views/navigation_display.html').hide();
-        $('#timeway').load('views/timeway.html');
         $('#main_navigation').load('views/main_navigation.html');
-        $('#status-display').load('views/status_display.html');
+        var dataDisplayController = new DataDisplayController();
+        var smartphoneSimController = new SmartphoneSimController(2);
+        //  $('#navigation').load('views/navigation_display.html').hide();
+        //  $('#timeway').load('views/timeway.html');
+        //  $('#status-display').load('views/status_display.html');
         // load all Controllers
         console.log('load');
         // Warte kurz, damit die dynamisch eingefügten HTML-dokument schon geladen sind.
-        setTimeout(function () {
-            var consoleDisplayController = new ConsoleDisplayController();
-            var smartphoneSimController = new SmartphoneSimController();
-            var statusDisplayController = new StatusDisplayController();
-            var timewayController = new TimewayController();
-            var navigationController = new NavigationController();
-            var dataDisplayController = new DataDisplayController();
-            //alert('ready');
-            console.log('ready');
-        }, 1000);
+        //    let consoleDisplayController = new ConsoleDisplayController();
+        //    let statusDisplayController = new StatusDisplayController();
+        //    let timewayController = new TimewayController();
+        //    let navigationController = new NavigationController();
+        //alert('ready');
     }
     /**
      * get
@@ -50,30 +40,12 @@ var ANicerWay = (function () {
     ANicerWay.prototype.getTimePoint = function () {
         return this.timePointAktuell;
     };
-    /**
-     * debugModus
-     *
-     */
-    ANicerWay.debugModus = function () {
-        var elem_console_display = document.getElementById('console-display');
-        var elem_status_display = document.getElementById('status-display');
-        var elem_smartphone_sim = document.getElementById('smartphone-sim');
-        var elem_timeway = document.getElementById('timeway');
-        var elem_navigation = document.getElementById('navigation');
-        var elem_data_display = document.getElementById('data-display');
-        elem_console_display.style.display = 'block';
-        elem_console_display.classList.add('debug-modus');
-        elem_status_display.classList.add('debug-modus');
-        elem_smartphone_sim.classList.add('debug-modus');
-        elem_timeway.classList.add('debug-modus');
-        elem_navigation.classList.add('debug-modus');
-        elem_data_display.classList.add('debug-modus');
-        return true;
-    };
     return ANicerWay;
 }());
 // init
-var options = { debug_modus: false };
+var options = {
+    simulator_size: 1
+};
 var aNicerWay = new ANicerWay(options);
 setTimeout(function () {
     var parent_old = 0;

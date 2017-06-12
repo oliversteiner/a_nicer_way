@@ -73,7 +73,7 @@ https://www.npmjs.com/package/gulp-sass
 - stellar.js
   http://markdalgleish.com/projects/stellar.js/
 
-## Time-Way Daten
+### Time-Way Daten
 - TimeWayId
 - Time
 - Date
@@ -89,6 +89,50 @@ https://www.npmjs.com/package/gulp-sass
 - index.html mit SCSS und Typescript gestestet.
 - Alle Controller erstellt und getestet
 - Pouchdb installiert, Form gebaut, mit Musterdaten gefüllt
+- scroll effect hinzugefügt
+
+## Next / Todo
+##### Smartphone Sim
+ - [ ] x2 button
+
+
+##### Figur einfügen
+- [ ] Figur: laudend
+- [ ] Figur: stehend
+- [ ] Figur: sitzend
+- [ ] Figur: mit Smartphone in der Hand
+- [ ] Bus: stehend
+- [ ] Bus: fahrend
+- [ ] Menschenmenge: stehend
+- [ ] Menschenmenge: laufend
+- [ ] (umschaltbar mit Num-Keys)
 
 
 
+##### Parallx-verschiebung verbessern
+- [ ] Parallax- [ ] 
+
+##### TimewayPoint
+- [ ] eigene Zeichnung zu Timepoint hinterlegen
+    
+##### Remote
+- [ ] remote ui aufbauen
+- [ ] über node.js server starten
+- [ ] socket.io installieren
+- [ ] testen...
+
+
+##### Console
+- [ ]  pulsierender Curser mit CSS3 statt JS
+    https://paulund.co.uk/create-pulse-effect-with-css3-animation
+
+
+## History
+
+#### Version 1.0
+
+#### Version 1.1b
+- alle html-views aus dem main.ts in die entsprecghenden moodile integriert.
+    - kein ***setTimeout*** mehr! 
+- debug-modus entfernt
+- Smartphone-Simulator Console gepimpt

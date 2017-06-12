@@ -1,15 +1,25 @@
 /// <reference path='DbController.ts'/>
 /// <reference path='DataDisplayController.ts'/>
+/// <reference path="../definitions/jquery-scrollTo/jquery-scrollTo.d.ts" />
 /**
  *  navigationController
  *
  */
+// Global
+var _navigationName = 'navigation';
+var _navigationContentName = 'navigation-content';
+var _navigationOpen = false;
+// Class
 var NavigationController = (function () {
     /**
      * constructor
      */
     function NavigationController() {
         console.log(this.className);
+        // Vars
+        this.className = 'dnavigationController';
+        this.elem_Root = document.getElementById(_navigationName);
+        this.elem_Content = document.getElementById(_navigationContentName);
         // Datenbankverbindung aufbauen und verfügbarmachen
         this.dbController = new DbController();
         // Eigenschaften setzen
@@ -17,35 +27,37 @@ var NavigationController = (function () {
         this.idName = 'navigation';
         this.elem_Root = document.getElementById('navigation');
         this.elem_Content = document.getElementById('navigation-content');
-        this.elem_button_toggle = document.getElementById('navigation-button-toggle');
-        this.displayActive = false;
         // functions
-        this.madeDraggable();
+        this.makeDraggable();
         NavigationController.listAllWayPoints();
-        this.addAllEventsListeners();
+        NavigationController.addAllEventsListeners();
     }
     /**
-     * madeDraggable
+     * makeDraggable
      */
-    NavigationController.prototype.madeDraggable = function () {
+    NavigationController.prototype.makeDraggable = function () {
         $(this.elem_Root).draggable();
     };
     /**
      * addAllEventsListeners
      *
      */
-    NavigationController.prototype.addAllEventsListeners = function () {
+    NavigationController.addAllEventsListeners = function () {
         // Button Close Display
         var buttonCloseDisplay = document.getElementById('navigation-button-close');
-        buttonCloseDisplay.addEventListener('click', this.closeDisplay.bind(this), false);
+        buttonCloseDisplay.addEventListener('click', this.modalClose.bind(this), false);
+        $('#navigation-button-close').click(NavigationController.modalClose);
+        $('#navigation-button-toggle').click(NavigationController.toggleDisplay);
+        $('#button-next').click(NavigationController.scrollToNext);
+        $('#button-previous').click(NavigationController.scrollToPreviews);
         // Button Show Display
         var buttonShowDisplay = document.getElementById('navigation-button-toggle');
         buttonShowDisplay.addEventListener('click', this.toggleDisplay.bind(this), false);
         // Button Show Display
-        var nextTimePoint = document.getElementById('button-next');
+        var nextTimePoint = document.getElementById('');
         nextTimePoint.addEventListener('click', NavigationController.scrollToNext, false);
         // Button Show Display
-        var prevTimePoint = document.getElementById('button-previous');
+        var prevTimePoint = document.getElementById('');
         prevTimePoint.addEventListener('click', NavigationController.scrollToPreviews, false);
     };
     /**
@@ -117,25 +129,31 @@ var NavigationController = (function () {
             SmartphoneSimController.setContent(content);
         });
     };
-    NavigationController.prototype.closeDisplay = function () {
-        this.displayActive = false;
-        $(this.elem_Root).hide();
-        $(this.elem_button_toggle).text('Show Navigation');
+    /**
+     *
+     *
+     */
+    NavigationController.modalClose = function () {
+        _navigationOpen = false;
+        $('#' + _navigationContentName).hide();
     };
-    NavigationController.prototype.showDisplay = function () {
-        this.displayActive = true;
-        $(this.elem_Root).show();
-        $(this.elem_button_toggle).text('Hide Navigation');
+    NavigationController.modalOpen = function () {
+        _navigationOpen = true;
+        $('#' + _navigationContentName).show();
     };
-    NavigationController.prototype.toggleDisplay = function () {
-        if (this.displayActive) {
-            this.closeDisplay();
+    NavigationController.toggleDisplay = function () {
+        if (_navigationOpen) {
+            NavigationController.modalClose();
         }
         else {
-            this.showDisplay();
+            NavigationController.modalOpen();
         }
-        return false;
     };
+    /**
+     *
+     *
+     * @param target
+     */
     NavigationController.scrollToTarget = function (target) {
         console.log('target:' + target);
         var promise = DbController.loadWayPoint(target);

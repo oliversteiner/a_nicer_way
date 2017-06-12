@@ -67,3 +67,26 @@ Nicht vollstädig ausgearbeit werden sein:
 
 ## Dokumentation
  weitere Details sind im Dokument **documentation.md** zu finden.
+
+
+ ## Installation
+ 
+ 
+ 
+ ## Copywright
+ Das ist ein Schulprojekt, der Code steht zur freien Verfügung.
+ Alle Bilder sind von mir, wenn sie weiterverwendet werden, bitte meinen Namen nennen und auf diese Seite verweisen.
+ 
+ 
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
+
+
+## Erkentnisse
+
+ Aus dem Programmieren dieses Projektes habe ich unter anderen folgende Lehren gezogen:
+ - Funktionen auf die EventHandlers (z. B.: "click" ) angewant werden immer statisch verfügbar machen.
+ - Globale variablen weiterhin vermeiden, aber nicht um allen Preis.
+ - $().load geht auch in einer Klasse und können nachfolgend mit  $().ready verlinkt werden
+ 
+ 

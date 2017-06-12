@@ -13,8 +13,6 @@ var ConsoleDisplayController = (function () {
         this.elem_Root = document.getElementById(this.idName);
         // functions
         this.addAllEventsListeners();
-        // console
-        console.log(this.className);
     }
     /**
      * addAllEventsListeners

@@ -4,34 +4,41 @@
  */
 var ANicerWay = (function () {
     function ANicerWay(options) {
-        this.timePointAktuell = 0;
-        var simulator_size = options.simulator_size;
-        this.className = 'aNicerWay';
+        this.timePointAktuell = 1;
+        this.options = options.simulator_size;
         // alle html-views zusammensetzen
         $('#main_navigation').load('views/main_navigation.html');
-        var dataDisplayController = new DataDisplayController();
-        var smartphoneSimController = new SmartphoneSimController(simulator_size);
-        var statusDisplayController = new StatusDisplayController();
-        $('#navigation').load('views/navigation_display.html').hide();
-        //  $('#timeway').load('views/timeway.html');
-        //  $('#status-display').load('views/status_display.html');
-        // load all Controllers
-        console.log('load');
-        // Warte kurz, damit die dynamisch eingefügten HTML-dokument schon geladen sind.
-        //    let consoleDisplayController = new ConsoleDisplayController();
-        //    let statusDisplayController = new StatusDisplayController();
-        //    let timewayController = new TimewayController();
-        //    let navigationController = new NavigationController();
-        //alert('ready');
+        $('#help-container').load('views/help.html');
+        this.loadComponents();
+        this.addAllEventsListeners();
     }
     /**
-     * get
+     *
      *
      */
-    ANicerWay.prototype.get = function () {
-        // Test
-        console.log(' - ' + this.className + '.get()');
-        return this.className;
+    ANicerWay.prototype.loadComponents = function () {
+        this.dataDisplayController = new DataDisplayController();
+        this.smartphoneSimController = new SmartphoneSimController(this.options.simulator_size);
+        this.statusDisplayController = new StatusDisplayController();
+        this.navigationController = new NavigationController();
+    };
+    /**
+     * addAllEventsListeners
+     *
+     */
+    ANicerWay.prototype.addAllEventsListeners = function () {
+        // Button Close Display
+        // $('.navigation-display-button-close').click(NavigationController.modalClose);
+        // Keystrokes
+        $('body').keypress(function (event) {
+            console.log(event.which);
+            var key = 104; // Taste "h"
+            if (event.which == key) {
+                event.preventDefault();
+                // Das Hilfsfenster ein / ausblenden
+                $('#help-modal').modal('toggle');
+            }
+        });
     };
     ANicerWay.prototype.setTimePoint = function (point) {
         // Test

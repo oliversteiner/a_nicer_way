@@ -42,8 +42,9 @@ var SmartphoneSimController = (function () {
         $('.smartphone-sim-button-toggle').click(SmartphoneSimController.toggle);
         // press home button
         $('#smartphone-home-button').click(SmartphoneSimController.homeButton);
-        // Sim Console consoleClear
+        // Sim Console Clear
         $('.smartphone-console-clear').click(SmartphoneSimController.consoleClear);
+        // Sim Console test
         $('.smartphone-console-test').click(SmartphoneSimController.consoleTest);
         // resize bigger
         $('#smartphone-toolbar-bigger').click(function () {
@@ -187,10 +188,14 @@ var SmartphoneSimController = (function () {
     SmartphoneSimController.open = function () {
         _smartphoneSimOpen = true;
         $('#' + _smartphoneSimContentName).show();
+        // im Status-Display das Smartphone-pikto ausblenden:
+        $('#status-display-smartphone').hide();
     };
     SmartphoneSimController.close = function () {
         _smartphoneSimOpen = false;
         $('#' + _smartphoneSimContentName).hide();
+        // im Status-Display das Smartphone-pikto einblenden:
+        $('#status-display-smartphone').show();
     };
     SmartphoneSimController.toggle = function () {
         if (_smartphoneSimOpen) {

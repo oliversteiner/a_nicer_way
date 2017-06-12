@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
+    <div class="navbar-header ">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                 data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
@@ -9,34 +9,36 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">A Nicer Way</a>
+        <div class="visible-xs">
+            <ul class="nav  navbar-right">
+                <nav aria-label="">
+                    <ul class="pager">
+                        <li class="previous"><a class="navigation-button-previous"><span
+                                aria-hidden="true">&larr;</span> </a></li>
+                        <li class="next"><a class="navigation-button-next"> <span aria-hidden="true">&rarr;</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            </ul>
+        </div>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li><a href="#" id="navigation-button-toggle">Navigation</a></li>
-            <li><a href="#" id="data-display-button-toggle">Dataform</a></li>
-            <li><a href="#" class="smartphone-sim-button-toggle">Smartphone</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                   aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">One more separated link</a></li>
-                </ul>
-            </li>
+    <div class="collapse   navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav  navbar-nav">
+            <li><a class="navigation-display-button-toggle">Navigation</a></li>
+            <li><a class="data-display-button-toggle">Data</a></li>
+            <li><a class="smartphone-sim-button-toggle"><span class="glyphicon glyphicon-phone"></span> </a></li>
+            <li><a class="console-button-toggle"><span class="glyphicon glyphicon-console"></span></a></li>
+            <li><a class="help-button-toggle " data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></a></li>
         </ul>
 
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav  navbar-right">
             <nav aria-label="">
                 <ul class="pager">
-                    <li class="previous"><a id="button-previous"><span aria-hidden="true">&larr;</span> </a></li>
-                    <li class="next"><a id="button-next"> <span aria-hidden="true">&rarr;</span></a></li>
+                    <li class="previous"><a class="navigation-button-previous"><span aria-hidden="true">&larr;</span>
+                    </a></li>
+                    <li class="next"><a class="navigation-button-next"> <span aria-hidden="true">&rarr;</span></a></li>
                 </ul>
             </nav>
         </ul>

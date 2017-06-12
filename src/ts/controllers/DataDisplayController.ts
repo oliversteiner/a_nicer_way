@@ -29,7 +29,6 @@ class DataDisplayController {
         // Views laden
         $(this.elem_Root).load('../views/data_display.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
 
-        // Das geladene Element ausblenden
 
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         $('#data-display-ready').ready(function () {

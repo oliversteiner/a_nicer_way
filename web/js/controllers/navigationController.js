@@ -6,8 +6,8 @@
  *
  */
 // Global
-var _navigationName = 'navigation';
-var _navigationContentName = 'navigation-content';
+var _navigationName = 'navigation-display';
+var _navigationContentName = 'navigation-display-content';
 var _navigationOpen = false;
 // Class
 var NavigationController = (function () {
@@ -20,23 +20,24 @@ var NavigationController = (function () {
         this.className = 'dnavigationController';
         this.elem_Root = document.getElementById(_navigationName);
         this.elem_Content = document.getElementById(_navigationContentName);
-        // Datenbankverbindung aufbauen und verfügbarmachen
-        this.dbController = new DbController();
-        // Eigenschaften setzen
-        this.className = 'navigationController';
-        this.idName = 'navigation';
-        this.elem_Root = document.getElementById('navigation');
-        this.elem_Content = document.getElementById('navigation-content');
-        // functions
-        this.makeDraggable();
-        NavigationController.listAllWayPoints();
-        NavigationController.addAllEventsListeners();
+        // Views laden
+        $(this.elem_Root).load('../views/navigation_display.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
+        // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
+        $('#navigation-display-ready').ready(function () {
+            console.log('- Navigation Display load');
+            // functions
+            NavigationController.listAllWayPoints();
+            NavigationController.addAllEventsListeners();
+            NavigationController.makeDraggable();
+            //
+            console.log('- Navigation Display ready');
+        });
     }
     /**
      * makeDraggable
      */
-    NavigationController.prototype.makeDraggable = function () {
-        $(this.elem_Root).draggable();
+    NavigationController.makeDraggable = function () {
+        $('#' + _navigationContentName).draggable();
     };
     /**
      * addAllEventsListeners
@@ -44,21 +45,24 @@ var NavigationController = (function () {
      */
     NavigationController.addAllEventsListeners = function () {
         // Button Close Display
-        var buttonCloseDisplay = document.getElementById('navigation-button-close');
-        buttonCloseDisplay.addEventListener('click', this.modalClose.bind(this), false);
-        $('#navigation-button-close').click(NavigationController.modalClose);
-        $('#navigation-button-toggle').click(NavigationController.toggleDisplay);
-        $('#button-next').click(NavigationController.scrollToNext);
-        $('#button-previous').click(NavigationController.scrollToPreviews);
-        // Button Show Display
-        var buttonShowDisplay = document.getElementById('navigation-button-toggle');
-        buttonShowDisplay.addEventListener('click', this.toggleDisplay.bind(this), false);
-        // Button Show Display
-        var nextTimePoint = document.getElementById('');
-        nextTimePoint.addEventListener('click', NavigationController.scrollToNext, false);
-        // Button Show Display
-        var prevTimePoint = document.getElementById('');
-        prevTimePoint.addEventListener('click', NavigationController.scrollToPreviews, false);
+        $('.navigation-display-button-close').click(NavigationController.modalClose);
+        //
+        $('.navigation-display-button-toggle').click(NavigationController.modalToggle);
+        //
+        $('.navigation-button-next').click(NavigationController.scrollToNext);
+        //
+        $('.navigation-button-previous').click(NavigationController.scrollToPreviews);
+        // close on dubbleclick
+        $('#navigation-content').dblclick(NavigationController.modalClose);
+        // Keystrokes
+        $('body').keypress(function (event) {
+            console.log(event.which);
+            var key = 110; // Taste "N"
+            if (event.which == key) {
+                event.preventDefault();
+                NavigationController.modalToggle();
+            }
+        });
     };
     /**
      * listAllWayPoints
@@ -141,7 +145,7 @@ var NavigationController = (function () {
         _navigationOpen = true;
         $('#' + _navigationContentName).show();
     };
-    NavigationController.toggleDisplay = function () {
+    NavigationController.modalToggle = function () {
         if (_navigationOpen) {
             NavigationController.modalClose();
         }

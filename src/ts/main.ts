@@ -4,48 +4,65 @@
  */
 class ANicerWay {
     public className: string;
-    public timePointAktuell = 0;
+    public timePointAktuell = 1;
+    public dataDisplayController: any;
+    public smartphoneSimController: any;
+    public statusDisplayController: any;
+    public navigationController: any;
+    public options: any;
 
     constructor(options?: { simulator_size?: string }) {
-        let simulator_size = options.simulator_size;
-
-        this.className = 'aNicerWay';
+        this.options = options.simulator_size;
 
 
         // alle html-views zusammensetzen
         $('#main_navigation').load('views/main_navigation.html');
+        $('#help-container').load('views/help.html');
 
-        let dataDisplayController = new DataDisplayController();
-        let smartphoneSimController = new SmartphoneSimController(simulator_size);
-        let statusDisplayController = new StatusDisplayController();
+        this.loadComponents();
+        this.addAllEventsListeners();
 
-          $('#navigation').load('views/navigation_display.html').hide();
-        //  $('#timeway').load('views/timeway.html');
-        //  $('#status-display').load('views/status_display.html');
 
-        // load all Controllers
-        console.log('load');
+    }
 
-        // Warte kurz, damit die dynamisch eingefügten HTML-dokument schon geladen sind.
+    /**
+     *
+     *
+     */
+    loadComponents() {
 
-        //    let consoleDisplayController = new ConsoleDisplayController();
-        //    let statusDisplayController = new StatusDisplayController();
-        //    let timewayController = new TimewayController();
-        //    let navigationController = new NavigationController();
-        //alert('ready');
-
+        this.dataDisplayController = new DataDisplayController();
+        this.smartphoneSimController = new SmartphoneSimController(this.options.simulator_size);
+        this.statusDisplayController = new StatusDisplayController();
+        this.navigationController = new NavigationController();
 
     }
 
 
     /**
-     * get
+     * addAllEventsListeners
      *
      */
-    get() {
-        // Test
-        console.log(' - ' + this.className + '.get()');
-        return this.className;
+     addAllEventsListeners() {
+
+        // Button Close Display
+       // $('.navigation-display-button-close').click(NavigationController.modalClose);
+
+
+        // Keystrokes
+        $('body').keypress(function (event: any) {
+
+            console.log(event.which);
+            let key:number = 104;  // Taste "h"
+
+            if(event.which == key){
+                event.preventDefault();
+
+                // Das Hilfsfenster ein / ausblenden
+                $('#help-modal').modal('toggle');
+            }
+        });
+
     }
 
 

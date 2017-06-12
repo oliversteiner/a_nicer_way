@@ -27,7 +27,6 @@ class DataDisplayController {
         this.elem_Content = document.getElementById(_dataDisplayContentName);
 
         // Views laden
-        $(this.elem_Root).load('../views/data_display.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
 
 
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
@@ -80,8 +79,7 @@ class DataDisplayController {
      */
     static  makeDraggable() {
 
-        $('#' + _dataDisplayContentName).draggable();
-        $('#' + _dataDisplayContentName).dblclick(DataDisplayController.modalClose);
+        $('#' + _dataDisplayContentName).draggable().dblclick(DataDisplayController.modalClose);
 
     }
 

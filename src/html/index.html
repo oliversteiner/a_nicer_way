@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>A Nicer Way</title>
+    <link rel="stylesheet" href="libraries/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-nicer" id="main_navigation">
+    <!-- inject:views/main_navigation.html -->
+    <!-- endinject -->
+</nav>
+<header>
+
+</header>
+<main>
+
+    <div id="console-display" style="display: none">
+    </div>
+
+    <div id="timeway">
+        <!-- inject:views/timeway.html -->
+        <!-- endinject -->
+    </div>
+
+    <div id="status-display">
+        <!-- inject:views/status_display.html -->
+        <!-- endinject -->
+    </div>
+
+    <div id="smartphone-sim">
+        <!-- inject:views/smartphone_sim.html -->
+        <!-- endinject -->
+    </div>
+
+    <div id="navigation-display">
+        <!-- inject:views/navigation_display.html -->
+        <!-- endinject -->
+    </div>
+
+    <div id="data-display">
+        <!-- inject:views/data_display.html -->
+        <!-- endinject -->
+    </div>
+
+    <div id="help-container">
+        <!-- inject:views/help.html -->
+        <!-- endinject -->
+    </div>
+
+</main>
+<footer>
+</footer>
+<!-- Libraries -->
+<script src="libraries/jquery/jquery-3.2.1.min.js"></script>
+<script src="libraries/bootstrap/bootstrap.min.js"></script>
+<script src="libraries/jquery/jquery-ui/jquery-ui.min.js"></script>
+<script src="libraries/pouchdb/pouchdb-6.2.0.min.js"></script>
+<script src="libraries/jquery/jquery.scrollTo.min.js"></script>
+
+<!-- A Nicer Way -->
+<script src="js/utilities.js"></script>
+<script src="js/controllers/ConsoleDisplayController.js"></script>
+<script src="js/controllers/SmartphoneSimController.js"></script>
+<script src="js/controllers/StatusDisplayController.js"></script>
+<script src="js/controllers/TimewayController.js"></script>
+<script src="js/controllers/NavigationController.js"></script>
+<script src="js/controllers/DataDisplayController.js"></script>
+<script src="js/controllers/DbController.js"></script>
+<script src="js/main.js"></script>
+
+
+
+<script src="js/test.js"></script>
+
+</body>
+</html>

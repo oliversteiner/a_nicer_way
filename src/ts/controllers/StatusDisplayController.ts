@@ -24,10 +24,6 @@ class StatusDisplayController {
         this.elem_Content = document.getElementById(_statusDisplayContentName);
 
 
-        // Views laden
-        $(this.elem_Root).load('../views/status_display.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
-
-
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         $('#status-display-ready').ready(function () {
                 console.log('- Status Display load');

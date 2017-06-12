@@ -18,7 +18,6 @@ let _navigationOpen: boolean = false;
 class NavigationController {
 
     public className: string;
-    public idName: string;
     private elem_Root: HTMLElement | any;
     private elem_Content: HTMLElement | any;
 
@@ -26,16 +25,11 @@ class NavigationController {
      * constructor
      */
     constructor() {
-        console.log(this.className);
 
 
         // Vars
-        this.className = 'dnavigationController';
         this.elem_Root = document.getElementById(_navigationName);
         this.elem_Content = document.getElementById(_navigationContentName);
-
-        // Views laden
-        $(this.elem_Root).load('../views/navigation_display.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
 
 
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
@@ -192,6 +186,7 @@ class NavigationController {
                 a.appendChild(text);
             });
         });
+
 
     };
 

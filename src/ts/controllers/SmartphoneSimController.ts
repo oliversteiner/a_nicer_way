@@ -30,10 +30,6 @@ class SmartphoneSimController {
         this.simulator_size = simulator_size;
 
 
-        // Views laden
-        $(this.elem_Root).load('../views/smartphone_sim.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
-
-
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         $('#smartphone-sim-ready').ready(function () {
                 console.log('- Smartphone Simulator load');

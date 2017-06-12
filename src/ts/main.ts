@@ -1,4 +1,6 @@
-let _aNicerWayVersion = '1.1b';
+let aNicerWay: any;
+let _aNicerWayVersion = '1.2b';
+let _lastTimePoint = 0;
 
 /**
  *  aNicerWay
@@ -6,12 +8,13 @@ let _aNicerWayVersion = '1.1b';
  */
 class ANicerWay {
 
-    public version:string = _aNicerWayVersion;
+    public version: string = _aNicerWayVersion;
     public timePointAktuell = 0;
     public firstTimePoint = 1;
-    public lastTimePoint =0;
+    public lastTimePoint: number = 0;
 
 
+    public dbController: DbController;
     public dataDisplayController: DataDisplayController;
     public smartphoneSimController: SmartphoneSimController;
     public statusDisplayController: StatusDisplayController;
@@ -23,19 +26,11 @@ class ANicerWay {
     constructor(options?: { simulator_size?: string }) {
         this.options = options.simulator_size;
 
-
-        // alle html-views zusammensetzen
-        $('#main_navigation').load('views/main_navigation.html');
-        $('#help-container').load('views/help.html');
-
         this.loadTimePoints();
+
         this.loadComponents();
         this.addAllEventsListeners();
-
-
-        $('#help-ready').ready(function () {
-            ANicerWay.setVersion();
-        })
+        ANicerWay.setVersion();
 
 
     }
@@ -46,6 +41,7 @@ class ANicerWay {
      */
     loadComponents() {
 
+        this.dbController = new DbController();
         this.dataDisplayController = new DataDisplayController();
         this.smartphoneSimController = new SmartphoneSimController(this.options.simulator_size);
         this.statusDisplayController = new StatusDisplayController();
@@ -81,21 +77,26 @@ class ANicerWay {
     }
 
     loadTimePoints() {
+        console.log('loadTimePoints');
         let promise = DbController.loadAllWayPoints();
 
-        promise.then(function (doc: any) {
+        return promise.then(function (doc: any) {
 
-            aNicerWay.lastTimePoint = doc.rows.length;
+            let lastTimePoint = doc.rows.length;
+             _lastTimePoint = doc.rows.length;
 
 
-            console.log(doc.rows);
             // Wenn keine Timepoints vorhanden, standart einlesen:
-
-            if( doc.rows.length == 0){
+            if (doc.rows.length == 0) {
                 reset();
             }
 
-        })
+            aNicerWay.lastTimePoint = lastTimePoint;
+            _lastTimePoint = lastTimePoint;
+
+            return lastTimePoint;
+
+        });
 
     }
 
@@ -122,29 +123,34 @@ class ANicerWay {
     }
 
 
-    static setVersion(){
+    static setVersion() {
 
         $('.version').text(_aNicerWayVersion);
     }
 
 
-
-
-
 }
 
-// init
-let options = {
-    simulator_size: 'gross' // klein, gross
-};
 
-let aNicerWay = new ANicerWay(options);
+function reset() {
 
+    let options = {
+        simulator_size: 'gross' // klein, gross
+    };
 
-
-function reset(){
 
     DbController.loadDefault();
-    aNicerWay = new ANicerWay(options);
+    let aNicerWay = new ANicerWay(options);
 
 }
+
+
+$(document).ready(function () {
+    let options = {
+        simulator_size: 'gross' // klein, gross
+    };
+
+
+    aNicerWay = new ANicerWay(options);
+
+});

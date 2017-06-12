@@ -1,4 +1,6 @@
-var _aNicerWayVersion = '1.1b';
+var aNicerWay;
+var _aNicerWayVersion = '1.2b';
+var _lastTimePoint = 0;
 /**
  *  aNicerWay
  *
@@ -10,21 +12,17 @@ var ANicerWay = (function () {
         this.firstTimePoint = 1;
         this.lastTimePoint = 0;
         this.options = options.simulator_size;
-        // alle html-views zusammensetzen
-        $('#main_navigation').load('views/main_navigation.html');
-        $('#help-container').load('views/help.html');
         this.loadTimePoints();
         this.loadComponents();
         this.addAllEventsListeners();
-        $('#help-ready').ready(function () {
-            ANicerWay.setVersion();
-        });
+        ANicerWay.setVersion();
     }
     /**
      *
      *
      */
     ANicerWay.prototype.loadComponents = function () {
+        this.dbController = new DbController();
         this.dataDisplayController = new DataDisplayController();
         this.smartphoneSimController = new SmartphoneSimController(this.options.simulator_size);
         this.statusDisplayController = new StatusDisplayController();
@@ -49,14 +47,18 @@ var ANicerWay = (function () {
         });
     };
     ANicerWay.prototype.loadTimePoints = function () {
+        console.log('loadTimePoints');
         var promise = DbController.loadAllWayPoints();
-        promise.then(function (doc) {
-            aNicerWay.lastTimePoint = doc.rows.length;
-            console.log(doc.rows);
+        return promise.then(function (doc) {
+            var lastTimePoint = doc.rows.length;
+            _lastTimePoint = doc.rows.length;
             // Wenn keine Timepoints vorhanden, standart einlesen:
             if (doc.rows.length == 0) {
                 reset();
             }
+            aNicerWay.lastTimePoint = lastTimePoint;
+            _lastTimePoint = lastTimePoint;
+            return lastTimePoint;
         });
     };
     ANicerWay.prototype.setTimePoint = function (point) {
@@ -78,12 +80,16 @@ var ANicerWay = (function () {
     };
     return ANicerWay;
 }());
-// init
-var options = {
-    simulator_size: 'gross' // klein, gross
-};
-var aNicerWay = new ANicerWay(options);
 function reset() {
+    var options = {
+        simulator_size: 'gross' // klein, gross
+    };
     DbController.loadDefault();
-    aNicerWay = new ANicerWay(options);
+    var aNicerWay = new ANicerWay(options);
 }
+$(document).ready(function () {
+    var options = {
+        simulator_size: 'gross' // klein, gross
+    };
+    aNicerWay = new ANicerWay(options);
+});

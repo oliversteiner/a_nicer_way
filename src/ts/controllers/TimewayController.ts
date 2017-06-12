@@ -23,10 +23,6 @@ class TimewayController {
         this.elem_Content = document.getElementById(_timeWayContentName);
 
 
-        // Views laden
-        $(this.elem_Root).load('../views/timeway.html'); // aus dem View-Verzeichnis laden, und gleich ausblenden
-
-
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         $('#timeway-ready').ready(function () {
                 console.log('- Timeway load');

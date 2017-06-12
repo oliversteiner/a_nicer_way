@@ -6,6 +6,7 @@ Oliver Steiner
 
 DEMO: 
 http://mollo.ch/a-nicer-way/
+Die Demoseite 2x laden, damit die Datenbank gefüllt wird!
 
 
 ## Idee

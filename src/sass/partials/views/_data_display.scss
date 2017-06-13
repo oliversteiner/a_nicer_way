@@ -4,24 +4,12 @@
 #data-display {
   position: absolute;
   top: 100px;
-
   width: 300px;
   left: 400px;
 
 }
 
-#data-display:after {
-  content: ""
-}
-
-#data-display.console {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid gray;
-  background: white;
-}
-
-#info_id{
+#info_id {
   height: 20px;
   font-size: 0.8em;
   color: gray;

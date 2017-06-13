@@ -17,6 +17,9 @@ let _navigationOpen: boolean = false;
 // Class
 class NavigationController {
 
+    // Global
+
+
     public className: string;
     private elem_Root: HTMLElement | any;
     private elem_Content: HTMLElement | any;
@@ -79,53 +82,56 @@ class NavigationController {
         document.onkeydown = function (event: any) {
             event = event || window.event;
 
-            let key = {
-                arrow_left: 37,
-                arrow_right: 39,
+            if (!$(document.activeElement).is(_protectedInputs)) {
 
-                arrow_up: 38,
-                arrow_down: 40,
+                let key = {
+                    arrow_left: 37,
+                    arrow_right: 39,
 
-                n: 78
-            };
+                    arrow_up: 38,
+                    arrow_down: 40,
 
-
-            switch (event.which || event.keyCode) {
-
-                // Pfeil nach Links
-                case key.arrow_left:
-                    NavigationController.scrollToPreviews();
-                    break;
-
-                // Pfeil nach rechts
-                case key.arrow_right:
-                    NavigationController.scrollToNext();
-                    break;
+                    n: 78
+                };
 
 
-                // Pfeil nach oben
-                case key.arrow_up:
-                    NavigationController.scrollToFirst();
-                    break;
+                switch (event.which || event.keyCode) {
 
-                // Pfeil nach unten
-                case key.arrow_down:
-                    NavigationController.scrollToLast();
-                    break;
+                    // Pfeil nach Links
+                    case key.arrow_left:
+                        NavigationController.scrollToPreviews();
+                        break;
+
+                    // Pfeil nach rechts
+                    case key.arrow_right:
+                        NavigationController.scrollToNext();
+                        break;
 
 
-                // N - Navigation einblenden
-                case key.n:
-                    console.log('n gedrückt');
-                    NavigationController.modalToggle();
-                    break;
+                    // Pfeil nach oben
+                    case key.arrow_up:
+                        NavigationController.scrollToFirst();
+                        break;
 
-                default:
-                    return; // exit this handler for other keys
+                    // Pfeil nach unten
+                    case key.arrow_down:
+                        NavigationController.scrollToLast();
+                        break;
+
+
+                    // N - Navigation einblenden
+                    case key.n:
+                        console.log('n gedrückt');
+                        NavigationController.modalToggle();
+                        break;
+
+                    default:
+                        return; // exit this handler for other keys
+                }
+                event.preventDefault(); // prevent the default action (scroll / move caret)
             }
-            event.preventDefault(); // prevent the default action (scroll / move caret)
-        }
 
+        }
     }
 
 

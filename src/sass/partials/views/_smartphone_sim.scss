@@ -55,8 +55,14 @@ $color-smartphone-screen: rgb(63, 64, 130);
   height: 100%;
   padding: 20% 5%;
 }
+#smartphone-screen-ring{
+
+}
+
+
 
 #smartphone-screen {
+  border: 1px solid black;
   position: relative;
   background-color: $color-smartphone-screen;
   width: 100%;
@@ -138,10 +144,10 @@ $color-smartphone-screen: rgb(63, 64, 130);
 }
 
 .smartphone-toolbar-group-resize {
-  float: right;
 }
 
-#smartphone-toolbar-move {
+#smartphone-toolbar-close {
+  float: right;
   position: relative;
 
   display: inline-block;
@@ -204,6 +210,16 @@ $color-smartphone-screen: rgb(63, 64, 130);
   cursor: pointer;
 }
 
+.ping-badge  {
+
+background-color: $color-console-background-bright;
+  color: $color-message-ok;
+  padding: 2px 5px;
+  margin-left: 5px;
+  border-radius: 15px;
+}
+
+
 @-webkit-keyframes pulsate {
   0% {
     opacity: 1.0;
@@ -215,6 +231,25 @@ $color-smartphone-screen: rgb(63, 64, 130);
     opacity: 1.0;
   }
 }
+
+@-webkit-keyframes pulsate-ring {
+  0% {
+    border:  solid 1px black;
+  }
+  50% {
+    border:  solid 1px $color-message;
+  }
+  100% {
+    border:  solid 1px black;
+  }
+}
+
+.ping-pulse{
+
+  -webkit-animation: pulsate-ring 500ms ease-out;
+}
+
+
 
 .prompt-pulse {
 

@@ -4,6 +4,10 @@
  *
  *
  */
+
+// Global
+let _jsonFile: any;
+
 class DbController {
 
     remote: any;    // die DB unter localhost / mollo.ch
@@ -17,11 +21,15 @@ class DbController {
 
         let db = new PouchDB('anicerway');
 
+        $.getJSON("data/defaultData.json", function (json) {
+            _jsonFile = json;
+        });
+
         // wird immer ausgeführt, wenn änderugen an der Datenbank erfolgt sind
         db.changes().on('change', function () {
             // console
             console.log('db Changes');
-
+            _update_views();
         });
 
 
@@ -163,6 +171,9 @@ class DbController {
 
         // Auf die Zeilen kann zugegriffen werden über:
         //    .then( function(doc){ doc.rows })
+
+        // Ansicht aktualisieren
+
         return docs;
     }
 
@@ -280,7 +291,8 @@ class DbController {
 
         }).catch(function (error: object) {
             // error occurred
-        })
+        });
+        _update_views();
     }
 
     static loadDefault() {
@@ -292,156 +304,21 @@ class DbController {
         // Aktuelle Zeit
         let timestamp = Date.now();
 
+
+
         // Vorgaben für die Daten
-        let defaultData: any = [
 
-            // Config
-            {
-                _id: 'config',
-                title: 'Konfiguration',
-                notiz: 'Eine einfache Notiz',
-                profilePic: 'assets/img/kunden/eagle.jpg',
-                type: 'Configuration',
-                createdOn: timestamp,
-
-            },
-            // TimeWayPoint
-            {
-                _id: 'TimeWayPoint-1',
-                timewayid: 1,
-                date: '2017.10.08',
-                time: '00:00',
-                place: 'Olten - Stadt',
-                feeling: 'Gut',
-                message: 'Nachricht 1',
-                notice: '',
-                type: 'TimeWayPoint',
-                createdOn: timestamp,
-            }
-            ,
-            {
-                _id: 'TimeWayPoint-2',
-                timewayid: 2,
-                date: '2017.10.08',
-                time: '00:00',
-                place: 'Olten - Bahnhof',
-                feeling: 'Gut',
-                message: 'Nachricht 1',
-                notice: '',
-                type: 'TimeWayPoint',
-                createdOn: timestamp,
-            }
-            ,
-            {
-                _id: 'TimeWayPoint-3',
-                timewayid: 3,
-                date: '2017.10.08',
-                time: '00:00',
-                place: 'St.Gallen - Bahnhof',
-                feeling: 'Gut',
-                message: 'Nachricht 1',
-                notice: '',
-                type: 'TimeWayPoint',
-                createdOn: timestamp,
-            },
-            {
-                _id: 'TimeWayPoint-4',
-                timewayid: 4,
-                date: '2017.10.08',
-                time: '00:00',
-                place: 'St.Gallen - Bushaltestelle',
-                feeling: 'Gut',
-                message: 'Nachricht 1',
-                notice: '',
-                figur: 'bus',
-                type: 'TimeWayPoint',
-                createdOn: timestamp,
-            }
-            ,
-            {
-                _id: 'TimeWayPoint-5',
-                timewayid: 5,
-                date: '2017.10.08',
-                time: '00:00',
-                place: 'Riethüsli - Bushaltestelle',
-                feeling: 'Gut',
-                message: 'Nachricht 1',
-                notice: '',
-                type: 'TimeWayPoint',
-                createdOn: timestamp,
-            },
-            {
-                _id: 'TimeWayPoint-6',
-                timewayid: 6,
-                date: '2017.10.08',
-                time: '00:00',
-                place: 'Riethüsli - Schulhaus',
-                feeling: 'Gut',
-                message: 'Nachricht 1',
-                notice: '',
-                type: 'TimeWayPoint',
-                createdOn: timestamp,
-            },
-            {
-                _id: 'TimeWayPoint-7',
-                timewayid: 7,
-                date: '2017.10.08',
-                time: '00:00',
-                place: 'Riethüsli - Schulhaus',
-                feeling: 'Gut',
-                message: 'Nachricht 1',
-                notice: '',
-                type: 'TimeWayPoint',
-                createdOn: timestamp,
-            },
-            {
-                _id: 'TimeWayPoint-8',
-                timewayid: 8,
-                date: '2017.10.08',
-                time: '00:00',
-                place: 'Riethüsli - Schulhaus',
-                feeling: 'Gut',
-                message: 'Nachricht 1',
-                notice: '',
-                type: 'TimeWayPoint',
-                createdOn: timestamp,
-            },
-            {
-                _id: 'TimeWayPoint-9',
-                timewayid: 9,
-                date: '2017.10.08',
-                time: '00:00',
-                place: 'Riethüsli - Schulhaus',
-                feeling: 'Gut',
-                message: 'Nachricht 1',
-                notice: '',
-                type: 'TimeWayPoint',
-                createdOn: timestamp,
-            },
-            {
-                _id: 'TimeWayPoint-10',
-                timewayid: 10,
-                date: '2017.10.08',
-                time: '00:00',
-                place: 'Riethüsli - Schulhaus',
-                feeling: 'Gut',
-                message: 'Nachricht 1',
-                notice: '',
-                type: 'TimeWayPoint',
-                createdOn: timestamp,
-            }
-
-
-        ];
-
-
-        db.bulkDocs(defaultData).then(function (result: object) {
+        db.bulkDocs(_jsonFile.data).then(function (result: object) {
             // handle result
 
-            //  console.log("mustereintraege");
-            //  console.log(result);
+            console.log("mustereintraege");
+            console.log(result);
 
         }).catch(function (error: object) {
+
+            console.log(error);
+
+
             console.log("defaultData exists already");
         });
 
@@ -488,7 +365,7 @@ class DbController {
             // design doc already exists
         });
 
-
+        _update_views();
     }
 
 }

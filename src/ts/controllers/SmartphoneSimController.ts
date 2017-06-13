@@ -5,6 +5,7 @@ const _smartphoneSimContentName: string = 'smartphone-sim-content';
 let _smartphoneSimOpen: boolean = true;
 let _smartphoneSimUp: boolean = false;
 let _smartphoneSimConsoleOpen: boolean = true;
+let _smartphoneSimPing: number = 0;
 
 /**
  *  SmartphoneSimController
@@ -89,15 +90,17 @@ class SmartphoneSimController {
 
 
         // Keystrokes
-        $('body').keypress(function (event: any) {
+        $(document).keypress(function (event: any) {
 
             let key: number = 115;  // Taste "S"
 
-            if (event.which == key) {
+            if (event.which === key && !$(document.activeElement).is(_protectedInputs)) {
                 event.preventDefault();
                 SmartphoneSimController.toggle();
             }
         });
+
+
 
     }
 
@@ -263,6 +266,36 @@ class SmartphoneSimController {
             SmartphoneSimController.consoleOpen();
         }
     }
+
+
+    static ping() {
+
+
+        // ramen Bildschirm leuchten lassen
+
+        $('#smartphone-screen').addClass('ping-pulse');
+        setTimeout(function () {
+            $('#smartphone-screen').removeClass('ping-pulse');
+
+        },600);
+
+
+        let ping: number = 1;
+
+        if (_smartphoneSimPing != 0) {
+
+            ping = _smartphoneSimPing + 1;
+        }
+
+
+        let badge = 'PING <span class="ping-badge">' + ping + '</span>';
+        $('.smartphone-console-status').html(badge);
+
+        _smartphoneSimPing = ping;
+
+        return ping;
+    }
+
 
 // Simulator Window
     static open() {

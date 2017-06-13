@@ -6,6 +6,22 @@
     <link rel="stylesheet" href="libraries/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
 
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icon/favicon-16x16.png">
+    <link rel="manifest" href="/images/icon/manifest.json">
+    <meta name="theme-color" content="#ffffff">
+
 </head>
 <body>
 <nav class="navbar navbar-default navbar-nicer" id="main_navigation">
@@ -45,32 +61,89 @@
         <!-- endinject -->
     </div>
 
+    <div id="remote-display">
+        <!-- inject:views/remote_display.html -->
+        <!-- endinject -->
+    </div>
+
+
     <div id="help-container">
         <!-- inject:views/help.html -->
         <!-- endinject -->
     </div>
 
+    <div id="go-remote">
+        <div id="go-remote-content">
+
+            <div id="modalChangeToRemote" class="modal fade" tabindex="-1" role="dialog">
+                <div class="vertical-alignment-helper">
+                    <div class="modal-dialog vertical-align-center">
+                        <div class="modal-content">
+                            <a href="remote.html">
+                                <div class="modal-body">
+                                    <div class="go-remote-contdown-number">
+                                        <span class="glyphicon glyphicon-sort "></span>
+                                    </div>
+                                    <div><h4>zu Remote-Modus wechseln?</h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+            </div><!-- /.modal -->
+
+
+        </div>
+    </div>
+
+
+    <div id="init-DB">
+        <div id="init-DB-content">
+
+            <div id="modal-Init-DB" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog ">
+                    <div class="modal-content">
+                        <div class="modal-body">
+
+
+                            <!--Frage-->
+                            <div class="init-DB-message-wrapper">
+
+                                <div class="init-DB-message">
+                                    <h4>Noch keine Einträge vorhanden.</h4>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Ohne Inhalte
+                                        fortfahren
+                                    </button>
+                                    <button type="button" class="btn btn-success" onclick="_reset()">Beispiel laden</button>
+
+                                </div>
+                            </div>
+
+                            <!--Processbar-->
+                            <div class="progress-wrapper" style="display: none">
+                                <div class="progress">
+
+                                    <div class="progress-bar progress-bar-striped active" role="progressbar"
+                                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+
+        </div>
+    </div>
 
 </main>
 <footer>
-
-
-
-    <form class="form-inline" name="sockettest">
-
-        <div class="form-group">
-            <input type="text" class="form-control" id="testtext" placeholder="bla bla">
-        </div>
-
-        <button type="button" id="botton-socket-test-message" class="btn btn-default">Send</button>
-
-        <button type="button" id="botton-socket-test-ping_2" class="btn btn-default">ping</button>
-        <button type="button" id="botton-socket-test-steuerbefehl" class="btn btn-default">steuerbefehl</button>
-
-    </form>
-
-
-
 </footer>
 <!-- Libraries -->
 <script src="libraries/jquery/jquery-3.2.1.min.js"></script>
@@ -90,13 +163,19 @@
 <script src="js/controllers/NavigationController.js"></script>
 <script src="js/controllers/DataDisplayController.js"></script>
 <script src="js/controllers/DbController.js"></script>
-<script src="js/controllers/RemoteController.js"></script>
+<script src="js/controllers/RemoteDisplayController.js"></script>
+
 
 <script src="js/main.js"></script>
 
+<script src="js/remote.js"></script>
 
 
 <script src="js/test.js"></script>
+
+<script>
+
+</script>
 
 </body>
 </html>

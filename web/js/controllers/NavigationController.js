@@ -52,39 +52,41 @@ var NavigationController = (function () {
         // Keystrokes (kein jQuery weil schneller)
         document.onkeydown = function (event) {
             event = event || window.event;
-            var key = {
-                arrow_left: 37,
-                arrow_right: 39,
-                arrow_up: 38,
-                arrow_down: 40,
-                n: 78
-            };
-            switch (event.which || event.keyCode) {
-                // Pfeil nach Links
-                case key.arrow_left:
-                    NavigationController.scrollToPreviews();
-                    break;
-                // Pfeil nach rechts
-                case key.arrow_right:
-                    NavigationController.scrollToNext();
-                    break;
-                // Pfeil nach oben
-                case key.arrow_up:
-                    NavigationController.scrollToFirst();
-                    break;
-                // Pfeil nach unten
-                case key.arrow_down:
-                    NavigationController.scrollToLast();
-                    break;
-                // N - Navigation einblenden
-                case key.n:
-                    console.log('n gedrückt');
-                    NavigationController.modalToggle();
-                    break;
-                default:
-                    return; // exit this handler for other keys
+            if (!$(document.activeElement).is(_protectedInputs)) {
+                var key = {
+                    arrow_left: 37,
+                    arrow_right: 39,
+                    arrow_up: 38,
+                    arrow_down: 40,
+                    n: 78
+                };
+                switch (event.which || event.keyCode) {
+                    // Pfeil nach Links
+                    case key.arrow_left:
+                        NavigationController.scrollToPreviews();
+                        break;
+                    // Pfeil nach rechts
+                    case key.arrow_right:
+                        NavigationController.scrollToNext();
+                        break;
+                    // Pfeil nach oben
+                    case key.arrow_up:
+                        NavigationController.scrollToFirst();
+                        break;
+                    // Pfeil nach unten
+                    case key.arrow_down:
+                        NavigationController.scrollToLast();
+                        break;
+                    // N - Navigation einblenden
+                    case key.n:
+                        console.log('n gedrückt');
+                        NavigationController.modalToggle();
+                        break;
+                    default:
+                        return; // exit this handler for other keys
+                }
+                event.preventDefault(); // prevent the default action (scroll / move caret)
             }
-            event.preventDefault(); // prevent the default action (scroll / move caret)
         };
     };
     /**

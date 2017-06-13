@@ -4,6 +4,7 @@ var _smartphoneSimContentName = 'smartphone-sim-content';
 var _smartphoneSimOpen = true;
 var _smartphoneSimUp = false;
 var _smartphoneSimConsoleOpen = true;
+var _smartphoneSimPing = 0;
 /**
  *  SmartphoneSimController
  *
@@ -55,9 +56,9 @@ var SmartphoneSimController = (function () {
         // close on dubbleclick
         $('#smartphone-frame').dblclick(SmartphoneSimController.close);
         // Keystrokes
-        $('body').keypress(function (event) {
+        $(document).keypress(function (event) {
             var key = 115; // Taste "S"
-            if (event.which == key) {
+            if (event.which === key && !$(document.activeElement).is(_protectedInputs)) {
                 event.preventDefault();
                 SmartphoneSimController.toggle();
             }
@@ -181,6 +182,21 @@ var SmartphoneSimController = (function () {
         else {
             SmartphoneSimController.consoleOpen();
         }
+    };
+    SmartphoneSimController.ping = function () {
+        // ramen Bildschirm leuchten lassen
+        $('#smartphone-screen').addClass('ping-pulse');
+        setTimeout(function () {
+            $('#smartphone-screen').removeClass('ping-pulse');
+        }, 600);
+        var ping = 1;
+        if (_smartphoneSimPing != 0) {
+            ping = _smartphoneSimPing + 1;
+        }
+        var badge = 'PING <span class="ping-badge">' + ping + '</span>';
+        $('.smartphone-console-status').html(badge);
+        _smartphoneSimPing = ping;
+        return ping;
     };
     // Simulator Window
     SmartphoneSimController.open = function () {

@@ -18,8 +18,6 @@ class StatusDisplayController {
     constructor() {
 
         // Vars
-        this.className = 'statusDisplayController';
-        this.idName = 'status-display';
         this.elem_Root = document.getElementById(_statusDisplayName);
         this.elem_Content = document.getElementById(_statusDisplayContentName);
 
@@ -28,15 +26,13 @@ class StatusDisplayController {
         $('#status-display-ready').ready(function () {
                 console.log('- Status Display load');
 
-
                 // functions
                 StatusDisplayController.addAllEventsListeners();
 
                 // Tests
 
-                //
+                // Meldung
                 console.log('- Status Display  ready');
-
             }
         )
 

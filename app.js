@@ -16,10 +16,11 @@ app.use(express.static(__dirname + '/web'));
 // User verbunden
 
 io.on('connection', function (socket) {
-    console.log('a user connected');
+    console.log('[server]: a user connected');
 
+    // User abgemeldet
     socket.on('disconnect', function () {
-        console.log('user disconnected');
+        console.log('[server]:user disconnected');
     });
 });
 
@@ -36,13 +37,12 @@ io.on('connection', function (socket) {
 
 });
 
-// Steuerbefehl
+// Steuerbefehl schicken
 io.on('connection', function (socket) {
 
-    socket.on('steuerbefehl', function (msg) {
-        console.log(' - steuerbefehl: ' + msg);
-
-        io.emit('steuerbefehl', msg);
+    socket.on('command', function (msg) {
+        console.log(' - command: ' + msg);
+        io.emit('command', msg);
     });
 });
 
@@ -57,6 +57,5 @@ io.on('connection', function (socket) {
     });
 });
 
-// Steuerbefehl schicken
 
 

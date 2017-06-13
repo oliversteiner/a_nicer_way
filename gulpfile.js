@@ -60,11 +60,13 @@ gulp.task('nw-css', function () {
 
 // HTML
 
-var input_html = 'src/html/**/*.html';
+var watch_html = 'src/html/**/*.html';
+var input_html = 'src/html/views/*.html';
 var output_html = './web';
 
 gulp.task('html-inject', function () {
 
+    // MAIN
 gulp.src('./src/html/index.html')
     .pipe(inject(gulp.src([input_html]), {
         starttag: '<!-- inject:{{path}} -->',
@@ -75,12 +77,25 @@ gulp.src('./src/html/index.html')
         }
     }))
     .pipe(gulp.dest(output_html));
+
+// REMOTE
+gulp.src('./src/html/remote.html')
+    .pipe(inject(gulp.src([input_html]), {
+        starttag: '<!-- inject:{{path}} -->',
+        relative: true,
+        transform: function (filePath, file) {
+            // return file contents as string
+            return file.contents.toString('utf8')
+        }
+    }))
+    .pipe(gulp.dest('./web'));
 });
+
 
 // Watch task
 gulp.task('default', function () {
     gulp.watch(input_sass, ['nw-css']);
     gulp.watch(input_ts, ['nw-typescript']);
-    gulp.watch(input_html, ['html-inject']);
+    gulp.watch(watch_html, ['html-inject']);
 
 });

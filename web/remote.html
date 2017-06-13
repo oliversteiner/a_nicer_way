@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icon/favicon-16x16.png">
+    <link rel="manifest" href="/images/icon/manifest.json">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="libraries/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/remote.css">
+</head>
+
+<body>
+
+<div id="remote-display">
+    <!-- inject:views/remote_display_mobile.html -->
+    <div class="container-fluid">
+
+    <form class="form-inline form-smal" name="sockettest">
+
+        <div class="remote-test">TEST</div>
+
+        div.remote-slide-active
+
+        div.remote-slide-preview
+
+        div.remote-protagonist
+
+
+
+        <div class="message">
+
+            <div class="form-group ">
+                <input type="text" class="form-control input-sm" id="testtext" placeholder="bla bla">
+            </div>
+
+            <button type="button" class="btn btn-default btn-sm" id="botton-socket-test-message">Send</button>
+
+
+        </div>
+
+
+
+        <button type="button" class="btn btn-default btn-sm" class="botton-socket-ping"><span
+                class="glyphicon glyphicon-screenshot"></span></button>
+        <button type="button" class="btn btn-default btn-sm" class="botton-socket-steuerbefehl">Steuerbefehl
+        </button>
+
+    </form>
+
+</div>
+    <!-- endinject -->
+</div>
+
+
+<!-- Libraries -->
+<script src="libraries/jquery/jquery-3.2.1.min.js"></script>
+<script src="libraries/bootstrap/bootstrap.min.js"></script>
+<script src="libraries/jquery/jquery-ui/jquery-ui.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+
+<!-- A Nicer Way -->
+<script src="js/utilities.js"></script>
+<script src="js/controllers/RemoteDisplayController.js"></script>
+
+
+<script src="js/main.js"></script>
+
+<script src="js/remote.js"></script>
+
+
+<script src="js/test.js"></script>
+</body>
+</html>

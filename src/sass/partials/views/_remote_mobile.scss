@@ -1,7 +1,28 @@
 @import "../design/colors";
 @import "../design/fonts";
 
+#remote-display button {
+  font-size: 17px;
 
-.remote-test{
+}
+
+.remote-test {
   color: $color-message-error;
+}
+
+.btn-socket {
+  width: 100%;
+  height: 100%;
+}
+
+button.socket-button-next,
+button.socket-button-previous {
+  height: 200px;
+
+  span {
+
+    font-size: 60px;
+
+  }
+
 }

@@ -28,7 +28,7 @@ class DbController {
         // wird immer ausgeführt, wenn änderugen an der Datenbank erfolgt sind
         db.changes().on('change', function () {
             // console
-            console.log('db Changes');
+         //   console.log('db Changes');
             _update_views();
         });
 
@@ -153,7 +153,7 @@ class DbController {
      *
      */
     static loadAllWayPoints() {
-        console.log('DbController.loadAllWayPoints');
+    //    console.log('DbController.loadAllWayPoints');
 
         let db = new PouchDB('anicerway');
 

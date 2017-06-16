@@ -1,35 +1,47 @@
-<div class="container-fluid">
+<div class="container">
 
-    <form class="form-inline form-smal" name="sockettest">
+    <div class="remote-test"></div>
 
-        <div class="remote-test">TEST</div>
+    <div class="remote-slide-active">
+        <div class="well"></div>
+    </div>
 
-        div.remote-slide-active
+    <div class="remote-slide-preview"></div>
 
-        div.remote-slide-preview
-
-        div.remote-protagonist
+    <div class="remote-protagonist"></div>
 
 
+    <div class="message">
 
-        <div class="message">
-
-            <div class="form-group ">
-                <input type="text" class="form-control input-sm" id="testtext" placeholder="bla bla">
+        <form class="form-inline form-small" name="sockettest">
+            <div class="form-group">
+                <input type="text" class="form-control input-sm" id="input-socket-message" placeholder="bla bla">
+                <button type="button" class="btn btn-default btn-sm button-socket-message">Send</button>
             </div>
 
-            <button type="button" class="btn btn-default btn-sm" id="botton-socket-test-message">Send</button>
+        </form>
+
+    </div>
 
 
+    <button type="button" class="btn btn-default btn-sm button-socket-ping">
+        <span class="glyphicon glyphicon-screenshot"></span>
+    </button>
+
+
+    <button type="button"  data-command="" class="btn btn-default btn-sm button-socket-steuerbefehl">
+        Steuerbefehl
+    </button>
+    <div class="row">
+        <div class="col-xs-6">
+            <button type="button" data-command="previous" class=" btn btn-default btn-socket button-socket-command socket-button-previous"><span aria-hidden="true">&larr;</span>
+            </button>
         </div>
 
+        <div class="col-xs-6">
+            <button type="button" data-command="next" class=" btn btn-default btn-socket button-socket-command socket-button-next"><span aria-hidden="true">&rarr;</span>
+            </button>
+        </div>
 
-
-        <button type="button" class="btn btn-default btn-sm" class="botton-socket-ping"><span
-                class="glyphicon glyphicon-screenshot"></span></button>
-        <button type="button" class="btn btn-default btn-sm" class="botton-socket-steuerbefehl">Steuerbefehl
-        </button>
-
-    </form>
-
+    </div>
 </div>

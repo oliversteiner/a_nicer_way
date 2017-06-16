@@ -58,7 +58,7 @@
             <li><a class="data-display-button-toggle">Data</a></li>
             <li><a class="smartphone-sim-button-toggle"><span class="glyphicon glyphicon-phone"></span> </a></li>
             <li><a class="console-button-toggle"><span class="glyphicon glyphicon-console"></span></a></li>
-            <li><a class="remote-display-button-toggle"><span class="glyphicon glyphicon-sort"></span></a></li>
+            <li><a class="modal-center-button-remote"><span class="glyphicon glyphicon-sort"></span></a></li>
             <li><a class="help-button-toggle " data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></a></li>
         </ul>
 
@@ -188,7 +188,7 @@
 
     <div id="navigation-display">
         <!-- inject:views/navigation_display.html -->
-        <div id="navigation-display-content">
+        <div id="navigation-display-content" style="display: none;" >
     <div class="well well-display shadow-display">
 
         <span class="close navigation-display-button-close">&times;</span>
@@ -203,7 +203,7 @@
 
     <div id="data-display">
         <!-- inject:views/data_display.html -->
-        <div id="data-display-content">
+        <div id="data-display-content" style="display: none;" >
     <div class="well well-display shadow-display">
 
         <span class="close data-display-button-close">&times;</span>
@@ -316,47 +316,59 @@
 
     <div id="remote-display">
         <!-- inject:views/remote_display.html -->
-        <div id="remote-display-content">
+        <div id="remote-display-content"  style="display: none;" >
 
     <div class="well well-display shadow-display">
 
         <span class="close remote-display-button-close">&times;</span>
 
         <!-- inject:views/remote_display_mobile.html -->
-        <div class="container-fluid">
+        <div class="container">
 
-    <form class="form-inline form-smal" name="sockettest">
+    <div class="remote-test"></div>
 
-        <div class="remote-test">TEST</div>
+    <div class="remote-slide-active">
+        <div class="well"></div>
+    </div>
 
-        div.remote-slide-active
+    <div class="remote-slide-preview"></div>
 
-        div.remote-slide-preview
-
-        div.remote-protagonist
+    <div class="remote-protagonist"></div>
 
 
+    <div class="message">
 
-        <div class="message">
-
-            <div class="form-group ">
-                <input type="text" class="form-control input-sm" id="testtext" placeholder="bla bla">
+        <form class="form-inline form-small" name="sockettest">
+            <div class="form-group">
+                <input type="text" class="form-control input-sm" id="input-socket-message" placeholder="bla bla">
+                <button type="button" class="btn btn-default btn-sm button-socket-message">Send</button>
             </div>
 
-            <button type="button" class="btn btn-default btn-sm" id="botton-socket-test-message">Send</button>
+        </form>
+
+    </div>
 
 
+    <button type="button" class="btn btn-default btn-sm button-socket-ping">
+        <span class="glyphicon glyphicon-screenshot"></span>
+    </button>
+
+
+    <button type="button"  data-command="" class="btn btn-default btn-sm button-socket-steuerbefehl">
+        Steuerbefehl
+    </button>
+    <div class="row">
+        <div class="col-xs-6">
+            <button type="button" data-command="previous" class=" btn btn-default btn-socket button-socket-command socket-button-previous"><span aria-hidden="true">&larr;</span>
+            </button>
         </div>
 
+        <div class="col-xs-6">
+            <button type="button" data-command="next" class=" btn btn-default btn-socket button-socket-command socket-button-next"><span aria-hidden="true">&rarr;</span>
+            </button>
+        </div>
 
-
-        <button type="button" class="btn btn-default btn-sm" class="botton-socket-ping"><span
-                class="glyphicon glyphicon-screenshot"></span></button>
-        <button type="button" class="btn btn-default btn-sm" class="botton-socket-steuerbefehl">Steuerbefehl
-        </button>
-
-    </form>
-
+    </div>
 </div>
         <!-- endinject -->
 
@@ -447,23 +459,42 @@
         <!-- endinject -->
     </div>
 
-    <div id="go-remote">
-        <div id="go-remote-content">
+    <div id="modal-remote-center-container">
+        <div id="modal-remote-center-content">
 
-            <div id="modalChangeToRemote" class="modal fade" tabindex="-1" role="dialog">
+            <div id="modal-remote-center" class="modal fade" tabindex="-1" role="dialog">
                 <div class="vertical-alignment-helper">
                     <div class="modal-dialog vertical-align-center">
                         <div class="modal-content">
-                            <a href="remote.html">
-                                <div class="modal-body">
-                                    <div class="go-remote-contdown-number">
-                                        <span class="glyphicon glyphicon-sort "></span>
-                                    </div>
-                                    <div><h4>zu Remote-Modus wechseln?</h4>
-                                    </div>
+                            <!-- modal-content -->
+
+                            <!-- inline Remote ModusDemo ore open in new Window-->
+
+                            <div id="remote-modal-how-open" style="display:none;">
+                                <div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item remote-button-open-new-window"><a>Remote in neuem Fenster öffnen</a></li>
+                                        <li class="list-group-item remote-button-inline-demo"><a>Demo auf der aktuellen Seite</a></li>
+                                    </ul>
                                 </div>
-                            </a>
-                        </div><!-- /.modal-content -->
+                            </div>
+
+                            <!-- remote-modal-change-directly -->
+                            <div id="remote-modal-change-directly" style="display:none;">
+                                <!-- Change direct to Remote Modus-->
+                                <a href="remote.html">
+                                    <div class="modal-body">
+                                        <div class="go-remote-contdown-number">
+                                            <span class="glyphicon glyphicon-sort "></span>
+                                        </div>
+                                        <div><h4>zu Remote-Modus wechseln?</h4>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- /.modal-content -->
+                        </div>
                     </div><!-- /.modal-dialog -->
                 </div>
             </div><!-- /.modal -->
@@ -490,7 +521,8 @@
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Ohne Inhalte
                                         fortfahren
                                     </button>
-                                    <button type="button" class="btn btn-success" onclick="_reset()">Beispiel laden</button>
+                                    <button type="button" class="btn btn-success" onclick="_reset()">Beispiel laden
+                                    </button>
 
                                 </div>
                             </div>
@@ -531,6 +563,7 @@
 
 <!-- A Nicer Way -->
 <script src="js/utilities.js"></script>
+
 <script src="js/controllers/ConsoleDisplayController.js"></script>
 <script src="js/controllers/SmartphoneSimController.js"></script>
 <script src="js/controllers/StatusDisplayController.js"></script>
@@ -539,13 +572,10 @@
 <script src="js/controllers/DataDisplayController.js"></script>
 <script src="js/controllers/DbController.js"></script>
 <script src="js/controllers/RemoteDisplayController.js"></script>
-
+<script src="js/ANicerWay.js"></script>
 
 <script src="js/main.js"></script>
-
 <script src="js/remote.js"></script>
-
-
 <script src="js/test.js"></script>
 
 <script>

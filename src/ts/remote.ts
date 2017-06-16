@@ -3,99 +3,88 @@
 
 $(function () {
 
-
+        // Init
         let socket = io();
-
         socketAddListeners();
-
         receivePing();
         receiveCommand();
         receiveMessage();
 
 
-        function socketSend(type:any, msg:any) {
-
-
+        // SEND
+        function socketSend(type: any, msg: any) {
             // Nachricht schicken
             socket.emit(type, msg);
 
         }
 
-
         function sendMessge() {
             console.log('button message');
 
-            var $testtext = $('#testtext');
-            var msg = $testtext.val();
+            let $button_socket_message = $('#input-socket-message');
+            let msg = $button_socket_message.val();
 
             // Nachricht schicken
             socketSend('chat message', msg);
 
             // Inputfeld leeren
-            $testtext.val('');
+            $button_socket_message.val('');
 
 
         }
-
 
         function sendPing() {
             // ping_2 schicken
             console.log('button ping');
 
-            var msg = 'PING';
+            let png = 'PING';
 
             // Nachricht schicken
-            socketSend('ping_2', msg);
+            socketSend('ping_2', png);
 
             // Inputfeld leeren
 
 
         }
 
-
         function sendCommand() {
             // ping_2 schicken
-            console.log('button Command');
+            let data = $(this).data();
+            let cmd = data.command;
+            console.log(cmd);
 
             // Nachricht schicken
-            socketSend('command', 'vorwärts');
+            socketSend('command', cmd);
 
         }
 
 
-        function receiveMessage() {
-
-            // Nachricht empfangen
-
-            socket.on('chat message', function (msg:string) {
-
-                    console.log(msg);
-                    SmartphoneSimController.message(msg);
-
-                }
-            )
-
-        }
-
-
+        // RECEIVE
         function receiveCommand() {
 
             // steuerbefehl empfangen
 
-            socket.on('command', function (cmd:string) {
+            socket.on('command', function (cmd: string) {
 
-                console.log(cmd);
+                    console.log(cmd);
 
-                switch (cmd) {
+                    switch (cmd) {
 
-                    default:
-                        SmartphoneSimController.error('Remotebefehl nicht verstanden');
-                        SmartphoneSimController.error('> ' + cmd, 1);
+                        case 'previous':
+                            NavigationController.scrollToPreviews();
+                            break;
 
+                        case 'next':
+                            NavigationController.scrollToNext();
+                            break;
+
+                        default:
+                            SmartphoneSimController.error('Remotebefehl nicht verstanden');
+                            SmartphoneSimController.error('> ' + cmd, 1);
+                    }
                 }
-            })
+            )
         }
-
 
         function receivePing() {
             // ping_2 empfangen
@@ -110,26 +99,29 @@ $(function () {
 
         }
 
+        function receiveMessage() {
 
-        function socketAddListeners() {
-            $('#botton-socket-test-message').click(sendMessge);
-            $('#botton-socket-test-ping_2').click(sendPing);
-            $('#botton-socket-test-steuerbefehl').click(sendCommand);
+            // Nachricht empfangen
 
-            // Keystrokes
-            $('#testtext').keypress(function (event: any) {
+            socket.on('chat message', function (msg: string) {
 
-                console.log(event.which);
-                let key: number = 13;  // Taste "h"
+                console.log(msg);
+                SmartphoneSimController.message(msg);
 
-                if (event.which === key) {
-                    event.preventDefault();
+            })
 
-                    // Das Hilfsfenster ein / ausblenden
-                    sendMessge();
-                }
-            });
         }
+
+
+        // Listeners
+        function socketAddListeners() {
+            $('.button-socket-message').click(sendMessge);
+            $('.button-socket-ping').click(sendPing);
+            $('.button-socket-steuerbefehl').click(sendCommand);
+            $('.button-socket-command').click(sendCommand);
+
+        }
+
 
     }
 );

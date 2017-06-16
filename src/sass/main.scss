@@ -13,6 +13,7 @@
 @import 'partials/views/footer';
 @import "partials/views/help";
 @import "partials/views/remote_display";
+@import "partials/views/modal_center";
 
 // Utilitis
 @import 'partials/utilities/console';
@@ -69,7 +70,6 @@
 }
 
 .navbar-nicer .navbar-nav > li > a {
-  color: $color-nav-text;
   color: $color-background;
 
 }

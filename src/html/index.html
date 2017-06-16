@@ -72,23 +72,42 @@
         <!-- endinject -->
     </div>
 
-    <div id="go-remote">
-        <div id="go-remote-content">
+    <div id="modal-remote-center-container">
+        <div id="modal-remote-center-content">
 
-            <div id="modalChangeToRemote" class="modal fade" tabindex="-1" role="dialog">
+            <div id="modal-remote-center" class="modal fade" tabindex="-1" role="dialog">
                 <div class="vertical-alignment-helper">
                     <div class="modal-dialog vertical-align-center">
                         <div class="modal-content">
-                            <a href="remote.html">
-                                <div class="modal-body">
-                                    <div class="go-remote-contdown-number">
-                                        <span class="glyphicon glyphicon-sort "></span>
-                                    </div>
-                                    <div><h4>zu Remote-Modus wechseln?</h4>
-                                    </div>
+                            <!-- modal-content -->
+
+                            <!-- inline Remote ModusDemo ore open in new Window-->
+
+                            <div id="remote-modal-how-open" style="display:none;">
+                                <div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item remote-button-open-new-window"><a>Remote in neuem Fenster öffnen</a></li>
+                                        <li class="list-group-item remote-button-inline-demo"><a>Demo auf der aktuellen Seite</a></li>
+                                    </ul>
                                 </div>
-                            </a>
-                        </div><!-- /.modal-content -->
+                            </div>
+
+                            <!-- remote-modal-change-directly -->
+                            <div id="remote-modal-change-directly" style="display:none;">
+                                <!-- Change direct to Remote Modus-->
+                                <a href="remote.html">
+                                    <div class="modal-body">
+                                        <div class="go-remote-contdown-number">
+                                            <span class="glyphicon glyphicon-sort "></span>
+                                        </div>
+                                        <div><h4>zu Remote-Modus wechseln?</h4>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- /.modal-content -->
+                        </div>
                     </div><!-- /.modal-dialog -->
                 </div>
             </div><!-- /.modal -->
@@ -115,7 +134,8 @@
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Ohne Inhalte
                                         fortfahren
                                     </button>
-                                    <button type="button" class="btn btn-success" onclick="_reset()">Beispiel laden</button>
+                                    <button type="button" class="btn btn-success" onclick="_reset()">Beispiel laden
+                                    </button>
 
                                 </div>
                             </div>
@@ -156,6 +176,7 @@
 
 <!-- A Nicer Way -->
 <script src="js/utilities.js"></script>
+
 <script src="js/controllers/ConsoleDisplayController.js"></script>
 <script src="js/controllers/SmartphoneSimController.js"></script>
 <script src="js/controllers/StatusDisplayController.js"></script>
@@ -164,13 +185,10 @@
 <script src="js/controllers/DataDisplayController.js"></script>
 <script src="js/controllers/DbController.js"></script>
 <script src="js/controllers/RemoteDisplayController.js"></script>
-
+<script src="js/ANicerWay.js"></script>
 
 <script src="js/main.js"></script>
-
 <script src="js/remote.js"></script>
-
-
 <script src="js/test.js"></script>
 
 <script>

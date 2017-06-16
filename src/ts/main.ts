@@ -7,3 +7,4 @@ let options = {
 $(document).ready(function () {
     aNicerWay = new ANicerWay(options);
 });
+

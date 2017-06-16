@@ -2,7 +2,7 @@
 
 
 let aNicerWay: any;
-let _aNicerWayVersion = '1.3b';
+let _aNicerWayVersion = '1.4b';
 let _lastTimePoint = 1;
 let _protectedInputs = ":input, textarea";
 
@@ -60,7 +60,7 @@ class ANicerWay {
         this.loadTimePoints();
         this.loadComponents();
         this.addAllEventsListeners();
-        this.detectMobile();
+     //   this.detectMobile();
 
 
     }
@@ -88,6 +88,8 @@ class ANicerWay {
      *
      */
     addAllEventsListeners() {
+
+
 
 
         // Keystrokes
@@ -181,15 +183,17 @@ class ANicerWay {
         return this.version;
     }
 
-    openModalCenter(){
-
-        // Alle inhalte ausblenden
-       $("#remote-modal-how-open").hide;
-       $("#remote-modal-change-directly").hide;
-
+    static openModalCenter(){
+console.log('openModalCenter');
+        $('#remote-modal-how-open').hide();
+        $('#remote-modal-change-directly').hide();
 
         // Modal öffnen
-        $('#modal-center').modal('show')
+        $('#modal-remote-center').modal('show');
+
+        // Alle inhalte ausblenden
+
+
     }
 
 
@@ -207,8 +211,9 @@ class ANicerWay {
                     aNicerWay.isMobile = true;
 
                     // Anzeige starten, ob zu Remote-Seite wechseln
-                    this.openModalCenter();
-                    $("#remote-modal-change-directly").show;
+                    ANicerWay.openModalCenter();
+                    $('#remote-modal-how-open').hide();
+                    $('#remote-modal-change-directly').show();
                     $('#modal-center').modal('show').on('shown.bs.modal', function () {
 
 
@@ -235,7 +240,7 @@ class ANicerWay {
                                 $('.go-remote-contdown-number').html(pikto);
 
                                 // Modal nach 4 sekunden beenden
-                                $('#modalChangeToRemote').modal('hide');
+                                $('#modal-center').modal('hide');
 
                             }
                         }
@@ -257,14 +262,3 @@ class ANicerWay {
 } // Class
 
 
-
-
-let options = {
-    simulator_size: 'gross', // klein, gross
-    check_for_mobile: true, // klein, gross
-};
-
-
-$(document).ready(function () {
-    aNicerWay = new ANicerWay(options);
-});

@@ -98,7 +98,6 @@ class TimewayController {
             let zeilen = doc.rows;
 
             $.each(zeilen, function (index, data) {
-                console.log(data);
                 // li
                 let div_twp = document.createElement('div');
 

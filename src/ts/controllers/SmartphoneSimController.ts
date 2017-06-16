@@ -279,14 +279,11 @@ class SmartphoneSimController {
 
         },600);
 
-
         let ping: number = 1;
 
         if (_smartphoneSimPing != 0) {
-
             ping = _smartphoneSimPing + 1;
         }
-
 
         let badge = 'PING <span class="ping-badge">' + ping + '</span>';
         $('.smartphone-console-status').html(badge);

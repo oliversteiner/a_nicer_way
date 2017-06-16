@@ -17,7 +17,7 @@ var DbController = (function () {
         // wird immer ausgeführt, wenn änderugen an der Datenbank erfolgt sind
         db.changes().on('change', function () {
             // console
-            console.log('db Changes');
+            //   console.log('db Changes');
             _update_views();
         });
     }
@@ -111,7 +111,7 @@ var DbController = (function () {
      *
      */
     DbController.loadAllWayPoints = function () {
-        console.log('DbController.loadAllWayPoints');
+        //    console.log('DbController.loadAllWayPoints');
         var db = new PouchDB('anicerway');
         var docs = db.allDocs({
             include_docs: true,

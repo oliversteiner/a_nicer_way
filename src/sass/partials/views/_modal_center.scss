@@ -1,0 +1,17 @@
+// https://stackoverflow.com/questions/18053408/vertically-centering-bootstrap-modal-window
+
+#modal-remote-center .modal-content {
+  background-color: rgba(0, 0, 0, 0.8);
+
+  /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+  width: 200px;
+  height: inherit;
+  /* To center horizontally */
+  margin: 0 auto;
+  pointer-events: all;
+  border-radius: 20px;
+
+  // center text
+  text-align: center;
+
+}

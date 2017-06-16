@@ -60,7 +60,6 @@ var TimewayController = (function () {
             var anzahl = doc.total_rows;
             var zeilen = doc.rows;
             $.each(zeilen, function (index, data) {
-                console.log(data);
                 // li
                 var div_twp = document.createElement('div');
                 // a.class

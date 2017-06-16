@@ -1,49 +1,53 @@
 /// <reference path="definitions/io.d.ts" />
 $(function () {
+    // Init
     var socket = io();
     socketAddListeners();
     receivePing();
     receiveCommand();
     receiveMessage();
+    // SEND
     function socketSend(type, msg) {
         // Nachricht schicken
         socket.emit(type, msg);
     }
     function sendMessge() {
         console.log('button message');
-        var $testtext = $('#testtext');
-        var msg = $testtext.val();
+        var $button_socket_message = $('#input-socket-message');
+        var msg = $button_socket_message.val();
         // Nachricht schicken
         socketSend('chat message', msg);
         // Inputfeld leeren
-        $testtext.val('');
+        $button_socket_message.val('');
     }
     function sendPing() {
         // ping_2 schicken
         console.log('button ping');
-        var msg = 'PING';
+        var png = 'PING';
         // Nachricht schicken
-        socketSend('ping_2', msg);
+        socketSend('ping_2', png);
         // Inputfeld leeren
     }
     function sendCommand() {
         // ping_2 schicken
-        console.log('button Command');
+        var data = $(this).data();
+        var cmd = data.command;
+        console.log(cmd);
         // Nachricht schicken
-        socketSend('command', 'vorwärts');
+        socketSend('command', cmd);
     }
-    function receiveMessage() {
-        // Nachricht empfangen
-        socket.on('chat message', function (msg) {
-            console.log(msg);
-            SmartphoneSimController.message(msg);
-        });
-    }
+    // RECEIVE
     function receiveCommand() {
         // steuerbefehl empfangen
         socket.on('command', function (cmd) {
             console.log(cmd);
             switch (cmd) {
+                case 'previous':
+                    NavigationController.scrollToPreviews();
+                    break;
+                case 'next':
+                    NavigationController.scrollToNext();
+                    break;
                 default:
                     SmartphoneSimController.error('Remotebefehl nicht verstanden');
                     SmartphoneSimController.error('> ' + cmd, 1);
@@ -57,19 +61,18 @@ $(function () {
             SmartphoneSimController.ping();
         });
     }
-    function socketAddListeners() {
-        $('#botton-socket-test-message').click(sendMessge);
-        $('#botton-socket-test-ping_2').click(sendPing);
-        $('#botton-socket-test-steuerbefehl').click(sendCommand);
-        // Keystrokes
-        $('#testtext').keypress(function (event) {
-            console.log(event.which);
-            var key = 13; // Taste "h"
-            if (event.which === key) {
-                event.preventDefault();
-                // Das Hilfsfenster ein / ausblenden
-                sendMessge();
-            }
+    function receiveMessage() {
+        // Nachricht empfangen
+        socket.on('chat message', function (msg) {
+            console.log(msg);
+            SmartphoneSimController.message(msg);
         });
+    }
+    // Listeners
+    function socketAddListeners() {
+        $('.button-socket-message').click(sendMessge);
+        $('.button-socket-ping').click(sendPing);
+        $('.button-socket-steuerbefehl').click(sendCommand);
+        $('.button-socket-command').click(sendCommand);
     }
 });

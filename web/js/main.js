@@ -5,3 +5,4 @@ var options = {
 $(document).ready(function () {
     aNicerWay = new ANicerWay(options);
 });
+RemoteDisplayController.modalOpen();

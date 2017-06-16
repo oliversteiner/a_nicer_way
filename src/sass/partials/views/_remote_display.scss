@@ -1,54 +1,28 @@
 @import "../design/colors";
 @import "../design/fonts";
 
-#remote-display {
-  position: absolute;
-  top: 60px;
-  left: 0;
-
-}
-
-#remote-display div{
-
-  border: solid 1px $color-console-background-bright;
-
-}
+@import "remote_mobile";
 
 #remote-display-content {
- position: relative;
+  position: absolute;
+  top: 60px;
+  left: 10px;
   display: block;
+
+}
+
+#remote-display-frame {
+  display: block;
+  position: relative;
   width: 375px;
-  border: solid 1px $color-console-background-bright;
-}
-
-
-#go-remote{
 
 }
 
 
-#go-remote a{
-text-decoration: none;
-  color: $color-console-background-bright;
+// Modal abfrage
+#remote-modal-change-directly {
+  width: 300px;
+  height: 100px;
+  padding: 20px;
 }
 
-
-
-#go-remote-content{
-width: 200px;
-text-align: center;
-
-}
-
-
-#go-remote-content .modal-content:hover{
-border: solid 1px $color-console-background-bright;
-}
-
-
-
-
-
-#remote-modal-how-open{
-  width: 400px;
-}

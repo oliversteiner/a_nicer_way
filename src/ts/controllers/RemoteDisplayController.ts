@@ -28,7 +28,7 @@ class RemoteDisplayController {
 
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         $('#remote-display-ready').ready(function () {
-            console.log('- Remote Display load');
+                console.log('- Remote Display load');
 
                 // Aktionen verknüpfen
                 RemoteDisplayController.makeDraggable();
@@ -59,11 +59,10 @@ class RemoteDisplayController {
 
 
         // Remote in neuem Fenster öffnen
-        $(".remote-button-open-new-window").click(RemoteDisplayController.remoteOpenInNewWindow);
+        $(".remote-button-open-window").click(RemoteDisplayController.remoteOpenWindow);
 
         // Remote inline-Demo
-        $(".remote-button-inline-demo").click(RemoteDisplayController.remoteOpenInline);
-
+        $(".remote-button-open-inline").click(RemoteDisplayController.remoteOpenInline);
 
 
     }
@@ -71,20 +70,12 @@ class RemoteDisplayController {
     /**
      *
      */
-    static activateKeystrokes(){
-        // Keystrokes
-        $(document).keypress(function (event: any) {
+    static activateKeystrokes() {
 
-            console.log(event.which);
-            let key: number = 82;  // Taste "r"
-
-            if (event.which === key && !$(document.activeElement).is(_protectedInputs)) {
-                event.preventDefault();
-
-                // Das Hilfsfenster ein / ausblenden
-                $('#help-modal').modal('toggle');
-            }
+        key('r', function () {
+            RemoteDisplayController.openModalCenterRemote();
         });
+
 
     }
 
@@ -92,16 +83,16 @@ class RemoteDisplayController {
      * makeDraggable
      */
     static  makeDraggable() {
-        $('#' + _remoteDisplayContentName).draggable().dblclick(RemoteDisplayController.modalClose);
+        $('#' + _remoteDisplayContentName).draggable();
     }
 
 
     /**
      *
      */
-    static  remoteOpenInNewWindow() {
+    static  remoteOpenWindow() {
 
-        // document.location = 'remote.html';
+        window.open('/remote.html', '_self')
     }
 
 
@@ -111,6 +102,7 @@ class RemoteDisplayController {
     static  remoteOpenInline() {
 
         $('#remote-display-content').show();
+        ANicerWay.closeModalCenter();
     }
 
     /**

@@ -38,42 +38,36 @@ var RemoteDisplayController = (function () {
         // Öffne nachfrage
         $('.modal-center-button-remote').click(RemoteDisplayController.openModalCenterRemote);
         // Remote in neuem Fenster öffnen
-        $(".remote-button-open-new-window").click(RemoteDisplayController.remoteOpenInNewWindow);
+        $(".remote-button-open-window").click(RemoteDisplayController.remoteOpenWindow);
         // Remote inline-Demo
-        $(".remote-button-inline-demo").click(RemoteDisplayController.remoteOpenInline);
+        $(".remote-button-open-inline").click(RemoteDisplayController.remoteOpenInline);
     };
     /**
      *
      */
     RemoteDisplayController.activateKeystrokes = function () {
-        // Keystrokes
-        $(document).keypress(function (event) {
-            console.log(event.which);
-            var key = 82; // Taste "r"
-            if (event.which === key && !$(document.activeElement).is(_protectedInputs)) {
-                event.preventDefault();
-                // Das Hilfsfenster ein / ausblenden
-                $('#help-modal').modal('toggle');
-            }
+        key('r', function () {
+            RemoteDisplayController.openModalCenterRemote();
         });
     };
     /**
      * makeDraggable
      */
     RemoteDisplayController.makeDraggable = function () {
-        $('#' + _remoteDisplayContentName).draggable().dblclick(RemoteDisplayController.modalClose);
+        $('#' + _remoteDisplayContentName).draggable();
     };
     /**
      *
      */
-    RemoteDisplayController.remoteOpenInNewWindow = function () {
-        // document.location = 'remote.html';
+    RemoteDisplayController.remoteOpenWindow = function () {
+        window.open('/remote.html', '_self');
     };
     /**
      *
      */
     RemoteDisplayController.remoteOpenInline = function () {
         $('#remote-display-content').show();
+        ANicerWay.closeModalCenter();
     };
     /**
      *

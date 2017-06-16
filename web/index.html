@@ -81,10 +81,10 @@
 </header>
 <main>
 
-    <div id="console-display" style="display: none">
+    <div id="console-display-container" style="display: none">
     </div>
 
-    <div id="timeway">
+    <div id="timeway-container">
         <!-- inject:views/timeway.html -->
         <div id="timeway-content">
     <div id="layer-1-himmel" class="ost-parallax"></div>
@@ -109,7 +109,7 @@
         <!-- endinject -->
     </div>
 
-    <div id="status-display">
+    <div id="status-display-container">
         <!-- inject:views/status_display.html -->
         <div id="status-display-content">
     <div class="status-display-navbar">
@@ -126,7 +126,7 @@
         <!-- endinject -->
     </div>
 
-    <div id="smartphone-sim">
+    <div id="smartphone-sim-container">
         <!-- inject:views/smartphone_sim.html -->
         <div id="smartphone-sim-content">
     <div id="smartphone-frame" class="shadow-display">
@@ -186,7 +186,7 @@
         <!-- endinject -->
     </div>
 
-    <div id="navigation-display">
+    <div id="navigation-display-container">
         <!-- inject:views/navigation_display.html -->
         <div id="navigation-display-content" style="display: none;" >
     <div class="well well-display shadow-display">
@@ -201,7 +201,7 @@
         <!-- endinject -->
     </div>
 
-    <div id="data-display">
+    <div id="data-display-container">
         <!-- inject:views/data_display.html -->
         <div id="data-display-content" style="display: none;" >
     <div class="well well-display shadow-display">
@@ -314,64 +314,109 @@
         <!-- endinject -->
     </div>
 
-    <div id="remote-display">
+    <div id="remote-display-container">
         <!-- inject:views/remote_display.html -->
-        <div id="remote-display-content"  style="display: none;" >
+        <div id="remote-display-content" style="display: none">
 
     <div class="well well-display shadow-display">
 
         <span class="close remote-display-button-close">&times;</span>
 
-        <!-- inject:views/remote_display_mobile.html -->
-        <div class="container">
+        <div id="remote-display-frame">
+            <!-- inject:views/remote_display_mobile.html -->
+            <div class="container-fluid">
 
+   <!-- TEST -->
     <div class="remote-test"></div>
 
-    <div class="remote-slide-active">
-        <div class="well"></div>
+    <!-- Preview -->
+    <div class="well well-remote">
+        <div class="remote-slide-preview"></div>
     </div>
 
-    <div class="remote-slide-preview"></div>
+   <!-- Message -->
+    <div class="well well-remote">
+        <div class="message-input">
+            <form class="form-inline form-small" name="sockettest">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="input-socket-message" placeholder="bla bla">
+                    <span class="input-group-addon btn-nicer button-socket-message">send</span>
+                </div>
+            </form>
+        </div>
+    </div>
 
-    <div class="remote-protagonist"></div>
+    <!-- Tools -->
+    <div class="well well-remote">
+        <div class="btn-group">
+
+            <button type="button" class="btn btn-default btn-sm navigation-display-button-toggle">Nav</button>
+            <button type="button" class="btn btn-default btn-sm data-display-button-toggle">Data</button>
+
+            <button type="button" class="btn btn-default btn-sm smartphone-sim-button-toggle">
+                <span class="glyphicon glyphicon-phone"></span>
+            </button>
+
+            <button type="button" class=" btn btn-default btn-sm console-button-toggle">
+                <span class="glyphicon glyphicon-console"></span>
+            </button>
+
+            <button type="button" class=" btn btn-default btn-sm modal-center-button-remote">
+                <span class="glyphicon glyphicon-sort"></span>
+            </button>
+
+            <button type="button" class="btn btn-default btn-sm help-button-toggle " data-toggle="modal"
+                    data-target="#help-modal">
+                <span class="glyphicon glyphicon-question-sign"></span>
+            </button>
+
+            <button type="button" data-command="" class="btn btn-default btn-sm button-socket-steuerbefehl">
+                Error
+            </button>
+
+        </div>
 
 
-    <div class="message">
 
-        <form class="form-inline form-small" name="sockettest">
-            <div class="form-group">
-                <input type="text" class="form-control input-sm" id="input-socket-message" placeholder="bla bla">
-                <button type="button" class="btn btn-default btn-sm button-socket-message">Send</button>
+    </div>
+
+    <!-- Ping -->
+    <div class="well well-remote">
+        <button type="button" class="btn btn-default btn-sm btn-block btn-default button-socket-ping">
+            <span class="glyphicon glyphicon-screenshot"></span>
+        </button>
+    </div>
+
+   <!-- Protagonist -->
+    <div class="remote-protagonist">
+
+    </div>
+
+
+    <!-- Vor und Zurück -->
+    <div class="well  well-remote">
+
+        <div class="row">
+            <div class="col-xs-6">
+                <button type="button" data-command="previous"
+                        class=" btn btn-default btn-block button-socket-command socket-button-previous"><span
+                        aria-hidden="true">&larr;</span>
+                </button>
             </div>
 
-        </form>
+            <div class="col-xs-6">
+                <button type="button" data-command="next"
+                        class=" btn btn-default btn-block button-socket-command socket-button-next"><span
+                        aria-hidden="true">&rarr;</span>
+                </button>
+            </div>
 
-    </div>
-
-
-    <button type="button" class="btn btn-default btn-sm button-socket-ping">
-        <span class="glyphicon glyphicon-screenshot"></span>
-    </button>
-
-
-    <button type="button"  data-command="" class="btn btn-default btn-sm button-socket-steuerbefehl">
-        Steuerbefehl
-    </button>
-    <div class="row">
-        <div class="col-xs-6">
-            <button type="button" data-command="previous" class=" btn btn-default btn-socket button-socket-command socket-button-previous"><span aria-hidden="true">&larr;</span>
-            </button>
         </div>
-
-        <div class="col-xs-6">
-            <button type="button" data-command="next" class=" btn btn-default btn-socket button-socket-command socket-button-next"><span aria-hidden="true">&rarr;</span>
-            </button>
-        </div>
-
     </div>
 </div>
-        <!-- endinject -->
 
+            <!-- endinject -->
+        </div>
     </div>
 </div>
         <!-- endinject -->
@@ -459,95 +504,79 @@
         <!-- endinject -->
     </div>
 
-    <div id="modal-remote-center-container">
+    <div id="modal-center-container">
+        <!-- inject:views/modal_center.html -->
         <div id="modal-remote-center-content">
 
-            <div id="modal-remote-center" class="modal fade" tabindex="-1" role="dialog">
-                <div class="vertical-alignment-helper">
-                    <div class="modal-dialog vertical-align-center">
-                        <div class="modal-content">
-                            <!-- modal-content -->
+    <div id="modal-center" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- modal-content -->
 
-                            <!-- inline Remote ModusDemo ore open in new Window-->
+                <!-- inline Remote ModusDemo ore open in new Window-->
 
-                            <div id="remote-modal-how-open" style="display:none;">
-                                <div>
-                                    <ul class="list-group">
-                                        <li class="list-group-item remote-button-open-new-window"><a>Remote in neuem Fenster öffnen</a></li>
-                                        <li class="list-group-item remote-button-inline-demo"><a>Demo auf der aktuellen Seite</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!-- remote-modal-change-directly -->
-                            <div id="remote-modal-change-directly" style="display:none;">
-                                <!-- Change direct to Remote Modus-->
-                                <a href="remote.html">
-                                    <div class="modal-body">
-                                        <div class="go-remote-contdown-number">
-                                            <span class="glyphicon glyphicon-sort "></span>
-                                        </div>
-                                        <div><h4>zu Remote-Modus wechseln?</h4>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <!-- /.modal-content -->
-                        </div>
-                    </div><!-- /.modal-dialog -->
+                <div id="remote-modal-how-open" style="display:none;">
+                    <div>
+                        <ul class="list-group">
+                            <li class="btn-nicer list-group-item remote-button-open-window">Remote in neuem Fenster
+                                öffnen
+                            </li>
+                            <li class="btn-nicer list-group-item remote-button-open-inline">Demo auf der aktuellen
+                                Seite
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div><!-- /.modal -->
 
-
-        </div>
-    </div>
-
-
-    <div id="init-DB">
-        <div id="init-DB-content">
-
-            <div id="modal-Init-DB" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog ">
-                    <div class="modal-content">
-                        <div class="modal-body">
-
-
-                            <!--Frage-->
-                            <div class="init-DB-message-wrapper">
-
-                                <div class="init-DB-message">
-                                    <h4>Noch keine Einträge vorhanden.</h4>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Ohne Inhalte
-                                        fortfahren
-                                    </button>
-                                    <button type="button" class="btn btn-success" onclick="_reset()">Beispiel laden
-                                    </button>
-
-                                </div>
+                <!-- remote-modal-change-directly -->
+                <div id="remote-modal-change-directly" style="display:none;">
+                    <!-- Change direct to Remote Modus-->
+                    <div class="btn-nicer-transparent">
+                        <a href="remote.html">
+                            <div class=" go-remote-contdown-number">
+                                <span class="glyphicon glyphicon-sort "></span>
                             </div>
-
-                            <!--Processbar-->
-                            <div class="progress-wrapper" style="display: none">
-                                <div class="progress">
-
-                                    <div class="progress-bar progress-bar-striped active" role="progressbar"
-                                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-                                    </div>
-                                </div>
+                            <div><h4>zu Remote-Modus wechseln?</h4>
                             </div>
+                        </a>
+                    </div>
+                </div>
 
+                <!--INIT DB Frage-->
+                <div class="init-DB-message-wrapper" style="display:none;">
 
+                    <div class="init-DB-message">
+                        <h4>Noch keine Einträge vorhanden.</h4>
+                        <button type="button" class="btn btn-default btn-nicer" data-dismiss="modal">Ohne Inhalte
+                            fortfahren
+                        </button>
+                        <button type="button" class="btn btn-success" onclick="_reset()">Beispiel laden
+                        </button>
+
+                    </div>
+                </div>
+
+                <!--NIT DB  Processbar-->
+                <div class="progress-wrapper" style="display: none">
+                    <div class="progress">
+
+                        <div class="progress-bar progress-bar-striped active" role="progressbar"
+                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
                         </div>
+                    </div>
+                </div>
 
 
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
+                <!-- /.modal-content -->
+            </div>
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 
-        </div>
+</div>
+        <!-- endinject -->
     </div>
+
 
 </main>
 <footer>
@@ -558,6 +587,9 @@
 <script src="libraries/jquery/jquery-ui/jquery-ui.min.js"></script>
 <script src="libraries/pouchdb/pouchdb-6.2.0.min.js"></script>
 <script src="libraries/jquery/jquery.scrollTo.min.js"></script>
+<script src="libraries/keymaster/keymaster.js"></script>
+
+<!-- nur bei hosting über node.js -->
 <script src="/socket.io/socket.io.js"></script>
 
 

@@ -1,17 +1,16 @@
 @import "../design/colors";
 @import "../design/fonts";
 
-
-#console-display{
-background-color: $color-console-background;
+#console-display {
+  background-color: $color-console-background;
   color: $color-message;
 }
 
-#console-display:after{
+#console-display:after {
   content: ""
 }
 
-#console-display.console{
+#console-display.console {
   margin: 20px;
   padding: 20px;
   border: 1px solid gray;

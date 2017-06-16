@@ -3,17 +3,24 @@ $color-console-background: rgba(23, 17, 57, 0.8);
 $color-console-background-dark: rgba(9, 7, 22, 0.88);
 $color-console-background-bright: rgba(63, 133, 146, 0.88);
 
+// Message / Text
 $color-message: rgb(195, 209, 255);
 $color-message-ok: rgb(114, 255, 118);
 $color-message-error: rgb(255, 105, 109);
 $color-message-warning: rgb(255, 218, 108);
 
+// Grau
 $color-gray: rgb(104, 104, 104);
 $color-black: rgb(0, 0, 0);
 $color-background: rgb(34, 34, 34);
 $color-nav-text: rgb(104, 104, 104);
 
-
+// Links
 $color-text-link: rgb(6, 126, 96);
 $color-text-link-hover: rgb(8, 158, 120);
 $color-text-link-active: rgb(180, 233, 216);
+
+// Buttons
+$color-button: rgb(34, 34, 34);
+$color-button-hover: rgb(13, 13, 13);
+$color-button-active: rgb(67, 67, 67);

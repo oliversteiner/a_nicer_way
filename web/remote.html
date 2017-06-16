@@ -38,53 +38,97 @@
 
 <div id="remote-display">
     <!-- inject:views/remote_display_mobile.html -->
-    <div class="container">
+    <div class="container-fluid">
 
+   <!-- TEST -->
     <div class="remote-test"></div>
 
-    <div class="remote-slide-active">
-        <div class="well"></div>
+    <!-- Preview -->
+    <div class="well well-remote">
+        <div class="remote-slide-preview"></div>
     </div>
 
-    <div class="remote-slide-preview"></div>
+   <!-- Message -->
+    <div class="well well-remote">
+        <div class="message-input">
+            <form class="form-inline form-small" name="sockettest">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="input-socket-message" placeholder="bla bla">
+                    <span class="input-group-addon btn-nicer button-socket-message">send</span>
+                </div>
+            </form>
+        </div>
+    </div>
 
-    <div class="remote-protagonist"></div>
+    <!-- Tools -->
+    <div class="well well-remote">
+        <div class="btn-group">
+
+            <button type="button" class="btn btn-default btn-sm navigation-display-button-toggle">Nav</button>
+            <button type="button" class="btn btn-default btn-sm data-display-button-toggle">Data</button>
+
+            <button type="button" class="btn btn-default btn-sm smartphone-sim-button-toggle">
+                <span class="glyphicon glyphicon-phone"></span>
+            </button>
+
+            <button type="button" class=" btn btn-default btn-sm console-button-toggle">
+                <span class="glyphicon glyphicon-console"></span>
+            </button>
+
+            <button type="button" class=" btn btn-default btn-sm modal-center-button-remote">
+                <span class="glyphicon glyphicon-sort"></span>
+            </button>
+
+            <button type="button" class="btn btn-default btn-sm help-button-toggle " data-toggle="modal"
+                    data-target="#help-modal">
+                <span class="glyphicon glyphicon-question-sign"></span>
+            </button>
+
+            <button type="button" data-command="" class="btn btn-default btn-sm button-socket-steuerbefehl">
+                Error
+            </button>
+
+        </div>
 
 
-    <div class="message">
 
-        <form class="form-inline form-small" name="sockettest">
-            <div class="form-group">
-                <input type="text" class="form-control input-sm" id="input-socket-message" placeholder="bla bla">
-                <button type="button" class="btn btn-default btn-sm button-socket-message">Send</button>
+    </div>
+
+    <!-- Ping -->
+    <div class="well well-remote">
+        <button type="button" class="btn btn-default btn-sm btn-block btn-default button-socket-ping">
+            <span class="glyphicon glyphicon-screenshot"></span>
+        </button>
+    </div>
+
+   <!-- Protagonist -->
+    <div class="remote-protagonist">
+
+    </div>
+
+
+    <!-- Vor und Zurück -->
+    <div class="well  well-remote">
+
+        <div class="row">
+            <div class="col-xs-6">
+                <button type="button" data-command="previous"
+                        class=" btn btn-default btn-block button-socket-command socket-button-previous"><span
+                        aria-hidden="true">&larr;</span>
+                </button>
             </div>
 
-        </form>
+            <div class="col-xs-6">
+                <button type="button" data-command="next"
+                        class=" btn btn-default btn-block button-socket-command socket-button-next"><span
+                        aria-hidden="true">&rarr;</span>
+                </button>
+            </div>
 
-    </div>
-
-
-    <button type="button" class="btn btn-default btn-sm button-socket-ping">
-        <span class="glyphicon glyphicon-screenshot"></span>
-    </button>
-
-
-    <button type="button"  data-command="" class="btn btn-default btn-sm button-socket-steuerbefehl">
-        Steuerbefehl
-    </button>
-    <div class="row">
-        <div class="col-xs-6">
-            <button type="button" data-command="previous" class=" btn btn-default btn-socket button-socket-command socket-button-previous"><span aria-hidden="true">&larr;</span>
-            </button>
         </div>
-
-        <div class="col-xs-6">
-            <button type="button" data-command="next" class=" btn btn-default btn-socket button-socket-command socket-button-next"><span aria-hidden="true">&rarr;</span>
-            </button>
-        </div>
-
     </div>
 </div>
+
     <!-- endinject -->
 </div>
 

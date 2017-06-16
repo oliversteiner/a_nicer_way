@@ -60,7 +60,7 @@ class ANicerWay {
         this.loadTimePoints();
         this.loadComponents();
         this.addAllEventsListeners();
-     //   this.detectMobile();
+        this.detectMobile();
 
 
     }
@@ -187,9 +187,26 @@ class ANicerWay {
 console.log('openModalCenter');
         $('#remote-modal-how-open').hide();
         $('#remote-modal-change-directly').hide();
+        $('#init-DB-message-wrapper').hide();
 
         // Modal öffnen
-        $('#modal-remote-center').modal('show');
+        $('#modal-center').modal('show');
+
+        // Alle inhalte ausblenden
+
+
+    }
+
+    static closeModalCenter(){
+        console.log('closeModalCenter');
+        $('#remote-modal-how-open').hide();
+        $('#remote-modal-change-directly').hide();
+        $('#remote-modal-change-directly').hide();
+        $('#init-DB-message-wrapper').hide();
+
+
+        // Modal öffnen
+        $('#modal-center').modal('hide');
 
         // Alle inhalte ausblenden
 
@@ -212,7 +229,6 @@ console.log('openModalCenter');
 
                     // Anzeige starten, ob zu Remote-Seite wechseln
                     ANicerWay.openModalCenter();
-                    $('#remote-modal-how-open').hide();
                     $('#remote-modal-change-directly').show();
                     $('#modal-center').modal('show').on('shown.bs.modal', function () {
 

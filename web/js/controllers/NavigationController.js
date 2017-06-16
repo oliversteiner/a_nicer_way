@@ -53,7 +53,7 @@ var NavigationController = (function () {
         document.onkeydown = function (event) {
             event = event || window.event;
             if (!$(document.activeElement).is(_protectedInputs)) {
-                var key = {
+                var key_1 = {
                     arrow_left: 37,
                     arrow_right: 39,
                     arrow_up: 38,
@@ -62,23 +62,23 @@ var NavigationController = (function () {
                 };
                 switch (event.which || event.keyCode) {
                     // Pfeil nach Links
-                    case key.arrow_left:
+                    case key_1.arrow_left:
                         NavigationController.scrollToPreviews();
                         break;
                     // Pfeil nach rechts
-                    case key.arrow_right:
+                    case key_1.arrow_right:
                         NavigationController.scrollToNext();
                         break;
                     // Pfeil nach oben
-                    case key.arrow_up:
+                    case key_1.arrow_up:
                         NavigationController.scrollToFirst();
                         break;
                     // Pfeil nach unten
-                    case key.arrow_down:
+                    case key_1.arrow_down:
                         NavigationController.scrollToLast();
                         break;
                     // N - Navigation einblenden
-                    case key.n:
+                    case key_1.n:
                         console.log('n gedrückt');
                         NavigationController.modalToggle();
                         break;

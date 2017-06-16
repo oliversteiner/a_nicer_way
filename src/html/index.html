@@ -33,35 +33,35 @@
 </header>
 <main>
 
-    <div id="console-display" style="display: none">
+    <div id="console-display-container" style="display: none">
     </div>
 
-    <div id="timeway">
+    <div id="timeway-container">
         <!-- inject:views/timeway.html -->
         <!-- endinject -->
     </div>
 
-    <div id="status-display">
+    <div id="status-display-container">
         <!-- inject:views/status_display.html -->
         <!-- endinject -->
     </div>
 
-    <div id="smartphone-sim">
+    <div id="smartphone-sim-container">
         <!-- inject:views/smartphone_sim.html -->
         <!-- endinject -->
     </div>
 
-    <div id="navigation-display">
+    <div id="navigation-display-container">
         <!-- inject:views/navigation_display.html -->
         <!-- endinject -->
     </div>
 
-    <div id="data-display">
+    <div id="data-display-container">
         <!-- inject:views/data_display.html -->
         <!-- endinject -->
     </div>
 
-    <div id="remote-display">
+    <div id="remote-display-container">
         <!-- inject:views/remote_display.html -->
         <!-- endinject -->
     </div>
@@ -72,95 +72,11 @@
         <!-- endinject -->
     </div>
 
-    <div id="modal-remote-center-container">
-        <div id="modal-remote-center-content">
-
-            <div id="modal-remote-center" class="modal fade" tabindex="-1" role="dialog">
-                <div class="vertical-alignment-helper">
-                    <div class="modal-dialog vertical-align-center">
-                        <div class="modal-content">
-                            <!-- modal-content -->
-
-                            <!-- inline Remote ModusDemo ore open in new Window-->
-
-                            <div id="remote-modal-how-open" style="display:none;">
-                                <div>
-                                    <ul class="list-group">
-                                        <li class="list-group-item remote-button-open-new-window"><a>Remote in neuem Fenster öffnen</a></li>
-                                        <li class="list-group-item remote-button-inline-demo"><a>Demo auf der aktuellen Seite</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!-- remote-modal-change-directly -->
-                            <div id="remote-modal-change-directly" style="display:none;">
-                                <!-- Change direct to Remote Modus-->
-                                <a href="remote.html">
-                                    <div class="modal-body">
-                                        <div class="go-remote-contdown-number">
-                                            <span class="glyphicon glyphicon-sort "></span>
-                                        </div>
-                                        <div><h4>zu Remote-Modus wechseln?</h4>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <!-- /.modal-content -->
-                        </div>
-                    </div><!-- /.modal-dialog -->
-                </div>
-            </div><!-- /.modal -->
-
-
-        </div>
+    <div id="modal-center-container">
+        <!-- inject:views/modal_center.html -->
+        <!-- endinject -->
     </div>
 
-
-    <div id="init-DB">
-        <div id="init-DB-content">
-
-            <div id="modal-Init-DB" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog ">
-                    <div class="modal-content">
-                        <div class="modal-body">
-
-
-                            <!--Frage-->
-                            <div class="init-DB-message-wrapper">
-
-                                <div class="init-DB-message">
-                                    <h4>Noch keine Einträge vorhanden.</h4>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Ohne Inhalte
-                                        fortfahren
-                                    </button>
-                                    <button type="button" class="btn btn-success" onclick="_reset()">Beispiel laden
-                                    </button>
-
-                                </div>
-                            </div>
-
-                            <!--Processbar-->
-                            <div class="progress-wrapper" style="display: none">
-                                <div class="progress">
-
-                                    <div class="progress-bar progress-bar-striped active" role="progressbar"
-                                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-
-
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
-
-
-        </div>
-    </div>
 
 </main>
 <footer>
@@ -171,6 +87,9 @@
 <script src="libraries/jquery/jquery-ui/jquery-ui.min.js"></script>
 <script src="libraries/pouchdb/pouchdb-6.2.0.min.js"></script>
 <script src="libraries/jquery/jquery.scrollTo.min.js"></script>
+<script src="libraries/keymaster/keymaster.js"></script>
+
+<!-- nur bei hosting über node.js -->
 <script src="/socket.io/socket.io.js"></script>
 
 

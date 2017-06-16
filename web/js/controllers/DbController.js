@@ -41,12 +41,12 @@ var DbController = (function () {
         };
         // alle Werte von "data" in  "doc" fügen.
         console.log('- Data (add)');
-        for (var key in data) {
-            if (data.hasOwnProperty(key)) {
-                var value = data[key];
-                if (key != "_id") {
-                    console.log("--- " + key + " : " + value);
-                    waypoint[key] = value;
+        for (var key_1 in data) {
+            if (data.hasOwnProperty(key_1)) {
+                var value = data[key_1];
+                if (key_1 != "_id") {
+                    console.log("--- " + key_1 + " : " + value);
+                    waypoint[key_1] = value;
                 }
             }
         }
@@ -87,12 +87,12 @@ var DbController = (function () {
         }).then(function (doc) {
             console.log('- found:');
             console.log(doc);
-            for (var key in data) {
-                if (data.hasOwnProperty(key)) {
-                    var value = data[key];
-                    if (key != "_id") {
-                        console.log("--- " + key + " : " + value);
-                        doc[key] = value;
+            for (var key_2 in data) {
+                if (data.hasOwnProperty(key_2)) {
+                    var value = data[key_2];
+                    if (key_2 != "_id") {
+                        console.log("--- " + key_2 + " : " + value);
+                        doc[key_2] = value;
                     }
                 }
             }

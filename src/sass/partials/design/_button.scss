@@ -1,0 +1,65 @@
+@import "../design/colors";
+@import "../design/fonts";
+
+
+// Default Nicer
+.btn-nicer {
+  background-color: $color-button;
+  cursor: pointer;
+}
+
+.btn-nicer:hover {
+  background-color: $color-button-hover;
+  color: $color-text-link;
+}
+
+.btn-nicer:active {
+  background-color: $color-button-active;
+}
+
+
+// Big
+.btn-nicer-big {
+  background-color: $color-button;
+  cursor: pointer;
+  color: $color-console-background-bright;
+
+}
+
+.btn-nicer-big:hover {
+  background-color: $color-button-hover;
+  color: $color-text-link;
+  border: solid 1px $color-console-background-bright;
+
+}
+
+.btn-nicer-big:active {
+  background-color: $color-button-active;
+  border: solid 1px $color-console-background-bright;
+
+}
+
+
+// transpatent
+.btn-nicer-transpatent {
+  cursor: pointer;
+  color: $color-console-background-bright;
+  border: solid 1px $color-black;
+  border-radius: 15px;
+
+}
+
+.btn-nicer-transpatent:hover {
+  color: $color-text-link;
+  border: solid 1px $color-console-background-bright;
+
+}
+
+.btn-nicer-transpatent:active {
+  border: solid 1px $color-console-background-bright;
+
+}
+
+.btn-nicer-transpatent a {
+  text-decoration: none;
+}

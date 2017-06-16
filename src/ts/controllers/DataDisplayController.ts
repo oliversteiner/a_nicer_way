@@ -217,11 +217,13 @@ class DataDisplayController {
     static modalClose() {
         _dataDisplayModalOpen = false;
         $('#' + _dataDisplayContentName).hide();
+
     }
 
     static modalOpen() {
         _dataDisplayModalOpen = true;
         $('#' + _dataDisplayContentName).show();
+        $('#data-display-content').show();
     }
 
     static modalToggle() {

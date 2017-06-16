@@ -91,8 +91,8 @@ class RemoteDisplayController {
      *
      */
     static  remoteOpenWindow() {
-
-        window.open('/remote.html', '_self')
+        window.open('/remote.html', '_blank');
+        ANicerWay.closeModalCenter();
     }
 
 
@@ -100,7 +100,6 @@ class RemoteDisplayController {
      *
      */
     static  remoteOpenInline() {
-
         $('#remote-display-content').show();
         ANicerWay.closeModalCenter();
     }

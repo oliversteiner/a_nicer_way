@@ -60,7 +60,8 @@ var RemoteDisplayController = (function () {
      *
      */
     RemoteDisplayController.remoteOpenWindow = function () {
-        window.open('/remote.html', '_self');
+        window.open('/remote.html', '_blank');
+        ANicerWay.closeModalCenter();
     };
     /**
      *

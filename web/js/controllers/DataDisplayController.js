@@ -162,6 +162,7 @@ var DataDisplayController = (function () {
     DataDisplayController.modalOpen = function () {
         _dataDisplayModalOpen = true;
         $('#' + _dataDisplayContentName).show();
+        $('#data-display-content').show();
     };
     DataDisplayController.modalToggle = function () {
         if (_dataDisplayModalOpen) {

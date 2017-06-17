@@ -22,6 +22,7 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
   height: 600px;
 
 
+
 }
 
 #layer-1-himmel {
@@ -110,4 +111,14 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
 
 .breit {
   margin-right: 500px;
+}
+
+.timeway-point-number{
+  margin-top: 20px;
+  font-size: 50px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.timeway-point-titel{
+  margin-top: 10px;
 }

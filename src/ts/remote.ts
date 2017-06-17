@@ -62,8 +62,23 @@ $(function () {
         // RECEIVE
         function receiveCommand() {
 
-            // steuerbefehl empfangen
+            /* steuerbefehl empfangen
+             ------------------------------
 
+
+             -- socket-cmd ----------------
+             previous
+             next
+
+             navigation-display-toggle
+             data-display-toggle
+             smartphone-sim-toggle
+             console-toggle
+             remote-open
+             help-toggle
+             ------------------------------
+
+             */
             socket.on('command', function (cmd: string) {
 
                     console.log(cmd);
@@ -77,6 +92,33 @@ $(function () {
                         case 'next':
                             NavigationController.scrollToNext();
                             break;
+
+                        // Toolbar
+                        case 'navigation-display-toggle':
+                            NavigationController.modalToggle();
+                            break;
+
+                        case 'data-display-toggle':
+                            DataDisplayController.modalToggle();
+                            break;
+
+                        case 'smartphone-sim-toggle':
+                            SmartphoneSimController.toggle();
+                            break;
+
+                        case 'console-toggle':
+                            SmartphoneSimController.message('noch nicht implementiert');
+                            break;
+
+                        case 'remote-toggle':
+                            RemoteDisplayController.modalToggle();
+                            break;
+
+                        case 'help-toggle':
+
+                            break;
+
+
 
                         default:
                             SmartphoneSimController.error('Remotebefehl nicht verstanden');
@@ -118,7 +160,7 @@ $(function () {
             $('.button-socket-message').click(sendMessge);
             $('.button-socket-ping').click(sendPing);
             $('.button-socket-steuerbefehl').click(sendCommand);
-            $('.button-socket-command').click(sendCommand);
+            $('.button-socket-cmd').click(sendCommand);
 
         }
 

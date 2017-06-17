@@ -107,12 +107,25 @@ class TimewayController {
                 // a.data-i
                 div_twp.setAttribute('id', data.doc._id);
 
+                // P
+                let p_titel = document.createElement('p');
+                p_titel.setAttribute('class', 'timeway-point-titel');
+                let title = data.doc.date + ' - ' + data.doc.place;
+                let text_title = document.createTextNode(title);
 
-                // Text
-                let title = data.doc.timewayid + ' - ' + data.doc.date + ' - ' + data.doc.place;
-                let text = document.createTextNode(title);
+                // Number
+                let div_number = document.createElement('div');
+                div_number.setAttribute('class', 'timeway-point-number');
+                let number = data.doc.timewayid;
+                let text_number = document.createTextNode(number);
 
-                div_twp.appendChild(text);
+                // Append
+                p_titel.appendChild(text_title);
+                div_number.appendChild(text_number);
+
+                div_twp.appendChild(div_number);
+                div_twp.appendChild(p_titel);
+
                 elemNav.appendChild(div_twp);
 
             });

@@ -110,6 +110,7 @@ var ANicerWay = (function () {
         this.timeWayController = new TimeWayController();
         this.remoteDisplayController = new RemoteDisplayController();
         this.dbController = new DbController();
+        this.socketController = new SocketController();
     };
     /**
      * addEventsListeners

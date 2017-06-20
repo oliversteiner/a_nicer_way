@@ -3,12 +3,10 @@ $(function () {
     // Init
     var socket = io();
     socketAddListeners();
-    receivePing();
-    receiveCommand();
-    receiveMessage();
     receiveTimepoint();
     receiveTimepointId();
     receiveTimepointList();
+    getList();
     // SEND
     function socketSend(type, msg) {
         // Nachricht schicken
@@ -44,97 +42,26 @@ $(function () {
         // Nachricht schicken
         socketSend('timepoint', doc);
     }
-    function goTo(id) {
+    function goTo() {
         // ping_2 schicken
         var data = $(this).data();
         var id = data.id;
         console.log(id);
         // Nachricht schicken
         socketSend('timepoint id', id);
-    }
-    // RECEIVE
-    function receiveCommand() {
-        /* steuerbefehl empfangen
-         ------------------------------
-         -- socket-cmd ----------------
-         previous
-         next
-
-         navigation-display-toggle
-         data-display-toggle
-         smartphone-sim-toggle
-         console-toggle
-         remote-open
-         help-toggle
-         ------------------------------
-         */
-        socket.on('command', function (cmd) {
-            console.log(cmd);
-            switch (cmd) {
-                case 'previous':
-                    aNicerWay.goToPrevious();
-                    break;
-                case 'next':
-                    aNicerWay.goToNext();
-                    break;
-                case 'first':
-                    aNicerWay.goToFirst();
-                    break;
-                case 'last':
-                    aNicerWay.goToLast();
-                    break;
-                // Toolbar
-                case 'navigation-display-toggle':
-                    NavigationController.modalToggle();
-                    break;
-                case 'data-display-toggle':
-                    DataDisplayController.modalToggle();
-                    break;
-                case 'smartphone-sim-toggle':
-                    SmartphoneSimController.toggle();
-                    break;
-                case 'console-toggle':
-                    ConsoleController.modalToggle();
-                    break;
-                case 'remote-toggle':
-                    RemoteDisplayController.modalToggle();
-                    break;
-                case 'help-toggle':
-                    HelpController.modalToggle();
-                    break;
-                case 'get-list':
-                    aNicerWay.updateList();
-                    break;
-                default:
-                    SmartphoneSimController.error('Remotebefehl nicht verstanden');
-                    SmartphoneSimController.error('> ' + cmd, 1);
-            }
-        });
-    }
-    function receivePing() {
-        // ping_2 empfangen
-        socket.on('ping_2', function () {
-            console.log('PING');
-            SmartphoneSimController.ping();
-        });
-    }
-    function receiveMessage() {
-        // Nachricht empfangen
-        socket.on('chat message', function (msg) {
-            console.log(msg);
-            SmartphoneSimController.message(msg);
-        });
+        markAsActive(id);
     }
     function receiveTimepoint() {
         // Nachricht empfangen
         socket.on('timepoint', function (doc) {
             setTimepoint(doc);
+            markAsActive(doc._id);
         });
     }
     function receiveTimepointId() {
         // Nachricht empfangen
         socket.on('timepoint id', function (id) {
-            aNicerWay.goTo(id);
+            markAsActive(id);
         });
     }
     function receiveTimepointList() {
@@ -157,6 +84,12 @@ $(function () {
         var html = '<div class="sequence">' + doc.sequence + '</div>' +
             '<div class="title">' + doc._id + '</div>';
         $('#remote-slide-preview').html(html);
+    }
+    /**
+     *
+     */
+    function getList() {
+        socket.emit('command', 'get-list');
     }
     /**
      *
@@ -183,7 +116,7 @@ $(function () {
                     // a
                     var a = document.createElement('a');
                     // a.class
-                    a.setAttribute('class', 'socket-waypoint-button');
+                    a.setAttribute('class', 'socket-waypoint-button btn btn-nicer btn-block');
                     // a.data-id
                     a.setAttribute('data-id', doc._id);
                     // Text
@@ -198,5 +131,15 @@ $(function () {
         else {
             console.log('generateNavigationList -- Leere Liste');
         }
+    }
+    /**
+     *
+     * @param id
+     */
+    function markAsActive(id) {
+        $('a.active').removeClass('active');
+        var find = '*[data-id="' + id + '"]';
+        $(find).addClass('active');
+        console.log($(find));
     }
 });

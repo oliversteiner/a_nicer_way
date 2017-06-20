@@ -39,6 +39,7 @@ class ANicerWay {
     public navigationController: NavigationController;
     public timeWayController: TimeWayController;
     public remoteDisplayController: RemoteDisplayController;
+    public socketController: SocketController;
 
     // DB
     private db: any;
@@ -183,6 +184,7 @@ class ANicerWay {
         this.timeWayController = new TimeWayController();
         this.remoteDisplayController = new RemoteDisplayController();
         this.dbController = new DbController();
+        this.socketController = new SocketController();
 
     }
 
@@ -224,6 +226,7 @@ class ANicerWay {
         key('down', function () {
             aNicerWay.goToFirst();
         });
+
 
     }
 

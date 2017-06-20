@@ -6,12 +6,12 @@ $(function () {
     // Init
     let socket = io();
     socketAddListeners();
-    receivePing();
-    receiveCommand();
-    receiveMessage();
     receiveTimepoint();
     receiveTimepointId();
     receiveTimepointList();
+    getList();
+
+
 
     // SEND
     function socketSend(type: any, msg: any) {
@@ -63,115 +63,21 @@ $(function () {
     }
 
 
-    function goTo(id: string) {
+    function goTo() {
         // ping_2 schicken
         let data = $(this).data();
-        let id = data.id;
+        let  id = data.id;
         console.log(id);
 
         // Nachricht schicken
         socketSend('timepoint id', id);
-    }
-
-    // RECEIVE
-    function receiveCommand() {
-
-        /* steuerbefehl empfangen
-         ------------------------------
-         -- socket-cmd ----------------
-         previous
-         next
-
-         navigation-display-toggle
-         data-display-toggle
-         smartphone-sim-toggle
-         console-toggle
-         remote-open
-         help-toggle
-         ------------------------------
-         */
-        socket.on('command', function (cmd: string) {
-
-                console.log(cmd);
-
-                switch (cmd) {
-
-                    case 'previous':
-                        aNicerWay.goToPrevious();
-                        break;
-
-                    case 'next':
-                        aNicerWay.goToNext();
-                        break;
-
-                    case 'first':
-                        aNicerWay.goToFirst();
-                        break;
-
-                    case 'last':
-                        aNicerWay.goToLast();
-                        break;
-
-
-                    // Toolbar
-                    case 'navigation-display-toggle':
-                        NavigationController.modalToggle();
-                        break;
-
-                    case 'data-display-toggle':
-                        DataDisplayController.modalToggle();
-                        break;
-
-                    case 'smartphone-sim-toggle':
-                        SmartphoneSimController.toggle();
-                        break;
-
-                    case 'console-toggle':
-                        ConsoleController.modalToggle();
-                        break;
-
-                    case 'remote-toggle':
-                        RemoteDisplayController.modalToggle();
-                        break;
-
-                    case 'help-toggle':
-                        HelpController.modalToggle();
-                        break;
-
-                    case 'get-list':
-                        aNicerWay.updateList();
-                        break;
-
-                    default:
-                        SmartphoneSimController.error('Remotebefehl nicht verstanden');
-                        SmartphoneSimController.error('> ' + cmd, 1);
-                }
-            }
-        )
-    }
-
-    function receivePing() {
-
-        // ping_2 empfangen
-        socket.on('ping_2', function () {
-
-            console.log('PING');
-            SmartphoneSimController.ping();
-        })
-
+        markAsActive(id);
 
     }
 
-    function receiveMessage() {
 
-        // Nachricht empfangen
-        socket.on('chat message', function (msg: string) {
 
-            console.log(msg);
-            SmartphoneSimController.message(msg);
-        })
 
-    }
 
     function receiveTimepoint() {
 
@@ -179,6 +85,8 @@ $(function () {
         socket.on('timepoint', function (doc: any) {
 
             setTimepoint(doc);
+            markAsActive(doc._id);
+
         })
 
     }
@@ -189,7 +97,8 @@ $(function () {
         // Nachricht empfangen
         socket.on('timepoint id', function (id: any) {
 
-            aNicerWay.goTo(id);
+            markAsActive(id);
+
         })
 
     }
@@ -227,6 +136,14 @@ $(function () {
 
     /**
      *
+     */
+    function getList(){
+        socket.emit('command', 'get-list');
+    }
+
+
+    /**
+     *
      *
      * @param list
      */
@@ -234,6 +151,7 @@ $(function () {
 
         // STATIC
         let elemNav = document.getElementById('remote-list-main');
+
 
         // reset nav
         elemNav.innerHTML = '';
@@ -261,7 +179,7 @@ $(function () {
                     let a = document.createElement('a');
 
                     // a.class
-                    a.setAttribute('class', 'socket-waypoint-button');
+                    a.setAttribute('class', 'socket-waypoint-button btn btn-nicer btn-block');
 
                     // a.data-id
                     a.setAttribute('data-id', doc._id);
@@ -283,5 +201,19 @@ $(function () {
 
 
     }
+
+    /**
+     *
+     * @param id
+     */
+    function markAsActive(id: string) {
+
+        $('a.active').removeClass('active');
+
+        let find = '*[data-id="'+ id +'"]';
+        $(find).addClass('active');
+        console.log($(find));
+    }
+
 
 });

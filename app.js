@@ -32,7 +32,7 @@ io.on('connection', function (socket) {
 
     socket.on('chat message', function (msg) {
         console.log(' - message: ' + msg);
-        if(msg === ''){
+        if (msg === '') {
             msg = '...';
         }
         io.emit('chat message', msg);
@@ -61,4 +61,34 @@ io.on('connection', function (socket) {
 });
 
 
+// TimePoint
+io.on('connection', function (socket) {
 
+    socket.on('timepoint', function (doc) {
+        console.log(' - timepoint: ' + doc);
+
+        io.emit('timepoint', doc);
+    });
+});
+
+
+// TimePoint ID
+io.on('connection', function (socket) {
+
+    socket.on('timepoint id', function (id) {
+        console.log(' - timepoint id: ' + id);
+
+        io.emit('timepoint id', id);
+    });
+});
+
+
+// TimePoint List
+io.on('connection', function (socket) {
+
+    socket.on('timepoint list', function (data) {
+        console.log(' - timepoint list: ' + data);
+
+        io.emit('timepoint list', data);
+    });
+});

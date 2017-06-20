@@ -1,28 +1,19 @@
-/// <reference path='DbController.ts'/>
+/// <reference path='../ANicerWay.ts'/>
 /// <reference path='DataDisplayController.ts'/>
 /// <reference path="../definitions/jquery-scrollTo/jquery-scrollTo.d.ts" />
+
+// Global
+let _navigationOpen: boolean = false;
 
 /**
  *  navigationController
  *
  */
-
-
-// Global
-const _navigationName: string = 'navigation-display';
-const _navigationContentName: string = 'navigation-display-content';
-
-let _navigationOpen: boolean = false;
-
-// Class
 class NavigationController {
 
-    // Global
-
-
-    public className: string;
     private elem_Root: HTMLElement | any;
     private elem_Content: HTMLElement | any;
+    public timeWayPointList: any;
 
     /**
      * constructor
@@ -31,23 +22,18 @@ class NavigationController {
 
 
         // Vars
-        this.elem_Root = document.getElementById(_navigationName);
-        this.elem_Content = document.getElementById(_navigationContentName);
+        this.elem_Root = document.getElementById('navigation-display-container');
+        this.elem_Content = document.getElementById('navigation-display-content');
+
+        console.log('- Navigation Display load');
 
 
-        // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
-        $('#navigation-display-ready').ready(function () {
-                console.log('- Navigation Display load');
-
-                // functions
-                NavigationController.modalClose()
-                NavigationController.listAllWayPoints();
-                NavigationController.addAllEventsListeners();
-                NavigationController.makeDraggable();
-                //
-                console.log('- Navigation Display ready');
-            }
-        )
+        // functions
+        this.addEventListeners();
+        this.addKeystrokes();
+        this.makeDraggable();
+        //
+        console.log('- Navigation Display ready');
 
 
     }
@@ -55,15 +41,15 @@ class NavigationController {
     /**
      * makeDraggable
      */
-    static makeDraggable() {
-        $('#' + _navigationContentName).draggable();
+    makeDraggable() {
+        $(this.elem_Content).draggable();
     }
 
     /**
-     * addAllEventsListeners
+     * addEventsListeners
      *
      */
-    static addAllEventsListeners() {
+    addEventListeners() {
 
         // Button Close Display
         $('.navigation-display-button-close').click(NavigationController.modalClose);
@@ -71,78 +57,33 @@ class NavigationController {
         //
         $('.navigation-display-button-toggle').click(NavigationController.modalToggle);
 
-        //
-        $('.navigation-button-next').click(NavigationController.scrollToNext);
-
-        //
-        $('.navigation-button-previous').click(NavigationController.scrollToPreviews);
 
 
-        // Keystrokes (kein jQuery weil schneller)
-        document.onkeydown = function (event: any) {
-            event = event || window.event;
-
-            if (!$(document.activeElement).is(_protectedInputs)) {
-
-                let key = {
-                    arrow_left: 37,
-                    arrow_right: 39,
-
-                    arrow_up: 38,
-                    arrow_down: 40,
-
-                    n: 78
-                };
-
-
-                switch (event.which || event.keyCode) {
-
-                    // Pfeil nach Links
-                    case key.arrow_left:
-                        NavigationController.scrollToPreviews();
-                        break;
-
-                    // Pfeil nach rechts
-                    case key.arrow_right:
-                        NavigationController.scrollToNext();
-                        break;
-
-
-                    // Pfeil nach oben
-                    case key.arrow_up:
-                        NavigationController.scrollToFirst();
-                        break;
-
-                    // Pfeil nach unten
-                    case key.arrow_down:
-                        NavigationController.scrollToLast();
-                        break;
-
-
-                    // N - Navigation einblenden
-                    case key.n:
-                        console.log('n gedrückt');
-                        NavigationController.modalToggle();
-                        break;
-
-                    default:
-                        return; // exit this handler for other keys
-                }
-                event.preventDefault(); // prevent the default action (scroll / move caret)
-            }
-
-        }
     }
+
+    addKeystrokes() {
+
+        // Navigation Display einblenden
+        key('n', function () {
+            RemoteDisplayController.openModalCenterRemote();
+        });
+
+
+    }
+
+    update() {
+        this.generateNavigationList();
+    };
 
 
     /**
-     * listAllWayPoints
+     * generateNavigationList
      * - Listet alle Waypoints als klickbare Nav-Liste auf
      *
      * - Statische Funktion, kann direkt im aufgerufen werden
      *
      */
-    static listAllWayPoints() {
+    generateNavigationList() {
 
         // STATIC
         let elemNav = document.getElementById('navigation-content');
@@ -157,41 +98,48 @@ class NavigationController {
         elemNav.appendChild(ul);
 
         // ul > li*
-        let promise = DbController.loadAllWayPoints();
 
-        promise.then(function (doc: any) {
 
-            let anzahl = doc.total_rows;
-            let zeilen = doc.rows;
+        let list = this.timeWayPointList;
 
-            $.each(zeilen, function (index, data) {
 
-                // li
-                let li = document.createElement('li');
-                ul.appendChild(li);
+        if (list) {
 
-                // a
-                let a = document.createElement('a');
 
-                // a.class
-                a.setAttribute('class', 'waypoint-list');
+            for (let i = 1, len = list.length; i < len + 1; i++) {
+                let doc = list[i];
 
-                // a.data-id
-                a.setAttribute('data-id', data.doc._id);
+                if (doc) {
+                    // li
+                    let li = document.createElement('li');
+                    ul.appendChild(li);
 
-                // a.click(func)
-                a.setAttribute('onclick', 'NavigationController.loadWayPoint(\'' + data.doc._id + '\')');
-                a.setAttribute('ondblclick', 'NavigationController.showDataDisplay(\'' + data.doc._id + '\')');
+                    // a
+                    let a = document.createElement('a');
 
-                // Text
-                let title = data.doc.timewayid + ' - ' + data.doc.date + ' - ' + data.doc.place;
-                let text = document.createTextNode(title);
+                    // a.class
+                    a.setAttribute('class', 'timeWayPoint-list');
 
-                // li > a > text
-                li.appendChild(a);
-                a.appendChild(text);
-            });
-        });
+                    // a.data-id
+                    a.setAttribute('data-id', doc._id);
+
+                    // a.click(func)
+                    a.setAttribute('onclick', 'NavigationController.goTo(\'' + doc._id + '\')');
+                    a.setAttribute('ondblclick', 'NavigationController.showDataDisplay(\'' + doc._id + '\')');
+
+                    // Text
+                    let title = doc.sequence + ' - ' + doc.date + ' - ' + doc.place;
+                    let text = document.createTextNode(title);
+
+                    // li > a > text
+                    li.appendChild(a);
+                    a.appendChild(text);
+                }
+            }
+
+        } else {
+            console.log('generateNavigationList -- Leere Liste');
+        }
 
 
     };
@@ -202,34 +150,15 @@ class NavigationController {
      * @param id
      *
      */
-    static loadWayPoint(id: string) {
+    static goTo(id: string) {
 
-        console.log('NavigationController.loadWaypoint');
-        console.log('-' + id);
-
-        DataDisplayController.setData(id);
-        StatusDisplayController.setData(id);
-        NavigationController.setSmartphoneSimContent(id);
-        NavigationController.scrollToTarget(id);
+        aNicerWay.goTo(id);
 
     }
 
     static showDataDisplay(id: string) {
-
-        DataDisplayController.setData(id);
         DataDisplayController.modalOpen();
-    }
-
-    static setSmartphoneSimContent(id: string) {
-        let promise = DbController.loadWayPoint(id);
-        promise.then(function (doc: any) {
-
-            let content = doc.timewayid;
-            let message = 'TimeWayPoint: <span class="message-ok">' + content + '</span>';
-            SmartphoneSimController.message(message);
-
-        });
-
+        aNicerWay.goTo(id);
     }
 
 
@@ -239,12 +168,12 @@ class NavigationController {
      */
     static modalClose() {
         _navigationOpen = false;
-        $('#' + _navigationContentName).hide();
+        $('#navigation-display-content').hide();
     }
 
     static modalOpen() {
         _navigationOpen = true;
-        $('#' + _navigationContentName).show();
+        $('#navigation-display-content').show();
     }
 
     static modalToggle() {
@@ -257,68 +186,8 @@ class NavigationController {
     }
 
 
-    /**
-     *
-     *
-     * @param target
-     */
-    static  scrollToTarget(target: string) {
-
-        console.log('target:' + target);
-
-        let promise = DbController.loadWayPoint(target);
-        promise.then(function (doc: any) {
-
-            let point = doc.timewayid;
-            aNicerWay.setTimePoint(point);
-
-        });
-
-        $('#timeway-content').scrollTo('#' + target, 1000);
-
-    }
-
-    static  scrollToNumber(point: number) {
-        let target = 'TimeWayPoint-' + point;
-        $('#timeway-content').scrollTo('#' + target, 1000);
-        aNicerWay.setTimePoint(point);
-
-        NavigationController.setSmartphoneSimContent(target);
-
-        StatusDisplayController.setData(target);
-
-    }
-
-
-    static scrollToNext() {
-        let point: number = aNicerWay.getTimePoint();
-
-        let next = point + 1;
-        NavigationController.scrollToNumber(next);
-
-    }
-
-    static scrollToPreviews() {
-        let point: number = aNicerWay.getTimePoint();
-
-        let prev = point - 1;
-        NavigationController.scrollToNumber(prev);
-
-    }
-
-    static scrollToFirst() {
-        let first: number = aNicerWay.getFirstTimePoint();
-
-        NavigationController.scrollToNumber(first);
-        SmartphoneSimController.message('first TimePoint')
-
-    }
-
-    static scrollToLast() {
-        let last: number = aNicerWay.getLastTimePoint();
-        NavigationController.scrollToNumber(last);
-        SmartphoneSimController.message('last TimePoint')
-
-    }
+    setList(list: any) {
+        this.timeWayPointList = list;
+    };
 
 }

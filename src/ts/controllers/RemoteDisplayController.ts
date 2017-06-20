@@ -26,27 +26,23 @@ class RemoteDisplayController {
         // Views laden
 
 
-        // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
-        $('#remote-display-ready').ready(function () {
-                console.log('- Remote Display load');
+        console.log('- Remote Display load');
 
-                // Aktionen verknüpfen
-                RemoteDisplayController.makeDraggable();
-                RemoteDisplayController.addAllEventsListeners();
-                RemoteDisplayController.activateKeystrokes();
+        // Aktionen verknüpfen
+        this.makeDraggable();
+        this.addEventListeners();
+        this.addKeystrokes();
 
-                //
-                console.log('- Remote Display ready');
-            }
-        )
+        //
+        console.log('- Remote Display ready');
 
 
     }
 
     /**
-     * addAllEventsListeners
+     * addEventsListeners
      */
-    static addAllEventsListeners() {
+    addEventListeners() {
 
         // Button Close Display
         $('.remote-display-button-close').click(RemoteDisplayController.modalClose);
@@ -68,21 +64,19 @@ class RemoteDisplayController {
     }
 
     /**
-     *
+     * addKeystrokes
      */
-    static activateKeystrokes() {
+    addKeystrokes() {
 
         key('r', function () {
             RemoteDisplayController.openModalCenterRemote();
         });
-
-
     }
 
     /**
      * makeDraggable
      */
-    static  makeDraggable() {
+    makeDraggable() {
         $('#' + _remoteDisplayContentName).draggable();
     }
 

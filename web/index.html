@@ -57,7 +57,7 @@
             <li><a class="navigation-display-button-toggle">Navigation</a></li>
             <li><a class="data-display-button-toggle">Data</a></li>
             <li><a class="smartphone-sim-button-toggle"><span class="glyphicon glyphicon-phone"></span> </a></li>
-            <li><a class="console-button-toggle"><span class="glyphicon glyphicon-console"></span></a></li>
+            <li><a class="console-toggle-button"><span class="glyphicon glyphicon-console"></span></a></li>
             <li><a class="modal-center-button-remote"><span class="glyphicon glyphicon-sort"></span></a></li>
             <li><a class="help-button-toggle " data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></a></li>
         </ul>
@@ -81,8 +81,7 @@
 </header>
 <main>
 
-    <div id="console-display-container" style="display: none">
-    </div>
+
 
     <div id="timeway-container">
         <!-- inject:views/timeway.html -->
@@ -171,7 +170,7 @@
                                     class="smartphone-console-clear">[clear]</a></div>
 
                         </div>
-                        <div id="smartphone-console-content">
+                        <div id="smartphone-console-main">
 
                         </div>
                     </div>
@@ -209,19 +208,19 @@
         <span class="close data-display-button-close">&times;</span>
 
 
-        <p id="info_id"></p>
+        <p id="twp-data-info_id"></p>
 
         <form id="data-display-form" class="form-horizontal">
 
             <!-- _id -->
-            <input type="hidden" class="form-control" name="_id" id="_id">
+            <input type="hidden" class="form-control" name="_id" id="twp-data-id">
 
 
-            <!--TimeWayId-->
+            <!--sequence-->
             <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="TimeWayId">ID</label>
+                <label class="col-sm-2 control-label" for="twp-data-sequence">Seq</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="TimeWayId" id="TimeWayId" placeholder="ID">
+                    <input type="text" class="form-control" name="sequence" id="twp-data-sequence" placeholder="sequence">
                 </div>
 
             </div>
@@ -229,45 +228,45 @@
 
             <!--Time-->
             <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="Time">Time</label>
+                <label class="col-sm-2 control-label" for="twp-data-time">Time</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Time" id="Time" placeholder="Time">
+                    <input type="text" class="form-control" name="Time" id="twp-data-time" placeholder="Time">
                 </div>
             </div>
 
 
             <!--Date-->
             <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="Date">Date</label>
+                <label class="col-sm-2 control-label" for="twp-data-date">Date</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Date" id="Date" placeholder="Date">
+                    <input type="text" class="form-control" name="Date" id="twp-data-date" placeholder="Date">
                 </div>
             </div>
 
 
             <!--Place-->
             <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="Place">Place</label>
+                <label class="col-sm-2 control-label" for="twp-data-place">Place</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Place" id="Place" placeholder="Place">
+                    <input type="text" class="form-control" name="Place" id="twp-data-place" placeholder="Place">
                 </div>
             </div>
 
 
             <!--Feeling-->
             <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="Feeling">Feeling</label>
+                <label class="col-sm-2 control-label" for="twp-data-feeling">Feeling</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Feeling" id="Feeling" placeholder="Feeling">
+                    <input type="text" class="form-control" name="Feeling" id="twp-data-feeling" placeholder="Feeling">
                 </div>
             </div>
 
 
             <!--Message-->
             <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="Message">Message</label>
+                <label class="col-sm-2 control-label" for="twp-data-message">Message</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Message" id="Message" placeholder="Message">
+                    <input type="text" class="form-control" name="Message" id="twp-data-message" placeholder="Message">
                 </div>
             </div>
 
@@ -275,9 +274,9 @@
             <!--Notice-->
             <div class="form-group form-group-sm">
 
-                <label class="col-sm-2 control-label" for="Notice">Notice</label>
+                <label class="col-sm-2 control-label" for="twp-data-notice">Notice</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" name="Notice" id="Notice">TEST</textarea>
+                    <textarea class="form-control" rows="3" name="Notice" id="twp-data-notice">TEST</textarea>
                 </div>
 
             </div>
@@ -326,21 +325,30 @@
             <!-- inject:views/remote_display_mobile.html -->
             <div class="container-fluid">
 
-   <!-- TEST -->
+    <!-- TEST -->
     <div class="remote-test"></div>
+
+    <!-- LIST -->
+    <div class="well well-remote">
+        <div id="remote-list">
+            <div id="remote-list-header">HEADER</div>
+            <div id="remote-list-main"></div>
+            <div id="remote-list-footer">FOOTER</div>
+        </div>
+    </div>
 
     <!-- Preview -->
     <div class="well well-remote">
-        <div class="remote-slide-preview"></div>
+        <div id="remote-slide-preview"></div>
     </div>
 
-   <!-- Message -->
+    <!-- Message -->
     <div class="well well-remote">
         <div class="message-input">
             <form class="form-inline form-small" name="sockettest">
                 <div class="input-group">
                     <input type="text" class="form-control" id="input-socket-message" placeholder="bla bla">
-                    <span class="input-group-addon btn-nicer button-socket-message">send</span>
+                    <span class="input-group-addon btn-nicer socket-message-button">send</span>
                 </div>
             </form>
         </div>
@@ -350,64 +358,101 @@
     <div class="well well-remote">
         <div class="btn-group">
 
-            <button type="button" class="btn btn-default btn-sm navigation-display-button-toggle">Nav</button>
-            <button type="button" class="btn btn-default btn-sm data-display-button-toggle">Data</button>
+            <!-- navigation-display-toggle -->
+            <button type="button"
+                    data-command="navigation-display-toggle"
+                    class="navigation-display-toggle-button
+          socket-cmd-button
+          btn btn-default btn-sm ">Nav
+            </button>
 
-            <button type="button" class="btn btn-default btn-sm smartphone-sim-button-toggle">
+            <!-- data-display-toggle -->
+            <button type="button"
+                    data-command="data-display-toggle"
+                    class="data-display-toggle-button
+          socket-cmd-button
+          btn btn-default btn-sm ">Data
+            </button>
+
+            <!-- smartphone-sim-toggle -->
+            <button type="button"
+                    data-command="smartphone-sim-toggle"
+                    class="smartphone-sim-toggle-button
+          socket-cmd-button
+          btn btn-default btn-sm ">
                 <span class="glyphicon glyphicon-phone"></span>
             </button>
 
-            <button type="button" class=" btn btn-default btn-sm console-button-toggle">
+            <!-- console -->
+            <button type="button"
+                    data-command="console-toggle"
+                    class="console-button-toggle
+          socket-cmd-button
+          console-toggle
+          btn btn-default btn-sm ">
                 <span class="glyphicon glyphicon-console"></span>
             </button>
 
-            <button type="button" class=" btn btn-default btn-sm modal-center-button-remote">
+            <!-- remote-toggle -->
+            <button type="button"
+                    data-command="remote-toggle"
+                    class="remote-toggle-button
+          socket-cmd-button
+          btn btn-default btn-sm ">
                 <span class="glyphicon glyphicon-sort"></span>
             </button>
 
-            <button type="button" class="btn btn-default btn-sm help-button-toggle " data-toggle="modal"
-                    data-target="#help-modal">
+            <!-- help-button-toggle -->
+            <button type="button"
+                    data-command="help-toggle"
+                    class="help-toggle-button
+          socket-cmd-button
+          btn btn-default btn-sm ">
                 <span class="glyphicon glyphicon-question-sign"></span>
             </button>
 
-            <button type="button" data-command="" class="btn btn-default btn-sm button-socket-steuerbefehl">
+            <!-- Error --> <!-- "data-command" Leer lassen um einen unbekannten Befehl zu simmulieren -->
+            <button type="button"
+                    data-command=""
+                    class="socket-error-button
+          socket-cmd-button
+          btn btn-default btn-sm ">
                 Error
             </button>
 
         </div>
 
 
-
     </div>
 
     <!-- Ping -->
     <div class="well well-remote">
-        <button type="button" class="btn btn-default btn-sm btn-block btn-default button-socket-ping">
+        <button type="button" class="btn btn-default btn-sm btn-block btn-default socket-ping-button">
             <span class="glyphicon glyphicon-screenshot"></span>
         </button>
     </div>
 
-   <!-- Protagonist -->
+    <!-- Protagonist -->
     <div class="remote-protagonist">
 
     </div>
 
 
     <!-- Vor und Zurück -->
-    <div class="well  well-remote">
+    <div class="well well-remote">
 
         <div class="row">
             <div class="col-xs-6">
                 <button type="button" data-command="previous"
-                        class=" btn btn-default btn-block button-socket-command socket-button-previous"><span
-                        aria-hidden="true">&larr;</span>
+                        class=" btn btn-default btn-block socket-cmd-button socket-button-previous">
+                    <span>&larr;</span>
                 </button>
             </div>
 
             <div class="col-xs-6">
                 <button type="button" data-command="next"
-                        class=" btn btn-default btn-block button-socket-command socket-button-next"><span
-                        aria-hidden="true">&rarr;</span>
+                        class=" btn btn-default btn-block socket-cmd-button socket-button-next">
+                    <span aria-hidden="true">&rarr;</span>
                 </button>
             </div>
 
@@ -425,21 +470,22 @@
 
     <div id="help-container">
         <!-- inject:views/help.html -->
-        <!-- Modal -->
-<div class="modal" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content ">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">A Niver Way <span class="version"></span></h4>
-                    </div>
-                    <div class="modal-body">
+        <div class="help-content">
+    <!-- Modal -->
+    <div class="modal" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">A Niver Way <span class="version"></span></h4>
+                        </div>
+                        <div class="modal-body">
 
-                        <h4>Tastaturkürzel:</h4>
-                        <div class="spalten">
+                            <h4>Tastaturkürzel:</h4>
+                            <div class="spalten">
 
 
                                 <table class="help-keystroke">
@@ -459,8 +505,6 @@
                                         <td></td>
                                     </tr>
                                 </table>
-
-
 
 
                                 <table class="help-keystroke">
@@ -488,19 +532,20 @@
                                 </table>
 
 
+                            </div>
+
+
+                            <p class="copywright">© Oliver Steiner | IMD 2017 | St. Gallen</p>
 
                         </div>
 
-
-                        <p class="copywright">© Oliver Steiner | IMD 2017 | St. Gallen</p>
-
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div class="help-ready"></div>
         <!-- endinject -->
     </div>
 
@@ -580,6 +625,28 @@
 
 </main>
 <footer>
+    <div id="console-container">
+        <!-- inject:views/console.html -->
+        <div id="console-content">
+
+    <div id="console-toolbar">
+        <div class="console-toolbar-item console-status"
+             id="console-toolbar-status">console
+        </div>
+        <div class="console-toolbar-item" id="console-toolbar-test"><a
+                class="console-test">[test]</a></div>
+        <div class="console-toolbar-item" id="console-toolbar-clear"><a
+                class="console-clear">[clear]</a></div>
+
+    </div>
+    <div id="console-main">
+
+    </div>
+
+</div>
+<div class="console-ready"></div>
+        <!-- endinject -->
+    </div>
 </footer>
 <!-- Libraries -->
 <script src="libraries/jquery/jquery-3.2.1.min.js"></script>
@@ -595,22 +662,24 @@
 
 <!-- A Nicer Way -->
 <script src="js/utilities.js"></script>
+<script src="js/ANicerWay.js"></script>
 
-<script src="js/controllers/ConsoleDisplayController.js"></script>
+<script src="js/controllers/ConsoleController.js"></script>
 <script src="js/controllers/SmartphoneSimController.js"></script>
 <script src="js/controllers/StatusDisplayController.js"></script>
-<script src="js/controllers/TimewayController.js"></script>
+<script src="js/controllers/TimeWayController.js"></script>
 <script src="js/controllers/NavigationController.js"></script>
 <script src="js/controllers/DataDisplayController.js"></script>
 <script src="js/controllers/DbController.js"></script>
 <script src="js/controllers/RemoteDisplayController.js"></script>
-<script src="js/ANicerWay.js"></script>
+<script src="js/controllers/HelpController.js"></script>
 
 <script src="js/main.js"></script>
 <script src="js/remote.js"></script>
 <script src="js/test.js"></script>
 
 <script>
+
 
 </script>
 

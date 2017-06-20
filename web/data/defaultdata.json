@@ -9,7 +9,7 @@
         },
         {
             "_id": "TimeWayPoint-1",
-            "timewayid": 1,
+            "sequence": 1,
             "date": "2017.10.08",
             "time": "00.00",
             "place": "Olten - Stadt",
@@ -20,7 +20,7 @@
         },
         {
             "_id": "TimeWayPoint-2",
-            "timewayid": 2,
+            "sequence": 2,
             "date": "2017.10.08",
             "time": "00.00",
             "place": "Olten - Bahnhof",
@@ -31,7 +31,7 @@
         },
         {
             "_id": "TimeWayPoint-3",
-            "timewayid": 3,
+            "sequence": 3,
             "date": "2017.10.08",
             "time": "00.00",
             "place": "St.Gallen - Bahnhof",
@@ -42,7 +42,7 @@
         },
         {
             "_id": "TimeWayPoint-4",
-            "timewayid": 4,
+            "sequence": 4,
             "date": "2017.10.08",
             "time": "00.00",
             "place": "St.Gallen - Bushaltestelle",
@@ -54,7 +54,7 @@
         },
         {
             "_id": "TimeWayPoint-5",
-            "timewayid": 5,
+            "sequence": 5,
             "date": "2017.10.08",
             "time": "00.00",
             "place": "Riethüsli - Bushaltestelle",
@@ -65,7 +65,7 @@
         },
         {
             "_id": "TimeWayPoint-6",
-            "timewayid": 6,
+            "sequence": 6,
             "date": "2017.10.08",
             "time": "00.00",
             "place": "Riethüsli - Schulhaus",
@@ -76,7 +76,7 @@
         },
         {
             "_id": "TimeWayPoint-7",
-            "timewayid": 7,
+            "sequence": 7,
             "date": "2017.10.08",
             "time": "00.00",
             "place": "Riethüsli - Schulhaus",
@@ -87,7 +87,7 @@
         },
         {
             "_id": "TimeWayPoint-8",
-            "timewayid": 8,
+            "sequence": 8,
             "date": "2017.10.08",
             "time": "00.00",
             "place": "Riethüsli - Schulhaus",
@@ -98,7 +98,7 @@
         },
         {
             "_id": "TimeWayPoint-9",
-            "timewayid": 9,
+            "sequence": 9,
             "date": "2017.10.08",
             "time": "00.00",
             "place": "Riethüsli - Schulhaus",
@@ -109,7 +109,7 @@
         },
         {
             "_id": "TimeWayPoint-10",
-            "timewayid": 10,
+            "sequence": 10,
             "date": "2017.10.08",
             "time": "00.00",
             "place": "Riethüsli - Schulhaus",

@@ -19,20 +19,19 @@ var DataDisplayController = (function () {
         this.elem_Content = document.getElementById(_dataDisplayContentName);
         // Views laden
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
-        $('#data-display-ready').ready(function () {
-            console.log('- Data Display load');
-            // Aktionen verknüpfen
-            DataDisplayController.makeDraggable();
-            DataDisplayController.addAllEventsListeners();
-            DataDisplayController.modalClose();
-            //
-            console.log('- Data Display ready');
-        });
+        console.log('- Data Display load');
+        // Aktionen verknüpfen
+        this.addEventListeners();
+        this.addKeystrokes();
+        this.makeDraggable();
+        DataDisplayController.modalClose();
+        //
+        console.log('- Data Display ready');
     }
     /**
-     * addAllEventsListeners
+     * addEventsListeners
      */
-    DataDisplayController.addAllEventsListeners = function () {
+    DataDisplayController.prototype.addEventListeners = function () {
         // Button SAVE
         $('#data-display-button-save').click(DataDisplayController.saveData);
         // Button DELETE
@@ -49,10 +48,19 @@ var DataDisplayController = (function () {
         $('.data-display-button-toggle').click(DataDisplayController.modalToggle);
     };
     /**
+     * addKeystrokes
+     */
+    DataDisplayController.prototype.addKeystrokes = function () {
+        key('d', function () {
+            DataDisplayController.modalToggle();
+        });
+    };
+    /**
      * makeDraggable
      */
-    DataDisplayController.makeDraggable = function () {
-        $('#' + _dataDisplayContentName).draggable().dblclick(DataDisplayController.modalClose);
+    DataDisplayController.prototype.makeDraggable = function () {
+        $(this.elem_Content).draggable();
+        $(this.elem_Content).dblclick(DataDisplayController.modalClose);
     };
     /**
      * resetform
@@ -61,13 +69,13 @@ var DataDisplayController = (function () {
      */
     DataDisplayController.resetForm = function () {
         console.log('DataDisplayController.resetForm');
-        $('#_id').val('');
-        $('#TimeWayId').val('');
-        $('#Date').val('');
-        $('#Place').val('');
-        $('#Feeling').val('');
-        $('#Message').val('');
-        $('#Notice').val('');
+        $('#twp-data-id').val('');
+        $('#twp-data-timeWayId').val('');
+        $('#twp-data-date').val('');
+        $('#twp-data-place').val('');
+        $('#twp-data-feeling').val('');
+        $('#twp-data-message').val('');
+        $('#twp-data-notice').val('');
     };
     /**
      * newForm
@@ -77,65 +85,61 @@ var DataDisplayController = (function () {
     DataDisplayController.newForm = function () {
         console.log('DataDisplayController.newForm');
         DataDisplayController.resetForm();
-        $('#info_id').text('NEU');
+        $('#twp-data-info_id').text('NEU');
     };
     /**
      *
      *
      */
     DataDisplayController.saveData = function () {
-        console.log('DataDisplayController.saveData');
-        // load values from Form
-        var _id = $('#_id').val();
-        var timewayid = $('#TimeWayId').val();
-        var date = $('#Date').val();
-        var place = $('#Place').val();
-        var feeling = $('#Feeling').val();
-        var message = $('#Message').val();
-        var notice = $('#Notice').val();
+        console.log('datadisplaycontroller.savedata');
+        // load values from form
+        var _id = $('#twp-data-id').val();
+        var sequence = $('#twp-data-sequence').val();
+        var date = $('#twp-data-date').val();
+        var place = $('#twp-data-place').val();
+        var feeling = $('#twp-data-feeling').val();
+        var message = $('#twp-data-message').val();
+        var notice = $('#twp-data-notice').val();
         var data = {
             _id: _id,
-            timewayid: timewayid,
+            sequence: sequence,
             date: date,
             place: place,
             feeling: feeling,
             message: message,
             notice: notice,
         };
-        // Wenn _id leer ist, wird es ein neuer Eintrag in die DB
+        // wenn _id leer ist, wird es ein neuer eintrag in die db
         console.log('--- _id= ' + _id);
         if (_id == "") {
-            // New
+            // new
             console.log('--- new');
-            DbController.addWayPoint(data);
+            aNicerWay.bcontroller.addwaypoint(data);
         }
         else {
-            // Update
+            // update
             console.log('--- update');
-            DbController.updateWayPoint(data);
+            aNicerWay.dbcontroller.updatewaypoint(data);
         }
-        // Die Liste aktualisieren
+        // die liste aktualisieren
         setTimeout(function () {
-            NavigationController.listAllWayPoints();
+            aNicerWay.update();
         }, 1000);
     };
     /**
      *
      *
      */
-    DataDisplayController.setData = function (id) {
-        var promise = DbController.loadWayPoint(id);
-        promise.then(function (doc) {
-            // load
-            $('#_id').attr('placeholder', '').val(doc._id);
-            $('#TimeWayId').attr('placeholder', '').val(doc.timewayid);
-            $('#Date').attr('placeholder', '').val(doc.date);
-            $('#Place').attr('placeholder', '').val(doc.place);
-            $('#Feeling').attr('placeholder', '').val(doc.feeling);
-            $('#Message').attr('placeholder', '').val(doc.message);
-            $('#Notice').attr('placeholder', '').val(doc.notice);
-            $('#info_id').html(doc._id);
-        });
+    DataDisplayController.setData = function (doc) {
+        $('#twp-data-id').attr('placeholder', '').val(doc._id);
+        $('#twp-data-sequence').attr('placeholder', '').val(doc.sequence);
+        $('#twp-data-date').attr('placeholder', '').val(doc.date);
+        $('#twp-data-place').attr('placeholder', '').val(doc.place);
+        $('#twp-data-feeling').attr('placeholder', '').val(doc.feeling);
+        $('#twp-data-message').attr('placeholder', '').val(doc.message);
+        $('#twp-data-notice').attr('placeholder', '').val(doc.notice);
+        $('#twp-data-info_id').html(doc._id);
     };
     /**
      *
@@ -143,12 +147,12 @@ var DataDisplayController = (function () {
      *
      */
     DataDisplayController.deleteData = function () {
-        var _id = $('#_id').val();
+        var _id = $('#twp-data-id').val();
         DbController.deleteWayPoint(_id);
         DataDisplayController.resetForm();
         // Die Liste aktualisieren
         setTimeout(function () {
-            NavigationController.listAllWayPoints();
+            aNicerWay.update();
         }, 1000);
     };
     /**
@@ -162,7 +166,6 @@ var DataDisplayController = (function () {
     DataDisplayController.modalOpen = function () {
         _dataDisplayModalOpen = true;
         $('#' + _dataDisplayContentName).show();
-        $('#data-display-content').show();
     };
     DataDisplayController.modalToggle = function () {
         if (_dataDisplayModalOpen) {

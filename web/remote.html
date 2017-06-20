@@ -40,21 +40,30 @@
     <!-- inject:views/remote_display_mobile.html -->
     <div class="container-fluid">
 
-   <!-- TEST -->
+    <!-- TEST -->
     <div class="remote-test"></div>
+
+    <!-- LIST -->
+    <div class="well well-remote">
+        <div id="remote-list">
+            <div id="remote-list-header">HEADER</div>
+            <div id="remote-list-main"></div>
+            <div id="remote-list-footer">FOOTER</div>
+        </div>
+    </div>
 
     <!-- Preview -->
     <div class="well well-remote">
-        <div class="remote-slide-preview"></div>
+        <div id="remote-slide-preview"></div>
     </div>
 
-   <!-- Message -->
+    <!-- Message -->
     <div class="well well-remote">
         <div class="message-input">
             <form class="form-inline form-small" name="sockettest">
                 <div class="input-group">
                     <input type="text" class="form-control" id="input-socket-message" placeholder="bla bla">
-                    <span class="input-group-addon btn-nicer button-socket-message">send</span>
+                    <span class="input-group-addon btn-nicer socket-message-button">send</span>
                 </div>
             </form>
         </div>
@@ -64,64 +73,101 @@
     <div class="well well-remote">
         <div class="btn-group">
 
-            <button type="button" class="btn btn-default btn-sm navigation-display-button-toggle">Nav</button>
-            <button type="button" class="btn btn-default btn-sm data-display-button-toggle">Data</button>
+            <!-- navigation-display-toggle -->
+            <button type="button"
+                    data-command="navigation-display-toggle"
+                    class="navigation-display-toggle-button
+          socket-cmd-button
+          btn btn-default btn-sm ">Nav
+            </button>
 
-            <button type="button" class="btn btn-default btn-sm smartphone-sim-button-toggle">
+            <!-- data-display-toggle -->
+            <button type="button"
+                    data-command="data-display-toggle"
+                    class="data-display-toggle-button
+          socket-cmd-button
+          btn btn-default btn-sm ">Data
+            </button>
+
+            <!-- smartphone-sim-toggle -->
+            <button type="button"
+                    data-command="smartphone-sim-toggle"
+                    class="smartphone-sim-toggle-button
+          socket-cmd-button
+          btn btn-default btn-sm ">
                 <span class="glyphicon glyphicon-phone"></span>
             </button>
 
-            <button type="button" class=" btn btn-default btn-sm console-button-toggle">
+            <!-- console -->
+            <button type="button"
+                    data-command="console-toggle"
+                    class="console-button-toggle
+          socket-cmd-button
+          console-toggle
+          btn btn-default btn-sm ">
                 <span class="glyphicon glyphicon-console"></span>
             </button>
 
-            <button type="button" class=" btn btn-default btn-sm modal-center-button-remote">
+            <!-- remote-toggle -->
+            <button type="button"
+                    data-command="remote-toggle"
+                    class="remote-toggle-button
+          socket-cmd-button
+          btn btn-default btn-sm ">
                 <span class="glyphicon glyphicon-sort"></span>
             </button>
 
-            <button type="button" class="btn btn-default btn-sm help-button-toggle " data-toggle="modal"
-                    data-target="#help-modal">
+            <!-- help-button-toggle -->
+            <button type="button"
+                    data-command="help-toggle"
+                    class="help-toggle-button
+          socket-cmd-button
+          btn btn-default btn-sm ">
                 <span class="glyphicon glyphicon-question-sign"></span>
             </button>
 
-            <button type="button" data-command="" class="btn btn-default btn-sm button-socket-steuerbefehl">
+            <!-- Error --> <!-- "data-command" Leer lassen um einen unbekannten Befehl zu simmulieren -->
+            <button type="button"
+                    data-command=""
+                    class="socket-error-button
+          socket-cmd-button
+          btn btn-default btn-sm ">
                 Error
             </button>
 
         </div>
 
 
-
     </div>
 
     <!-- Ping -->
     <div class="well well-remote">
-        <button type="button" class="btn btn-default btn-sm btn-block btn-default button-socket-ping">
+        <button type="button" class="btn btn-default btn-sm btn-block btn-default socket-ping-button">
             <span class="glyphicon glyphicon-screenshot"></span>
         </button>
     </div>
 
-   <!-- Protagonist -->
+    <!-- Protagonist -->
     <div class="remote-protagonist">
 
     </div>
 
 
     <!-- Vor und Zurück -->
-    <div class="well  well-remote">
+    <div class="well well-remote">
 
         <div class="row">
             <div class="col-xs-6">
                 <button type="button" data-command="previous"
-                        class=" btn btn-default btn-block button-socket-command socket-button-previous"><span
-                        aria-hidden="true">&larr;</span>
+                        class=" btn btn-default btn-block socket-cmd-button socket-button-previous">
+                    <span>&larr;</span>
                 </button>
             </div>
 
             <div class="col-xs-6">
                 <button type="button" data-command="next"
-                        class=" btn btn-default btn-block button-socket-command socket-button-next"><span
-                        aria-hidden="true">&rarr;</span>
+                        class=" btn btn-default btn-block socket-cmd-button socket-button-next">
+                    <span aria-hidden="true">&rarr;</span>
                 </button>
             </div>
 

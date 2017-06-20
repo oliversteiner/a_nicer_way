@@ -16,21 +16,18 @@ var RemoteDisplayController = (function () {
         this.elem_Root = document.getElementById(_remoteDisplayName);
         this.elem_Content = document.getElementById(_remoteDisplayContentName);
         // Views laden
-        // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
-        $('#remote-display-ready').ready(function () {
-            console.log('- Remote Display load');
-            // Aktionen verknüpfen
-            RemoteDisplayController.makeDraggable();
-            RemoteDisplayController.addAllEventsListeners();
-            RemoteDisplayController.activateKeystrokes();
-            //
-            console.log('- Remote Display ready');
-        });
+        console.log('- Remote Display load');
+        // Aktionen verknüpfen
+        this.makeDraggable();
+        this.addEventListeners();
+        this.addKeystrokes();
+        //
+        console.log('- Remote Display ready');
     }
     /**
-     * addAllEventsListeners
+     * addEventsListeners
      */
-    RemoteDisplayController.addAllEventsListeners = function () {
+    RemoteDisplayController.prototype.addEventListeners = function () {
         // Button Close Display
         $('.remote-display-button-close').click(RemoteDisplayController.modalClose);
         // Button Show Display
@@ -43,9 +40,9 @@ var RemoteDisplayController = (function () {
         $(".remote-button-open-inline").click(RemoteDisplayController.remoteOpenInline);
     };
     /**
-     *
+     * addKeystrokes
      */
-    RemoteDisplayController.activateKeystrokes = function () {
+    RemoteDisplayController.prototype.addKeystrokes = function () {
         key('r', function () {
             RemoteDisplayController.openModalCenterRemote();
         });
@@ -53,7 +50,7 @@ var RemoteDisplayController = (function () {
     /**
      * makeDraggable
      */
-    RemoteDisplayController.makeDraggable = function () {
+    RemoteDisplayController.prototype.makeDraggable = function () {
         $('#' + _remoteDisplayContentName).draggable();
     };
     /**

@@ -10,20 +10,13 @@ var DbController = (function () {
     // Wird aufgerufen beim erstellen der Klasse (new DbController)
     function DbController() {
         console.log('DbController.constructor');
-        var db = new PouchDB('anicerway');
         $.getJSON("data/defaultData.json", function (json) {
             _jsonFile = json;
-        });
-        // wird immer ausgeführt, wenn änderugen an der Datenbank erfolgt sind
-        db.changes().on('change', function () {
-            // console
-            //   console.log('db Changes');
-            _update_views();
         });
     }
     /**
      * addWayPoint
-     * - Einen Waypoint in die Datenbank schreiben
+     * - Einen TimeWayPoint in die Datenbank schreiben
      *
      * @param data
      */
@@ -33,9 +26,9 @@ var DbController = (function () {
         // Rückgabewert ist als Falsch voreingestellt
         var status = false;
         var db = new PouchDB('anicerway');
-        var waypoint;
+        var timeWayPoint;
         // Datensatz zusammenstellen
-        waypoint = {
+        timeWayPoint = {
             _id: 'TimeWayPoint-' + new Date().toISOString(),
             active: true,
         };
@@ -46,12 +39,12 @@ var DbController = (function () {
                 var value = data[key_1];
                 if (key_1 != "_id") {
                     console.log("--- " + key_1 + " : " + value);
-                    waypoint[key_1] = value;
+                    timeWayPoint[key_1] = value;
                 }
             }
         }
         // Datensatz in die DB speichern
-        db.put(waypoint).then(function (response) {
+        db.put(timeWayPoint).then(function (response) {
             // handle response
             console.log(response);
             setTimeout(function () {
@@ -118,6 +111,7 @@ var DbController = (function () {
             startkey: 'TimeWayPoint',
             endkey: 'TimeWayPoint\uffff'
         }).then(function (result) {
+            // sort
             return result;
             // handle result
         }).catch(function (err) {
@@ -125,12 +119,11 @@ var DbController = (function () {
         });
         // Auf die Zeilen kann zugegriffen werden über:
         //    .then( function(doc){ doc.rows })
-        // Ansicht aktualisieren
         return docs;
     };
     /**
      * loadWayPoint
-     *  - lädt nur den Waypoint mit der gewählten ID
+     *  - lädt nur den TimeWayPoint mit der gewählten ID
      *
      * @param id
      */
@@ -158,7 +151,7 @@ var DbController = (function () {
     };
     /**
      * deleteWayPoint
-     * - Löscht einen Waypoint aus der DB
+     * - Löscht einen TimeWayPoint aus der DB
      *
      * @param id
      *
@@ -213,7 +206,6 @@ var DbController = (function () {
         }).catch(function (error) {
             // error occurred
         });
-        _update_views();
     };
     DbController.loadDefault = function () {
         console.log('neue DB Einträge');
@@ -267,7 +259,6 @@ var DbController = (function () {
             // if err.name === 'conflict', then
             // design doc already exists
         });
-        _update_views();
     };
     return DbController;
 }());

@@ -56,7 +56,7 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
   height: 600px;
 }
 
-.timeway-point {
+.timewaypoint {
   margin: 0;
   padding: 0;
   position: relative;
@@ -113,12 +113,14 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
   margin-right: 500px;
 }
 
-.timeway-point-number{
+.timewaypoint-sequence-number{
   margin-top: 20px;
+  margin-left: 100px;
   font-size: 50px;
   color: rgba(255, 255, 255, 0.5);
 }
 
-.timeway-point-titel{
+.timewaypoint-titel{
   margin-top: 10px;
+  margin-left: 100px;
 }

@@ -30,26 +30,25 @@ class DataDisplayController {
 
 
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
-        $('#data-display-ready').ready(function () {
-                console.log('- Data Display load');
+        console.log('- Data Display load');
 
-                // Aktionen verknüpfen
-                DataDisplayController.makeDraggable();
-                DataDisplayController.addAllEventsListeners();
-                DataDisplayController.modalClose();
+        // Aktionen verknüpfen
+        this.addEventListeners();
+        this.addKeystrokes();
+        this.makeDraggable();
 
-                //
-                console.log('- Data Display ready');
-            }
-        )
+        DataDisplayController.modalClose();
+
+        //
+        console.log('- Data Display ready');
 
 
     }
 
     /**
-     * addAllEventsListeners
+     * addEventsListeners
      */
-    static addAllEventsListeners() {
+    addEventListeners() {
 
 
         // Button SAVE
@@ -76,12 +75,21 @@ class DataDisplayController {
     }
 
     /**
+     * addKeystrokes
+     */
+    addKeystrokes() {
+
+        key('d', function () {
+            DataDisplayController.modalToggle();
+        });
+    }
+
+    /**
      * makeDraggable
      */
-    static  makeDraggable() {
-
-        $('#' + _dataDisplayContentName).draggable().dblclick(DataDisplayController.modalClose);
-
+    makeDraggable() {
+        $(this.elem_Content).draggable();
+        $(this.elem_Content).dblclick(DataDisplayController.modalClose);
     }
 
     /**
@@ -93,13 +101,13 @@ class DataDisplayController {
         console.log('DataDisplayController.resetForm');
 
 
-        $('#_id').val('');
-        $('#TimeWayId').val('');
-        $('#Date').val('');
-        $('#Place').val('');
-        $('#Feeling').val('');
-        $('#Message').val('');
-        $('#Notice').val('');
+        $('#twp-data-id').val('');
+        $('#twp-data-timeWayId').val('');
+        $('#twp-data-date').val('');
+        $('#twp-data-place').val('');
+        $('#twp-data-feeling').val('');
+        $('#twp-data-message').val('');
+        $('#twp-data-notice').val('');
     }
 
     /**
@@ -112,7 +120,7 @@ class DataDisplayController {
 
         DataDisplayController.resetForm();
 
-        $('#info_id').text('NEU');
+        $('#twp-data-info_id').text('NEU');
 
     }
 
@@ -121,21 +129,21 @@ class DataDisplayController {
      *
      */
     static saveData() {
-        console.log('DataDisplayController.saveData');
+        console.log('datadisplaycontroller.savedata');
 
-        // load values from Form
-        let _id = $('#_id').val();
-        let timewayid = $('#TimeWayId').val();
-        let date = $('#Date').val();
-        let place = $('#Place').val();
-        let feeling = $('#Feeling').val();
-        let message = $('#Message').val();
-        let notice = $('#Notice').val();
+        // load values from form
+        let _id = $('#twp-data-id').val();
+        let sequence = $('#twp-data-sequence').val();
+        let date = $('#twp-data-date').val();
+        let place = $('#twp-data-place').val();
+        let feeling = $('#twp-data-feeling').val();
+        let message = $('#twp-data-message').val();
+        let notice = $('#twp-data-notice').val();
 
 
         let data = {
             _id: _id,
-            timewayid: timewayid,
+            sequence: sequence,
             date: date,
             place: place,
             feeling: feeling,
@@ -143,24 +151,25 @@ class DataDisplayController {
             notice: notice,
         };
 
-        // Wenn _id leer ist, wird es ein neuer Eintrag in die DB
+        // wenn _id leer ist, wird es ein neuer eintrag in die db
         console.log('--- _id= ' + _id);
 
         if (_id == "") {
-            // New
+            // new
             console.log('--- new');
-            DbController.addWayPoint(data);
+            aNicerWay.bcontroller.addwaypoint(data);
         }
         else {
-            // Update
+            // update
             console.log('--- update');
-            DbController.updateWayPoint(data);
+            aNicerWay.dbcontroller.updatewaypoint(data);
 
         }
 
-        // Die Liste aktualisieren
+        // die liste aktualisieren
         setTimeout(function () {
-            NavigationController.listAllWayPoints();
+            aNicerWay.update();
+
         }, 1000);
 
     }
@@ -170,24 +179,18 @@ class DataDisplayController {
      *
      *
      */
-    static setData(id: string) {
+    static setData(doc: any) {
 
-        let promise = DbController.loadWayPoint(id);
-        promise.then(function (doc: any) {
 
-            // load
+        $('#twp-data-id').attr('placeholder', '').val(doc._id);
+        $('#twp-data-sequence').attr('placeholder', '').val(doc.sequence);
+        $('#twp-data-date').attr('placeholder', '').val(doc.date);
+        $('#twp-data-place').attr('placeholder', '').val(doc.place);
+        $('#twp-data-feeling').attr('placeholder', '').val(doc.feeling);
+        $('#twp-data-message').attr('placeholder', '').val(doc.message);
+        $('#twp-data-notice').attr('placeholder', '').val(doc.notice);
 
-            $('#_id').attr('placeholder', '').val(doc._id);
-            $('#TimeWayId').attr('placeholder', '').val(doc.timewayid);
-            $('#Date').attr('placeholder', '').val(doc.date);
-            $('#Place').attr('placeholder', '').val(doc.place);
-            $('#Feeling').attr('placeholder', '').val(doc.feeling);
-            $('#Message').attr('placeholder', '').val(doc.message);
-            $('#Notice').attr('placeholder', '').val(doc.notice);
-
-            $('#info_id').html(doc._id);
-        });
-
+        $('#twp-data-info_id').html(doc._id);
 
     }
 
@@ -198,14 +201,15 @@ class DataDisplayController {
      */
     static deleteData() {
 
-        let _id = $('#_id').val();
+        let _id = $('#twp-data-id').val();
 
         DbController.deleteWayPoint(_id);
         DataDisplayController.resetForm();
 
         // Die Liste aktualisieren
         setTimeout(function () {
-            NavigationController.listAllWayPoints();
+
+            aNicerWay.update();
         }, 1000);
     }
 
@@ -223,7 +227,6 @@ class DataDisplayController {
     static modalOpen() {
         _dataDisplayModalOpen = true;
         $('#' + _dataDisplayContentName).show();
-        $('#data-display-content').show();
     }
 
     static modalToggle() {

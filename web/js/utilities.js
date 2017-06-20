@@ -31,6 +31,3 @@ function _reset() {
     });
     return false;
 }
-function _update_views() {
-    ANicerWay.updateTimePoints();
-}

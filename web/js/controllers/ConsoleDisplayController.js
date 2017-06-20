@@ -15,7 +15,7 @@ var ConsoleDisplayController = (function () {
         this.addAllEventsListeners();
     }
     /**
-     * addAllEventsListeners
+     * addEventsListeners
      */
     ConsoleDisplayController.prototype.addAllEventsListeners = function () {
         this.elem_Root.addEventListener('click', this.testClick.bind(this), false);

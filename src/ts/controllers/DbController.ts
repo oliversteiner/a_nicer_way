@@ -11,33 +11,27 @@ let _jsonFile: any;
 class DbController {
 
     remote: any;    // die DB unter localhost / mollo.ch
-    waypoint: object;  // ein einzelner Waypoint (Eintrag zu einem Punkt in der Zeit/Wegleiste)
-    waypoints: object; // die Liste aller Waypoints
+    timeWayPoint: object;  // ein einzelner TimeWayPoint (Eintrag zu einem Punkt in der Zeit/Wegleiste)
+    timeWaypoints: object; // die Liste aller Waypoints
+
 
     // Wird aufgerufen beim erstellen der Klasse (new DbController)
     constructor() {
         console.log('DbController.constructor');
 
 
-        let db = new PouchDB('anicerway');
-
         $.getJSON("data/defaultData.json", function (json) {
             _jsonFile = json;
         });
 
-        // wird immer ausgeführt, wenn änderugen an der Datenbank erfolgt sind
-        db.changes().on('change', function () {
-            // console
-         //   console.log('db Changes');
-            _update_views();
-        });
+
 
 
     }
 
     /**
      * addWayPoint
-     * - Einen Waypoint in die Datenbank schreiben
+     * - Einen TimeWayPoint in die Datenbank schreiben
      *
      * @param data
      */
@@ -48,11 +42,11 @@ class DbController {
         // Rückgabewert ist als Falsch voreingestellt
         let status: boolean = false;
         let db = new PouchDB('anicerway');
-        let waypoint: any;
+        let timeWayPoint: any;
 
         // Datensatz zusammenstellen
 
-        waypoint = {
+        timeWayPoint = {
             _id: 'TimeWayPoint-' + new Date().toISOString(),
             active: true,
         };
@@ -66,13 +60,13 @@ class DbController {
                 if (key != "_id") {   // _id herausfiltern
 
                     console.log("--- " + key + " : " + value);
-                    waypoint[key] = value;
+                    timeWayPoint[key] = value;
                 }
             }
         }
 
         // Datensatz in die DB speichern
-        db.put(waypoint).then(function (response: any) {
+        db.put(timeWayPoint).then(function (response: any) {
             // handle response
             console.log(response);
 
@@ -146,6 +140,7 @@ class DbController {
         return status;
     }
 
+
     /**
      * loadAllWayPoints
      *  - holt alle Waypoints aus der Datenbank
@@ -153,7 +148,7 @@ class DbController {
      *
      */
     static loadAllWayPoints() {
-    //    console.log('DbController.loadAllWayPoints');
+        //    console.log('DbController.loadAllWayPoints');
 
         let db = new PouchDB('anicerway');
 
@@ -162,6 +157,9 @@ class DbController {
             startkey: 'TimeWayPoint',
             endkey: 'TimeWayPoint\uffff'
         }).then(function (result) {
+
+            // sort
+
 
             return result;
             // handle result
@@ -172,7 +170,6 @@ class DbController {
         // Auf die Zeilen kann zugegriffen werden über:
         //    .then( function(doc){ doc.rows })
 
-        // Ansicht aktualisieren
 
         return docs;
     }
@@ -180,7 +177,7 @@ class DbController {
 
     /**
      * loadWayPoint
-     *  - lädt nur den Waypoint mit der gewählten ID
+     *  - lädt nur den TimeWayPoint mit der gewählten ID
      *
      * @param id
      */
@@ -202,6 +199,7 @@ class DbController {
             }
         }).then(function (doc: any) {
 
+
             return doc;
 
         }).catch(function (err) {
@@ -212,12 +210,13 @@ class DbController {
 
         // Auf das Dokument kann zugegriffen werden über:
         //    .then( function(doc){ doc })
+
         return doc;
     }
 
     /**
      * deleteWayPoint
-     * - Löscht einen Waypoint aus der DB
+     * - Löscht einen TimeWayPoint aus der DB
      *
      * @param id
      *
@@ -292,7 +291,6 @@ class DbController {
         }).catch(function (error: object) {
             // error occurred
         });
-        _update_views();
     }
 
     static loadDefault() {
@@ -303,7 +301,6 @@ class DbController {
 
         // Aktuelle Zeit
         let timestamp = Date.now();
-
 
 
         // Vorgaben für die Daten
@@ -365,7 +362,6 @@ class DbController {
             // design doc already exists
         });
 
-        _update_views();
     }
 
 }

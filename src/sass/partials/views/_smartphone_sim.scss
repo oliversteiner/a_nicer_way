@@ -16,8 +16,7 @@ $color-smartphone-screen: rgb(63, 64, 130);
 #smartphone-sim {
   position: absolute;
   top: 0;
-  right: 0px;
-
+  right: 0;
   width: 10px;
   height: 10px;
 
@@ -55,11 +54,10 @@ $color-smartphone-screen: rgb(63, 64, 130);
   height: 100%;
   padding: 20% 5%;
 }
-#smartphone-screen-ring{
+
+#smartphone-screen-ring {
 
 }
-
-
 
 #smartphone-screen {
   border: 1px solid black;
@@ -95,7 +93,6 @@ $color-smartphone-screen: rgb(63, 64, 130);
 #smartphone-home-button:active {
   border: 1px solid $color-smartphone-border-bright;
   background-color: $color-smartphone-homebutton-bright;
-
   cursor: pointer;
 
 }
@@ -169,7 +166,7 @@ $color-smartphone-screen: rgb(63, 64, 130);
   color: $color-message;
 }
 
-#smartphone-console-content {
+#smartphone-console-main {
   padding: 10px;
 
 }
@@ -210,15 +207,14 @@ $color-smartphone-screen: rgb(63, 64, 130);
   cursor: pointer;
 }
 
-.ping-badge  {
+.ping-badge {
 
-background-color: $color-console-background-bright;
+  background-color: $color-console-background-bright;
   color: $color-message-ok;
   padding: 2px 5px;
   margin-left: 5px;
   border-radius: 15px;
 }
-
 
 @-webkit-keyframes pulsate {
   0% {
@@ -234,22 +230,20 @@ background-color: $color-console-background-bright;
 
 @-webkit-keyframes pulsate-ring {
   0% {
-    border:  solid 1px black;
+    border: solid 1px black;
   }
   50% {
-    border:  solid 1px $color-message;
+    border: solid 1px $color-message;
   }
   100% {
-    border:  solid 1px black;
+    border: solid 1px black;
   }
 }
 
-.ping-pulse{
+.ping-pulse {
 
   -webkit-animation: pulsate-ring 500ms ease-out;
 }
-
-
 
 .prompt-pulse {
 

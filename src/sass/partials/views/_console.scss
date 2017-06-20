@@ -1,0 +1,78 @@
+@import "../design/colors";
+@import "../design/fonts";
+
+#console-container {
+  position: absolute;
+  top: 80px;
+  width: 500px;
+  left: 0;
+}
+
+#data-display-content {
+  position: relative;
+
+}
+
+#toolbar-close {
+  float: right;
+  position: relative;
+
+  display: inline-block;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+#close:active {
+  color: white;
+  cursor: pointer;
+}
+
+#console-main {
+  position: absolute;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: $color-console-background;
+  color: $color-message;
+}
+
+#console-main {
+  padding: 10px;
+
+}
+
+#console-content {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 0.7em;
+
+  .message,
+  .message-default,
+  .message-error,
+  .message-warning,
+  .message-ok {
+
+    padding-bottom: 2px;
+  }
+}
+
+#console-toolbar {
+  border-bottom: 1px solid $color-console-background-bright;
+  background-color: $color-console-background;
+  padding: 5px 10px 10px 10px;
+
+}
+
+.console-toolbar-item {
+  float: right;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.console-status {
+  float: none;
+
+}
+
+#console a {
+  cursor: pointer;
+}

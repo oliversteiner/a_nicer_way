@@ -2,7 +2,6 @@
 var _smartphoneSimName = 'smartphone-sim';
 var _smartphoneSimContentName = 'smartphone-sim-content';
 var _smartphoneSimOpen = true;
-var _smartphoneSimUp = false;
 var _smartphoneSimConsoleOpen = true;
 var _smartphoneSimPing = 0;
 /**
@@ -19,24 +18,23 @@ var SmartphoneSimController = (function () {
         this.elem_Content = document.getElementById(_smartphoneSimContentName);
         this.simulator_size = simulator_size;
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
-        $('#smartphone-sim-ready').ready(function () {
-            console.log('- Smartphone Simulator load');
-            // Aktionen verknüpfen
-            SmartphoneSimController.setSize(this.simulator_size);
-            SmartphoneSimController.makeDraggable();
-            SmartphoneSimController.addAllEventsListeners();
-            SmartphoneSimController.open();
-            SmartphoneSimController.consoleOpen();
-            SmartphoneSimController.consoleClear();
-            // Tests
-            //
-            console.log('- Smartphone Simulator ready');
-        });
+        console.log('- Smartphone Simulator load');
+        // Aktionen verknüpfen
+        SmartphoneSimController.setSize(this.simulator_size);
+        this.addEventListeners();
+        this.addKeystrokes();
+        this.makeDraggable();
+        SmartphoneSimController.open();
+        SmartphoneSimController.consoleOpen();
+        SmartphoneSimController.consoleClear();
+        // Tests
+        //
+        console.log('- Smartphone Simulator ready');
     }
     /**
-     * addAllEventsListeners
+     * addEventsListeners
      */
-    SmartphoneSimController.addAllEventsListeners = function () {
+    SmartphoneSimController.prototype.addEventListeners = function () {
         // Main-Menu : Show / Hide Simulator
         $('.smartphone-sim-button-toggle').click(SmartphoneSimController.toggle);
         // press home button
@@ -55,19 +53,19 @@ var SmartphoneSimController = (function () {
         });
         // close on dubbleclick
         $('#smartphone-frame').dblclick(SmartphoneSimController.close);
-        // Keystrokes
-        $(document).keypress(function (event) {
-            var key = 115; // Taste "S"
-            if (event.which === key && !$(document.activeElement).is(_protectedInputs)) {
-                event.preventDefault();
-                SmartphoneSimController.toggle();
-            }
+    };
+    /**
+     * addKeystrokes
+     */
+    SmartphoneSimController.prototype.addKeystrokes = function () {
+        key('s', function () {
+            SmartphoneSimController.toggle();
         });
     };
     /**
      * makeDraggable
      */
-    SmartphoneSimController.makeDraggable = function () {
+    SmartphoneSimController.prototype.makeDraggable = function () {
         $('#smartphone-frame').draggable();
     };
     SmartphoneSimController.setSize = function (faktor) {
@@ -85,6 +83,9 @@ var SmartphoneSimController = (function () {
         switch (faktor) {
             case 'klein':
                 height = 400;
+                break;
+            case 'mittel':
+                height = 550;
                 break;
             case 'gross':
                 height = 700;
@@ -130,11 +131,12 @@ var SmartphoneSimController = (function () {
         SmartphoneSimController.addToConsole(text, status, tab);
     };
     SmartphoneSimController.consoleClear = function () {
-        var html = '<div id="smartphone-console-prompt" class="prompt-pulse">_</div>';
-        $('#smartphone-console-content').html(html);
+        var html = '<div id="smartphone-console-prompt" class="smartphone-console-prompt  prompt-pulse">_</div>';
+        $('#smartphone-console-main').html(html);
         $('.smartphone-console-status').text('console');
     };
     SmartphoneSimController.addToConsole = function (text, status, tab) {
+        console.log('add To Console');
         var elem_prompt = '#smartphone-console-prompt';
         var class_status;
         var class_tab;
@@ -198,27 +200,6 @@ var SmartphoneSimController = (function () {
         _smartphoneSimPing = ping;
         return ping;
     };
-    // Simulator Window
-    SmartphoneSimController.open = function () {
-        _smartphoneSimOpen = true;
-        $('#' + _smartphoneSimContentName).show();
-        // im Status-Display das Smartphone-pikto ausblenden:
-        $('#status-display-smartphone').hide();
-    };
-    SmartphoneSimController.close = function () {
-        _smartphoneSimOpen = false;
-        $('#' + _smartphoneSimContentName).hide();
-        // im Status-Display das Smartphone-pikto einblenden:
-        $('#status-display-smartphone').show();
-    };
-    SmartphoneSimController.toggle = function () {
-        if (_smartphoneSimOpen) {
-            SmartphoneSimController.close();
-        }
-        else {
-            SmartphoneSimController.open();
-        }
-    };
     SmartphoneSimController.consoleTest = function () {
         SmartphoneSimController.open();
         $('.smartphone-console-status').text('test running...');
@@ -260,6 +241,27 @@ var SmartphoneSimController = (function () {
                 clearInterval(timer);
                 $('.smartphone-console-status').text('test end');
             }
+        }
+    };
+    // Simulator Window
+    SmartphoneSimController.open = function () {
+        _smartphoneSimOpen = true;
+        $('#' + _smartphoneSimContentName).show();
+        // im Status-Display das Smartphone-pikto ausblenden:
+        $('#status-display-smartphone').hide();
+    };
+    SmartphoneSimController.close = function () {
+        _smartphoneSimOpen = false;
+        $('#' + _smartphoneSimContentName).hide();
+        // im Status-Display das Smartphone-pikto einblenden:
+        $('#status-display-smartphone').show();
+    };
+    SmartphoneSimController.toggle = function () {
+        if (_smartphoneSimOpen) {
+            SmartphoneSimController.close();
+        }
+        else {
+            SmartphoneSimController.open();
         }
     };
     return SmartphoneSimController;

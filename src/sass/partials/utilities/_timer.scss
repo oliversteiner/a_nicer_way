@@ -1,0 +1,175 @@
+// Message / Text
+$color-timer: rgb(249, 255, 229);
+$color-timer-ok: rgb(66, 152, 68);
+$color-timer-error: rgb(174, 75, 77);
+$color-timer-warning: rgb(214, 191, 74);
+
+@-webkit-keyframes pulsate {
+  0% {
+    opacity: 0.0;
+  }
+  50% {
+    opacity: 1.0;
+  }
+  100% {
+    opacity: 0.0;
+  }
+}
+
+#remote-display-mobile-content {
+  position: absolute;
+}
+
+#remote-display-mobile-effect {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.0;
+}
+
+.anw-timer {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 17px;
+  padding: 0;
+  margin: 0;
+
+  .timer-number,
+  .timer-number-input {
+    font-size: 4em;
+  }
+
+  .timer-number,
+  .timer-unit {
+    cursor: pointer;
+  }
+
+  .stage-1 {
+    color: $color-timer-error;
+  }
+
+  .stage-2 {
+    color: $color-timer-error;
+  }
+
+  .stage-3 {
+    color: $color-timer-warning;
+  }
+
+  .anw-timer-lite {
+  }
+
+  .timer-indicator {
+    position: absolute;
+    display: inline-block;
+    margin-top: 25px;
+    width: 15px;
+    height: 15px;
+    background-color: $color-timer-warning;
+    border-radius: 10px;
+    opacity: 0.0;
+  }
+
+  .timer-indicator.pause {
+    background-color: $color-timer-warning;
+  }
+
+  .timer-indicator.active {
+    background-color: $color-timer-ok;
+
+    -webkit-animation: pulsate 5s ease-out;
+    -webkit-animation-iteration-count: infinite;
+  }
+
+  // reset Input
+  .timer-number-input {
+    background: transparent;
+    color: $color-timer;
+    text-align: right;
+  }
+
+  .timer-unit {
+    font-size: 1.5em;
+  }
+
+  .timer-display {
+    margin: 2px;
+    padding: 2px;
+  }
+
+  .timer-start {
+
+  }
+
+  .timer-pause {
+
+  }
+
+  .timer-stop {
+
+  }
+
+  .timer-settings {
+    margin: 10px 0;
+  }
+
+  // Buttons
+
+  .btn-lg {
+    margin: 3px;
+  }
+
+  .timer-start-button {
+    background-color: $color-timer-ok;
+
+  }
+
+  .timer-pause-button {
+    background-color: $color-timer-warning;
+
+  }
+
+  .timer-stop-button {
+    background-color: $color-timer-error;
+
+  }
+
+  .timer-settings-button {
+
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.stage-0 {
+  background-color: $color-timer-error;
+  opacity: 1;
+}
+
+.blink-stage-1 {
+  background-color: $color-timer-error;
+  -webkit-animation: pulsate 500ms ease;
+  -webkit-animation-iteration-count: 4;
+}
+
+.blink-stage-2 {
+  background-color: $color-timer-error;
+  -webkit-animation: pulsate 500ms ease;
+  -webkit-animation-iteration-count: 2;
+}
+
+.blink-stage-3 {
+  background-color: $color-timer-warning;
+  -webkit-animation: pulsate 500ms ease;
+  -webkit-animation-iteration-count: 2;
+}
+
+.anw-timer-full-close-button {
+  margin-right: 10px;
+  padding: 10px;
+}
+
+

@@ -323,7 +323,9 @@
 
         <div id="remote-display-frame">
             <!-- inject:views/remote_display_mobile.html -->
-            <div class="container-fluid">
+            <div id="remote-display-mobile-effect"></div>
+
+<div id="remote-display-mobile-content" class="container-fluid">
 
     <!-- TEST -->
     <div class="remote-test"></div>
@@ -331,15 +333,111 @@
     <!-- LIST -->
     <div class="well well-remote">
         <div id="remote-list">
-            <div id="remote-list-header">HEADER</div>
+            <div id="remote-list-header">A Nicer Way</div>
             <div id="remote-list-main"></div>
-            <div id="remote-list-footer">FOOTER</div>
+            <div id="remote-list-footer">
+
+                <span class="glyphicon glyphicon-menu-down"></span>
+            </div>
         </div>
     </div>
 
     <!-- Preview -->
     <div class="well well-remote">
         <div id="remote-slide-preview"></div>
+    </div>
+
+    <!-- Timer -->
+    <div class="well well-remote">
+        <div id="remote-timer">
+
+            <div class="anw-timer">
+
+                <div class="anw-timer-lite  center-block text-center">
+
+                    <!-- display -->
+                    <span class="timer-number timer-number-lite"></span>
+                    <span>
+                        <span class="timer-indicator"></span>
+
+                        <span class="timer-unit-lite">min</span>
+                    </span>
+                </div>
+
+
+                <div class="anw-timer-full center-block text-center" style="display: none">
+
+                    <span class="close anw-timer-full-close-button">&times;</span>
+
+                    <div class="timer-display">
+                        <span class="timer-number timer-number-full"></span>
+
+                        <span>
+                        <span class="timer-indicator"></span>
+                        <span class="timer-unit">min</span>
+                    </span>
+                    </div>
+
+                    <div class="timer-display-input" style="display: none">
+                        <input type="number" pattern="\d*" min="0" max="99" step="1" value=""
+                               class="timer-number-input"> <span class="timer-unit">min</span>
+                    </div>
+
+                    <div class="timer-controlls">
+
+                        <!-- start -->
+                        <div class="btn btn-lg btn-nicer timer-start-button">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </div>
+
+                        <!-- pause -->
+                        <div class="btn  btn-lg btn-nicer timer-pause-button" style="display: none">
+                            <span class="glyphicon glyphicon-pause"></span>
+                        </div>
+
+                        <!-- stop  -->
+                        <div class="btn btn-nicer timer-stop-button">
+                            <span class="glyphicon glyphicon-stop"></span>
+                        </div>
+
+                        <!-- settings -->
+                        <div class="btn btn-nicer timer-settings-button">
+                            <span class="glyphicon glyphicon-cog"></span>
+                        </div>
+                    </div>
+
+                    <div class="timer-settings" style="display: none">
+
+                        <div class="btn-group">
+
+                            <!-- - -->
+                            <button type="button" class="btn btn-default timer-settime-button" data-timer-set="-">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                            <!-- 5 -->
+                            <button type="button" class="btn btn-default timer-settime-button" data-timer-set="10">5
+                            </button>
+                            <!-- 10 -->
+                            <button type="button" class="btn btn-default timer-settime-button" data-timer-set="10">10
+                            </button>
+                            <!-- 20 -->
+                            <button type="button" class="btn btn-default timer-settime-button" data-timer-set="20">20
+                            </button>
+                            <!-- 30 -->
+                            <button type="button" class="btn btn-default timer-settime-button" data-timer-set="30">30
+                            </button>
+                            <!-- + -->
+                            <button type="button" class="btn btn-default timer-settime-button" data-timer-set="+">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div> <!-- Timer full-->
+
+            </div>
+        </div>
     </div>
 
     <!-- Message -->
@@ -425,12 +523,6 @@
 
     </div>
 
-    <!-- Ping -->
-    <div class="well well-remote">
-        <button type="button" class="btn btn-default btn-sm btn-block btn-default socket-ping-button">
-            <span class="glyphicon glyphicon-screenshot"></span>
-        </button>
-    </div>
 
     <!-- Protagonist -->
     <div class="remote-protagonist">
@@ -446,18 +538,33 @@
                 <button type="button" data-command="previous"
                         class=" btn btn-default btn-block socket-cmd-button socket-button-previous">
                     <span>&larr;</span>
+                    <span class="slide-number">X</span>
+
                 </button>
             </div>
 
             <div class="col-xs-6">
                 <button type="button" data-command="next"
                         class=" btn btn-default btn-block socket-cmd-button socket-button-next">
-                    <span aria-hidden="true">&rarr;</span>
+
+                    <span class="slide-number">X</span>
+
+                    <span>&rarr;</span>
                 </button>
             </div>
 
         </div>
     </div>
+
+
+    <!-- Ping -->
+    <div class="well well-remote">
+        <button type="button" class="btn btn-default btn-sm btn-block btn-default socket-ping-button">
+            <span class="glyphicon glyphicon-screenshot"></span>
+        </button>
+    </div>
+
+
 </div>
 
             <!-- endinject -->
@@ -673,9 +780,11 @@
 <script src="js/controllers/DbController.js"></script>
 <script src="js/controllers/RemoteDisplayController.js"></script>
 <script src="js/controllers/HelpController.js"></script>
+<script src="js/controllers/SocketController.js"></script>
+
+
 
 <script src="js/main.js"></script>
-<script src="js/remote.js"></script>
 <script src="js/test.js"></script>
 
 <script>

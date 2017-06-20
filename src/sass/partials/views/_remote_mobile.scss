@@ -1,7 +1,7 @@
 @import "../design/colors";
 @import "../design/fonts";
 
-.well-remote{
+.well-remote {
   padding: 2px;
 }
 
@@ -14,8 +14,6 @@
   color: $color-message-error;
 }
 
-
-
 button.socket-button-next,
 button.socket-button-previous {
   height: 200px;
@@ -26,5 +24,35 @@ button.socket-button-previous {
 
   }
 
+}
+
+#remote-list-main {
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul li {
+    list-style: none;
+    text-align: left;
+
+  }
+
+  a {
+    text-align: left;
+
+  }
+}
+
+li a.active {
+  color: navajowhite;
+
+}
+
+#remote-list-header,
+#remote-list-footer {
+  padding: 5px;
+  text-align: center;
 }
 

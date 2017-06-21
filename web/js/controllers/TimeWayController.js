@@ -1,4 +1,4 @@
-/// <reference path="../definitions/jquery-scrollTo/jquery-scrollTo.d.ts" />
+/// <reference path="../definitions/jquery-scrollTo.d.ts" />
 /**
  *  timewayController
  *

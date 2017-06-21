@@ -111,6 +111,8 @@ var ANicerWay = (function () {
         this.remoteDisplayController = new RemoteDisplayController();
         this.dbController = new DbController();
         this.socketController = new SocketController();
+        this.characterController = new CharacterController();
+        this.displayController = new DisplayController();
     };
     /**
      * addEventsListeners

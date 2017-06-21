@@ -158,8 +158,7 @@ class ANicerWay {
                 TimeWayController.scrollTo(doc._id);
                 DataDisplayController.setData(doc);
                 StatusDisplayController.setData(doc);
-
-                aNicerWay.socket.emit('timepoint', doc);
+                aNicerWay.socketController.sendTimePointNr(doc.sequence);
 
 
                 clearInterval(timerPoint);

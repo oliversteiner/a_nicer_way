@@ -5,24 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content = "width = device-width, initial-scale = 1.0, minimum-scale = 1, maximum-scale = 1, user-scalable = no" />    <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="apple-touch-icon" sizes="57x57" href="/images/icon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/images/icon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/images/icon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/images/icon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/images/icon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/icon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/images/icon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/images/icon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/icon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/images/icon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/icon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/images/icon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/icon/favicon-16x16.png">
-    <link rel="manifest" href="/images/icon/manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="images/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="images/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icon/favicon-16x16.png">
+    <link rel="manifest" href="images/icon/manifest.json">
 
-    <link rel="apple-touch-startup-image" href="/images/icon/iphone-startup.png">
-    <link rel="apple-touch-startup-image" href="/images/icon/ipad-landscape-startup.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" />
-    <link rel="apple-touch-startup-image" href="/images/icon/ipad-portrait-startup.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />
+    <link rel="apple-touch-startup-image" href="images/icon/iphone-startup.png">
+    <link rel="apple-touch-startup-image" href="images/icon/ipad-landscape-startup.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" />
+    <link rel="apple-touch-startup-image" href="images/icon/ipad-portrait-startup.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />
 
     <meta name="theme-color" content="#ffffff">
 
@@ -43,214 +43,232 @@
 
 <div id="remote-display-mobile-content" class="container-fluid">
 
-    <!-- TEST -->
-    <div class="remote-test"></div>
 
     <!-- LIST -->
-    <div class="well well-remote">
-        <div id="remote-list">
-            <div id="remote-list-header">A Nicer Way</div>
-            <div id="remote-list-main"></div>
-            <div id="remote-list-footer">
+        <div id="remote-list-header">A Nicer Way</div>
 
-                <span class="glyphicon glyphicon-menu-down remote-open-list-button"></span>
-            </div>
+        <div id="remote-list-wrapper" class="slide-wrapper slide-up">
+
+            <div id="remote-list-main"></div>
+
         </div>
-    </div>
+        <div id="remote-list-footer">
+            <button type="button" class="btn  btn-block btn-default remote-open-list-button">
+                <span class="glyphicon glyphicon-menu-down"></span>
+            </button>
+        </div>
 
 
     <!-- Timer -->
-    <div id="remote-timer">
+    <div id="remote-timer" class=" flip-container">
 
-        <div class="anw-timer">
+        <div class=" anw-timer flipper">
 
-            <div class="anw-timer-lite  center-block text-center">
-                <div class="row">
+            <!-- anw-timer-lite -->
+            <div class="anw-timer-lite  center-block text-center flip-front">
+                <div class="well well-remote">
 
-                    <div class="col-xs-6 col-lg-6 col-md-6 col-sm-6">
-                        <!-- Preview -->
-                        <div class="well well-remote">
+                    <div class="row">
 
-                            <div id="remote-slide-preview" class="center-block text-center"></div>
+                        <div class="col-xs-6 col-lg-6 col-md-6 col-sm-6">
 
+                            <!-- Preview -->
+                            <div class="">
+
+                                <div id="remote-slide-preview" class="center-block text-center"></div>
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xs-6 col-lg-6 col-md-6 col-sm-6">
-                        <div class="well well-remote">
+                        <div class="col-xs-6 col-lg-6 col-md-6 col-sm-6">
+                            <div class=" timer-flip-button">
 
-                            <!-- display -->
-                            <span class="timer-number timer-number-lite"></span>
-                            <span>
+                                <!-- display -->
+                                <span class="timer-number timer-number-lite"></span>
+                                <span>
                                     <span class="timer-indicator"></span>
-                                    <span class="timer-unit-lite">min</span>
+                                    <span class="timer-unit timer-unit-lite">min</span>
                                 </span>
 
-                        </div> <!-- well-remote -->
+                            </div> <!-- well-remote -->
+
+                        </div>
+
 
                     </div>
-
-
                 </div>
             </div>
 
+            <!-- anw-timer-full -->
+            <div class="anw-timer-full center-block text-center flip-back">
+                <div class="well well-nicer well-nicer-light">
 
-            <div class="anw-timer-full center-block text-center" style="display: none">
+                    <span class="close anw-timer-full-close-button">&times;</span>
 
-                <span class="close anw-timer-full-close-button">&times;</span>
+                    <div class="timer-display">
+                        <span class="timer-number timer-number-full"></span>
 
-                <div class="timer-display">
-                    <span class="timer-number timer-number-full"></span>
-
-                    <span>
+                        <span>
                         <span class="timer-indicator"></span>
                         <span class="timer-unit">min</span>
                     </span>
-                </div>
-
-                <div class="timer-display-input" style="display: none">
-                    <input type="number" pattern="\d*" min="0" max="99" step="1" value=""
-                           class="timer-number-input"> <span class="timer-unit">min</span>
-                </div>
-
-                <div class="timer-controlls">
-
-                    <!-- start -->
-                    <div class="btn btn-lg btn-nicer timer-start-button">
-                        <span class="glyphicon glyphicon-play"></span>
                     </div>
 
-                    <!-- pause -->
-                    <div class="btn  btn-lg btn-nicer timer-pause-button" style="display: none">
-                        <span class="glyphicon glyphicon-pause"></span>
+                    <!-- timer-display-input -->
+                    <div class="timer-display-input" style="display: none">
+                        <input type="number" pattern="\d*" min="0" max="99" step="1" value=""
+                               class="timer-number-input"> <span class="timer-unit">min</span>
                     </div>
 
-                    <!-- stop  -->
-                    <div class="btn btn-nicer timer-stop-button">
-                        <span class="glyphicon glyphicon-stop"></span>
+                    <div class="timer-controlls">
+
+                        <!-- start -->
+                        <div class="btn btn-lg btn-nicer timer-start-button">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </div>
+
+                        <!-- pause -->
+                        <div class="btn  btn-lg btn-nicer timer-pause-button" style="display: none">
+                            <span class="glyphicon glyphicon-pause"></span>
+                        </div>
+
+                        <!-- stop  -->
+                        <div class="btn btn-nicer timer-stop-button">
+                            <span class="glyphicon glyphicon-stop"></span>
+                        </div>
+
+                        <!-- settings -->
+                        <div class="btn btn-nicer timer-settings-button" style="display: none">
+                            <span class="glyphicon glyphicon-cog"></span>
+                        </div>
                     </div>
 
-                    <!-- settings -->
-                    <div class="btn btn-nicer timer-settings-button">
-                        <span class="glyphicon glyphicon-cog"></span>
+                    <div class="timer-settings">
+
+                        <div class="btn-group">
+
+                            <!-- - -->
+                            <button type="button" class="btn btn-default timer-settime-button" data-timer-set="-">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                            <!-- 5 -->
+                            <button type="button" class="btn btn-default timer-settime-button" data-timer-set="10">5
+                            </button>
+                            <!-- 10 -->
+                            <button type="button" class="btn btn-default timer-settime-button" data-timer-set="10">
+                                10
+                            </button>
+                            <!-- 20 -->
+                            <button type="button" class="btn btn-default timer-settime-button" data-timer-set="20">
+                                20
+                            </button>
+                            <!-- 30 -->
+                            <button type="button" class="btn btn-default timer-settime-button" data-timer-set="30">
+                                30
+                            </button>
+                            <!-- + -->
+                            <button type="button" class="btn btn-default timer-settime-button" data-timer-set="+">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+
                     </div>
-                </div>
-
-                <div class="timer-settings" style="display: none">
-
-                    <div class="btn-group">
-
-                        <!-- - -->
-                        <button type="button" class="btn btn-default timer-settime-button" data-timer-set="-">
-                            <span class="glyphicon glyphicon-minus"></span>
-                        </button>
-                        <!-- 5 -->
-                        <button type="button" class="btn btn-default timer-settime-button" data-timer-set="10">5
-                        </button>
-                        <!-- 10 -->
-                        <button type="button" class="btn btn-default timer-settime-button" data-timer-set="10">
-                            10
-                        </button>
-                        <!-- 20 -->
-                        <button type="button" class="btn btn-default timer-settime-button" data-timer-set="20">
-                            20
-                        </button>
-                        <!-- 30 -->
-                        <button type="button" class="btn btn-default timer-settime-button" data-timer-set="30">
-                            30
-                        </button>
-                        <!-- + -->
-                        <button type="button" class="btn btn-default timer-settime-button" data-timer-set="+">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
-                    </div>
-
                 </div>
 
             </div> <!-- Timer full-->
 
         </div>
+
     </div>
 
-    <!-- Message -->
-    <div class="well well-remote">
-        <div class="message-input">
-            <form class="form-inline form-small" name="sockettest">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="input-socket-message" placeholder="bla bla">
-                    <span class="input-group-addon btn-nicer socket-message-button">send</span>
-                </div>
-            </form>
-        </div>
-    </div>
+    <!-- Toolbar -->
 
-    <!-- Tools -->
-    <div class="well well-remote">
-        <div class="btn-group">
+    <div id="mobile-toolbar" class="well well-remote center-block text-center flip-container">
 
-            <!-- navigation-display-toggle -->
-            <button type="button"
-                    data-command="navigation-display-toggle"
-                    class="navigation-display-toggle-button
+        <div class="flipper">
+
+            <!-- Tools -->
+            <div class=" flip-front">
+                <div class="btn-group">
+
+                    <!-- navigation-display-toggle -->
+                    <button type="button"
+                            data-command="navigation-display-toggle"
+                            class="navigation-display-toggle-button
           socket-cmd-button
           btn btn-default btn-sm ">Nav
-            </button>
+                    </button>
 
-            <!-- data-display-toggle -->
-            <button type="button"
-                    data-command="data-display-toggle"
-                    class="data-display-toggle-button
+                    <!-- data-display-toggle -->
+                    <button type="button"
+                            data-command="data-display-toggle"
+                            class="data-display-toggle-button
           socket-cmd-button
           btn btn-default btn-sm ">Data
-            </button>
+                    </button>
 
-            <!-- smartphone-sim-toggle -->
-            <button type="button"
-                    data-command="smartphone-sim-toggle"
-                    class="smartphone-sim-toggle-button
+                    <!-- smartphone-sim-toggle -->
+                    <button type="button"
+                            data-command="smartphone-sim-toggle"
+                            class="smartphone-sim-toggle-button
           socket-cmd-button
           btn btn-default btn-sm ">
-                <span class="glyphicon glyphicon-phone"></span>
-            </button>
+                        <span class="glyphicon glyphicon-phone"></span>
+                    </button>
 
-            <!-- console -->
-            <button type="button"
-                    data-command="console-toggle"
-                    class="console-button-toggle
+                    <!-- console -->
+                    <button type="button"
+                            data-command="console-toggle"
+                            class="console-button-toggle
           socket-cmd-button
           console-toggle
           btn btn-default btn-sm ">
-                <span class="glyphicon glyphicon-console"></span>
-            </button>
+                        <span class="glyphicon glyphicon-console"></span>
+                    </button>
 
-            <!-- remote-toggle -->
-            <button type="button"
-                    data-command="remote-toggle"
-                    class="remote-toggle-button
+                    <!-- remote-toggle -->
+                    <button type="button"
+                            data-command="remote-toggle"
+                            class="remote-toggle-button
           socket-cmd-button
           btn btn-default btn-sm ">
-                <span class="glyphicon glyphicon-sort"></span>
-            </button>
+                        <span class="glyphicon glyphicon-sort"></span>
+                    </button>
 
-            <!-- help-button-toggle -->
-            <button type="button"
-                    data-command="help-toggle"
-                    class="help-toggle-button
+                    <!-- help-button-toggle -->
+                    <button type="button"
+                            data-command="help-toggle"
+                            class="help-toggle-button
           socket-cmd-button
           btn btn-default btn-sm ">
-                <span class="glyphicon glyphicon-question-sign"></span>
-            </button>
+                        <span class="glyphicon glyphicon-question-sign"></span>
+                    </button>
 
-            <!-- Error --> <!-- "data-command" Leer lassen um einen unbekannten Befehl zu simmulieren -->
-            <button type="button"
-                    data-command=""
-                    class="socket-error-button
-          socket-cmd-button
-          btn btn-default btn-sm ">
-                Error
-            </button>
+                    <!-- txt -->
+                    <button type="button"
+                            data-command=""
+                            class="txt-open-button  btn btn-default btn-sm ">
+                        txt
+                    </button>
+
+                </div>
+
+
+            </div>
+
+            <!-- Message -->
+            <div class=" flip-back">
+                <div class="message-input">
+                    <form class="form-inline form-small" name="sockettest">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="input-socket-message" placeholder="bla bla">
+                            <span class="input-group-addon btn-nicer socket-message-button">send</span>
+                            <span class="input-group-addon btn-nicer txt-close-button">&times;</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
         </div>
-
 
     </div>
 
@@ -268,8 +286,8 @@
             <div class="col-xs-6">
                 <button type="button" data-command="previous"
                         class=" btn btn-default btn-block socket-cmd-button socket-button-previous">
-                    <span>&larr;</span>
-                    <span class="slide-number">X</span>
+                    <div class="slide-number slide-number-previous">0</div>
+                    <div class="slide-arrow"><span class="glyphicon glyphicon-chevron-left"></span></div>
 
                 </button>
             </div>
@@ -278,9 +296,9 @@
                 <button type="button" data-command="next"
                         class=" btn btn-default btn-block socket-cmd-button socket-button-next">
 
-                    <span class="slide-number">X</span>
+                    <div class="slide-number slide-number-next">2</div>
 
-                    <span>&rarr;</span>
+                    <div class="slide-arrow"><span class="glyphicon glyphicon-chevron-right"></span></div>
                 </button>
             </div>
 
@@ -290,7 +308,7 @@
 
     <!-- Ping -->
     <div class="well well-remote">
-        <button type="button" class="btn btn-default btn-sm btn-block btn-default socket-ping-button">
+        <button type="button" class="btn  btn-block btn-default socket-ping-button">
             <span class="glyphicon glyphicon-screenshot"></span>
         </button>
     </div>
@@ -306,12 +324,10 @@
 <!-- Libraries -->
 <script src="libraries/jquery/jquery-3.2.1.min.js"></script>
 <script src="libraries/bootstrap/bootstrap.min.js"></script>
-<script src="libraries/jquery/jquery-ui/jquery-ui.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 
 
 <!-- A Nicer Way -->
-<script src="js/utilities.js"></script>
 
 <script src="js/controllers/RemoteDisplayController.js"></script>
 <script src="js/controllers/TimerController.js"></script>
@@ -319,8 +335,6 @@
 
 <script src="js/remote.js"></script>
 
-
-<script src="js/test.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){

@@ -72,7 +72,7 @@ class TimerController {
         });
 
         // Settime
-        $('.timer-number-lite').click(function () {
+        $('.timer-flip-button').click(function () {
             timerController.showDetails();
         });
 
@@ -124,13 +124,11 @@ class TimerController {
     }
 
     private showDetails() {
-        $('.anw-timer-lite').hide();
-        $('.anw-timer-full').show();
+        $('#remote-timer.flip-container').addClass('flip');
     }
 
     private hideDetails() {
-        $('.anw-timer-lite').show();
-        $('.anw-timer-full').hide();
+        $('#remote-timer.flip-container').removeClass('flip');
     }
 
 
@@ -361,21 +359,6 @@ class TimerController {
         $('.timer-number-input').val(minutes);
 
         return this.countFrom = minutes;
-
-
-    }
-
-    /**
-     *
-     */
-    setTimer() {
-
-    }
-
-    /**
-     *
-     */
-    getTime() {
 
     }
 

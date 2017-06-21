@@ -43,7 +43,7 @@ var TimerController = (function () {
             timerController.setTime(data);
         });
         // Settime
-        $('.timer-number-lite').click(function () {
+        $('.timer-flip-button').click(function () {
             timerController.showDetails();
         });
         // Settime
@@ -76,12 +76,10 @@ var TimerController = (function () {
         });
     };
     TimerController.prototype.showDetails = function () {
-        $('.anw-timer-lite').hide();
-        $('.anw-timer-full').show();
+        $('#remote-timer.flip-container').addClass('flip');
     };
     TimerController.prototype.hideDetails = function () {
-        $('.anw-timer-lite').show();
-        $('.anw-timer-full').hide();
+        $('#remote-timer.flip-container').removeClass('flip');
     };
     TimerController.prototype.countDown = function () {
         console.log('countDown');
@@ -235,16 +233,6 @@ var TimerController = (function () {
         $('.timer-number').text(minutes);
         $('.timer-number-input').val(minutes);
         return this.countFrom = minutes;
-    };
-    /**
-     *
-     */
-    TimerController.prototype.setTimer = function () {
-    };
-    /**
-     *
-     */
-    TimerController.prototype.getTime = function () {
     };
     return TimerController;
 }());

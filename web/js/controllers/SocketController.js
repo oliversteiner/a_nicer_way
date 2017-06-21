@@ -19,6 +19,14 @@ var SocketController = (function () {
         // Nachricht schicken
         this.socketSend('ping_2', png);
     };
+    SocketController.prototype.sendList = function () {
+        var list = aNicerWay.getTimeWayPointList();
+        // liste schicken
+        this.socketSend('timepoint list', list);
+    };
+    SocketController.prototype.sendTimePointNr = function (nr) {
+        this.socketSend('timepoint nr', nr);
+    };
     // RECEIVE
     SocketController.prototype.receiveCommand = function () {
         /* steuerbefehl empfangen
@@ -70,7 +78,7 @@ var SocketController = (function () {
                     HelpController.modalToggle();
                     break;
                 case 'get-list':
-                    aNicerWay.updateList();
+                    aNicerWay.socketController.sendList();
                     break;
                 default:
                     SmartphoneSimController.error('Remotebefehl nicht verstanden');

@@ -11,7 +11,7 @@ class ANicerWay {
 
 
     // Version
-    public version: string = '1.5b';
+    public version: string = '1.6b';
 
     // Status
     private timeWayPoint_Now_Doc: any;
@@ -188,6 +188,8 @@ class ANicerWay {
         this.dbController = new DbController();
         this.socketController = new SocketController();
         this.characterController = new CharacterController();
+
+
         this.displayController = new DisplayController();
     }
 

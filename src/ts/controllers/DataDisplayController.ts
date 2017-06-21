@@ -35,9 +35,6 @@ class DataDisplayController {
         // Aktionen verknüpfen
         this.addEventListeners();
         this.addKeystrokes();
-        this.makeDraggable();
-
-        DataDisplayController.modalClose();
 
         //
         console.log('- Data Display ready');
@@ -66,11 +63,6 @@ class DataDisplayController {
         // Button Load Default
         $('#data-display-button-load-default').click(DbController.loadDefault);
 
-        // Button Close Display
-        $('.data-display-button-close').click(DataDisplayController.modalClose);
-
-        // Button Show Display
-        $('.data-display-button-toggle').click(DataDisplayController.modalToggle);
 
     }
 
@@ -79,18 +71,10 @@ class DataDisplayController {
      */
     addKeystrokes() {
 
-        key('d', function () {
-            DataDisplayController.modalToggle();
-        });
+
     }
 
-    /**
-     * makeDraggable
-     */
-    makeDraggable() {
-        $(this.elem_Content).draggable();
-        $(this.elem_Content).dblclick(DataDisplayController.modalClose);
-    }
+
 
     /**
      * resetform
@@ -214,29 +198,6 @@ class DataDisplayController {
     }
 
 
-    /**
-     * Fenster
-     *
-     */
-    static modalClose() {
-        _dataDisplayModalOpen = false;
-        $('#' + _dataDisplayContentName).hide();
-
-    }
-
-    static modalOpen() {
-        _dataDisplayModalOpen = true;
-        $('#' + _dataDisplayContentName).show();
-    }
-
-    static modalToggle() {
-        if (_dataDisplayModalOpen) {
-            DataDisplayController.modalClose();
-        }
-        else {
-            DataDisplayController.modalOpen();
-        }
-    }
 
 
 }

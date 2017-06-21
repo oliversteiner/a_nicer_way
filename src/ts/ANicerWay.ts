@@ -40,6 +40,9 @@ class ANicerWay {
     public timeWayController: TimeWayController;
     public remoteDisplayController: RemoteDisplayController;
     public socketController: SocketController;
+    public characterController: CharacterController;
+    public displayController: DisplayController;
+
 
     // DB
     private db: any;
@@ -184,7 +187,8 @@ class ANicerWay {
         this.remoteDisplayController = new RemoteDisplayController();
         this.dbController = new DbController();
         this.socketController = new SocketController();
-
+        this.characterController = new CharacterController();
+        this.displayController = new DisplayController();
     }
 
 

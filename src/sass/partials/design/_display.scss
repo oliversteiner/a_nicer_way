@@ -1,0 +1,63 @@
+// Design
+@import 'colors';
+@import 'fonts';
+
+.glyphicon-title{
+  padding-right: 10px;
+  top: 2px;
+}
+
+
+// Modal Displays
+
+.shadow-display {
+  box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.2);
+}
+
+.well-display {
+  border-radius: 7px;
+  padding: 14px;
+
+}
+
+.display-header,
+.display-footer{
+  height: 25px;
+  cursor: move;
+
+}
+
+
+.display-header{
+  position: relative;
+  top: -7px;
+  border-bottom: solid 1px $color-display-background-bright;
+  margin-bottom: 7px;
+}
+
+.display-footer{
+}
+
+
+// Close
+.display-header > .close {
+  position: relative;
+  top: -3px;
+  color: $color-display-text-dark;
+}
+
+.display-header > .close:hover {
+  color: $color-display-text;
+}
+
+.display-header > .close:active {
+  color: $color-text-link-hover;
+}
+
+
+// Display
+.display-title {
+  position: relative;
+  color: $color-display-title;
+  font-size: 14px;
+}

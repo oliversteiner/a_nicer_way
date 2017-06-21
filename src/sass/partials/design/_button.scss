@@ -41,7 +41,29 @@
 
 
 // transpatent
-.btn-nicer-transpatent {
+.btn-nicer-transparent {
+  cursor: pointer;
+  color: $color-display-text;
+  background-color: $color-display-background;
+
+}
+
+.btn-nicer-transparent:hover {
+  color: $color-text-link;
+
+}
+
+.btn-nicer-transparent:active {
+
+}
+
+.btn-nicer-transparent a {
+  text-decoration: none;
+}
+
+
+// transpatent 2
+.btn-nicer-transparent-2 {
   cursor: pointer;
   color: $color-console-background-bright;
   border: solid 1px $color-black;
@@ -49,17 +71,21 @@
 
 }
 
-.btn-nicer-transpatent:hover {
+.btn-nicer-transparent-2:hover {
   color: $color-text-link;
   border: solid 1px $color-console-background-bright;
 
 }
 
-.btn-nicer-transpatent:active {
+.btn-nicer-transparent-2:active {
   border: solid 1px $color-console-background-bright;
 
 }
 
-.btn-nicer-transpatent a {
+.btn-nicer-transparent-2 a {
   text-decoration: none;
+}
+
+.btn-group-inline{
+  display: inline;
 }

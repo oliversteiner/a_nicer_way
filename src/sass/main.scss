@@ -3,6 +3,7 @@
 @import 'partials/design/colors';
 @import 'partials/design/fonts';
 @import 'partials/design/button';
+@import 'partials/design/display';
 
 // Views
 @import 'partials/views/console';
@@ -15,6 +16,7 @@
 @import "partials/views/help";
 @import "partials/views/remote_display";
 @import "partials/views/modal_center";
+@import "partials/views/character";
 
 // Utilitis
 @import 'partials/utilities/messages';
@@ -24,33 +26,18 @@
 
 
 
-// Modal Displays
 
-.shadow-display {
-  box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.2);
-}
 
-.well-display {
-  border-radius: 7px;
-  padding: 14px;
+// Well Nicer
+.well-nicer{
 
 }
 
-.well-display > .close {
-  position: relative;
-  top: -10px;
-  left: 5px;
-  color: #000;}
-
-.well-display > .close:hover {
-
-  color: $color-nav-text;
+.well-nicer-light{
+  padding: 0;
+  margin: 0;
 }
-.well-display > .close:active {
 
-  color: $color-nav-text;
-  border: none;
-}
 
 
 // Navigation
@@ -62,9 +49,11 @@
 .navbar-nicer:hover .navbar-nav > li > a {
   color: $color-nav-text;
 }
+
 .navbar-nicer:hover .navbar-nav > li > a:hover {
   color: $color-text-link-hover
 }
+
 .navbar-nicer:hover .navbar-nav > li > a:active {
   color: $color-text-link-active
 }
@@ -81,17 +70,14 @@
 .pager {
   float: right;
   position: relative;
-  padding: 0;
-  margin: 0;
-  padding-top: 12px;
-  margin-right: 50px;
+  padding: 12px 0 0;
+  margin: 0 50px 0 0;
 
 }
 
 .pager li {
   padding: 0;
-  margin: 0;
-  margin-left: 10px;
+  margin: 0 0 0 10px;
 }
 
 .pager li > a {
@@ -103,3 +89,4 @@
   color: $color-text-link;
   cursor:pointer;
 }
+

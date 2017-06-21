@@ -52,6 +52,8 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
 }
 
 #layer-4-baume {
+  pointer-events:none;
+
   width: 8000px;
   height: 600px;
 }
@@ -96,6 +98,8 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
 }
 
 .deko {
+  pointer-events:none;
+
   display: inline-block;
   background-position: left bottom;
   background-repeat: no-repeat;

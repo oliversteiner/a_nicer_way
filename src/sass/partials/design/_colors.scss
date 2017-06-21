@@ -24,3 +24,18 @@ $color-text-link-active: rgb(180, 233, 216);
 $color-button: rgb(34, 34, 34);
 $color-button-hover: rgb(13, 13, 13);
 $color-button-active: rgb(67, 67, 67);
+
+
+
+// Display
+$color-display-title: rgb(129, 129, 129);
+
+$color-display-text: rgb(218, 209, 198);
+$color-display-text-dark: rgb(102, 102, 102);
+
+$color-display-link: rgb(102, 102, 102);
+$color-display-link-hover:  $color-display-text;
+$color-display-link-active: $color-text-link-hover;
+
+$color-display-background: rgb(48, 48, 48);
+$color-display-background-bright: rgb(69, 69, 69);

@@ -144,4 +144,15 @@ li a.active {
 .slide-up,
 .slide-down {
    overflow:hidden;
+  height: 0;
+}
+
+
+.slide-up{
+  height: 0;
+}
+
+
+.slide-down {
+  height: 400px;
 }

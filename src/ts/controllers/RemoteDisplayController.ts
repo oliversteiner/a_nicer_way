@@ -29,7 +29,6 @@ class RemoteDisplayController {
         console.log('- Remote Display load');
 
         // Aktionen verknüpfen
-        this.makeDraggable();
         this.addEventListeners();
         this.addKeystrokes();
 
@@ -44,11 +43,7 @@ class RemoteDisplayController {
      */
     addEventListeners() {
 
-        // Button Close Display
-        $('.remote-display-button-close').click(RemoteDisplayController.modalClose);
 
-        // Button Show Display
-        $('.remote-display-button-toggle').click(RemoteDisplayController.modalToggle);
 
         // Öffne nachfrage
         $('.modal-center-button-remote').click(RemoteDisplayController.openModalCenterRemote);
@@ -73,12 +68,7 @@ class RemoteDisplayController {
         });
     }
 
-    /**
-     * makeDraggable
-     */
-    makeDraggable() {
-        $('#' + _remoteDisplayContentName).draggable();
-    }
+
 
 
     /**
@@ -110,28 +100,7 @@ class RemoteDisplayController {
     }
 
 
-    /**
-     * Fenster
-     *
-     */
-    static modalClose() {
-        _remoteDisplayModalOpen = false;
-        $('#' + _remoteDisplayContentName).hide();
-    }
 
-    static modalOpen() {
-        _remoteDisplayModalOpen = true;
-        $('#' + _remoteDisplayContentName).show();
-    }
-
-    static modalToggle() {
-        if (_remoteDisplayModalOpen) {
-            RemoteDisplayController.modalClose();
-        }
-        else {
-            RemoteDisplayController.modalOpen();
-        }
-    }
 
 
 }

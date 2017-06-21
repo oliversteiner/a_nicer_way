@@ -30,20 +30,12 @@ class NavigationController {
 
         // functions
         this.addEventListeners();
-        this.addKeystrokes();
-        this.makeDraggable();
         //
         console.log('- Navigation Display ready');
 
 
     }
 
-    /**
-     * makeDraggable
-     */
-    makeDraggable() {
-        $(this.elem_Content).draggable();
-    }
 
     /**
      * addEventsListeners
@@ -51,25 +43,9 @@ class NavigationController {
      */
     addEventListeners() {
 
-        // Button Close Display
-        $('.navigation-display-button-close').click(NavigationController.modalClose);
-
-        //
-        $('.navigation-display-button-toggle').click(NavigationController.modalToggle);
-
-
-
     }
 
-    addKeystrokes() {
 
-        // Navigation Display einblenden
-        key('n', function () {
-            RemoteDisplayController.openModalCenterRemote();
-        });
-
-
-    }
 
     update() {
         this.generateNavigationList();
@@ -157,33 +133,13 @@ class NavigationController {
     }
 
     static showDataDisplay(id: string) {
-        DataDisplayController.modalOpen();
+
+        $('#data-display-content').show();
         aNicerWay.goTo(id);
     }
 
 
-    /**
-     *
-     *
-     */
-    static modalClose() {
-        _navigationOpen = false;
-        $('#navigation-display-content').hide();
-    }
 
-    static modalOpen() {
-        _navigationOpen = true;
-        $('#navigation-display-content').show();
-    }
-
-    static modalToggle() {
-        if (_navigationOpen) {
-            NavigationController.modalClose();
-        }
-        else {
-            NavigationController.modalOpen();
-        }
-    }
 
 
     setList(list: any) {

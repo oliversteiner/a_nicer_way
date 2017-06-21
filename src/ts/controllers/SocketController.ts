@@ -1,6 +1,3 @@
-/**
- * Created by ost on 20.06.17.
- */
 class SocketController {
 
     // Socket io
@@ -51,9 +48,7 @@ class SocketController {
 
     receiveCommand() {
 
-        /* steuerbefehl empfangen
-         ------------------------------
-         -- socket-cmd ----------------
+        /* - socket-cmd ----------------
          previous
          next
 
@@ -90,11 +85,11 @@ class SocketController {
 
                     // Toolbar
                     case 'navigation-display-toggle':
-                        NavigationController.modalToggle();
+                        aNicerWay.displayController.toggle('navigation');
                         break;
 
                     case 'data-display-toggle':
-                        DataDisplayController.modalToggle();
+                        aNicerWay.displayController.toggle('data');
                         break;
 
                     case 'smartphone-sim-toggle':
@@ -106,7 +101,7 @@ class SocketController {
                         break;
 
                     case 'remote-toggle':
-                        RemoteDisplayController.modalToggle();
+                        aNicerWay.displayController.toggle('remote');
                         break;
 
                     case 'help-toggle':

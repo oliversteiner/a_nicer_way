@@ -1,4 +1,4 @@
-<div id="character-display-content" data-keystroke="p" class="nicer-display" >
+<div id="character-display-content" data-keystroke="p" class="nicer-display">
 
     <div class="well well-display shadow-display">
 
@@ -12,42 +12,59 @@
 
 
         <!-- Main -->
-        <div class="display-main">
-            <div class="well well-nicer-light">
-                <div id="character-navigation"></div>
+        <div class="display-main flip-container">
 
-            </div>
+            <div class="flipper">
 
-            <div class="well well-nicer-light" id="character-action-navigation">
-                <div class="btn-group ">
+                <!-- Tools -->
+                <div class=" flip-front">
 
-                    <button
-                            class="character-action-button btn btn-default btn-sm"
-                            data-character-action="hide">
-                        <span class="glyphicon glyphicon-eye-close"></span>
-                    </button>
-                    <button
+                    <div class="well well-nicer-light">
+                        <div id="character-navigation"></div>
 
-                            class="character-action-button btn btn-default btn-sm"
-                            data-character-action="walk">gehen
-                    </button>
-                    <button
-
-                            class="character-action-button btn btn-default btn-sm"
-                            data-character-action="wink">winken
-                    </button>
-                    <button
-
-                            class="character-action-button btn btn-default btn-sm"
-                            data-character-action="wait">warten
-                    </button>
+                    </div>
 
                 </div>
 
-            </div>
-        </div>
+                <!-- Message -->
+                <div class="flip-back">
 
-        <!-- Footer -->
-        <div class="display-footer"></div>
+                    <div class="well well-nicer-light" id="character-action-navigation">
+                        <div class="btn-group btn-group-inline">
+
+                            <button
+                                    class="character-action-button btn btn-default btn-sm"
+                                    data-character-action="hide">
+                                <span class="glyphicon glyphicon-eye-close"></span>
+                            </button>
+                            <button
+
+                                    class="character-action-button btn btn-default btn-sm"
+                                    data-character-action="walk">gehen
+                            </button>
+                            <button
+
+                                    class="character-action-button btn btn-default btn-sm"
+                                    data-character-action="wink">winken
+                            </button>
+                            <button
+
+                                    class="character-action-button btn btn-default btn-sm"
+                                    data-character-action="wait">warten
+                            </button>
+
+                        </div>
+
+                        <button class="btn btn-nicer-transparent btn-sm flip-toggle-button"><span class="glyphicon glyphicon-option-vertical"></span></button>
+                    </div>
+
+                </div>
+            </div>
+
+
+            </div>
+
+            <!-- Footer -->
+            <div class="display-footer"></div>
+        </div>
     </div>
-</div>

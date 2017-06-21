@@ -273,7 +273,7 @@ class CharacterController {
         }
 
         // Am Schluss noch den Button für die Optionen
-        let button_optionen = '<button class="btn btn-nicer-transparent btn-sm"><span class="glyphicon glyphicon-option-vertical"></span></button>';
+        let button_optionen = '<button class="btn btn-nicer-transparent btn-sm flip-toggle-button"><span class="glyphicon glyphicon-option-vertical"></span></button>';
         div_btn_group.insertAdjacentHTML('afterend',button_optionen);
 
 
@@ -317,6 +317,10 @@ class CharacterController {
             console.log('leere Charakter-Liste');
         }
     }
+
+
+    // Display
+
 
 
 

@@ -5,8 +5,22 @@
   padding: 2px;
 }
 
-#remote-display button {
-  font-size: 17px;
+#remote-display {
+
+  button {
+    font-size: 17px;
+  }
+
+  .slide-number {
+
+    font-size: 17px;
+
+  }
+  .slide-arrow {
+    font-size: 80px;
+    color: gray;
+
+  }
 
 }
 
@@ -22,6 +36,24 @@ button.socket-button-previous {
 
     font-size: 60px;
 
+  }
+
+}
+
+#remote-slide-preview {
+  vertical-align: middle;
+  display: block;
+  height: 90px;
+  padding: 5px;
+
+  .sequence {
+    color: $color-message-ok;
+    font-size: 1.2em;
+  }
+
+  .title {
+    color: $color-message-ok;
+    font-size: 0.9em;
   }
 
 }
@@ -52,7 +84,64 @@ li a.active {
 
 #remote-list-header,
 #remote-list-footer {
+  position: relative;
   padding: 5px;
   text-align: center;
 }
 
+#input-socket-message {
+  background-color: gray;
+  color: black;
+}
+
+// Flipp
+#remote-timer.flip-container {
+  border: none;
+  height: 120px;
+}
+
+#remote-timer.flip-container.flip {
+  height: 270px;
+}
+
+// Flipp
+#mobile-toolbar.flip-container {
+  border: none;
+  height: 50px;
+}
+
+
+
+
+.timer-flip-button {
+  cursor: pointer;
+}
+
+.timer-flip-button:hover {
+  background-color: #525252;
+}
+
+.flip-front,
+.flip-back {
+  border: none;
+
+}
+
+.well-nicer-light{
+  padding: 0;
+  margin: 0;
+}
+
+
+
+
+.slide-wrapper{
+  display:block;
+  transition: height 500ms ease-in-out;
+}
+
+
+.slide-up,
+.slide-down {
+   overflow:hidden;
+}

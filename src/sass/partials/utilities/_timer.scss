@@ -18,6 +18,8 @@ $color-timer-warning: rgb(214, 191, 74);
 
 #remote-display-mobile-content {
   position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 #remote-display-mobile-effect {
@@ -55,8 +57,6 @@ $color-timer-warning: rgb(214, 191, 74);
     color: $color-timer-warning;
   }
 
-  .anw-timer-lite {
-  }
 
   .timer-indicator {
     position: absolute;
@@ -89,6 +89,10 @@ $color-timer-warning: rgb(214, 191, 74);
 
   .timer-unit {
     font-size: 1.5em;
+  }
+
+  .timer-unit-lite {
+    font-size: 1em;
   }
 
   .timer-display {
@@ -136,6 +140,10 @@ $color-timer-warning: rgb(214, 191, 74);
   .timer-settings-button {
 
   }
+
+
+
+
 }
 
 input[type=number]::-webkit-inner-spin-button,

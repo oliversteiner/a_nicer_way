@@ -83,6 +83,18 @@ io.on('connection', function (socket) {
 });
 
 
+// TimePoint Sequence Number
+io.on('connection', function (socket) {
+
+    socket.on('timepoint nr', function (nr) {
+        console.log(' - timepoint Sequence-Nr: ' + nr);
+
+        io.emit('timepoint nr', nr);
+    });
+});
+
+
+
 // TimePoint List
 io.on('connection', function (socket) {
 

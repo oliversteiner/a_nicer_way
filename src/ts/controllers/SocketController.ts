@@ -31,6 +31,22 @@ class SocketController {
         this.socketSend('ping_2', png);
     }
 
+
+    sendList() {
+
+        let list = aNicerWay.getTimeWayPointList();
+
+        // liste schicken
+        this.socketSend('timepoint list', list);
+    }
+
+
+    sendTimePointNr(nr:number) {
+
+        this.socketSend('timepoint nr', nr);
+    }
+
+
 // RECEIVE
 
     receiveCommand() {
@@ -98,7 +114,7 @@ class SocketController {
                         break;
 
                     case 'get-list':
-                        aNicerWay.updateList();
+                        aNicerWay.socketController.sendList();
                         break;
 
 
@@ -132,7 +148,6 @@ class SocketController {
         })
 
     }
-
 
 
     receiveTimepointId() {

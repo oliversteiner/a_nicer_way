@@ -1,0 +1,111 @@
+// Display
+
+#character-display-container {
+  position: absolute;
+  top: 500px;
+  left: 100px;
+}
+
+#character-display-content {
+  position: relative;
+
+}
+
+
+
+
+// TimeWay
+
+
+#layer-character {
+  position: fixed;
+  left: 30vw;
+  width: 300px;
+  height: 585px;
+  border: 1px solid red;
+
+  perspective: 1500px;
+
+}
+
+.character {
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.wink {
+  border: 3px solid red;
+  background-color: red;
+
+}
+
+
+
+
+
+// Test
+.character-test {
+  width: 60px;
+  height: 200px;
+}
+
+#proto-1.character-test {
+background-color: #a39f55;
+}
+
+#proto-2.character-test {
+  background-color: #ff82b8;
+}
+
+#proto-3.character-test {
+   background-color: #8a9eff;
+ }
+
+
+
+// Animation Classes
+
+.walk {
+  animation: bounce 500ms infinite;
+
+}
+
+.flipdown {
+  animation: flipdown 500ms;
+  transform-origin: bottom;
+  animation-timing-function: linear;
+
+}
+
+.flipup {
+  animation: flipdown 500ms;
+  transform-origin: bottom;
+  animation-direction: reverse;
+  animation-timing-function: linear;
+
+}
+
+// keyframes
+
+@keyframes bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  50% {
+    transform: scale(1.1, .9) translateY(10px);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+
+@keyframes flipdown {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(100deg);
+
+  }
+}

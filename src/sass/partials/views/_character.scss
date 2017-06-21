@@ -6,8 +6,37 @@
   left: 100px;
 }
 
+#character-display-container .display-footer{
+background-color: #3e6ba9;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
 #character-display-content {
   position: relative;
+  width: 300px;
+
+}
+
+// Flipp
+#character-display-container .flip-container {
+  border: none;
+
+  height: 50px;
+}
+
+#character-display-container .flip-container.flip {
+  height: 50px;
+}
+
+
+
+#character-display-container  .flip-front,
+#character-display-container  .flip-back {
+  border: none;
+
+  height: 50px;
 
 }
 
@@ -22,7 +51,6 @@
   left: 30vw;
   width: 300px;
   height: 585px;
-  border: 1px solid red;
 
   perspective: 1500px;
 
@@ -109,3 +137,5 @@ background-color: #a39f55;
 
   }
 }
+
+

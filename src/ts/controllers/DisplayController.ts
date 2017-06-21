@@ -87,7 +87,37 @@ class DisplayController {
             });
         }
 
+
+        // flip
+        let flipConteiner = '#' + display_id + ' .flip-container';
+        let $flipConteiner = $(flipConteiner);
+
+        if($flipConteiner){
+
+            // content
+            let flipButton = '#' + display_id + ' .flip-toggle-button';
+            let $flipButton = $(flipButton);
+
+            // -- add EventListener
+            $flipButton.click(function () {
+                $flipConteiner.toggleClass('flip');
+            });
+
+
+        }
+
+
+
+
+
     }
+
+
+    /**
+     *
+     *
+     * @param name
+     */
 
     toggle(name:string){
 

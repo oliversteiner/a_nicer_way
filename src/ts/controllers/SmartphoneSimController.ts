@@ -43,6 +43,7 @@ class SmartphoneSimController {
 
         SmartphoneSimController.consoleOpen();
         SmartphoneSimController.consoleClear();
+        SmartphoneSimController.consoleClose();
 
         // Tests
 
@@ -81,9 +82,6 @@ class SmartphoneSimController {
             SmartphoneSimController.setSize('kleiner')
         });
 
-        // close on dubbleclick
-        $('#smartphone-frame').dblclick(SmartphoneSimController.close);
-
 
     }
 
@@ -121,38 +119,64 @@ class SmartphoneSimController {
 
         // in eine Zahl umwandeln
         let height_now: number = Number(elem_height);
+        let hype: number = 0;    // der Skalirungsfaktor fürs hype
+        // Der hype inhalt ist 375px breit
+
+        let height_original: number = 840;
+        let prozent: any = 0;
+
 
         // Den übergabewert auswerten
         switch (faktor) {
-            case 'klein':
-                height = 400;
-                break;
-
-            case 'mittel':
-                height = 550;
+            case 'voll':
+                height = 840;
+                hype = 1;
                 break;
 
             case 'gross':
                 height = 700;
+                hype = 0.83;
+                break;
+
+            case 'mittel':
+                height = 550;
+                hype = 0.65;
+                break;
+
+            case 'halb':
+                height = 420;
+                hype = 0.5;
                 break;
 
             case 'kleiner':
                 height = height_now - 100;
+
+
                 break;
 
             case 'groesser':
                 height = height_now + 100;
+
                 break;
 
             default:
-                height = 500;
+                height = 550;
+                hype = 0.65;
         }
 
         // Das Smartphone ist halb so breit wie hoch
         width = height / 2;
 
+        //
+        if(hype == 0) {
+            // prozent_runden(100 * (b - a) / b);
+            prozent = prozent_runden(100 * (height_original - height) / height_original);
+            hype = (100 - prozent) * 0.01;
+        }
+
         // Als CSS zuweisen
         $('#smartphone-frame').css('height', height).css('width', width);
+        $('#smartphone-content').css('transform', 'scale(' + hype + ')');
 
     }
 

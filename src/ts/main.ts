@@ -1,7 +1,7 @@
 declare let aNicerWay:any;
 
 let options = {
-    simulator_size: 'mittel', // klein, mittel, gross
+    simulator_size: 'voll', // voll, halb, klein, mittel, gross
     check_for_mobile: false // true, false
 };
 
@@ -9,10 +9,6 @@ let options = {
 $(document).ready(function () {
     aNicerWay = new ANicerWay(options);
     aNicerWay.start();
-
-
-
-
 
 });
 

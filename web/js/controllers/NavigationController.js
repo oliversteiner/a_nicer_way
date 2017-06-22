@@ -18,32 +18,14 @@ var NavigationController = (function () {
         console.log('- Navigation Display load');
         // functions
         this.addEventListeners();
-        this.addKeystrokes();
-        this.makeDraggable();
         //
         console.log('- Navigation Display ready');
     }
-    /**
-     * makeDraggable
-     */
-    NavigationController.prototype.makeDraggable = function () {
-        $(this.elem_Content).draggable();
-    };
     /**
      * addEventsListeners
      *
      */
     NavigationController.prototype.addEventListeners = function () {
-        // Button Close Display
-        $('.navigation-display-button-close').click(NavigationController.modalClose);
-        //
-        $('.navigation-display-button-toggle').click(NavigationController.modalToggle);
-    };
-    NavigationController.prototype.addKeystrokes = function () {
-        // Navigation Display einblenden
-        key('n', function () {
-            RemoteDisplayController.openModalCenterRemote();
-        });
     };
     NavigationController.prototype.update = function () {
         this.generateNavigationList();
@@ -107,28 +89,8 @@ var NavigationController = (function () {
         aNicerWay.goTo(id);
     };
     NavigationController.showDataDisplay = function (id) {
-        DataDisplayController.modalOpen();
+        $('#data-display-content').show();
         aNicerWay.goTo(id);
-    };
-    /**
-     *
-     *
-     */
-    NavigationController.modalClose = function () {
-        _navigationOpen = false;
-        $('#navigation-display-content').hide();
-    };
-    NavigationController.modalOpen = function () {
-        _navigationOpen = true;
-        $('#navigation-display-content').show();
-    };
-    NavigationController.modalToggle = function () {
-        if (_navigationOpen) {
-            NavigationController.modalClose();
-        }
-        else {
-            NavigationController.modalOpen();
-        }
     };
     NavigationController.prototype.setList = function (list) {
         this.timeWayPointList = list;

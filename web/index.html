@@ -54,8 +54,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse   navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav  navbar-nav">
-            <li><a class="navigation-display-button-toggle">Stationen</a></li>
-            <li><a class="data-display-button-toggle">Bearbeiten</a></li>
+            <li><a class="navigation-display-toggle-button">Stationen</a></li>
+            <li><a class="data-display-toggle-button">Bearbeiten</a></li>
             <li><a class="smartphone-sim-button-toggle"><span class="glyphicon glyphicon-phone"></span> </a></li>
             <li><a class="console-toggle-button"><span class="glyphicon glyphicon-console"></span></a></li>
             <li><a class="modal-center-button-remote"><span class="glyphicon glyphicon-sort"></span></a></li>
@@ -191,7 +191,7 @@
 
     <div id="navigation-display-container">
         <!-- inject:views/navigation_display.html -->
-        <div id="navigation-display-content" class="nicer-display">
+        <div id="navigation-display-content" data-keystroke="n" class="nicer-display">
 
     <div class="well well-display shadow-display">
 
@@ -200,7 +200,7 @@
         <span class="display-title">
             <span class="glyphicon glyphicon-th-list glyphicon-title"></span>
              Stationen</span>
-            <span class="close navigation-display-button-close">&times;</span>
+            <span class="close display-close-button">&times;</span>
         </div>
 
         <!-- Main -->
@@ -219,7 +219,7 @@
 
     <div id="data-display-container">
         <!-- inject:views/data_display.html -->
-        <div id="data-display-content" style="display: none;">
+        <div id="data-display-content" data-keystroke="d" class="nicer-display" >
     <div class="well well-display shadow-display">
 
         <!-- header -->
@@ -229,7 +229,7 @@
             <span class="glyphicon glyphicon-pencil glyphicon-title"></span>
             Daten bearbeiten
             </span>
-         <span class="close data-display-button-close">&times;</span>
+         <span class="close display-close-button">&times;</span>
 
         </div>
 
@@ -348,32 +348,40 @@
 
     <div id="remote-display-container">
         <!-- inject:views/remote_display.html -->
-        <div id="remote-display-content" style="display: none">
+        <div id="remote-display-content" data-keystroke="" class="nicer-display">
 
     <div class="well well-display shadow-display">
 
-        <span class="close remote-display-button-close">&times;</span>
+        <!-- Header -->
+        <div class="display-header">
+            <span class="display-title"><span
+                    class="glyphicon glyphicon-sort glyphicon-title"> </span> Remote</span>
 
-        <div id="remote-display-frame">
-            <!-- inject:views/remote_display_mobile.html -->
-            <div id="remote-display-mobile-effect"></div>
+            <span class="close display-close-button">&times;</span>
+        </div>
+
+        <!-- Main -->
+        <div class="display-main">
+            <div id="remote-display-frame">
+                <!-- inject:views/remote_display_mobile.html -->
+                <div id="remote-display-mobile-effect"></div>
 
 <div id="remote-display-mobile-content" class="container-fluid">
 
 
     <!-- LIST -->
-        <div id="remote-list-header">A Nicer Way</div>
+    <div id="remote-list-header">A Nicer Way</div>
 
-        <div id="remote-list-wrapper" class="slide-wrapper slide-up">
+    <div id="remote-list-wrapper" class="slide-wrapper slide-up">
 
-            <div id="remote-list-main"></div>
+        <div id="remote-list-main"></div>
 
-        </div>
+    </div>
     <div class="well well-remote">
-            <button type="button" class="btn  btn-block btn-default remote-open-list-button">
-                <span class="glyphicon glyphicon-menu-down"></span>
-            </button>
-        </div>
+        <button type="button" class="btn  btn-block btn-default remote-open-list-button">
+            <span class="glyphicon glyphicon-menu-down"></span>
+        </button>
+    </div>
 
 
     <!-- Timer -->
@@ -505,7 +513,7 @@
 
             <!-- Tools -->
             <div class=" flip-front">
-                <div class="btn-group">
+                <div class="btn-group btn-group-inline">
 
                     <!-- navigation-display-toggle -->
                     <button type="button"
@@ -520,7 +528,7 @@
                             data-command="data-display-toggle"
                             class="data-display-toggle-button
           socket-cmd-button
-          btn btn-default btn-sm ">Data
+          btn btn-default btn-sm">Data
                     </button>
 
                     <!-- smartphone-sim-toggle -->
@@ -560,15 +568,13 @@
                         <span class="glyphicon glyphicon-question-sign"></span>
                     </button>
 
-                    <!-- txt -->
-                    <button type="button"
-                            data-command=""
-                            class="txt-open-button  btn btn-default btn-sm ">
-                        txt
-                    </button>
-
                 </div>
 
+                <!-- txt -->
+                <button type="button"
+                        class="txt-open-button btn btn-nicer-transparent btn-sm ">
+                    txt
+                </button>
 
             </div>
 
@@ -591,7 +597,56 @@
 
 
     <!-- Protagonist -->
-    <div class="remote-protagonist">
+    <div id="remote-character" class="well well-remote center-block text-center flip-container">
+        <!-- Main -->
+
+        <div class="flipper">
+
+            <!-- Tools -->
+            <div class=" flip-front">
+
+                <div class="well well-nicer-light">
+                    <div id="character-navigation"></div>
+
+                </div>
+
+            </div>
+
+            <!-- Action -->
+            <div class="flip-back">
+
+                <div class="well well-nicer-light" id="character-action-navigation">
+                    <div class="btn-group btn-group-inline">
+
+                        <button
+                                class="socket-cmd-button btn btn-default btn-sm"
+                                data-command="action-hide">
+                            <span class="glyphicon glyphicon-eye-close"></span>
+                        </button>
+                        <button
+
+                                class="socket-cmd-button btn btn-default btn-sm"
+                                data-command="action-walk">gehen
+                        </button>
+                        <button
+
+                                class="socket-cmd-button btn btn-default btn-sm"
+                                data-command="action-wink">winken
+                        </button>
+                        <button
+
+                                class="socket-cmd-button btn btn-default btn-sm"
+                                data-command="action-wait">warten
+                        </button>
+
+                    </div>
+
+                    <button class="btn btn-nicer-transparent btn-sm remote-character-toggle-button"><span
+                            class="glyphicon glyphicon-option-vertical"></span></button>
+                </div>
+
+            </div>
+        </div>
 
     </div>
 
@@ -633,8 +688,13 @@
 
 </div>
 
-            <!-- endinject -->
+                <!-- endinject -->
+            </div>
+
         </div>
+
+        <!-- Footer -->
+        <div class="display-footer"></div>
     </div>
 </div>
         <!-- endinject -->
@@ -797,7 +857,7 @@
 
     <div id="character-display-container">
         <!-- inject:views/character_display.html -->
-        <div id="character-display-content" class="nicer-display" >
+        <div id="character-display-content" data-keystroke="p" class="nicer-display">
 
     <div class="well well-display shadow-display">
 
@@ -811,39 +871,56 @@
 
 
         <!-- Main -->
-        <div class="display-main">
-            <div class="well well-nicer-light">
-                <div id="character-navigation"></div>
+        <div class="display-main flip-container">
 
-            </div>
+            <div class="flipper">
 
-            <div class="well well-nicer-light" id="character-action-navigation">
-                <div class="btn-group ">
+                <!-- Tools -->
+                <div class=" flip-front">
 
-                    <button
-                            class="character-action-button btn btn-default btn-sm"
-                            data-character-action="hide">
-                        <span class="glyphicon glyphicon-eye-close"></span>
-                    </button>
-                    <button
+                    <div class="well well-nicer-light">
+                        <div id="character-navigation"></div>
 
-                            class="character-action-button btn btn-default btn-sm"
-                            data-character-action="walk">gehen
-                    </button>
-                    <button
-
-                            class="character-action-button btn btn-default btn-sm"
-                            data-character-action="wink">winken
-                    </button>
-                    <button
-
-                            class="character-action-button btn btn-default btn-sm"
-                            data-character-action="wait">warten
-                    </button>
+                    </div>
 
                 </div>
 
+                <!-- Action -->
+                <div class="flip-back">
+
+                    <div class="well well-nicer-light" id="character-action-navigation">
+                        <div class="btn-group btn-group-inline">
+
+                            <button
+                                    class="character-action-button btn btn-default btn-sm"
+                                    data-character-action="hide">
+                                <span class="glyphicon glyphicon-eye-close"></span>
+                            </button>
+                            <button
+
+                                    class="character-action-button btn btn-default btn-sm"
+                                    data-character-action="walk">gehen
+                            </button>
+                            <button
+
+                                    class="character-action-button btn btn-default btn-sm"
+                                    data-character-action="wink">winken
+                            </button>
+                            <button
+
+                                    class="character-action-button btn btn-default btn-sm"
+                                    data-character-action="wait">warten
+                            </button>
+
+                        </div>
+
+                        <button class="btn btn-nicer-transparent btn-sm flip-toggle-button"><span
+                                class="glyphicon glyphicon-option-vertical"></span></button>
+                    </div>
+
+                </div>
             </div>
+
         </div>
 
         <!-- Footer -->

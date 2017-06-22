@@ -7,6 +7,8 @@ $(function () {
 
     // Init
     let socket = io();
+    generateButtons();
+
     socketAddListeners();
     receiveTimePointNr();
     receiveTimepointList();
@@ -100,6 +102,7 @@ $(function () {
         $('.remote-open-list-button').click(toggleList);
         $('.txt-open-button').click(openTxt);
         $('.txt-close-button').click(closeTxt);
+        $('.remote-character-toggle-button').click(characterToggleFlip);
 
     }
 
@@ -212,6 +215,93 @@ $(function () {
 
     /**
      *
+     *
+     *
+     */
+    function generateButtons() {
+
+
+        let list = [
+            {
+                name: 'Schüler',
+                id: 'proto-1',
+                image: 'proto-1.png',
+                image_walking: '',
+                color: 'yellow',
+                animate: {
+                    walk: '',
+                    wink: '',
+                    talk: '',
+                    wait: ''
+                }
+            },
+            {
+                name: 'Gruppe',
+                id: 'proto-2',
+                image: 'proto-2.png',
+                color: 'red',
+            },
+            {
+                name: 'Bus',
+                id: 'proto-3',
+                image: 'proto-3.png',
+                color: 'purble',
+            }
+        ];
+
+        //
+        let elemNav = document.getElementById('character-navigation');
+
+        // reset nav
+        elemNav.innerHTML = '';
+
+        // Button Group
+        let div_btn_group = document.createElement('div');
+        div_btn_group.setAttribute('class', 'btn-group btn-group-inline');
+
+        // div > div.btn-group
+        elemNav.appendChild(div_btn_group);
+
+        // ausblen
+        let button_0 = '<button class="socket-cmd-button btn btn-default btn-sm" data-command="character-0"><span class="glyphicon glyphicon-ban-circle"></span></button>';
+
+        div_btn_group.innerHTML = button_0;
+
+
+
+        if (list != null) {
+
+            for (let i = 0, len = list.length; i < len; i++) {
+                let character = list[i];
+                let character_nr:any = i +1;
+
+                if (character) {
+                    let button = document.createElement('button');
+                    let text = document.createTextNode(character.name);
+
+                    button.setAttribute('class', 'socket-cmd-button btn btn-default btn-sm ');
+                    button.setAttribute('data-command', 'character-'+character_nr);
+
+                    button.appendChild(text);
+                    div_btn_group.appendChild(button);
+
+                }
+            }
+        }
+        else {
+            console.log('leere Charakter-Liste');
+        }
+
+        // Am Schluss noch den Button für die Optionen
+        let button_optionen = '<button class="btn btn-nicer-transparent btn-sm remote-character-toggle-button"><span class="glyphicon glyphicon-option-vertical"></span></button>';
+        div_btn_group.insertAdjacentHTML('afterend',button_optionen);
+
+
+
+    }
+
+    /**
+     *
      * @param id
      */
     function markAsActive(id: string) {
@@ -291,6 +381,11 @@ $(function () {
     function closeTxt() {
         $('#mobile-toolbar.flip-container').removeClass('flip');
         $('#input-socket-message').focusout();
+
+    }
+
+    function characterToggleFlip() {
+        $('#remote-character.flip-container').toggleClass('flip');
 
     }
 

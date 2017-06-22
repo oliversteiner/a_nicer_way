@@ -160,6 +160,15 @@ class ANicerWay {
                 StatusDisplayController.setData(doc);
                 aNicerWay.socketController.sendTimePointNr(doc.sequence);
 
+                // Hype Steuern
+                // warte eine halbe sekunde
+                // erst wenn fertig gescrollt:
+
+                            setTimeout(function(){
+                                hypeService.action(doc.hype);
+
+                            },500);
+
 
                 clearInterval(timerPoint);
             }

@@ -97,7 +97,6 @@ class ANicerWay {
     updateList() {
 
         _update_list_zaehler++;
-        console.log('** Update List : ' + _update_list_zaehler);
 
         this.loadTimeWayPointList();
 
@@ -132,12 +131,10 @@ class ANicerWay {
             }
         }
 
-        console.log('** List -- : ' + counter);
     }
 
     updatePoint() {
         _update_point_zaehler++;
-        console.log('** Update Point : ' + _update_point_zaehler);
 
         const speed = 50;
         const trying = 20;
@@ -168,7 +165,6 @@ class ANicerWay {
             }
         }
 
-        console.log('** Point -- : ' + counter);
     }
 
 
@@ -240,7 +236,6 @@ class ANicerWay {
      *
      */
     loadTimeWayPointList() {
-        console.log('loadTimeWayPoints');
 
         this.timeWayPoint_ListDocs = false;
         this.timeWayPoint_First_ID = false;
@@ -273,16 +268,11 @@ class ANicerWay {
                     list_sequence[number] = row.doc._id;
                 });
 
-                console.log(list_docs);
-                console.log(list_sequence);
 
                 let count: number = list_docs.length - 1;
                 let firstID = list_docs[1]._id;
                 let lastID = list_docs[count]._id;  // Arrays beginnen bei NULL, alse einen abziehen
 
-
-                console.log('firstID: ' + firstID);
-                console.log('lastID' + lastID);
 
                 aNicerWay.timeWayPoint_First_ID = firstID;
                 aNicerWay.timeWayPoint_Last_ID = lastID;
@@ -306,8 +296,7 @@ class ANicerWay {
      * @param id
      */
     loadTimeWayPointFromDB(id?: string) {
-        console.log('loadTimeWayPoint' + '- id: ');
-        // console.log(id);
+
 
         this.timeWayPoint_Now_Doc = false;
         this.timeWayPoint_Now_ID = false;
@@ -347,10 +336,8 @@ class ANicerWay {
     }
 
     loadTimeWayPoint(id?: string) {
-        //   console.log('loadTimeWayPoint' + '- id: ' + id);
 
         _update_loadTimeWayPoint_zaehler++;
-        console.log('** Update Point : ' + _update_point_zaehler);
 
         const speed = 50;
         const trying = 20;
@@ -425,8 +412,6 @@ class ANicerWay {
 
             } // Trylist
         }
-
-        console.log('** timerLoadPoint -- : ' + counter);
 
     }
 
@@ -517,7 +502,6 @@ class ANicerWay {
     }
 
     static openModalCenter() {
-        console.log('openModalCenter');
         $('#remote-modal-how-open').hide();
         $('#remote-modal-change-directly').hide();
         $('#init-DB-message-wrapper').hide();
@@ -527,7 +511,6 @@ class ANicerWay {
     }
 
     static closeModalCenter() {
-        console.log('closeModalCenter');
         $('#remote-modal-how-open').hide();
         $('#remote-modal-change-directly').hide();
         $('#init-DB-message-wrapper').hide();

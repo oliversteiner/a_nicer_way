@@ -59,14 +59,12 @@ var CharacterController = (function () {
         $('#timeway-content').scroll(function () {
             // fire only once
             if (_fired === false) {
-                console.log('_fired');
                 $('.character').addClass('walk');
                 _fired = true;
             }
             $('.character').addClass('walk');
             clearTimeout($.data(this, "scrollCheck"));
             $.data(this, "scrollCheck", setTimeout(function () {
-                console.log('stopped');
                 $('.character').removeClass('walk');
                 // reset
                 _fired = false;
@@ -81,7 +79,6 @@ var CharacterController = (function () {
      * @param elem
      */
     CharacterController.prototype.flipDown = function (elem) {
-        console.log('flip down');
         $(elem).addClass('flipdown');
         setTimeout(function () {
             // nach Ende der Animation ausblenden
@@ -95,7 +92,6 @@ var CharacterController = (function () {
      * @param elem
      */
     CharacterController.prototype.flipUp = function (elem) {
-        console.log('flip up');
         $(elem).show();
         $(elem).addClass('flipup');
         $(elem).addClass('character-active');
@@ -124,7 +120,6 @@ var CharacterController = (function () {
             // Das Array fängt mit 0 an
             number--;
             var character_id = this.character_list[number].id;
-            console.log(character_id);
             var elem_new_1 = '#' + character_id;
             // nicht mehr aktiv
             // Alte Figur weg
@@ -191,7 +186,6 @@ var CharacterController = (function () {
         var button_0 = '<button class="character-change-button btn btn-default btn-sm" data-character="0"><span class="glyphicon glyphicon-ban-circle"></span></button>';
         div_btn_group.innerHTML = button_0;
         var list = this.character_list;
-        console.log(list);
         if (list != null) {
             for (var i = 0, len = list.length; i < len; i++) {
                 var character = list[i];
@@ -224,7 +218,6 @@ var CharacterController = (function () {
         // reset nav
         elemNav.innerHTML = '';
         var list = this.character_list;
-        console.log(list);
         if (list != null) {
             for (var i = 0, len = list.length; i < len; i++) {
                 var character = list[i];

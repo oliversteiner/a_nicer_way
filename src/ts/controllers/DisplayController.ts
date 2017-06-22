@@ -1,30 +1,19 @@
 class DisplayController {
 
-
     constructor() {
 
         this.searchDisplays();
-
-
     }
 
 
     searchDisplays() {
 
-
         let displayListe = $('.nicer-display');
-
-
-        console.log('++++++++');
-        console.log(displayListe);
-
 
         for (let i = 0; i < displayListe.length; i++) {
 
-
             let display_ID = $(displayListe[i]).attr('id');
             let display_Key = $(displayListe[i]).data('keystroke');
-
 
             this.activate(display_ID, display_Key);
 
@@ -105,10 +94,6 @@ class DisplayController {
 
 
         }
-
-
-
-
 
     }
 

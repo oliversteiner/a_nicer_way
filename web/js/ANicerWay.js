@@ -45,7 +45,6 @@ var ANicerWay = (function () {
     ;
     ANicerWay.prototype.updateList = function () {
         _update_list_zaehler++;
-        console.log('** Update List : ' + _update_list_zaehler);
         this.loadTimeWayPointList();
         var speed = 100;
         var trying = 20;
@@ -69,11 +68,9 @@ var ANicerWay = (function () {
                 clearInterval(timer2);
             }
         }
-        console.log('** List -- : ' + counter);
     };
     ANicerWay.prototype.updatePoint = function () {
         _update_point_zaehler++;
-        console.log('** Update Point : ' + _update_point_zaehler);
         var speed = 50;
         var trying = 20;
         var timerPoint = setInterval(tryList, speed);
@@ -95,7 +92,6 @@ var ANicerWay = (function () {
                 clearInterval(timerPoint);
             }
         }
-        console.log('** Point -- : ' + counter);
     };
     /**
      *
@@ -150,7 +146,6 @@ var ANicerWay = (function () {
      *
      */
     ANicerWay.prototype.loadTimeWayPointList = function () {
-        console.log('loadTimeWayPoints');
         this.timeWayPoint_ListDocs = false;
         this.timeWayPoint_First_ID = false;
         this.timeWayPoint_Last_ID = false;
@@ -174,13 +169,9 @@ var ANicerWay = (function () {
                     list_docs_1[number] = row.doc;
                     list_sequence_1[number] = row.doc._id;
                 });
-                console.log(list_docs_1);
-                console.log(list_sequence_1);
                 var count = list_docs_1.length - 1;
                 var firstID = list_docs_1[1]._id;
                 var lastID = list_docs_1[count]._id; // Arrays beginnen bei NULL, alse einen abziehen
-                console.log('firstID: ' + firstID);
-                console.log('lastID' + lastID);
                 aNicerWay.timeWayPoint_First_ID = firstID;
                 aNicerWay.timeWayPoint_Last_ID = lastID;
                 aNicerWay.timeWayPoint_ListDocs = list_docs_1;
@@ -196,8 +187,6 @@ var ANicerWay = (function () {
      * @param id
      */
     ANicerWay.prototype.loadTimeWayPointFromDB = function (id) {
-        console.log('loadTimeWayPoint' + '- id: ');
-        // console.log(id);
         this.timeWayPoint_Now_Doc = false;
         this.timeWayPoint_Now_ID = false;
         if (!id) {
@@ -222,9 +211,7 @@ var ANicerWay = (function () {
         //    .then( function(doc){ doc })
     };
     ANicerWay.prototype.loadTimeWayPoint = function (id) {
-        //   console.log('loadTimeWayPoint' + '- id: ' + id);
         _update_loadTimeWayPoint_zaehler++;
-        console.log('** Update Point : ' + _update_point_zaehler);
         var speed = 50;
         var trying = 20;
         var timerLoadPoint = setInterval(tryList, speed);
@@ -276,7 +263,6 @@ var ANicerWay = (function () {
                 return doc;
             } // Trylist
         }
-        console.log('** timerLoadPoint -- : ' + counter);
     };
     // GET
     ANicerWay.prototype.getTimeWayPointList = function () {
@@ -340,7 +326,6 @@ var ANicerWay = (function () {
         return this.version;
     };
     ANicerWay.openModalCenter = function () {
-        console.log('openModalCenter');
         $('#remote-modal-how-open').hide();
         $('#remote-modal-change-directly').hide();
         $('#init-DB-message-wrapper').hide();
@@ -348,7 +333,6 @@ var ANicerWay = (function () {
         $('#modal-center').modal('show');
     };
     ANicerWay.closeModalCenter = function () {
-        console.log('closeModalCenter');
         $('#remote-modal-how-open').hide();
         $('#remote-modal-change-directly').hide();
         $('#init-DB-message-wrapper').hide();

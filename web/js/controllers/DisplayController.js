@@ -4,8 +4,6 @@ var DisplayController = (function () {
     }
     DisplayController.prototype.searchDisplays = function () {
         var displayListe = $('.nicer-display');
-        console.log('++++++++');
-        console.log(displayListe);
         for (var i = 0; i < displayListe.length; i++) {
             var display_ID = $(displayListe[i]).attr('id');
             var display_Key = $(displayListe[i]).data('keystroke');

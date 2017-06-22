@@ -51,7 +51,6 @@ class TimeWayController {
      * @param target
      */
     static  scrollTo(target: string) {
-        console.log('scrollTo id: ' + target);
 
         $('#timeway-content').scrollTo('#' + target, 1000);
 
@@ -103,7 +102,7 @@ class TimeWayController {
 
 
         let list = this.timeWayPointList;
-        console.log(list);
+
 
         if (list != null) {
 

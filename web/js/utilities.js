@@ -31,3 +31,15 @@ function _reset() {
     });
     return false;
 }
+// prozent_runden(100 * (b - a) / b);
+function prozent_runden(quelle) {
+    var wert = Math.round(quelle * 10);
+    var wert2 = wert / 10;
+    var wert3 = wert2 - Math.round(wert2);
+    if (wert3 == 0) {
+        return wert2 + "." + wert3;
+    }
+    else {
+        return wert2;
+    }
+}

@@ -21,11 +21,26 @@ var CharacterController = (function () {
             aNicerWay.characterController.changeCharacter(data);
         });
     };
+    CharacterController.prototype.action = function (input) {
+        switch (input) {
+            case 'walk':
+                aNicerWay.characterController.walk();
+                break;
+            case 'wink':
+                aNicerWay.characterController.wink();
+                break;
+            case 'wait':
+                aNicerWay.characterController.wait();
+                break;
+            default:
+                break;
+        }
+    };
     /**
      *
      *
      */
-    CharacterController.prototype.winke = function () {
+    CharacterController.prototype.wink = function () {
         $('.character-active').addClass('wink');
         $('.character-active').addClass('walk');
         var old = $('.character-active').css('background-color');
@@ -58,6 +73,8 @@ var CharacterController = (function () {
             }, 250));
         });
     };
+    CharacterController.prototype.wait = function () {
+    };
     /**
      *
      *
@@ -86,7 +103,7 @@ var CharacterController = (function () {
             // nach ende der animation ausblenden
             $(elem).removeClass('flipup');
             $(elem).click(function () {
-                aNicerWay.characterController.winke();
+                aNicerWay.characterController.wink();
             });
         }, 500);
     };
@@ -193,7 +210,7 @@ var CharacterController = (function () {
             console.log('leere Charakter-Liste');
         }
         // Am Schluss noch den Button für die Optionen
-        var button_optionen = '<button class="btn btn-nicer-transparent btn-sm"><span class="glyphicon glyphicon-option-vertical"></span></button>';
+        var button_optionen = '<button class="btn btn-nicer-transparent btn-sm flip-toggle-button"><span class="glyphicon glyphicon-option-vertical"></span></button>';
         div_btn_group.insertAdjacentHTML('afterend', button_optionen);
     };
     /**

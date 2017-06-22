@@ -4,18 +4,18 @@
 
 
     <!-- LIST -->
-        <div id="remote-list-header">A Nicer Way</div>
+    <div id="remote-list-header">A Nicer Way</div>
 
-        <div id="remote-list-wrapper" class="slide-wrapper slide-up">
+    <div id="remote-list-wrapper" class="slide-wrapper slide-up">
 
-            <div id="remote-list-main"></div>
+        <div id="remote-list-main"></div>
 
-        </div>
+    </div>
     <div class="well well-remote">
-            <button type="button" class="btn  btn-block btn-default remote-open-list-button">
-                <span class="glyphicon glyphicon-menu-down"></span>
-            </button>
-        </div>
+        <button type="button" class="btn  btn-block btn-default remote-open-list-button">
+            <span class="glyphicon glyphicon-menu-down"></span>
+        </button>
+    </div>
 
 
     <!-- Timer -->
@@ -147,7 +147,7 @@
 
             <!-- Tools -->
             <div class=" flip-front">
-                <div class="btn-group">
+                <div class="btn-group btn-group-inline">
 
                     <!-- navigation-display-toggle -->
                     <button type="button"
@@ -162,7 +162,7 @@
                             data-command="data-display-toggle"
                             class="data-display-toggle-button
           socket-cmd-button
-          btn btn-default btn-sm ">Data
+          btn btn-default btn-sm">Data
                     </button>
 
                     <!-- smartphone-sim-toggle -->
@@ -202,15 +202,13 @@
                         <span class="glyphicon glyphicon-question-sign"></span>
                     </button>
 
-                    <!-- txt -->
-                    <button type="button"
-                            data-command=""
-                            class="txt-open-button  btn btn-default btn-sm ">
-                        txt
-                    </button>
-
                 </div>
 
+                <!-- txt -->
+                <button type="button"
+                        class="txt-open-button btn btn-nicer-transparent btn-sm ">
+                    txt
+                </button>
 
             </div>
 
@@ -223,9 +221,6 @@
                             <span class="input-group-addon btn-nicer socket-message-button">send</span>
                             <span class="input-group-addon btn-nicer txt-close-button">&times;</span>
                         </div>
-
-                        <button class="btn btn-nicer-transparent btn-sm flip-toggle-button"><span class="glyphicon glyphicon-option-vertical"></span></button>';
-
                     </form>
                 </div>
             </div>
@@ -236,7 +231,56 @@
 
 
     <!-- Protagonist -->
-    <div class="remote-protagonist">
+    <div id="remote-character" class="well well-remote center-block text-center flip-container">
+        <!-- Main -->
+
+        <div class="flipper">
+
+            <!-- Tools -->
+            <div class=" flip-front">
+
+                <div class="well well-nicer-light">
+                    <div id="character-navigation"></div>
+
+                </div>
+
+            </div>
+
+            <!-- Action -->
+            <div class="flip-back">
+
+                <div class="well well-nicer-light" id="character-action-navigation">
+                    <div class="btn-group btn-group-inline">
+
+                        <button
+                                class="socket-cmd-button btn btn-default btn-sm"
+                                data-command="action-hide">
+                            <span class="glyphicon glyphicon-eye-close"></span>
+                        </button>
+                        <button
+
+                                class="socket-cmd-button btn btn-default btn-sm"
+                                data-command="action-walk">gehen
+                        </button>
+                        <button
+
+                                class="socket-cmd-button btn btn-default btn-sm"
+                                data-command="action-wink">winken
+                        </button>
+                        <button
+
+                                class="socket-cmd-button btn btn-default btn-sm"
+                                data-command="action-wait">warten
+                        </button>
+
+                    </div>
+
+                    <button class="btn btn-nicer-transparent btn-sm remote-character-toggle-button"><span
+                            class="glyphicon glyphicon-option-vertical"></span></button>
+                </div>
+
+            </div>
+        </div>
 
     </div>
 

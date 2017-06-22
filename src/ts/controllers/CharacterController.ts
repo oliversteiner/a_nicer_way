@@ -35,11 +35,32 @@ class CharacterController {
     }
 
 
+    action(input: string) {
+
+        switch (input) {
+            case 'walk':
+                aNicerWay.characterController.walk();
+                break;
+
+            case 'wink':
+                aNicerWay.characterController.wink();
+                break;
+
+            case 'wait':
+                aNicerWay.characterController.wait();
+                break;
+
+            default:
+                break;
+        }
+
+    }
+
     /**
      *
      *
      */
-    winke() {
+    wink() {
 
         $('.character-active').addClass('wink');
         $('.character-active').addClass('walk');
@@ -93,6 +114,11 @@ class CharacterController {
 
     }
 
+    wait() {
+
+
+    }
+
     /**
      *
      *
@@ -128,7 +154,7 @@ class CharacterController {
             // nach ende der animation ausblenden
             $(elem).removeClass('flipup');
             $(elem).click(function () {
-                aNicerWay.characterController.winke();
+                aNicerWay.characterController.wink();
 
             })
 
@@ -157,27 +183,27 @@ class CharacterController {
             number--;
 
 
-        let character_id = this.character_list[number].id;
+            let character_id = this.character_list[number].id;
 
 
-        console.log(character_id);
+            console.log(character_id);
 
-        let elem_new = '#' + character_id;
+            let elem_new = '#' + character_id;
 
-        // nicht mehr aktiv
-
-
-        // Alte Figur weg
-        this.flipDown('#' + elem_old);
-
-        // nach ende Animation
-        setTimeout(function () {
-            // neue Figur holen
-            aNicerWay.characterController.flipUp(elem_new);
+            // nicht mehr aktiv
 
 
-        }, 800)
-    }
+            // Alte Figur weg
+            this.flipDown('#' + elem_old);
+
+            // nach ende Animation
+            setTimeout(function () {
+                // neue Figur holen
+                aNicerWay.characterController.flipUp(elem_new);
+
+
+            }, 800)
+        }
     }
 
     /**
@@ -253,7 +279,7 @@ class CharacterController {
 
             for (let i = 0, len = list.length; i < len; i++) {
                 let character = list[i];
-                let character_nr:any = i +1;
+                let character_nr: any = i + 1;
 
                 if (character) {
                     let button = document.createElement('button');
@@ -274,7 +300,7 @@ class CharacterController {
 
         // Am Schluss noch den Button für die Optionen
         let button_optionen = '<button class="btn btn-nicer-transparent btn-sm flip-toggle-button"><span class="glyphicon glyphicon-option-vertical"></span></button>';
-        div_btn_group.insertAdjacentHTML('afterend',button_optionen);
+        div_btn_group.insertAdjacentHTML('afterend', button_optionen);
 
 
     }
@@ -320,8 +346,6 @@ class CharacterController {
 
 
     // Display
-
-
 
 
 }

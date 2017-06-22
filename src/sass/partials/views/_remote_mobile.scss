@@ -111,6 +111,23 @@ li a.active {
 }
 
 
+// Flipp
+#remote-character.flip-container {
+  border: none;
+  height: 50px;
+}
+
+#remote-character.flip-container.flip {
+  height: 50px;
+}
+
+// Flipp
+#mobile-character.flip-container {
+  border: none;
+  height: 50px;
+}
+
+
 
 
 .timer-flip-button {

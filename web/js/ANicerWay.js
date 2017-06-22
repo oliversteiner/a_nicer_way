@@ -13,7 +13,7 @@ var ANicerWay = (function () {
      */
     function ANicerWay(options) {
         // Version
-        this.version = '1.5b';
+        this.version = '1.6b';
         // Status
         this.isMobile = true;
         // Options

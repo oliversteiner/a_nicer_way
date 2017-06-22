@@ -18,7 +18,6 @@ var RemoteDisplayController = (function () {
         // Views laden
         console.log('- Remote Display load');
         // Aktionen verknüpfen
-        this.makeDraggable();
         this.addEventListeners();
         this.addKeystrokes();
         //
@@ -28,10 +27,6 @@ var RemoteDisplayController = (function () {
      * addEventsListeners
      */
     RemoteDisplayController.prototype.addEventListeners = function () {
-        // Button Close Display
-        $('.remote-display-button-close').click(RemoteDisplayController.modalClose);
-        // Button Show Display
-        $('.remote-display-button-toggle').click(RemoteDisplayController.modalToggle);
         // Öffne nachfrage
         $('.modal-center-button-remote').click(RemoteDisplayController.openModalCenterRemote);
         // Remote in neuem Fenster öffnen
@@ -46,12 +41,6 @@ var RemoteDisplayController = (function () {
         key('r', function () {
             RemoteDisplayController.openModalCenterRemote();
         });
-    };
-    /**
-     * makeDraggable
-     */
-    RemoteDisplayController.prototype.makeDraggable = function () {
-        $('#' + _remoteDisplayContentName).draggable();
     };
     /**
      *
@@ -75,26 +64,6 @@ var RemoteDisplayController = (function () {
         console.log('openModalCenterRemote');
         ANicerWay.openModalCenter();
         $('#remote-modal-how-open').show();
-    };
-    /**
-     * Fenster
-     *
-     */
-    RemoteDisplayController.modalClose = function () {
-        _remoteDisplayModalOpen = false;
-        $('#' + _remoteDisplayContentName).hide();
-    };
-    RemoteDisplayController.modalOpen = function () {
-        _remoteDisplayModalOpen = true;
-        $('#' + _remoteDisplayContentName).show();
-    };
-    RemoteDisplayController.modalToggle = function () {
-        if (_remoteDisplayModalOpen) {
-            RemoteDisplayController.modalClose();
-        }
-        else {
-            RemoteDisplayController.modalOpen();
-        }
     };
     return RemoteDisplayController;
 }());

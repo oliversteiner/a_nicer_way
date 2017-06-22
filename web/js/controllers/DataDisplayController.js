@@ -23,8 +23,6 @@ var DataDisplayController = (function () {
         // Aktionen verknüpfen
         this.addEventListeners();
         this.addKeystrokes();
-        this.makeDraggable();
-        DataDisplayController.modalClose();
         //
         console.log('- Data Display ready');
     }
@@ -42,25 +40,11 @@ var DataDisplayController = (function () {
         $('#data-display-button-erase-db').click(DbController.eraseDB);
         // Button Load Default
         $('#data-display-button-load-default').click(DbController.loadDefault);
-        // Button Close Display
-        $('.data-display-button-close').click(DataDisplayController.modalClose);
-        // Button Show Display
-        $('.data-display-button-toggle').click(DataDisplayController.modalToggle);
     };
     /**
      * addKeystrokes
      */
     DataDisplayController.prototype.addKeystrokes = function () {
-        key('d', function () {
-            DataDisplayController.modalToggle();
-        });
-    };
-    /**
-     * makeDraggable
-     */
-    DataDisplayController.prototype.makeDraggable = function () {
-        $(this.elem_Content).draggable();
-        $(this.elem_Content).dblclick(DataDisplayController.modalClose);
     };
     /**
      * resetform
@@ -154,26 +138,6 @@ var DataDisplayController = (function () {
         setTimeout(function () {
             aNicerWay.update();
         }, 1000);
-    };
-    /**
-     * Fenster
-     *
-     */
-    DataDisplayController.modalClose = function () {
-        _dataDisplayModalOpen = false;
-        $('#' + _dataDisplayContentName).hide();
-    };
-    DataDisplayController.modalOpen = function () {
-        _dataDisplayModalOpen = true;
-        $('#' + _dataDisplayContentName).show();
-    };
-    DataDisplayController.modalToggle = function () {
-        if (_dataDisplayModalOpen) {
-            DataDisplayController.modalClose();
-        }
-        else {
-            DataDisplayController.modalOpen();
-        }
     };
     return DataDisplayController;
 }());

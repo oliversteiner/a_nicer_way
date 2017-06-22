@@ -1,38 +1,77 @@
 var DisplayController = (function () {
     function DisplayController() {
-        this.makeDraggable();
-        this.addEventListeners();
+        this.searchDisplays();
     }
-    DisplayController.prototype.addEventListeners = function () {
+    DisplayController.prototype.searchDisplays = function () {
+        var displayListe = $('.nicer-display');
+        console.log('++++++++');
+        console.log(displayListe);
+        for (var i = 0; i < displayListe.length; i++) {
+            var display_ID = $(displayListe[i]).attr('id');
+            var display_Key = $(displayListe[i]).data('keystroke');
+            this.activate(display_ID, display_Key);
+        }
     };
-    /**
-     * addKeystrokes
-     */
-    DisplayController.prototype.addKeystrokes = function () {
-        key('c', function () {
+    DisplayController.prototype.activate = function (display_id, display_Key) {
+        var $display = $('#' + display_id);
+        var display_name = display_id.replace('-content', '');
+        $display.hide();
+        // Close
+        var closeButton = '#' + display_id + ' .display-close-button';
+        var $closeButton = $(closeButton);
+        // -- add EventListener
+        $closeButton.click(function () {
+            $display.hide();
         });
+        // Toggle Close
+        var toggleButton = '.' + display_name + '-toggle-button';
+        var $toggleButton = $(toggleButton);
+        // -- add EventListener
+        $toggleButton.click(function () {
+            $display.toggle();
+        });
+        // minimize
+        var miniButton = '#' + display_id + ' .display-header';
+        var $miniButton = $(miniButton);
+        // content
+        var main = '#' + display_id + ' .display-main';
+        var $main = $(main);
+        // -- add EventListener
+        $miniButton.dblclick(function () {
+            $main.slideToggle('fast');
+        });
+        // Draggable
+        $display.draggable();
+        if (display_Key) {
+            // Keystroke
+            key(display_Key, function () {
+                $display.toggle();
+            });
+        }
+        // flip
+        var flipConteiner = '#' + display_id + ' .flip-container';
+        var $flipConteiner = $(flipConteiner);
+        if ($flipConteiner) {
+            // content
+            var flipButton = '#' + display_id + ' .flip-toggle-button';
+            var $flipButton = $(flipButton);
+            // -- add EventListener
+            $flipButton.click(function () {
+                $flipConteiner.toggleClass('flip');
+            });
+        }
     };
     /**
-     * makeDraggable
+     *
+     *
+     * @param name
      */
-    DisplayController.prototype.makeDraggable = function () {
-        $('#character-display-content').draggable();
-        $('#character-display-content').dblclick();
-    };
-    DisplayController.prototype.modalClose = function () {
-    };
-    DisplayController.prototype.modalOpen = function () {
-    };
-    DisplayController.prototype.modalToggle = function () {
-        var test = 'test';
-        if (test) {
-            this.modalClose();
-        }
-        else {
-            this.modalOpen();
-        }
-    };
-    DisplayController.prototype.test = function () {
+    DisplayController.prototype.toggle = function (name) {
+        // Toggle Close
+        var display = '#' + name + '-display-content';
+        var $display = $(display);
+        // -- add EventListener
+        $display.toggle();
     };
     return DisplayController;
 }());

@@ -88,7 +88,6 @@ class CharacterController {
             // fire only once
             if (_fired === false) {
 
-                console.log('_fired');
                 $('.character').addClass('walk');
 
                 _fired = true;
@@ -102,7 +101,7 @@ class CharacterController {
 
             $.data(this, "scrollCheck", setTimeout(function () {
 
-                console.log('stopped');
+
                 $('.character').removeClass('walk');
 
                 // reset
@@ -125,7 +124,7 @@ class CharacterController {
      * @param elem
      */
     flipDown(elem: string) {
-        console.log('flip down');
+
 
         $(elem).addClass('flipdown');
 
@@ -143,7 +142,7 @@ class CharacterController {
      * @param elem
      */
     flipUp(elem: string) {
-        console.log('flip up');
+
 
         $(elem).show();
 
@@ -186,7 +185,7 @@ class CharacterController {
             let character_id = this.character_list[number].id;
 
 
-            console.log(character_id);
+
 
             let elem_new = '#' + character_id;
 
@@ -273,7 +272,7 @@ class CharacterController {
 
 
         let list = this.character_list;
-        console.log(list);
+
 
         if (list != null) {
 
@@ -319,7 +318,7 @@ class CharacterController {
         elemNav.innerHTML = '';
 
         let list = this.character_list;
-        console.log(list);
+
 
         if (list != null) {
 

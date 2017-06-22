@@ -33,7 +33,6 @@ var TimeWayController = (function () {
      * @param target
      */
     TimeWayController.scrollTo = function (target) {
-        console.log('scrollTo id: ' + target);
         $('#timeway-content').scrollTo('#' + target, 1000);
     };
     TimeWayController.prototype.parallax = function () {
@@ -66,7 +65,6 @@ var TimeWayController = (function () {
         // nav > ul
         // ul > li*
         var list = this.timeWayPointList;
-        console.log(list);
         if (list != null) {
             for (var i = 1, len = list.length; i < len + 1; i++) {
                 var doc = list[i];

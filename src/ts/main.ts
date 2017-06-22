@@ -1,4 +1,5 @@
 declare let aNicerWay:any;
+declare let hypeService:any;
 
 let options = {
     simulator_size: 'voll', // voll, halb, klein, mittel, gross
@@ -9,6 +10,11 @@ let options = {
 $(document).ready(function () {
     aNicerWay = new ANicerWay(options);
     aNicerWay.start();
+
+
+    // Services:
+    hypeService = new HypeService();
+
 
 });
 

@@ -5,6 +5,8 @@
  *
  */
 
+// TODO ist ein Service, nicht Controller
+
 // Global
 let _jsonFile: any;
 
@@ -17,14 +19,10 @@ class DbController {
 
     // Wird aufgerufen beim erstellen der Klasse (new DbController)
     constructor() {
-        console.log('DbController.constructor');
-
 
         $.getJSON("data/defaultData.json", function (json) {
             _jsonFile = json;
         });
-
-
 
 
     }
@@ -36,8 +34,6 @@ class DbController {
      * @param data
      */
     static addWayPoint(data: any) {
-        console.log('DbController.addWayPoint' + ' - data');
-        console.log(data);
 
         // Rückgabewert ist als Falsch voreingestellt
         let status: boolean = false;
@@ -52,14 +48,12 @@ class DbController {
         };
 
         // alle Werte von "data" in  "doc" fügen.
-        console.log('- Data (add)');
         for (let key in data) {
             if (data.hasOwnProperty(key)) {
 
                 let value = data[key];
                 if (key != "_id") {   // _id herausfiltern
 
-                    console.log("--- " + key + " : " + value);
                     timeWayPoint[key] = value;
                 }
             }
@@ -68,7 +62,6 @@ class DbController {
         // Datensatz in die DB speichern
         db.put(timeWayPoint).then(function (response: any) {
             // handle response
-            console.log(response);
 
             setTimeout(function () {
                 DbController.sync();
@@ -92,8 +85,6 @@ class DbController {
      *
      */
     static updateWayPoint(data: any) {
-        console.log('DbController.updateWayPoint' + '- data: ');
-        console.log(data);
         let status = false;
 
         let db = new PouchDB('anicerway');
@@ -112,8 +103,7 @@ class DbController {
             }
         }).then(function (doc: any) {
 
-            console.log('- found:');
-            console.log(doc);
+
 
             for (let key in data) {
                 if (data.hasOwnProperty(key)) {
@@ -121,7 +111,6 @@ class DbController {
                     let value = data[key];
                     if (key != "_id") {   // _id herausfiltern
 
-                        console.log("--- " + key + " : " + value);
                         doc[key] = value;
                     }
                 }
@@ -148,7 +137,6 @@ class DbController {
      *
      */
     static loadAllWayPoints() {
-        //    console.log('DbController.loadAllWayPoints');
 
         let db = new PouchDB('anicerway');
 
@@ -182,8 +170,7 @@ class DbController {
      * @param id
      */
     static loadWayPoint(id: string) {
-        console.log('DbController.loadWayPoint' + '- id: ');
-        console.log(id);
+
         let db = new PouchDB('anicerway');
 
         let doc = db.get(id).catch(function (err) {
@@ -222,8 +209,7 @@ class DbController {
      *
      */
     static deleteWayPoint(id: string): boolean {
-        console.log('DbController.deleteWayPoint' + ' - id');
-        console.log(id);
+
 
         let status: boolean = true;
         let db = new PouchDB('anicerway');

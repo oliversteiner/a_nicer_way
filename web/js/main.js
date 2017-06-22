@@ -5,4 +5,6 @@ var options = {
 $(document).ready(function () {
     aNicerWay = new ANicerWay(options);
     aNicerWay.start();
+    // Services:
+    hypeService = new HypeService();
 });

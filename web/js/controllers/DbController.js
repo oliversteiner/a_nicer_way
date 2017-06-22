@@ -4,12 +4,12 @@
  *
  *
  */
+// TODO ist ein Service, nicht Controller
 // Global
 var _jsonFile;
 var DbController = (function () {
     // Wird aufgerufen beim erstellen der Klasse (new DbController)
     function DbController() {
-        console.log('DbController.constructor');
         $.getJSON("data/defaultData.json", function (json) {
             _jsonFile = json;
         });
@@ -21,8 +21,6 @@ var DbController = (function () {
      * @param data
      */
     DbController.addWayPoint = function (data) {
-        console.log('DbController.addWayPoint' + ' - data');
-        console.log(data);
         // Rückgabewert ist als Falsch voreingestellt
         var status = false;
         var db = new PouchDB('anicerway');
@@ -33,12 +31,10 @@ var DbController = (function () {
             active: true,
         };
         // alle Werte von "data" in  "doc" fügen.
-        console.log('- Data (add)');
         for (var key_1 in data) {
             if (data.hasOwnProperty(key_1)) {
                 var value = data[key_1];
                 if (key_1 != "_id") {
-                    console.log("--- " + key_1 + " : " + value);
                     timeWayPoint[key_1] = value;
                 }
             }
@@ -46,7 +42,6 @@ var DbController = (function () {
         // Datensatz in die DB speichern
         db.put(timeWayPoint).then(function (response) {
             // handle response
-            console.log(response);
             setTimeout(function () {
                 DbController.sync();
             }, 1000);
@@ -64,8 +59,6 @@ var DbController = (function () {
      *
      */
     DbController.updateWayPoint = function (data) {
-        console.log('DbController.updateWayPoint' + '- data: ');
-        console.log(data);
         var status = false;
         var db = new PouchDB('anicerway');
         // Dokument laden, dann updaten
@@ -78,13 +71,10 @@ var DbController = (function () {
                 throw err;
             }
         }).then(function (doc) {
-            console.log('- found:');
-            console.log(doc);
             for (var key_2 in data) {
                 if (data.hasOwnProperty(key_2)) {
                     var value = data[key_2];
                     if (key_2 != "_id") {
-                        console.log("--- " + key_2 + " : " + value);
                         doc[key_2] = value;
                     }
                 }
@@ -104,7 +94,6 @@ var DbController = (function () {
      *
      */
     DbController.loadAllWayPoints = function () {
-        //    console.log('DbController.loadAllWayPoints');
         var db = new PouchDB('anicerway');
         var docs = db.allDocs({
             include_docs: true,
@@ -128,8 +117,6 @@ var DbController = (function () {
      * @param id
      */
     DbController.loadWayPoint = function (id) {
-        console.log('DbController.loadWayPoint' + '- id: ');
-        console.log(id);
         var db = new PouchDB('anicerway');
         var doc = db.get(id).catch(function (err) {
             if (err.name === 'not_found') {
@@ -157,8 +144,6 @@ var DbController = (function () {
      *
      */
     DbController.deleteWayPoint = function (id) {
-        console.log('DbController.deleteWayPoint' + ' - id');
-        console.log(id);
         var status = true;
         var db = new PouchDB('anicerway');
         // Dokument laden, dann den Löschbefehl schicken

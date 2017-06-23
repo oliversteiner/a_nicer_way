@@ -133,6 +133,10 @@ class SocketController {
                             aNicerWay.socketController.sendList();
                             break;
 
+                        case 'dont-talk':
+                            aNicerWay.characterController.dontTalk();
+                            break;
+
 
                         default:
                             SmartphoneSimController.error('Remotebefehl nicht verstanden');
@@ -162,6 +166,7 @@ class SocketController {
 
             console.log(msg);
             SmartphoneSimController.message(msg);
+            aNicerWay.characterController.talk(msg);
         })
 
     }

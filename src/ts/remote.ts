@@ -250,7 +250,7 @@ $(function () {
         ];
 
         //
-        let elemNav = document.getElementById('character-navigation');
+        let elemNav = document.getElementById('remote-character-navigation');
 
         // reset nav
         elemNav.innerHTML = '';

@@ -73,6 +73,18 @@ var CharacterController = (function () {
     };
     CharacterController.prototype.wait = function () {
     };
+    CharacterController.prototype.talk = function (text) {
+        $('.speech-bubble').show();
+        $('.speech-bubble').addClass('blobup');
+        setTimeout(function () {
+            $('.speech-bubble').html(text);
+        }, 500);
+    };
+    CharacterController.prototype.dontTalk = function () {
+        $('.speech-bubble').removeClass('blobup');
+        //leeren
+        $('.speech-bubble').html('');
+    };
     /**
      *
      *
@@ -227,6 +239,13 @@ var CharacterController = (function () {
                     div_char.setAttribute('class', 'character character-test');
                     div_char.setAttribute('style', 'display:none;');
                     elemNav.appendChild(div_char);
+                    // Speachbubble
+                    var div_bubble = document.createElement('div');
+                    div_bubble.setAttribute('class', 'speech-bubble bubble-right');
+                    div_bubble.setAttribute('style', 'display:none;');
+                    var div_text = document.createElement('div');
+                    div_bubble.appendChild(div_text);
+                    div_char.appendChild(div_bubble);
                 }
             }
         }

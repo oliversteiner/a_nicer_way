@@ -115,6 +115,28 @@ class CharacterController {
 
     wait() {
 
+    }
+
+
+    talk(text: string) {
+        $('.speech-bubble').show();
+        $('.speech-bubble').addClass('blobup');
+
+        setTimeout(function () {
+            $('.speech-bubble').html(text);
+
+        }, 500);
+
+
+    }
+
+
+    dontTalk() {
+
+        $('.speech-bubble').removeClass('blobup');
+
+        //leeren
+        $('.speech-bubble').html('');
 
     }
 
@@ -183,8 +205,6 @@ class CharacterController {
 
 
             let character_id = this.character_list[number].id;
-
-
 
 
             let elem_new = '#' + character_id;
@@ -334,6 +354,17 @@ class CharacterController {
                     div_char.setAttribute('style', 'display:none;');
 
                     elemNav.appendChild(div_char);
+
+
+                    // Speachbubble
+
+                    let div_bubble = document.createElement('div');
+                    div_bubble.setAttribute('class', 'speech-bubble bubble-right');
+                    div_bubble.setAttribute('style', 'display:none;');
+                    let div_text = document.createElement('div');
+                    div_bubble.appendChild(div_text);
+                    div_char.appendChild(div_bubble);
+
 
                 }
             }

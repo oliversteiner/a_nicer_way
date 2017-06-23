@@ -87,6 +87,9 @@ var SocketController = (function () {
                     case 'get-list':
                         aNicerWay.socketController.sendList();
                         break;
+                    case 'dont-talk':
+                        aNicerWay.characterController.dontTalk();
+                        break;
                     default:
                         SmartphoneSimController.error('Remotebefehl nicht verstanden');
                         SmartphoneSimController.error('> ' + cmd, 1);
@@ -106,6 +109,7 @@ var SocketController = (function () {
         this.socket.on('chat message', function (msg) {
             console.log(msg);
             SmartphoneSimController.message(msg);
+            aNicerWay.characterController.talk(msg);
         });
     };
     SocketController.prototype.receiveTimepointId = function () {

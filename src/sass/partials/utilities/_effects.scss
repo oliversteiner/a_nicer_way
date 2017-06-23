@@ -78,3 +78,24 @@ height: 200px;
   transform: scaleY(0);
 
 }
+
+
+// Bubble
+.bubble-right {
+  margin:0;
+  color: $color-black;
+  border-radius:10px;
+  background-color: rgba(240,240,240,0.7);;
+}
+
+.bubble-right::after {
+  content:"";
+  position:absolute;
+  bottom:-50px;
+  left:60px;
+  border-width:0 0 50px 20px;
+  border-style:solid;
+  border-color:transparent rgba(240,240,240,0.7);
+  display:block;
+  width:0;
+}

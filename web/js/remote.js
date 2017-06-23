@@ -178,7 +178,7 @@ $(function () {
             }
         ];
         //
-        var elemNav = document.getElementById('character-navigation');
+        var elemNav = document.getElementById('remote-character-navigation');
         // reset nav
         elemNav.innerHTML = '';
         // Button Group

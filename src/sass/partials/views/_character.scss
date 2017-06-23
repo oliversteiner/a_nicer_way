@@ -6,8 +6,8 @@
   left: 100px;
 }
 
-#character-display-container .display-footer{
-background-color: #3e6ba9;
+#character-display-container .display-footer {
+  background-color: #3e6ba9;
   height: 0;
   margin: 0;
   padding: 0;
@@ -30,21 +30,15 @@ background-color: #3e6ba9;
   height: 50px;
 }
 
-
-
-#character-display-container  .flip-front,
-#character-display-container  .flip-back {
+#character-display-container .flip-front,
+#character-display-container .flip-back {
   border: none;
 
   height: 50px;
 
 }
 
-
-
-
 // TimeWay
-
 
 #layer-character {
   position: fixed;
@@ -68,10 +62,6 @@ background-color: #3e6ba9;
 
 }
 
-
-
-
-
 // Test
 .character-test {
   width: 60px;
@@ -79,7 +69,7 @@ background-color: #3e6ba9;
 }
 
 #proto-1.character-test {
-background-color: #a39f55;
+  background-color: #a39f55;
 }
 
 #proto-2.character-test {
@@ -87,15 +77,43 @@ background-color: #a39f55;
 }
 
 #proto-3.character-test {
-   background-color: #8a9eff;
- }
+  background-color: #8a9eff;
+}
 
+// Speech Bubble
 
+.speech-bubble {
+  position: absolute;
+  top: -100%;
+  min-height: 100px;
+  min-width: 200px;
+  font-size: 1.5em;
+  text-align: center;
+  padding: 33px;
+
+  -webkit-transition-timing-function: cubic-bezier(0.895, 0.030, 0.685, 0.220);
+  transition-timing-function: cubic-bezier(0.895, 0.030, 0.685, 0.220); /* easeInQuart */
+  transform-origin: bottom center;
+  transition-duration: 300ms;
+  transform: scale(0);
+}
 
 // Animation Classes
 
 .walk {
   animation: bounce 500ms infinite;
+
+}
+
+.blobup {
+  transform: scale(1);
+}
+
+.blobdown {
+  animation: blobup 500ms;
+  transform-origin: bottom;
+  animation-direction: reverse;
+  transform: scale(0);
 
 }
 
@@ -137,5 +155,6 @@ background-color: #a39f55;
 
   }
 }
+
 
 

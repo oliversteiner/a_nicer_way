@@ -17,6 +17,8 @@ class CharacterController {
 
         setTimeout(function () {
             aNicerWay.characterController.changeCharacter(1);
+            aNicerWay.characterController.addKeystrokes();
+
         }, 400);
 
     }
@@ -35,6 +37,34 @@ class CharacterController {
     }
 
 
+    /**
+     * addKeystrokes
+     */
+    addKeystrokes() {
+
+        let list = this.character_list;
+        let charcodes_num: any = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+        for (let i: number = 0; i < list.length && i < charcodes_num.length; i++) {
+            let keycode: string = charcodes_num[i];
+
+            key(keycode, function () {
+                aNicerWay.characterController.changeCharacter(keycode);
+            });
+        }
+
+        key('w', function () {
+            aNicerWay.characterController.wink();
+        });
+
+    }
+
+    /**
+     *
+     *
+     *
+     * @param input
+     */
     action(input: string) {
 
         switch (input) {

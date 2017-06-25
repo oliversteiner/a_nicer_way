@@ -5,6 +5,12 @@
 @import 'partials/design/button';
 @import 'partials/design/display';
 
+// Utilitis
+@import 'partials/utilities/messages';
+@import "partials/utilities/effects";
+@import "partials/utilities/hype";
+@import "partials/utilities/timer";
+
 // Views
 @import 'partials/views/console';
 @import 'partials/views/smartphone_sim';
@@ -15,13 +21,11 @@
 @import 'partials/views/footer';
 @import "partials/views/help";
 @import "partials/views/remote_display";
+
 @import "partials/views/modal_center";
 @import "partials/views/character";
 
-// Utilitis
-@import 'partials/utilities/messages';
-@import "partials/utilities/effects";
-@import "partials/utilities/hype";
+
 
 
 

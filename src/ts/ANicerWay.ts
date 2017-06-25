@@ -29,9 +29,9 @@ class ANicerWay {
     // Options
     public simulator_size: string = 'mittel';
     public check_for_mobile: boolean = true;
+    public socket_io: boolean = true;
 
     // Controllers
-    public dbController: DbController;
     public consoleController: ConsoleController;
     public dataDisplayController: DataDisplayController;
     public smartphoneSimController: SmartphoneSimController;
@@ -39,7 +39,6 @@ class ANicerWay {
     public navigationController: NavigationController;
     public timeWayController: TimeWayController;
     public remoteDisplayController: RemoteDisplayController;
-    public socketController: SocketController;
     public characterController: CharacterController;
     public displayController: DisplayController;
 
@@ -47,8 +46,6 @@ class ANicerWay {
     // DB
     private db: any;
 
-    // Socket io
-    private socket: any;
 
     /**
      *
@@ -58,20 +55,24 @@ class ANicerWay {
     constructor(options?: {
         simulator_size?: string,
         check_for_mobile?: boolean
+        socket_io?: boolean;
     }) {
 
         // Optionen
-        this.simulator_size = options.simulator_size;
-        this.check_for_mobile = options.check_for_mobile;
+        if (options.simulator_size) {
+            this.simulator_size = options.simulator_size;
+        }
+        if (options.check_for_mobile === false) {
+            this.check_for_mobile = false;
+        }
+        if (options.socket_io === false) {
+            this.socket_io = false;
+        }
 
-        // Optionen Default
 
 
         // DB
         this.db = new PouchDB('anicerway');
-
-        // Socket
-        this.socket = io();
 
 
         // Init
@@ -124,8 +125,7 @@ class ANicerWay {
                 aNicerWay.timeWayController.setList(list);
                 aNicerWay.timeWayController.update();
 
-                aNicerWay.socket.emit('timepoint list', list);
-
+                socketIOService.sendList(list);
 
                 clearInterval(timer2);
             }
@@ -158,22 +158,20 @@ class ANicerWay {
                 TimeWayController.scrollTo(doc._id);
                 DataDisplayController.setData(doc);
                 StatusDisplayController.setData(doc);
-                aNicerWay.socketController.sendTimePointNr(doc.sequence);
+                socketIOService.sendTimePointNr(doc.sequence);
 
                 // Hype Steuern
                 // warte eine halbe sekunde
                 // erst wenn fertig gescrollt:
 
-                            setTimeout(function(){
-                                hypeService.action(doc.hype);
 
-                            },500);
-
+                setTimeout(function () {
+                    hypeService.action(doc.hype);
+                }, 500);
 
                 clearInterval(timerPoint);
             }
         }
-
     }
 
 
@@ -190,11 +188,7 @@ class ANicerWay {
         this.navigationController = new NavigationController();
         this.timeWayController = new TimeWayController();
         this.remoteDisplayController = new RemoteDisplayController();
-        this.dbController = new DbController();
-        this.socketController = new SocketController();
         this.characterController = new CharacterController();
-
-
         this.displayController = new DisplayController();
     }
 

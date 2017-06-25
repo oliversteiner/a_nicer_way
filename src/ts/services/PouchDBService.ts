@@ -10,19 +10,21 @@
 // Global
 let _jsonFile: any;
 
-class DbController {
+class PouchDBService {
 
     remote: any;    // die DB unter localhost / mollo.ch
     timeWayPoint: object;  // ein einzelner TimeWayPoint (Eintrag zu einem Punkt in der Zeit/Wegleiste)
     timeWaypoints: object; // die Liste aller Waypoints
 
 
-    // Wird aufgerufen beim erstellen der Klasse (new DbController)
+    // Wird aufgerufen beim erstellen der Klasse (new pouchDBService)
     constructor() {
 
         $.getJSON("data/defaultData.json", function (json) {
             _jsonFile = json;
         });
+
+
 
 
     }
@@ -64,7 +66,7 @@ class DbController {
             // handle response
 
             setTimeout(function () {
-                DbController.sync();
+                pouchDBService.sync();
             }, 1000);
 
         }).catch(function (err) {
@@ -116,7 +118,7 @@ class DbController {
                 }
             }
 
-            DbController.sync();
+            pouchDBService.sync();
 
             return db.put(doc);
 
@@ -231,7 +233,7 @@ class DbController {
 
             doc._deleted = true;
 
-            DbController.sync();
+            pouchDBService.sync();
 
             return db.put(doc);
 

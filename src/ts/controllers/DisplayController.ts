@@ -1,24 +1,82 @@
+interface Display{
+    show():void;
+    hide():void;
+    toggle():void;
+}
+
+class Display{
+
+    private name:string;
+    private $display:any;  // jQuery
+
+    constructor(name:string){
+
+        this.name = name;
+        const display = '#' + this.name + '-display-content';
+        this.$display = $(display);
+    }
+
+    hide(){
+        this.$display.hide();
+    }
+
+    show(){
+        this.$display.show();
+    }
+
+    toggle(){
+        this.$display.toggle();
+    }
+}
+
+
+
 class DisplayController {
+
+    public displays:any;
 
     constructor() {
 
+        this.displays = [];
         this.searchDisplays();
+
+        return this.displays;
+
     }
 
 
     searchDisplays() {
 
-        let displayListe = $('.nicer-display');
+        let $displays = $('.nicer-display');
+        let displays:string[] = [];
 
-        for (let i = 0; i < displayListe.length; i++) {
+        for (let i = 0; i < $displays.length; i++) {
 
-            let display_ID = $(displayListe[i]).attr('id');
-            let display_Key = $(displayListe[i]).data('keystroke');
+            let display_ID = $($displays[i]).attr('id');
+            let display_Key = $($displays[i]).data('keystroke');
 
+            // den Namen kürzen und in die Variable stellen
+            let display_name = display_ID.replace('-display-content', '');
+            displays[i] = display_name;
+
+            // EventListener aktivieren
             this.activate(display_ID, display_Key);
 
+            // dynamische Objekte erstellen
+            this.generate(display_name);
         }
 
+
+        return displays;
+
+    }
+
+    generate(display_name:string){
+
+        let display = new Display(display_name);
+
+        this.displays.push(display_name);
+        this.displays[display_name] = display;
 
     }
 
@@ -98,23 +156,7 @@ class DisplayController {
     }
 
 
-    /**
-     *
-     *
-     * @param name
-     */
 
-    toggle(name:string){
-
-        // Toggle Close
-        let display = '#' + name + '-display-content';
-        let $display = $(display);
-
-        // -- add EventListener
-            $display.toggle();
-
-
-    }
 
 
 }

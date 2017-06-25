@@ -11,7 +11,7 @@ class ANicerWay {
 
 
     // Version
-    public version: string = '1.6b';
+    public version: string = '1.7b';
 
     // Status
     private timeWayPoint_Now_Doc: any;

@@ -92,8 +92,6 @@ class DataDisplayController {
      *
      */
     static newForm() {
-        console.log('DataDisplayController.newForm');
-
         DataDisplayController.resetForm();
 
         $('#twp-data-info_id').text('NEU');
@@ -105,7 +103,6 @@ class DataDisplayController {
      *
      */
     static saveData() {
-        console.log('datadisplaycontroller.savedata');
 
         // load values from form
         let _id = $('#twp-data-id').val();

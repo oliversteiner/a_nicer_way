@@ -7,7 +7,6 @@
 
 
 // Global
-let _jsonFile: any;
 
 class PouchDBService {
 
@@ -241,7 +240,7 @@ class PouchDBService {
      * sync
      *  - synchronisiert die lokale DB im Browser mit der BS-datenbank (couchDB)
      */
-     sync() {
+    sync() {
 
         let sync_options = {
             live: true,
@@ -264,18 +263,48 @@ class PouchDBService {
         db.destroy().then(function () {
             // database destroyed
             console.log('database destroyed');
+            alert('Alle Einträge gelöscht');
+            window.location.replace(window.location.pathname + window.location.search + window.location.hash);
+
 
         }).catch(function (error: object) {
             // error occurred
         });
     }
 
-    static loadDefault() {
+
+  static  loadDefault(){
+        let data:any;
+
+      let path_json = "data/defaultData.json";
+
+      let jqxhr = $.getJSON( path_json, function(json) {
+          console.log( "success" );
+
+      })
+          .done(function(json) {
+
+              data = json.data;
+              PouchDBService.loadDataToDB(data);
+
+          })
+          .fail(function() {
+              console.warn( "error from JSON File" );
+          })
+          .always(function() {
+              console.log( "complete" );
+          });
+
+
+
+
+    }
+
+    static loadDataToDB(data:any) {
         console.log('neue DB Einträge');
 
-        $.getJSON("data/defaultData.json", function (json) {
-            _jsonFile = json;
-        });
+
+
 
         // Musterdaten:
         let db = new PouchDB('anicerway');
@@ -286,7 +315,7 @@ class PouchDBService {
 
         // Vorgaben für die Daten
 
-        db.bulkDocs(_jsonFile.data).then(function (result: object) {
+        db.bulkDocs(data).then(function (result: object) {
             // handle result
 
             console.log("mustereintraege");

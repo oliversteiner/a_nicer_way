@@ -13,7 +13,7 @@ var ANicerWay = (function () {
      */
     function ANicerWay(options) {
         // Version
-        this.version = '1.6b';
+        this.version = '1.7b';
         // Status
         this.isMobile = true;
         // Options
@@ -166,7 +166,7 @@ var ANicerWay = (function () {
             // Wenn keine Timepoints vorhanden, standart einlesen:
             if (docs.rows.length === 0) {
                 // Zeige Modal mit DB abfrage
-                $('#modal-Init-DB').modal('show');
+                aNicerWay.showDBModal();
             }
             else {
                 var unorderd_list = docs.rows;
@@ -190,6 +190,10 @@ var ANicerWay = (function () {
         }).catch(function (err) {
             console.log(err);
         });
+    };
+    ANicerWay.prototype.showDBModal = function () {
+        ANicerWay.openModalCenter();
+        $('#init-DB-message-wrapper').show();
     };
     /**
      *
@@ -338,6 +342,7 @@ var ANicerWay = (function () {
         $('#remote-modal-how-open').hide();
         $('#remote-modal-change-directly').hide();
         $('#init-DB-message-wrapper').hide();
+        $('#init-DB-progress-wrapper').hide();
         // Modal öffnen
         $('#modal-center').modal('show');
     };
@@ -345,6 +350,7 @@ var ANicerWay = (function () {
         $('#remote-modal-how-open').hide();
         $('#remote-modal-change-directly').hide();
         $('#init-DB-message-wrapper').hide();
+        $('#init-DB-progress-wrapper').hide();
         // Modal öffnen
         $('#modal-center').modal('hide');
     };

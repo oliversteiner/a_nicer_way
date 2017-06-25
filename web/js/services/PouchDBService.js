@@ -4,15 +4,11 @@
  *
  *
  */
-// TODO ist ein Service, nicht Controller
 // Global
-var _jsonFile;
 var PouchDBService = (function () {
     // Wird aufgerufen beim erstellen der Klasse (new pouchDBService)
     function PouchDBService() {
-        $.getJSON("data/defaultData.json", function (json) {
-            _jsonFile = json;
-        });
+        this.remote = 'http://localhost:5984/anicerway';
     }
     /**
      * addWayPoint
@@ -169,15 +165,14 @@ var PouchDBService = (function () {
      * sync
      *  - synchronisiert die lokale DB im Browser mit der BS-datenbank (couchDB)
      */
-    PouchDBService.sync = function () {
-        var remote = 'http://localhost:5984/anicerway';
+    PouchDBService.prototype.sync = function () {
         var sync_options = {
             live: true,
             retry: true,
             continuonus: true
         };
         var db = new PouchDB('anicerway');
-        db.sync(remote, sync_options);
+        db.sync(this.remote, sync_options);
     };
     /**
      *
@@ -188,18 +183,37 @@ var PouchDBService = (function () {
         db.destroy().then(function () {
             // database destroyed
             console.log('database destroyed');
+            alert('Alle Einträge gelöscht');
+            window.location.replace(window.location.pathname + window.location.search + window.location.hash);
         }).catch(function (error) {
             // error occurred
         });
     };
     PouchDBService.loadDefault = function () {
+        var data;
+        var path_json = "data/defaultData.json";
+        var jqxhr = $.getJSON(path_json, function (json) {
+            console.log("success");
+        })
+            .done(function (json) {
+            data = json.data;
+            PouchDBService.loadDataToDB(data);
+        })
+            .fail(function () {
+            console.warn("error from JSON File");
+        })
+            .always(function () {
+            console.log("complete");
+        });
+    };
+    PouchDBService.loadDataToDB = function (data) {
         console.log('neue DB Einträge');
         // Musterdaten:
         var db = new PouchDB('anicerway');
         // Aktuelle Zeit
         var timestamp = Date.now();
         // Vorgaben für die Daten
-        db.bulkDocs(_jsonFile.data).then(function (result) {
+        db.bulkDocs(data).then(function (result) {
             // handle result
             console.log("mustereintraege");
             console.log(result);

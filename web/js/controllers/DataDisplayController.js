@@ -64,7 +64,6 @@ var DataDisplayController = (function () {
      *
      */
     DataDisplayController.newForm = function () {
-        console.log('DataDisplayController.newForm');
         DataDisplayController.resetForm();
         $('#twp-data-info_id').text('NEU');
     };
@@ -73,7 +72,6 @@ var DataDisplayController = (function () {
      *
      */
     DataDisplayController.saveData = function () {
-        console.log('datadisplaycontroller.savedata');
         // load values from form
         var _id = $('#twp-data-id').val();
         var sequence = $('#twp-data-sequence').val();

@@ -5,13 +5,12 @@ function _reset() {
     //   pouchDBService.eraseDB();
 
     // Datenbank neu einlesen
-    pouchDBService.loadDefault();
+    PouchDBService.loadDefault();
 
     // Zeige die Prozess-bar
-    $('#modal-Init-DB').modal('show');
 
-    $('.init-DB-message-wrapper').hide();
-    $('.progress-wrapper').show();
+    $('#init-DB-message-wrapper').hide();
+    $('#init-DB-progress-wrapper').show();
 
     // Animiere die Prozessbar
     $('.progress-bar').each(function () {
@@ -29,12 +28,9 @@ function _reset() {
             if (currWidth >= maxtimer) {
                 clearInterval(progress);
 
-                $('#modal-Init-DB').modal('hide');
-                $('.init-DB-message-wrapper').show();
-                $('.progress-wrapper').hide();
                 // Seite neu initialisieren
-
-
+                ANicerWay.closeModalCenter();
+                window.location.replace(window.location.pathname + window.location.search + window.location.hash);
             }
 
         }, 100);
@@ -47,13 +43,13 @@ function _reset() {
 // prozent_runden(100 * (b - a) / b);
 
 
-function prozent_runden(quelle:number){
-    let wert=Math.round(quelle*10);
-    let wert2=wert/10;
-    let wert3=wert2-Math.round(wert2);
-    if (wert3==0){
+function prozent_runden(quelle: number) {
+    let wert = Math.round(quelle * 10);
+    let wert2 = wert / 10;
+    let wert3 = wert2 - Math.round(wert2);
+    if (wert3 == 0) {
         return wert2 + "." + wert3;
-    }else{
+    } else {
         return wert2;
     }
 }

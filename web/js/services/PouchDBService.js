@@ -191,20 +191,28 @@ var PouchDBService = (function () {
     };
     PouchDBService.loadDefault = function () {
         var data;
-        var path_json = "data/defaultData.json";
+        var status = {};
+        var path_json = "./data/defaultdata.json";
         var jqxhr = $.getJSON(path_json, function (json) {
             console.log("success");
-        })
-            .done(function (json) {
             data = json.data;
             PouchDBService.loadDataToDB(data);
         })
-            .fail(function () {
+            .done(function () {
+        })
+            .fail(function (err) {
             console.warn("error from JSON File");
+            console.log(err);
+            status = {
+                status: "err",
+                message: "JSON FILE not Found",
+                error: err
+            };
         })
             .always(function () {
             console.log("complete");
         });
+        return status;
     };
     PouchDBService.loadDataToDB = function (data) {
         console.log('neue DB Einträge');

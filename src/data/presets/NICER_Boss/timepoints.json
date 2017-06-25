@@ -1,0 +1,181 @@
+{
+  "timepoints": [
+    {
+      "_id": "TimeWayPoint-1",
+      "sequence": 1,
+      "date": "2017.10.08",
+      "time": "00.00",
+      "place": "Olten - Stadt",
+      "feeling": "Gut",
+      "message": "Nachricht 1",
+      "notice": "",
+      "type": "TimeWayPoint"
+    },
+    {
+      "_id": "TimeWayPoint-2",
+      "sequence": 2,
+      "date": "2017.10.08",
+      "time": "00.00",
+      "place": "Olten - Bahnhof",
+      "feeling": "Gut",
+      "message": "Nachricht 1",
+      "notice": "",
+      "type": "TimeWayPoint",
+      "with": "600px",
+      "slide": [
+        {
+          "top": "100",
+          "left": "100",
+          "with": "100",
+          "height": "100",
+          "tag": "h1",
+          "class": "",
+          "text": "Titel"
+        },
+        {
+          "top": "200",
+          "left": "100",
+          "with": "100",
+          "height": "100",
+          "tag": "h2",
+          "class": "",
+          "text": "Untertitel"
+        }
+      ]
+    },
+    {
+      "_id": "TimeWayPoint-3",
+      "sequence": 3,
+      "date": "2017.10.08",
+      "time": "00.00",
+      "place": "St.Gallen - Bahnhof",
+      "feeling": "Gut",
+      "message": "Nachricht 1",
+      "notice": "",
+      "type": "TimeWayPoint",
+      "hype": {
+        "command": "",
+        "scene": {
+          "sceneName": "Profil",
+          "optionalTransition": "Crossfade",
+          "optionalDuration": 0.5
+        },
+        "timeline": {
+          "timelineName": "",
+          "direction": "",
+          "timeInSeconds": "",
+          "command": ""
+        }
+      }
+    },
+    {
+      "_id": "TimeWayPoint-4",
+      "sequence": 4,
+      "date": "2017.10.08",
+      "time": "00.00",
+      "place": "St.Gallen - Bushaltestelle",
+      "feeling": "Gut",
+      "message": "Nachricht 1",
+      "notice": "",
+      "figur": "bus",
+      "type": "TimeWayPoint",
+      "hype": {
+        "command": "",
+        "scene": {
+          "sceneName": "test",
+          "optionalTransition": "",
+          "optionalDuration": 0
+        },
+        "timeline": {
+          "timelineName": "",
+          "direction": "",
+          "timeInSeconds": "",
+          "command": ""
+        }
+      }
+    },
+    {
+      "_id": "TimeWayPoint-5",
+      "sequence": 5,
+      "date": "2017.10.08",
+      "time": "00.00",
+      "place": "Riethüsli - Bushaltestelle",
+      "feeling": "Gut",
+      "message": "Nachricht 1",
+      "notice": "",
+      "type": "TimeWayPoint",
+      "hype": {
+        "command": "",
+        "scene": {
+          "sceneName": "Kalender",
+          "optionalTransition": "Crossfade",
+          "optionalDuration": 0.5
+        },
+        "timeline": {
+          "timelineName": "",
+          "direction": "",
+          "timeInSeconds": "",
+          "command": ""
+        }
+      }
+    },
+    {
+      "_id": "TimeWayPoint-6",
+      "sequence": 6,
+      "date": "2017.10.08",
+      "time": "00.00",
+      "place": "Riethüsli - Schulhaus",
+      "feeling": "Gut",
+      "message": "Nachricht 1",
+      "notice": "",
+      "type": "TimeWayPoint",
+      "hype": {
+        "command": "openSideMenu"
+      }
+    },
+    {
+      "_id": "TimeWayPoint-7",
+      "sequence": 7,
+      "date": "2017.10.08",
+      "time": "00.00",
+      "place": "Riethüsli - Schulhaus",
+      "feeling": "Gut",
+      "message": "Nachricht 1",
+      "notice": "",
+      "type": "TimeWayPoint"
+    },
+    {
+      "_id": "TimeWayPoint-8",
+      "sequence": 8,
+      "date": "2017.10.08",
+      "time": "00.00",
+      "place": "Riethüsli - Schulhaus",
+      "feeling": "Gut",
+      "message": "Nachricht 1",
+      "notice": "",
+      "type": "TimeWayPoint"
+    },
+    {
+      "_id": "TimeWayPoint-9",
+      "sequence": 9,
+      "date": "2017.10.08",
+      "time": "00.00",
+      "place": "Riethüsli - Schulhaus",
+      "feeling": "Gut",
+      "message": "Nachricht 1",
+      "notice": "",
+      "type": "TimeWayPoint"
+    },
+    {
+      "_id": "TimeWayPoint-10",
+      "sequence": 10,
+      "date": "2017.10.08",
+      "time": "00.00",
+      "place": "Riethüsli - Schulhaus",
+      "feeling": "Gut",
+      "message": "Nachricht 1",
+      "notice": "",
+      "type": "TimeWayPoint"
+    }
+  ]
+}

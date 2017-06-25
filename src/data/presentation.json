@@ -1,0 +1,16 @@
+{
+  "presentations": [
+    {
+      "_id": "presentation 1",
+      "name": "presentation 1"
+    },
+    {
+      "_id": "presentation 2",
+      "name": "presentation 2"
+    },
+    {
+      "_id": "presentation 3",
+      "name": "presentation 3"
+    }
+  ]
+}

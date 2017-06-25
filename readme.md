@@ -1,12 +1,9 @@
- #### Frontend Engeniering
+# A Nicer Way
 IMD St. Gallen 2017 
-
-## Einzelarbeit
 Oliver Steiner
 
-DEMO: 
+## DEMO 
 http://mollo.ch/a-nicer-way/
-Die Demoseite 2x laden, damit die Datenbank gefüllt wird!
 
 
 ## Idee

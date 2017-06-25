@@ -27,7 +27,28 @@
       "feeling": "Gut",
       "message": "Nachricht 1",
       "notice": "",
-      "type": "TimeWayPoint"
+      "type": "TimeWayPoint",
+      "with": "600px",
+      "slide": [
+        {
+          "top": "100",
+          "left": "100",
+          "with": "100",
+          "height": "100",
+          "tag": "h1",
+          "class": "",
+          "text": "Titel"
+        },
+        {
+          "top": "200",
+          "left": "100",
+          "with": "100",
+          "height": "100",
+          "tag": "h2",
+          "class": "",
+          "text": "Untertitel"
+        }
+      ]
     },
     {
       "_id": "TimeWayPoint-3",

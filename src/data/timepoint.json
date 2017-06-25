@@ -1,0 +1,65 @@
+{
+  "_id": "TimeWayPoint-2",
+  "sequence": 2,
+  "date": "2017.10.08",
+  "time": "00.00",
+  "city": "Olten",
+  "place": "Bahnhof",
+  "feeling": "Gut",
+  "message": "Nachricht 1",
+  "notice": "",
+  "type": "TimeWayPoint",
+  "with": "600px",
+  "background": {
+    "image": "",
+    "color": ""
+  },
+  "hype": {
+    "command": "",
+    "scene": {
+      "sceneName": "Profil",
+      "optionalTransition": "Crossfade",
+      "optionalDuration": 0.5
+    },
+    "timeline": {
+      "timelineName": "",
+      "direction": "",
+      "timeInSeconds": "",
+      "command": ""
+    }
+  },
+  "frame": [
+    {
+      "top": "100",
+      "left": "100",
+      "with": "100",
+      "height": "100",
+      "tag": "h1",
+      "class": "",
+      "text": "Titel",
+      "rotate": "30",
+      "depth": "",
+      "transparent": "0.7",
+      "background": {
+        "image": "",
+        "color": ""
+      }
+    },
+    {
+      "top": "200",
+      "left": "100",
+      "with": "100",
+      "height": "100",
+      "tag": "h2",
+      "class": "",
+      "text": "Untertitel",
+      "rotate": "30",
+      "depth": "",
+      "transparent": "",
+      "background": {
+        "image": "",
+        "color": ""
+      }
+    }
+  ]
+}

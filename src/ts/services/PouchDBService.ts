@@ -273,37 +273,41 @@ class PouchDBService {
     }
 
 
-  static  loadDefault(){
-        let data:any;
+    static  loadDefault() {
+        let data: any;
+        let status:any = {};
 
-      let path_json = "data/defaultData.json";
+        let path_json = "./data/defaultdata.json";
 
-      let jqxhr = $.getJSON( path_json, function(json) {
-          console.log( "success" );
+        let jqxhr = $.getJSON(path_json, function (json) {
+            console.log("success");
 
-      })
-          .done(function(json) {
+            data = json.data;
+            PouchDBService.loadDataToDB(data);
+        })
+            .done(function () {
 
-              data = json.data;
-              PouchDBService.loadDataToDB(data);
+            })
+            .fail(function (err) {
+                console.warn("error from JSON File");
+                console.log(err);
+                status = {
+                    status: "err",
+                    message: "JSON FILE not Found",
+                    error: err
+                }
+            })
+            .always(function () {
+                console.log("complete");
+            });
 
-          })
-          .fail(function() {
-              console.warn( "error from JSON File" );
-          })
-          .always(function() {
-              console.log( "complete" );
-          });
-
-
+        return status;
 
 
     }
 
-    static loadDataToDB(data:any) {
+    static loadDataToDB(data: any) {
         console.log('neue DB Einträge');
-
-
 
 
         // Musterdaten:

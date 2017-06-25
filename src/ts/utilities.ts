@@ -30,7 +30,10 @@ function _reset() {
 
                 // Seite neu initialisieren
                 ANicerWay.closeModalCenter();
-                window.location.replace(window.location.pathname + window.location.search + window.location.hash);
+               // alert('Einträge erstellt. Bitte Seite neu laden');
+
+                window.location.replace(window.location.pathname);
+
             }
 
         }, 100);

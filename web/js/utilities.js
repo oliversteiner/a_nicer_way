@@ -3,11 +3,10 @@ function _reset() {
     // Datenbank leeren
     //   pouchDBService.eraseDB();
     // Datenbank neu einlesen
-    pouchDBService.loadDefault();
+    PouchDBService.loadDefault();
     // Zeige die Prozess-bar
-    $('#modal-Init-DB').modal('show');
-    $('.init-DB-message-wrapper').hide();
-    $('.progress-wrapper').show();
+    $('#init-DB-message-wrapper').hide();
+    $('#init-DB-progress-wrapper').show();
     // Animiere die Prozessbar
     $('.progress-bar').each(function () {
         var $bar = $(this);
@@ -21,10 +20,9 @@ function _reset() {
             //clear timer when max is reach
             if (currWidth >= maxtimer) {
                 clearInterval(progress);
-                $('#modal-Init-DB').modal('hide');
-                $('.init-DB-message-wrapper').show();
-                $('.progress-wrapper').hide();
                 // Seite neu initialisieren
+                ANicerWay.closeModalCenter();
+                window.location.replace(window.location.pathname + window.location.search + window.location.hash);
             }
         }, 100);
     });

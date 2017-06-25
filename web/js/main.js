@@ -1,9 +1,10 @@
 var options = {
     simulator_size: 'mittel',
     socket_io: false,
-    check_for_mobile: false // true, false
+    check_for_mobile: true // true, false
 };
 $(document).ready(function () {
+    // A Nicer Way
     aNicerWay = new ANicerWay(options);
     aNicerWay.start();
     // Services:
@@ -11,6 +12,4 @@ $(document).ready(function () {
     pouchDBService = new PouchDBService();
     socketSimulatorService = new SocketSimulatorService();
     socketIOService = new SocketIOService();
-    //
-    aNicerWay.displayController.remote.show();
 });

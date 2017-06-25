@@ -56,48 +56,28 @@ https://www.npmjs.com/package/gulp-sass
 - socket.io
 
 
-
-### set up app
-- gulp init
-- write gulpfile.js
-- add to git 
-
 ### Libraries installieren
-- jquery
+- jQuery
 - bootstrap
-- jquery parallax
-- jquery gridhelper
-
-- scrollTo (serialScroll)
+- jQuery gridhelper
+    https://github.com/oliversteiner/GridHelper-for-Bootstrap
+    
+- scrollTo
   http://demos.flesler.com/jquery/serialScroll/
-- stellar.js
-  http://markdalgleish.com/projects/stellar.js/
+  
+- interactjs
+http://interactjs.io
 
-### Time-Way Daten
-- TimeWayId
-- Time
-- Date
-- Place
-- Feeling
-- Message
-- Notic
+- keymaster
 
 
-## Ablauf
-- alle Files (noch ohne Inhalt) erstellt.
-- index.html mit allen files verlinkt.
-- index.html mit SCSS und Typescript gestestet.
-- Alle Controller erstellt und getestet
-- Pouchdb installiert, Form gebaut, mit Musterdaten gefüllt
-- scroll effect hinzugefügt
 
 ## Next / Todo
 ##### Smartphone Sim
- - [ ] x2 button
 
 
 ##### Figur einfügen
-- [ ] Figur: laudend
+- [ ] Figur: laufend
 - [ ] Figur: stehend
 - [ ] Figur: sitzend
 - [ ] Figur: mit Smartphone in der Hand
@@ -105,7 +85,7 @@ https://www.npmjs.com/package/gulp-sass
 - [ ] Bus: fahrend
 - [ ] Menschenmenge: stehend
 - [ ] Menschenmenge: laufend
-- [ ] (umschaltbar mit Num-Keys)
+- [x] (umschaltbar mit Num-Keys)
 
 
 
@@ -113,18 +93,12 @@ https://www.npmjs.com/package/gulp-sass
 - [ ] Parallax- [ ] 
 
 ##### TimewayPoint
-- [ ] eigene Zeichnung zu Timepoint hinterlegen
+- [x] eigene Zeichnung zu Timepoint hinterlegen
     
 ##### Remote
-- [ ] remote ui aufbauen
-- [ ] über node.js server starten
-- [ ] socket.io installieren
-- [ ] testen...
 
 
 ##### Console
-- [ ]  pulsierender Curser mit CSS3 statt JS
-    https://paulund.co.uk/create-pulse-effect-with-css3-animation
 
 
 ## History
@@ -132,7 +106,5 @@ https://www.npmjs.com/package/gulp-sass
 #### Version 1.0
 
 #### Version 1.1b
-- alle html-views aus dem main.ts in die entsprecghenden moodile integriert.
-    - kein ***setTimeout*** mehr! 
-- debug-modus entfernt
-- Smartphone-Simulator Console gepimpt
+
+#### Version 1.1b

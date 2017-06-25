@@ -1,5 +1,3 @@
-/// <reference path="DbController.ts"/>
-/// <reference path="NavigationController.ts"/>
 
 /**
  *  dataDisplayController
@@ -9,7 +7,6 @@
 // Global
 const _dataDisplayName: string = 'data-display';
 const _dataDisplayContentName: string = 'data-display-content';
-let _dataDisplayModalOpen: boolean = false;
 
 // Class
 class DataDisplayController {
@@ -27,8 +24,6 @@ class DataDisplayController {
         this.elem_Content = document.getElementById(_dataDisplayContentName);
 
         // Views laden
-
-
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         console.log('- Data Display load');
 
@@ -38,15 +33,12 @@ class DataDisplayController {
 
         //
         console.log('- Data Display ready');
-
-
     }
 
     /**
      * addEventsListeners
      */
     addEventListeners() {
-
 
         // Button SAVE
         $('#data-display-button-save').click(DataDisplayController.saveData);
@@ -58,10 +50,10 @@ class DataDisplayController {
         $('#data-display-button-new').click(DataDisplayController.newForm);
 
         // Button Erase DB
-        $('#data-display-button-erase-db').click(DbController.eraseDB);
+        $('#data-display-button-erase-db').click(PouchDBService.eraseDB);
 
         // Button Load Default
-        $('#data-display-button-load-default').click(DbController.loadDefault);
+        $('#data-display-button-load-default').click(PouchDBService.loadDefault);
 
 
     }
@@ -187,7 +179,7 @@ class DataDisplayController {
 
         let _id = $('#twp-data-id').val();
 
-        DbController.deleteWayPoint(_id);
+        pouchDBService.deleteWayPoint(_id);
         DataDisplayController.resetForm();
 
         // Die Liste aktualisieren

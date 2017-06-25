@@ -18,7 +18,9 @@ $(function () {
     function socketSend(type: any, msg: any) {
 
         // Nachricht schicken
-        socket.emit(type, msg);
+        socketIOService.send(type, msg);
+
+
     }
 
 
@@ -79,11 +81,8 @@ $(function () {
         // Nachricht empfangen
         socket.on('timepoint list', function (list: any) {
 
-            // save in Global
-            _list = list;
-
             // Navigation aufbauen
-            generateNavigationList(_list);
+            generateNavigationList(list);
 
         })
 
@@ -157,6 +156,9 @@ $(function () {
      * @param list
      */
     function generateNavigationList(list?: any) {
+
+        // save in Global
+        _list = list;
 
         // STATIC
         let elemNav = document.getElementById('remote-list-main');

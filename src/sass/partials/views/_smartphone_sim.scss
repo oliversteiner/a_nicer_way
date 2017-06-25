@@ -5,8 +5,8 @@ $color-smartphone: rgb(0, 0, 0);
 $color-smartphone-border: rgb(45, 45, 45);
 $color-smartphone-border-bright: rgb(133, 133, 133);
 $color-smartphone-screen: rgb(195, 209, 255);
-$color-smartphone-homebutton: rgb(15, 16, 51);
-$color-smartphone-homebutton-bright: rgb(24, 25, 81);
+$color-smartphone-homebutton: rgb(15, 15, 15);
+$color-smartphone-homebutton-bright: rgb(67, 67, 67);
 $color-smartphone-pictos-hidden: rgb(15, 16, 51);
 $color-smartphone-pictos-bright: rgb(58, 58, 116);
 $color-smartphone-pictos-brighter: rgb(62, 107, 169);
@@ -79,16 +79,7 @@ $color-smartphone-screen: rgb(63, 64, 130);
 }
 
 
-#hype-test{
-  position: absolute;
-  left: 0;
-  top:0;
-  display: block;
-  width: 375px;
-  height: 667px;
-  border: 1px salmon solid;
-  background-color: #00a379;
-}
+
 
 // Homebutton
 #smartphone-home-button {

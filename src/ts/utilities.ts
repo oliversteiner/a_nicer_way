@@ -1,12 +1,11 @@
 function _reset() {
-    // DbController.loadDefault();
     console.log('***** reset');
 
     // Datenbank leeren
-    //   DbController.eraseDB();
+    //   pouchDBService.eraseDB();
 
     // Datenbank neu einlesen
-    DbController.loadDefault();
+    pouchDBService.loadDefault();
 
     // Zeige die Prozess-bar
     $('#modal-Init-DB').modal('show');

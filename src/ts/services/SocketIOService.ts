@@ -1,23 +1,48 @@
-class SocketController {
+class SocketIOService {
 
     // Socket io
     private socket: any;
 
     constructor() {
 
-        this.socket = io();
+        if(aNicerWay.socket_io) {
 
-        this.receiveCommand();
-        this.receivePing();
-        this.receiveMessage();
-        this.receiveTimepointId();
+            this.socket = io();
+
+            this.receiveCommand();
+            this.receivePing();
+            this.receiveMessage();
+            this.receiveTimepointId();
+        }
+        else{
+
+            console.warn('kein Socket IO');
+
+            const text = '<span class="small">Eingeschränkte DEMO:<br> ' + 'Die App läuft nicht auf einem <i>Socket IO</i> fähigen Server.</span>';
+            $('#remote-list-header').html(text);
+        }
     }
 
     // SEND
-    socketSend(type: any, msg: any) {
+    send(type: any, msg: any) {
+        console.log('aNicerWay.socket_io: ' +aNicerWay.socket_io);
+
+        if(aNicerWay.socket_io === false){
+            // Nachricht schicken
+            socketSimulatorService.receive(type, msg);
+
+        }
+        else{
+            this.socket.emit(type, msg);
+
+        }
+
+    }
+
+    directSend(type: any, msg: any) {
 
         // Nachricht schicken
-        this.socket.emit(type, msg);
+        console.log(type, msg)
     }
 
     sendPing() {
@@ -25,7 +50,7 @@ class SocketController {
         let png = 'PING';
 
         // Nachricht schicken
-        this.socketSend('ping_2', png);
+        this.send('ping_2', png);
     }
 
 
@@ -34,13 +59,13 @@ class SocketController {
         let list = aNicerWay.getTimeWayPointList();
 
         // liste schicken
-        this.socketSend('timepoint list', list);
+        this.send('timepoint list', list);
     }
 
 
     sendTimePointNr(nr: number) {
 
-        this.socketSend('timepoint nr', nr);
+        this.send('timepoint nr', nr);
     }
 
 
@@ -130,7 +155,7 @@ class SocketController {
                             break;
 
                         case 'get-list':
-                            aNicerWay.socketController.sendList();
+                            socketIOService.sendList();
                             break;
 
                         case 'dont-talk':

@@ -19,14 +19,19 @@ var ANicerWay = (function () {
         // Options
         this.simulator_size = 'mittel';
         this.check_for_mobile = true;
+        this.socket_io = true;
         // Optionen
-        this.simulator_size = options.simulator_size;
-        this.check_for_mobile = options.check_for_mobile;
-        // Optionen Default
+        if (options.simulator_size) {
+            this.simulator_size = options.simulator_size;
+        }
+        if (options.check_for_mobile === false) {
+            this.check_for_mobile = false;
+        }
+        if (options.socket_io === false) {
+            this.socket_io = false;
+        }
         // DB
         this.db = new PouchDB('anicerway');
-        // Socket
-        this.socket = io();
         // Init
         this.setVersion();
         this.addKeystrokes();
@@ -64,7 +69,7 @@ var ANicerWay = (function () {
                 // timeWayPoint
                 aNicerWay.timeWayController.setList(list);
                 aNicerWay.timeWayController.update();
-                aNicerWay.socket.emit('timepoint list', list);
+                socketIOService.sendList(list);
                 clearInterval(timer2);
             }
         }
@@ -88,7 +93,7 @@ var ANicerWay = (function () {
                 TimeWayController.scrollTo(doc._id);
                 DataDisplayController.setData(doc);
                 StatusDisplayController.setData(doc);
-                aNicerWay.socketController.sendTimePointNr(doc.sequence);
+                socketIOService.sendTimePointNr(doc.sequence);
                 // Hype Steuern
                 // warte eine halbe sekunde
                 // erst wenn fertig gescrollt:
@@ -111,8 +116,6 @@ var ANicerWay = (function () {
         this.navigationController = new NavigationController();
         this.timeWayController = new TimeWayController();
         this.remoteDisplayController = new RemoteDisplayController();
-        this.dbController = new DbController();
-        this.socketController = new SocketController();
         this.characterController = new CharacterController();
         this.displayController = new DisplayController();
     };

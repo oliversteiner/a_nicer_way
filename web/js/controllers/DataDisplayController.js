@@ -1,5 +1,3 @@
-/// <reference path="DbController.ts"/>
-/// <reference path="NavigationController.ts"/>
 /**
  *  dataDisplayController
  *
@@ -7,7 +5,6 @@
 // Global
 var _dataDisplayName = 'data-display';
 var _dataDisplayContentName = 'data-display-content';
-var _dataDisplayModalOpen = false;
 // Class
 var DataDisplayController = (function () {
     /**
@@ -37,9 +34,9 @@ var DataDisplayController = (function () {
         // Button NEW
         $('#data-display-button-new').click(DataDisplayController.newForm);
         // Button Erase DB
-        $('#data-display-button-erase-db').click(DbController.eraseDB);
+        $('#data-display-button-erase-db').click(PouchDBService.eraseDB);
         // Button Load Default
-        $('#data-display-button-load-default').click(DbController.loadDefault);
+        $('#data-display-button-load-default').click(PouchDBService.loadDefault);
     };
     /**
      * addKeystrokes
@@ -132,7 +129,7 @@ var DataDisplayController = (function () {
      */
     DataDisplayController.deleteData = function () {
         var _id = $('#twp-data-id').val();
-        DbController.deleteWayPoint(_id);
+        pouchDBService.deleteWayPoint(_id);
         DataDisplayController.resetForm();
         // Die Liste aktualisieren
         setTimeout(function () {

@@ -12,7 +12,7 @@ $(function () {
     // SEND
     function socketSend(type, msg) {
         // Nachricht schicken
-        socket.emit(type, msg);
+        socketIOService.send(type, msg);
     }
     function sendMessge() {
         var $button_socket_message = $('#input-socket-message');
@@ -49,10 +49,8 @@ $(function () {
     function receiveTimepointList() {
         // Nachricht empfangen
         socket.on('timepoint list', function (list) {
-            // save in Global
-            _list = list;
             // Navigation aufbauen
-            generateNavigationList(_list);
+            generateNavigationList(list);
         });
     }
     /**
@@ -107,6 +105,8 @@ $(function () {
      * @param list
      */
     function generateNavigationList(list) {
+        // save in Global
+        _list = list;
         // STATIC
         var elemNav = document.getElementById('remote-list-main');
         // reset nav

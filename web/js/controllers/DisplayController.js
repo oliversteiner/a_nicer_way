@@ -1,14 +1,46 @@
+var Display = (function () {
+    function Display(name) {
+        this.name = name;
+        var display = '#' + this.name + '-display-content';
+        this.$display = $(display);
+    }
+    Display.prototype.hide = function () {
+        this.$display.hide();
+    };
+    Display.prototype.show = function () {
+        this.$display.show();
+    };
+    Display.prototype.toggle = function () {
+        this.$display.toggle();
+    };
+    return Display;
+}());
 var DisplayController = (function () {
     function DisplayController() {
+        this.displays = [];
         this.searchDisplays();
+        return this.displays;
     }
     DisplayController.prototype.searchDisplays = function () {
-        var displayListe = $('.nicer-display');
-        for (var i = 0; i < displayListe.length; i++) {
-            var display_ID = $(displayListe[i]).attr('id');
-            var display_Key = $(displayListe[i]).data('keystroke');
+        var $displays = $('.nicer-display');
+        var displays = [];
+        for (var i = 0; i < $displays.length; i++) {
+            var display_ID = $($displays[i]).attr('id');
+            var display_Key = $($displays[i]).data('keystroke');
+            // den Namen kürzen und in die Variable stellen
+            var display_name = display_ID.replace('-display-content', '');
+            displays[i] = display_name;
+            // EventListener aktivieren
             this.activate(display_ID, display_Key);
+            // dynamische Objekte erstellen
+            this.generate(display_name);
         }
+        return displays;
+    };
+    DisplayController.prototype.generate = function (display_name) {
+        var display = new Display(display_name);
+        this.displays.push(display_name);
+        this.displays[display_name] = display;
     };
     DisplayController.prototype.activate = function (display_id, display_Key) {
         var $display = $('#' + display_id);
@@ -58,18 +90,6 @@ var DisplayController = (function () {
                 $flipConteiner.toggleClass('flip');
             });
         }
-    };
-    /**
-     *
-     *
-     * @param name
-     */
-    DisplayController.prototype.toggle = function (name) {
-        // Toggle Close
-        var display = '#' + name + '-display-content';
-        var $display = $(display);
-        // -- add EventListener
-        $display.toggle();
     };
     return DisplayController;
 }());

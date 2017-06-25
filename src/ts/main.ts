@@ -8,11 +8,14 @@ declare let socketSimulatorService:any;
 let options = {
     simulator_size: 'mittel', // voll, halb, klein, mittel, gross
     socket_io: false, // if the server is not an node.js, socketIO is not aviable.
-    check_for_mobile: false // true, false
+    check_for_mobile: true // true, false
+
 };
 
 
 $(document).ready(function () {
+
+    // A Nicer Way
     aNicerWay = new ANicerWay(options);
     aNicerWay.start();
 
@@ -21,13 +24,7 @@ $(document).ready(function () {
     hypeService = new HypeService();
     pouchDBService = new PouchDBService();
     socketSimulatorService = new SocketSimulatorService();
-
     socketIOService = new SocketIOService();
-
-
-    //
-    aNicerWay.displayController.remote.show();
-
 
 });
 

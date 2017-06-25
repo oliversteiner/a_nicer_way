@@ -5,26 +5,18 @@
  *
  */
 
-// TODO ist ein Service, nicht Controller
 
 // Global
 let _jsonFile: any;
 
 class PouchDBService {
 
-    remote: any;    // die DB unter localhost / mollo.ch
-    timeWayPoint: object;  // ein einzelner TimeWayPoint (Eintrag zu einem Punkt in der Zeit/Wegleiste)
-    timeWaypoints: object; // die Liste aller Waypoints
-
+    remote: any;
 
     // Wird aufgerufen beim erstellen der Klasse (new pouchDBService)
     constructor() {
 
-        $.getJSON("data/defaultData.json", function (json) {
-            _jsonFile = json;
-        });
-
-
+        this.remote = 'http://localhost:5984/anicerway';
 
 
     }
@@ -104,8 +96,6 @@ class PouchDBService {
                 throw err;
             }
         }).then(function (doc: any) {
-
-
 
             for (let key in data) {
                 if (data.hasOwnProperty(key)) {
@@ -251,9 +241,8 @@ class PouchDBService {
      * sync
      *  - synchronisiert die lokale DB im Browser mit der BS-datenbank (couchDB)
      */
-    static sync() {
+     sync() {
 
-        let remote = 'http://localhost:5984/anicerway';
         let sync_options = {
             live: true,
             retry: true,
@@ -261,7 +250,7 @@ class PouchDBService {
         };
 
         let db = new PouchDB('anicerway');
-        db.sync(remote, sync_options);
+        db.sync(this.remote, sync_options);
     }
 
     /**
@@ -283,6 +272,10 @@ class PouchDBService {
 
     static loadDefault() {
         console.log('neue DB Einträge');
+
+        $.getJSON("data/defaultData.json", function (json) {
+            _jsonFile = json;
+        });
 
         // Musterdaten:
         let db = new PouchDB('anicerway');

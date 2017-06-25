@@ -89,8 +89,8 @@ var HypeService = (function () {
             if (window.HYPE) {
                 console.log('HYPE angebunden');
                 clearInterval(timerLoadHype);
-                console.log(window.HYPE.documents.NICER_v4);
-                hypeService.hypeDoc = window.HYPE.documents.NICER_v4;
+                console.log(window.HYPE.documents.NICER_v5);
+                hypeService.hypeDoc = window.HYPE.documents.NICER_v5;
             }
             else {
                 console.log('auf HYPE warten ...');

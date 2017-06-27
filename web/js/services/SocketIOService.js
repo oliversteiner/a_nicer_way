@@ -21,12 +21,9 @@ var SocketIOService = (function () {
             socketSimulatorService.receive(type, msg);
         }
         else {
+            console.log('emit' + type + ' : ' + msg);
             this.socket.emit(type, msg);
         }
-    };
-    SocketIOService.prototype.directSend = function (type, msg) {
-        // Nachricht schicken
-        console.log(type, msg);
     };
     SocketIOService.prototype.sendPing = function () {
         var png = 'PING';

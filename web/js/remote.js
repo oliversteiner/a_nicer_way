@@ -12,7 +12,7 @@ $(function () {
     // SEND
     function socketSend(type, msg) {
         // Nachricht schicken
-        socketIOService.send(type, msg);
+        socket.emit(type, msg);
     }
     function sendMessge() {
         var $button_socket_message = $('#input-socket-message');

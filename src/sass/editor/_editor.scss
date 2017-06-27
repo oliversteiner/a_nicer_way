@@ -2,9 +2,6 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 300px;
-  height: 300px;
-  border: 1px solid green;
 }
 
 #toolbar-buttons {
@@ -34,7 +31,7 @@
 
   /* Rectangle 2: */
   background: #A9A7A7;
-  border: 1px solid #979797;
+  border-right: solid 1px #5f5f5f;
 }
 
 #editor-toolbar-top-container {
@@ -45,6 +42,18 @@
 
 }
 
+#slide-tumbnails-area-close-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 60px;
+  height: 175px;
+  background-color: #1a1a1a;
+
+}
+
+#slide-tumbnails-area,
 #slide-tumbnails-area-close {
   position: absolute;
   left: 0;
@@ -52,9 +61,13 @@
 
   width: 60px;
   height: 175px;
-  background-color: #4E4E4E;
+  background-color: #4e4e4e;
+  border-radius: 0 0 0 13px;
+  border-bottom: solid 1px #909090;
+
 }
 
+#slide-devices-area,
 #slide-devices-area-close {
   position: absolute;
   left: 0;
@@ -63,4 +76,42 @@
   width: 60px;
   height: 175px;
   background-color: #1a1a1a;
+  border-radius: 0 0 0 13px;
+}
+
+
+#slide-tumbnails-area-close,
+#slide-devices-area-close{
+  padding: 10px;
+}
+
+#slide-tumbnails-area {
+  position: absolute;
+  left: 60px;
+  top: 0;
+
+  width: 600px;
+  height: 175px;
+  background-color: #4e4e4e;
+  border-radius: 0 0 13px 0;
+  border-bottom: solid 1px #909090;
+
+}
+
+#slide-devices-area {
+  position: absolute;
+  left: 60px;
+  top: 175px;
+
+  width: 500px;
+  height: 175px;
+  background-color: #1a1a1a;
+  border-radius: 0 0 13px 0;
+}
+
+.editor-button{
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
 }

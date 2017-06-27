@@ -75,3 +75,29 @@
 .side-toolbar-text-button:active {
   background: url("../images/editor/picto/text-active.svg");
 }
+
+/* Triangle */
+
+.triangle-open-button {
+  background: url("../images/editor/button/open.svg");
+}
+
+.triangle-open-button:hover {
+  background: url("../images/editor/button/open-hover.svg");
+}
+
+.triangle-open-button:active {
+  background: url("../images/editor/button/open-active.svg");
+}
+
+.triangle-close-button {
+  background: url("../images/editor/button/close.svg");
+}
+
+.triangle-close-button:hover {
+  background: url("../images/editor/button/close-hover.svg");
+}
+
+.triangle-close-button:active {
+  background: url("../images/editor/button/close-active.svg");
+}

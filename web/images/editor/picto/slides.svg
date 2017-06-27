@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="45px" viewBox="0 0 40 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>picto/slides</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="3.99493823" y="7" width="10.3242135" height="30" rx="3"></rect>
+        <rect id="path-2" x="25.6757865" y="7" width="10.3242135" height="30" rx="3"></rect>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="picto/slides">
+            <g id="Rectangle-6">
+                <use fill="#EDEDED" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <rect stroke="#979797" stroke-width="1" x="4.49493823" y="7.5" width="9.32421347" height="29" rx="3"></rect>
+            </g>
+            <g id="Rectangle-6-Copy">
+                <use fill="#EDEDED" fill-rule="evenodd" xlink:href="#path-2"></use>
+                <rect stroke="#979797" stroke-width="1" x="26.1757865" y="7.5" width="9.32421347" height="29" rx="3"></rect>
+            </g>
+            <ellipse id="Oval-5" stroke="#979797" fill="#D8D8D8" cx="19.9974691" cy="22.5" rx="2.58105337" ry="2.5"></ellipse>
+        </g>
+    </g>
+</svg>

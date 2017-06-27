@@ -17,6 +17,7 @@ class SmartphoneSimController {
     private elem_Content: any;
     public simulator_size: string;
 
+    public last_position: any = false;
 
     /**
      * constructor
@@ -72,6 +73,12 @@ class SmartphoneSimController {
         // Sim Console test
         $('.smartphone-console-test').click(SmartphoneSimController.consoleTest);
 
+
+        // close
+        $('#smartphone-toolbar-close').click(function () {
+            SmartphoneSimController.close()
+        });
+
         // resize bigger
         $('#smartphone-toolbar-bigger').click(function () {
             SmartphoneSimController.setSize('groesser')
@@ -80,6 +87,11 @@ class SmartphoneSimController {
         // resize smaler
         $('#smartphone-toolbar-smaler').click(function () {
             SmartphoneSimController.setSize('kleiner')
+        });
+
+        // Solo-Modus
+        $('#smartphone-toolbar-solo').click(function () {
+            aNicerWay.smartphoneSimController.toggleSolo()
         });
 
 
@@ -103,6 +115,91 @@ class SmartphoneSimController {
         $('#smartphone-frame').draggable();
     }
 
+    /**
+     *
+     * Solo-Modus
+     */
+
+    toggleSolo() {
+
+        const $blackout: any = $('#blackout');
+
+
+        if (this.last_position) {
+            // Solo-Modus beenden
+
+
+            // Hintergrund abdunkeln beenden
+            $blackout.removeClass('blackout-active');
+
+            // Smartphone zurückplazieren
+            $('#smartphone-sim-content').removeClass('solo-active');
+
+            let $device = $('#smartphone-frame');
+            $device.css('height', this.last_position.heigh);
+            $device.css('width', this.last_position.width);
+            $device.css('left', this.last_position.left);
+            $device.css('top', this.last_position.top);
+            $('#smartphone-content').css('transform', this.last_position.transform);
+
+            this.last_position = false;
+
+        }
+        else {
+            // Solo-Modus Starten
+
+
+            // Grösse und Position vom Smartphone holen
+            let $device = $('#smartphone-frame');
+
+            let height: string = $device.css('height');
+            let width: string = $device.css('width');
+            let left: string = $device.css('left');
+            let top: string = $device.css('top');
+            let transform: string = $('#smartphone-content').css('transform');
+
+            // Werte speichern
+            this.last_position = {
+                heigh: height,
+                width: width,
+                left: left,
+                top: top,
+                transform: transform
+            };
+
+            // Hintergrund abdunkeln
+            $blackout.addClass('blackout-active');
+
+            // Smartphone zentrieren
+            $('#smartphone-sim-content').addClass('solo-active');
+
+            // Smartphone in die maximale höhe bringen:
+            const smartphone: any = SmartphoneSimController.setSize();
+            const viewwidth: number = document.body.clientWidth;
+
+            // Mitte ausrechnen:
+            // pixel von links:  ( viewport breite / 2 ) -  (smartphone-breite / 2 )
+            const left = viewwidth / 2 - smartphone.width / 2;
+
+            $('#smartphone-frame')
+                .css('top', '40px')  // von open 20px
+                .css('left', left);
+
+            // mit ESC Solo-Modus beenden
+            key('esc', function () {
+                aNicerWay.smartphoneSimController.toggleSolo();
+            });
+
+            // neben Smartphone clicken zum schliessen
+            $blackout.click(function () {
+                aNicerWay.smartphoneSimController.toggleSolo();
+            });
+
+        }
+
+    }
+
+
     static
     setSize(faktor ?: string) {
 
@@ -119,7 +216,7 @@ class SmartphoneSimController {
 
         // in eine Zahl umwandeln
         let height_now: number = Number(elem_height);
-        let hype: number = 0;    // der Skalirungsfaktor fürs hype
+        let hype: number = 0;    // der Skalierungsfaktor fürs hype
         // Der hype inhalt ist 375px breit
 
         let height_original: number = 840;
@@ -160,15 +257,17 @@ class SmartphoneSimController {
                 break;
 
             default:
-                height = 550;
-                hype = 0.65;
+                // maximale höhe:
+                const document_height = document.body.clientHeight;
+                height = document_height - 40;
+
         }
 
         // Das Smartphone ist halb so breit wie hoch
         width = height / 2;
 
         //
-        if(hype == 0) {
+        if (hype == 0) {
             // prozent_runden(100 * (b - a) / b);
             prozent = prozent_runden(100 * (height_original - height) / height_original);
             hype = (100 - prozent) * 0.01;
@@ -178,6 +277,13 @@ class SmartphoneSimController {
         $('#smartphone-frame').css('height', height).css('width', width);
         $('#smartphone-content').css('transform', 'scale(' + hype + ')');
 
+        let size = {
+            height: height,
+            width: width,
+            screenfactor: hype
+        };
+
+        return size;
     }
 
     static

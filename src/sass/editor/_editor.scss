@@ -1,0 +1,66 @@
+#editor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 300px;
+  height: 300px;
+  border: 1px solid green;
+}
+
+#toolbar-buttons {
+  padding-top: 380px;
+  padding-left: 7px;
+
+}
+
+.side-toolbar-item,
+.side-toolbar-button {
+  display: block;
+  width: 40px;
+  height: 45px;
+  background-repeat: no-repeat;
+}
+
+.side-toolbar-button:hover {
+  cursor: pointer;
+}
+
+#editor-toolbar-side-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 100vh;
+
+  /* Rectangle 2: */
+  background: #A9A7A7;
+  border: 1px solid #979797;
+}
+
+#editor-toolbar-top-container {
+
+}
+
+#editor-view-container {
+
+}
+
+#slide-tumbnails-area-close {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 60px;
+  height: 175px;
+  background-color: #4E4E4E;
+}
+
+#slide-devices-area-close {
+  position: absolute;
+  left: 0;
+  top: 175px;
+
+  width: 60px;
+  height: 175px;
+  background-color: #1a1a1a;
+}

@@ -7,7 +7,7 @@ declare let socketSimulatorService:any;
 
 let options = {
     simulator_size: 'mittel', // voll, halb, klein, mittel, gross
-    socket_io: false, // if the server is not an node.js, socketIO is not aviable.
+    socket_io: true, // if the server is not an node.js, socketIO is not aviable.
     check_for_mobile: true // true, false
 
 };

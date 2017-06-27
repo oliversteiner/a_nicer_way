@@ -16,13 +16,11 @@
 #character-display-content {
   position: relative;
   width: 300px;
-
 }
 
 // Flipp
 #character-display-container .flip-container {
   border: none;
-
   height: 50px;
 }
 
@@ -33,9 +31,7 @@
 #character-display-container .flip-front,
 #character-display-container .flip-back {
   border: none;
-
   height: 50px;
-
 }
 
 // TimeWay
@@ -45,9 +41,6 @@
   left: 30vw;
   width: 300px;
   height: 585px;
-
-  perspective: 1500px;
-
 }
 
 .character {
@@ -59,7 +52,6 @@
 .wink {
   border: 3px solid red;
   background-color: red;
-
 }
 
 // Test
@@ -102,35 +94,36 @@
 
 .walk {
   animation: bounce 500ms infinite;
-
 }
+
 
 .blobup {
   transform: scale(1);
 }
+
 
 .blobdown {
   animation: blobup 500ms;
   transform-origin: bottom;
   animation-direction: reverse;
   transform: scale(0);
-
 }
+
 
 .flipdown {
   animation: flipdown 500ms;
   transform-origin: bottom;
   animation-timing-function: linear;
-
 }
+
 
 .flipup {
   animation: flipdown 500ms;
   transform-origin: bottom;
   animation-direction: reverse;
   animation-timing-function: linear;
-
 }
+
 
 // keyframes
 
@@ -145,6 +138,7 @@
     transform: scale(1, 1) translateY(0);
   }
 }
+
 
 @keyframes flipdown {
   from {

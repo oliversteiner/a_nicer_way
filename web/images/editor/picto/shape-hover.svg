@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="45px" viewBox="0 0 40 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>picto/shape-hover</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="5" y="5" width="26" height="28"></rect>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="picto/shape-hover">
+            <g id="Rectangle-6">
+                <use fill="#D1D1D1" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <rect stroke="#979797" stroke-width="1" x="5.5" y="5.5" width="25" height="27"></rect>
+            </g>
+            <circle id="Oval-3" stroke="#979797" fill="#D1D1D1" cx="24" cy="29" r="12"></circle>
+        </g>
+    </g>
+</svg>

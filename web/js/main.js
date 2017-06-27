@@ -1,6 +1,6 @@
 var options = {
     simulator_size: 'mittel',
-    socket_io: false,
+    socket_io: true,
     check_for_mobile: true // true, false
 };
 $(document).ready(function () {

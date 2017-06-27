@@ -13,6 +13,7 @@ var SmartphoneSimController = (function () {
      * constructor
      */
     function SmartphoneSimController(simulator_size) {
+        this.last_position = false;
         // Vars
         this.elem_Root = document.getElementById(_smartphoneSimName);
         this.elem_Content = document.getElementById(_smartphoneSimContentName);
@@ -44,6 +45,10 @@ var SmartphoneSimController = (function () {
         $('.smartphone-console-clear').click(SmartphoneSimController.consoleClear);
         // Sim Console test
         $('.smartphone-console-test').click(SmartphoneSimController.consoleTest);
+        // close
+        $('#smartphone-toolbar-close').click(function () {
+            SmartphoneSimController.close();
+        });
         // resize bigger
         $('#smartphone-toolbar-bigger').click(function () {
             SmartphoneSimController.setSize('groesser');
@@ -51,6 +56,10 @@ var SmartphoneSimController = (function () {
         // resize smaler
         $('#smartphone-toolbar-smaler').click(function () {
             SmartphoneSimController.setSize('kleiner');
+        });
+        // Solo-Modus
+        $('#smartphone-toolbar-solo').click(function () {
+            aNicerWay.smartphoneSimController.toggleSolo();
         });
     };
     /**
@@ -67,6 +76,66 @@ var SmartphoneSimController = (function () {
     SmartphoneSimController.prototype.makeDraggable = function () {
         $('#smartphone-frame').draggable();
     };
+    /**
+     *
+     * Solo-Modus
+     */
+    SmartphoneSimController.prototype.toggleSolo = function () {
+        var $blackout = $('#blackout');
+        if (this.last_position) {
+            // Solo-Modus beenden
+            // Hintergrund abdunkeln beenden
+            $blackout.removeClass('blackout-active');
+            // Smartphone zurückplazieren
+            $('#smartphone-sim-content').removeClass('solo-active');
+            var $device = $('#smartphone-frame');
+            $device.css('height', this.last_position.heigh);
+            $device.css('width', this.last_position.width);
+            $device.css('left', this.last_position.left);
+            $device.css('top', this.last_position.top);
+            $('#smartphone-content').css('transform', this.last_position.transform);
+            this.last_position = false;
+        }
+        else {
+            // Solo-Modus Starten
+            // Grösse und Position vom Smartphone holen
+            var $device = $('#smartphone-frame');
+            var height = $device.css('height');
+            var width = $device.css('width');
+            var left = $device.css('left');
+            var top_1 = $device.css('top');
+            var transform = $('#smartphone-content').css('transform');
+            // Werte speichern
+            this.last_position = {
+                heigh: height,
+                width: width,
+                left: left,
+                top: top_1,
+                transform: transform
+            };
+            // Hintergrund abdunkeln
+            $blackout.addClass('blackout-active');
+            // Smartphone zentrieren
+            $('#smartphone-sim-content').addClass('solo-active');
+            // Smartphone in die maximale höhe bringen:
+            var smartphone = SmartphoneSimController.setSize();
+            var viewwidth = document.body.clientWidth;
+            // Mitte ausrechnen:
+            // pixel von links:  ( viewport breite / 2 ) -  (smartphone-breite / 2 )
+            var left = viewwidth / 2 - smartphone.width / 2;
+            $('#smartphone-frame')
+                .css('top', '40px') // von open 20px
+                .css('left', left);
+            // mit ESC Solo-Modus beenden
+            key('esc', function () {
+                aNicerWay.smartphoneSimController.toggleSolo();
+            });
+            // neben Smartphone clicken zum schliessen
+            $blackout.click(function () {
+                aNicerWay.smartphoneSimController.toggleSolo();
+            });
+        }
+    };
     SmartphoneSimController.setSize = function (faktor) {
         // Devs
         var height;
@@ -78,7 +147,7 @@ var SmartphoneSimController = (function () {
         elem_height = elem_height.slice(0, -2);
         // in eine Zahl umwandeln
         var height_now = Number(elem_height);
-        var hype = 0; // der Skalirungsfaktor fürs hype
+        var hype = 0; // der Skalierungsfaktor fürs hype
         // Der hype inhalt ist 375px breit
         var height_original = 840;
         var prozent = 0;
@@ -107,8 +176,9 @@ var SmartphoneSimController = (function () {
                 height = height_now + 100;
                 break;
             default:
-                height = 550;
-                hype = 0.65;
+                // maximale höhe:
+                var document_height = document.body.clientHeight;
+                height = document_height - 40;
         }
         // Das Smartphone ist halb so breit wie hoch
         width = height / 2;
@@ -121,6 +191,12 @@ var SmartphoneSimController = (function () {
         // Als CSS zuweisen
         $('#smartphone-frame').css('height', height).css('width', width);
         $('#smartphone-content').css('transform', 'scale(' + hype + ')');
+        var size = {
+            height: height,
+            width: width,
+            screenfactor: hype
+        };
+        return size;
     };
     SmartphoneSimController.homeButton = function () {
         console.log('Homebutton gedrückt');

@@ -33,17 +33,14 @@ class SocketIOService {
 
         }
         else{
+            console.log('emit'+ type + ' : ' + msg);
+
             this.socket.emit(type, msg);
 
         }
 
     }
 
-    directSend(type: any, msg: any) {
-
-        // Nachricht schicken
-        console.log(type, msg)
-    }
 
     sendPing() {
 

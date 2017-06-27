@@ -18,7 +18,7 @@ $(function () {
     function socketSend(type: any, msg: any) {
 
         // Nachricht schicken
-        socketIOService.send(type, msg);
+        socket.emit(type, msg);
 
 
     }

@@ -225,17 +225,12 @@ $color-smartphone-screen: rgb(63, 64, 130);
   -webkit-animation-iteration-count: infinite;
 }
 
-// Solo
 
-.blackout-active {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  display: block;
-  background-color: rgba(0, 0, 0, 0.9);
-}
+
+// Solo
+// -------------------------------------------------
+
+
 
 #smartphone-sim-content.solo-active {
   z-index: 1000;
@@ -247,7 +242,6 @@ $color-smartphone-screen: rgb(63, 64, 130);
   #smartphone-home-button {
     background-color: whitesmoke;
     border-color: #d2d2d2;
-
   }
 
   #smartphone-toolbar a {

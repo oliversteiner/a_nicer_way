@@ -1,3 +1,33 @@
+// PULSE
+// -------------------------------------------------
+
+@-webkit-keyframes pulsate {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+
+
+@-webkit-keyframes pulsate-ring {
+  0% {
+    border: solid 1px black;
+  }
+  50% {
+    border: solid 1px $color-message;
+  }
+  100% {
+    border: solid 1px black;
+  }
+}
+
+
+
 // Flipper
 // -------------------------------------------------
 

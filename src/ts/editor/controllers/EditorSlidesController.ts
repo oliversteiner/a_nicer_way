@@ -1,7 +1,7 @@
 class EditorSlidesController {
 
 
-    public area_open: boolean = true;
+    public area_open: boolean = false;
 
     constructor() {
         console.log('EditorSlidesController');

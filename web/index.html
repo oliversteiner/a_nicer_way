@@ -969,7 +969,7 @@
     <!-- tumbnails-area -->
     <div id="slide-tumbnails-area-close-wrapper">
         <div id="slide-tumbnails-area-close">
-            <span class="editor-button-20 triangle-open tumbnails-area-toggle-button"></span>
+            <span class="editor-button-20 triangle-close tumbnails-area-toggle-button"></span>
             <span class="editor-button-20x45 editor-area-switcher-big"></span>
         </div>
     </div>
@@ -977,7 +977,7 @@
 
     <!-- devices-area -->
     <div id="slide-devices-area-close">
-        <span class="editor-button-20 triangle-open devices-area-toggle-button"></span>
+        <span class="editor-button-20 triangle-close devices-area-toggle-button"></span>
         <span class="editor-button-20x45 editor-area-switcher-big"></span>
     </div>
 
@@ -1012,17 +1012,19 @@
     <!-- endinject -->
 </div>
 
+
 <div id="editor-toolbar-top-container">
     <!-- inject:views/editor/editor_toolbar_top.html -->
     <div id="editor-toolbar-top-content">
 
     <!-- tumbnails-area -->
-    <div id="slide-tumbnails-area" class="shadow-display">
+    <div id="slide-tumbnails-area" class="shadow-display" style="display: none">
 
         <div class="slide-list-container">
             <ul class="slide-list">
                 <li>
                     <div class="slide-list-wrapper" data-slide="slide-1">
+
                         <div class="slide-list-tumbnail"></div>
                         <div class="slide-list-number">1</div>
                         <div class="slide-list-title">Slide 1</div>
@@ -1075,7 +1077,7 @@
 
 
     <!-- devices-area -->
-    <div id="slide-devices-area" class="shadow-display">
+    <div id="slide-devices-area" class="shadow-display"  style="display: none">
 
     </div>
 
@@ -1083,8 +1085,8 @@
     <!-- endinject -->
 </div>
 
-<div id="editor-view-container">
 
+<div id="editor-view-container">
     <!-- inject:views/editor/editor_view.html -->
     
     <!-- endinject -->
@@ -1123,6 +1125,7 @@
 
 <div id="blackout"></div>
 
+
 <!-- Libraries -->
 <script src="libraries/jquery/jquery-3.2.1.min.js"></script>
 <script src="libraries/bootstrap/bootstrap.min.js"></script>
@@ -1131,10 +1134,9 @@
 <script src="libraries/jquery/jquery.scrollTo.min.js"></script>
 <script src="libraries/keymaster/keymaster.js"></script>
 
+
 <!-- nur bei hosting über node.js -->
-
 <script src="socket.io/socket.io.js"></script>
-
 
 
 <!-- A Nicer Way -->

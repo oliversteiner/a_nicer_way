@@ -1,10 +1,11 @@
 class EditorDevicesController {
 
 
-    public area_open: boolean = true;
+    public area_devices_open: boolean = false;
 
     constructor() {
         console.log('EditorDevicesController');
+        this.area_devices_open = false;
 
         this.addEventListeners();
         //   this.addKeystrokes();
@@ -24,21 +25,21 @@ class EditorDevicesController {
     // Devices Window
     static
     open() {
-        aNWEditor.editorDevicesController.area_open = true;
+        aNWEditor.editorDevicesController.area_devices_open = true;
         $('#slide-devices-area').show();
         $('.devices-area-toggle-button').removeClass('triangle-close').addClass('triangle-open');
     }
 
     static
     close() {
-        aNWEditor.editorDevicesController.area_open = false;
+        aNWEditor.editorDevicesController.area_devices_open = false;
         $('#slide-devices-area').hide();
         $('.devices-area-toggle-button').removeClass('triangle-open').addClass('triangle-close');
     }
 
     static
     toggle() {
-        if (aNWEditor.editorDevicesController.area_open) {
+        if (aNWEditor.editorDevicesController.area_devices_open) {
             EditorDevicesController.close();
         }
         else {

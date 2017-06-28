@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45 (43475) - http://www.bohemiancoding.com/sketch -->
+    <title>button/add-new-button</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="button/add-new-button">
+            <g id="Group-2" transform="translate(1.000000, 1.000000)">
+                <circle id="oval" stroke="#9B9B9B" fill="#4A4A4A" cx="9" cy="9" r="9"></circle>
+                <g id="add-new-side" transform="translate(4.090909, 4.090909)" stroke-linecap="square" stroke="#979797">
+                    <g id="Group-5">
+                        <path d="M5,0.384615385 L5,9.64738045" id="Line" stroke-width="3"></path>
+                        <path d="M5,0.384615385 L5,9.64738045" id="Line" stroke-width="3" transform="translate(5.000000, 5.000000) rotate(-270.000000) translate(-5.000000, -5.000000) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

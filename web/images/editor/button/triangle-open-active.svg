@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45 (43475) - http://www.bohemiancoding.com/sketch -->
+    <title>button/open-active</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0.0980245681 3.54630043 12.5118177 3.54630043 0.0980245681 15.9600935"></polygon>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="button/open-active">
+            <g id="Rectangle-8" transform="translate(6.304921, 9.753197) rotate(135.000000) translate(-6.304921, -9.753197) ">
+                <use fill="#4A4A4A" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <path stroke="#D1D1D1" stroke-width="1" d="M0.598024568,4.04630043 L0.598024568,14.7529868 L11.3047109,4.04630043 L0.598024568,4.04630043 Z"></path>
+            </g>
+        </g>
+    </g>
+</svg>

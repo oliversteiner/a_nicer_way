@@ -12,4 +12,7 @@ $(document).ready(function () {
     pouchDBService = new PouchDBService();
     socketSimulatorService = new SocketSimulatorService();
     socketIOService = new SocketIOService();
+    // Editor
+    aNWEditor = new AnwEditor();
+    aNWEditor.start();
 });

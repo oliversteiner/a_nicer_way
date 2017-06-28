@@ -23,7 +23,7 @@
     <meta name="theme-color" content="#ffffff">
 
 </head>
-<body>
+<body class="editor-active">
 <nav class="navbar navbar-default navbar-nicer" id="main_navigation">
     <!-- inject:views/main_navigation.html -->
     <!-- endinject -->
@@ -32,7 +32,6 @@
 
 </header>
 <main>
-
 
     <div id="timeway-container">
         <!-- inject:views/timeway.html -->
@@ -80,27 +79,14 @@
         <!-- endinject -->
     </div>
 
-<div id="editor">
-
-    <div id="editor-toolbar-side-container">
-        <!-- inject:views/editor_toolbar_side.html -->
-        <!-- endinject -->
-    </div>
-
-    <div id="editor-toolbar-top-container">
-        <!-- inject:views/editor_toolbar_top.html -->
-        <!-- endinject -->
-    </div>
-
-    <div id="editor-view-container">
-
-        <!-- inject:views/editor_view.html -->
-        <!-- endinject -->
-    </div>
-
-</div>
 
 </main>
+
+<div id="editor">
+    <!-- inject:views/editor/editor.html -->
+    <!-- endinject -->
+
+</div>
 
 
 <footer>
@@ -152,9 +138,16 @@
 <script src="js/controllers/DisplayController.js"></script>
 
 
-
+<!-- Main -->
 <script src="js/main.js"></script>
 <script src="js/test.js"></script>
+
+
+<!-- Editor -->
+<script src="js/editor/controllers/EditorSimulatorController.js"></script>
+<script src="js/editor/controllers/EditorSlidesController.js"></script>
+<script src="js/editor/controllers/EditorToolbarSideController.js"></script>
+<script src="js/editor/editor.js"></script>
 
 <script>
 

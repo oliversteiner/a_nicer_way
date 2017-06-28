@@ -61,7 +61,7 @@ gulp.task('nw-css', function () {
 // HTML
 
 var watch_html = 'src/html/**/*.html';
-var input_html = 'src/html/views/*.html';
+var input_html = 'src/html/views/**/*.html';
 var output_html = './web';
 
 gulp.task('html-inject', function () {

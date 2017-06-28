@@ -28,6 +28,8 @@
 // Editor
 @import "editor/buttons";
 @import "editor/editor";
+@import "editor/views/slides";
+
 
 
 
@@ -100,3 +102,13 @@ background: none;
   cursor:pointer;
 }
 
+
+
+// Editor
+// -----------------------------
+body.editor-active main,
+body.editor-active header,
+body.editor-active nav,
+body.editor-active footer{
+  margin-left: 50px;
+}

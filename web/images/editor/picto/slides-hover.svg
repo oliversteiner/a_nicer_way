@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="40px" height="45px" viewBox="0 0 40 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+<svg width="35px" height="40px" viewBox="0 0 35 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45 (43475) - http://www.bohemiancoding.com/sketch -->
     <title>picto/slides-hover</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <rect id="path-1" x="3.99493823" y="7" width="10.3242135" height="30" rx="3"></rect>
-        <rect id="path-2" x="25.6757865" y="7" width="10.3242135" height="30" rx="3"></rect>
+        <rect id="path-1" x="3.49557095" y="6.22222222" width="9.03368679" height="26.6666667" rx="3"></rect>
+        <rect id="path-2" x="22.4663132" y="6.22222222" width="9.03368679" height="26.6666667" rx="3"></rect>
     </defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="picto/slides-hover">
             <g id="Rectangle-6">
                 <use fill="#D1D1D1" fill-rule="evenodd" xlink:href="#path-1"></use>
-                <rect stroke="#979797" stroke-width="1" x="4.49493823" y="7.5" width="9.32421347" height="29" rx="3"></rect>
+                <rect stroke="#979797" stroke-width="1" x="3.99557095" y="6.72222222" width="8.03368679" height="25.6666667" rx="3"></rect>
             </g>
             <g id="Rectangle-6-Copy">
                 <use fill="#D1D1D1" fill-rule="evenodd" xlink:href="#path-2"></use>
-                <rect stroke="#979797" stroke-width="1" x="26.1757865" y="7.5" width="9.32421347" height="29" rx="3"></rect>
+                <rect stroke="#979797" stroke-width="1" x="22.9663132" y="6.72222222" width="8.03368679" height="25.6666667" rx="3"></rect>
             </g>
-            <ellipse id="Oval-5" stroke="#979797" fill="#D1D1D1" cx="19.9974691" cy="22.5" rx="2.58105337" ry="2.5"></ellipse>
+            <ellipse id="Oval-5" stroke="#979797" fill="#D1D1D1" cx="17.4977855" cy="20" rx="2.2584217" ry="2.22222222"></ellipse>
         </g>
     </g>
 </svg>

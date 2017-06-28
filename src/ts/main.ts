@@ -5,6 +5,10 @@ declare let socketIOService:any;
 declare let socketSimulatorService:any;
 
 
+// Editor
+declare let aNWEditor: any;
+
+
 let options = {
     simulator_size: 'mittel', // voll, halb, klein, mittel, gross
     socket_io: true, // if the server is not an node.js, socketIO is not aviable.
@@ -26,6 +30,9 @@ $(document).ready(function () {
     socketSimulatorService = new SocketSimulatorService();
     socketIOService = new SocketIOService();
 
+    // Editor
+    aNWEditor = new AnwEditor();
+    aNWEditor.start();
 
 });
 

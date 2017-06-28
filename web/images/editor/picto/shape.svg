@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="40px" height="45px" viewBox="0 0 40 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+<svg width="35px" height="40px" viewBox="0 0 35 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45 (43475) - http://www.bohemiancoding.com/sketch -->
     <title>picto/shape</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <rect id="path-1" x="5" y="5" width="26" height="28"></rect>
+        <rect id="path-1" x="4.375" y="4.44444444" width="22.75" height="24.8888889"></rect>
     </defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="picto/shape">
             <g id="Rectangle-6">
                 <use fill="#EDEDED" fill-rule="evenodd" xlink:href="#path-1"></use>
-                <rect stroke="#979797" stroke-width="1" x="5.5" y="5.5" width="25" height="27"></rect>
+                <rect stroke="#979797" stroke-width="1" x="4.875" y="4.94444444" width="21.75" height="23.8888889"></rect>
             </g>
-            <circle id="Oval-3" stroke="#979797" fill="#EDEDED" cx="24" cy="29" r="12"></circle>
+            <ellipse id="Oval-3" stroke="#979797" fill="#EDEDED" cx="21" cy="25.7777778" rx="10.5" ry="10.6666667"></ellipse>
         </g>
     </g>
 </svg>

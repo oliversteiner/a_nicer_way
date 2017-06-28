@@ -78,26 +78,111 @@
 
 /* Triangle */
 
-.triangle-open-button {
-  background: url("../images/editor/button/open.svg");
+.triangle-open {
+  background: url("../images/editor/button/triangle-open.svg");
 }
 
-.triangle-open-button:hover {
-  background: url("../images/editor/button/open-hover.svg");
+.triangle-open:hover {
+  background: url("../images/editor/button/triangle-open-hover.svg");
 }
 
-.triangle-open-button:active {
-  background: url("../images/editor/button/open-active.svg");
+.triangle-open:active {
+  background: url("../images/editor/button/triangle-open-active.svg");
 }
 
-.triangle-close-button {
-  background: url("../images/editor/button/close.svg");
+.triangle-close {
+  background: url("../images/editor/button/triangle-close.svg");
 }
 
-.triangle-close-button:hover {
-  background: url("../images/editor/button/close-hover.svg");
+.triangle-close:hover {
+  background: url("../images/editor/button/triangle-close-hover.svg");
 }
 
-.triangle-close-button:active {
-  background: url("../images/editor/button/close-active.svg");
+.triangle-close:active {
+  background: url("../images/editor/button/triangle-close-active.svg");
+}
+
+/* Area */
+
+.editor-area-switcher {
+  background: url("../images/editor/slide/area-switcher.svg");
+}
+
+.editor-area-switcher-small {
+  background: url("../images/editor/slide/area-switcher-medium.svg");
+}
+
+.editor-area-switcher-medium {
+  background: url("../images/editor/slide/area-switcher-medium.svg");
+}
+
+.editor-area-switcher-big {
+  background: url("../images/editor/slide/area-switcher-big.svg");
+}
+
+// hover
+
+.editor-area-switcher:hover {
+  background: url("../images/editor/slide/area-switcher-hover.svg");
+}
+
+.editor-area-switcher-small:hover {
+  background: url("../images/editor/slide/area-switcher-medium-hover.svg");
+}
+
+.editor-area-switcher-medium:hover {
+  background: url("../images/editor/slide/area-switcher-medium-hover.svg");
+}
+
+.editor-area-switcher-big:hover {
+  background: url("../images/editor/slide/area-switcher-big-hover.svg");
+}
+
+// active
+
+.editor-area-switcher:active {
+  background: url("../images/editor/slide/area-switcher-active.svg");
+}
+
+.editor-area-switcher-small:active {
+  background: url("../images/editor/slide/area-switcher-medium-active.svg");
+}
+
+.editor-area-switcher-medium:active {
+  background: url("../images/editor/slide/area-switcher-medium-active.svg");
+}
+
+.editor-area-switcher-big:active {
+  background: url("../images/editor/slide/area-switcher-big-active.svg");
+}
+
+// Transition
+
+.slide-list-transition-button {
+  height: 20px;
+  width: 22px;
+  border-radius: 2px;
+  background: #626262;
+}
+
+.slide-list-transition-button:hover {
+  background: #3e3e3e;
+}
+
+.slide-list-transition-button:active {
+  background: #1f1f1f;
+}
+
+
+// Slide List
+.slide-list-add-new-button{
+  background: url("../images/editor/button/add-new-button.svg");
+}
+
+.slide-list-add-new-button:hover{
+  background: url("../images/editor/button/add-new-button-hover.svg");
+}
+
+.slide-list-add-new-button:active{
+  background: url("../images/editor/button/add-new-button-active.svg");
 }

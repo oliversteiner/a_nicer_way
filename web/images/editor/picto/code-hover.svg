@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="40px" height="45px" viewBox="0 0 40 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+<svg width="35px" height="40px" viewBox="0 0 35 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45 (43475) - http://www.bohemiancoding.com/sketch -->
     <title>picto/code-hover</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="picto/code-hover">
-            <rect id="Rectangle-6-Copy" fill="#D1D1D1" x="4" y="7" width="32" height="32" rx="7"></rect>
-            <polyline id="Path-2" stroke="#979797" stroke-width="2" points="16 15.9085352 8.4126052 23.6143833 16 31"></polyline>
-            <polyline id="Path-2-Copy" stroke="#979797" stroke-width="2" points="24 15.6602545 31.5873948 23.3661027 24 30.7517194"></polyline>
+            <rect id="Rectangle-6-Copy" fill="#D1D1D1" x="3.5" y="6.22222222" width="28" height="28.4444444" rx="7"></rect>
+            <polyline id="Path-2" stroke="#979797" stroke-width="2" points="14 14.1409202 7.36102955 20.990563 14 27.5555556"></polyline>
+            <polyline id="Path-2-Copy" stroke="#979797" stroke-width="2" points="21 13.9202262 27.6389705 20.769869 21 27.3348616"></polyline>
         </g>
     </g>
 </svg>

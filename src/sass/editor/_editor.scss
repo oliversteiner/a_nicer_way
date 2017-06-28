@@ -5,18 +5,19 @@
 }
 
 #toolbar-buttons {
-  padding-top: 380px;
-  padding-left: 7px;
+  padding-top: 300px;
+  padding-left: 6px;
 
 }
 
-.side-toolbar-item,
-.side-toolbar-button {
-  display: block;
-  width: 40px;
-  height: 45px;
+.side-toolbar-item{
+  position: relative;
+  display: inline-block;
   background-repeat: no-repeat;
+  width: 35px;
+  height: 40px;
 }
+
 
 .side-toolbar-button:hover {
   cursor: pointer;
@@ -26,7 +27,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 60px;
+  width: 40px;
   height: 100vh;
 
   /* Rectangle 2: */
@@ -47,71 +48,90 @@
   left: 0;
   top: 0;
 
-  width: 60px;
-  height: 175px;
+  width: 40px;
+  height: 120px;
   background-color: #1a1a1a;
 
 }
 
 #slide-tumbnails-area,
-#slide-tumbnails-area-close {
+#slide-tumbnails-area-close,
+#slide-devices-area,
+#slide-devices-area-close {
   position: absolute;
   left: 0;
   top: 0;
 
-  width: 60px;
-  height: 175px;
+  width: 40px;
+  height: 120px;
+
   background-color: #4e4e4e;
-  border-radius: 0 0 0 13px;
   border-bottom: solid 1px #909090;
 
 }
 
 #slide-devices-area,
 #slide-devices-area-close {
-  position: absolute;
-  left: 0;
-  top: 175px;
-
-  width: 60px;
-  height: 175px;
+  top: 120px;
   background-color: #1a1a1a;
-  border-radius: 0 0 0 13px;
 }
 
 
 #slide-tumbnails-area-close,
 #slide-devices-area-close{
   padding: 10px;
+  border-radius: 0 0 0 13px;
+
 }
 
 #slide-tumbnails-area {
-  position: absolute;
-  left: 60px;
-  top: 0;
-
-  width: 600px;
-  height: 175px;
-  background-color: #4e4e4e;
-  border-radius: 0 0 13px 0;
-  border-bottom: solid 1px #909090;
+  left: 40px;
+  width: calc(100vw - 50px);
 
 }
 
 #slide-devices-area {
-  position: absolute;
-  left: 60px;
-  top: 175px;
+  left: 40px;
+  top: 120px;
 
   width: 500px;
-  height: 175px;
   background-color: #1a1a1a;
   border-radius: 0 0 13px 0;
+
+
 }
 
-.editor-button{
+.editor-button,
+.editor-button-20,
+.editor-button-20x45,
+.editor-button-35x40
+{
   position: relative;
+  box-sizing: border-box;
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+
+}
+
+.editor-area-switcher,
+.editor-area-switcher-small,
+.editor-area-switcher-medium,
+.editor-area-switcher-big{
+  margin-top: 20px;
+}
+
+.editor-button-20{
+  width: 20px;
+  height: 20px;
+}
+
+.editor-button-20x45{
+  width: 20px;
+  height: 45px;
+}
+
+.editor-button-35x40{
+  width: 35px;
+  height: 40px;
 }

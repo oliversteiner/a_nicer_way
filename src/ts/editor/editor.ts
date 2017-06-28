@@ -1,17 +1,19 @@
 class AnwEditor {
+    private editorDevicesController: EditorDevicesController;
+    private editorSlidesController: EditorSlidesController;
+    private editorToolbarSideController: EditorToolbarSideController;
+
 
     constructor() {
         console.log('AnwEditor');
 
         // load
-        let editorSimulatorController = new EditorSimulatorController();
-        let editorSlidesController = new EditorSlidesController();
-        let editorToolbarSideController = new EditorToolbarSideController();
+        this.editorDevicesController = new EditorDevicesController();
+        this.editorSlidesController = new EditorSlidesController();
+        this.editorToolbarSideController = new EditorToolbarSideController();
     }
 
     start() {
     }
 }
 
-
-const aNWEditor = new AnwEditor();

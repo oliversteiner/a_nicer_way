@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="40px" height="45px" viewBox="0 0 40 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+<svg width="35px" height="40px" viewBox="0 0 35 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45 (43475) - http://www.bohemiancoding.com/sketch -->
     <title>picto/image_file</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <rect id="path-1" x="5" y="7" width="30" height="31"></rect>
+        <rect id="path-1" x="4.375" y="6.22222222" width="26.25" height="27.5555556"></rect>
     </defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="picto/image_file">
             <g id="Rectangle-6-Copy">
                 <use fill="#EDEDED" fill-rule="evenodd" xlink:href="#path-1"></use>
-                <rect stroke="#979797" stroke-width="1" x="5.5" y="7.5" width="29" height="30"></rect>
+                <rect stroke="#979797" stroke-width="1" x="4.875" y="6.72222222" width="25.25" height="26.5555556"></rect>
             </g>
-            <circle id="Oval-4" stroke="#979797" fill="#D8D8D8" cx="17.5" cy="14.5" r="5.5"></circle>
-            <polygon id="Path-4" stroke="#979797" fill="#D8D8D8" points="34.5 37.5 34.5 19.5 29.5 15.5 20 27.5 22.5 30.5 16 22.5 5.5 37.5"></polygon>
+            <ellipse id="Oval-4" stroke="#979797" fill="#D8D8D8" cx="15.3125" cy="12.8888889" rx="4.8125" ry="4.88888889"></ellipse>
+            <polygon id="Path-4" stroke="#979797" fill="#D8D8D8" points="30.1875 33.3333333 30.1875 17.3333333 25.8125 13.7777778 17.5 24.4444444 19.6875 27.1111111 14 20 4.8125 33.3333333"></polygon>
         </g>
     </g>
 </svg>

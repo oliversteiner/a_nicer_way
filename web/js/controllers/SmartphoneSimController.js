@@ -122,10 +122,10 @@ var SmartphoneSimController = (function () {
             var viewwidth = document.body.clientWidth;
             // Mitte ausrechnen:
             // pixel von links:  ( viewport breite / 2 ) -  (smartphone-breite / 2 )
-            var left = viewwidth / 2 - smartphone.width / 2;
+            var left_2 = viewwidth / 2 - smartphone.width / 2;
             $('#smartphone-frame')
                 .css('top', '40px') // von open 20px
-                .css('left', left);
+                .css('left', left_2);
             // mit ESC Solo-Modus beenden
             key('esc', function () {
                 aNicerWay.smartphoneSimController.toggleSolo();

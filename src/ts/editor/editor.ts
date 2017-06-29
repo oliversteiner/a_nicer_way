@@ -14,6 +14,9 @@ class AnwEditor {
     }
 
     start() {
+        EditorSlidesController.open();
     }
 }
+
+
 

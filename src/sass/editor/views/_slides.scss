@@ -1,12 +1,20 @@
-.slide-list-container{
-margin-top: 10px;
+.slide-list-container {
+  margin-top: 10px;
   margin-left: 20px;
+  height: 105px;
 
+  // Scrollen
+  overflow-y: hidden
+;
+  overflow-x: scroll;
 }
+
 ul.slide-list {
   position: relative;
   padding: 0;
   margin: 0;
+  height: 105px;
+  width: 5000px;
 }
 
 ul.slide-list li {
@@ -62,9 +70,7 @@ ul.slide-list li {
 
 }
 
-
-
-.slide-list-transition{
+.slide-list-transition {
   position: absolute;
   left: 115px;
   top: 30px;

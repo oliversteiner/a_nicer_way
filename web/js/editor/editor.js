@@ -7,6 +7,7 @@ var AnwEditor = (function () {
         this.editorToolbarSideController = new EditorToolbarSideController();
     }
     AnwEditor.prototype.start = function () {
+        EditorSlidesController.open();
     };
     return AnwEditor;
 }());

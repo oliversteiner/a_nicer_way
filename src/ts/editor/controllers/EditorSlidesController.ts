@@ -19,6 +19,35 @@ class EditorSlidesController {
         $('.tumbnails-area-toggle-button').click(function () {
             EditorSlidesController.toggle()
         });
+
+
+        var clicked = false, clickX;
+
+        var $moveable = $('#slide-list-container');
+
+        $moveable.on({
+            'mousemove': function(e) {
+                clicked && updateScrollPos(e);
+
+            },
+            'mousedown': function(e) {
+                clicked = true;
+                clickX = e.pageX;
+            },
+            'mouseup': function() {
+                clicked = false;
+                $('html').css('cursor', 'auto');
+            }
+        });
+
+        var updateScrollPos = function(e) {
+            var $moveable = $('#slide-list-container');
+
+            $('html').css('cursor', 'row-resize');
+            $moveable.css({'left': e.pageX});
+        }
+
+
     }
 
     // Simulator Window

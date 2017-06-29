@@ -1,11 +1,11 @@
 class EditorDevicesController {
 
 
+
     public area_devices_open: boolean = false;
 
     constructor() {
         console.log('EditorDevicesController');
-        this.area_devices_open = false;
 
         this.addEventListeners();
         //   this.addKeystrokes();
@@ -46,6 +46,7 @@ class EditorDevicesController {
             EditorDevicesController.open();
         }
     }
+
 
 
 }

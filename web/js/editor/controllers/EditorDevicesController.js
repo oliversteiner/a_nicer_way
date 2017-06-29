@@ -2,7 +2,6 @@ var EditorDevicesController = (function () {
     function EditorDevicesController() {
         this.area_devices_open = false;
         console.log('EditorDevicesController');
-        this.area_devices_open = false;
         this.addEventListeners();
         //   this.addKeystrokes();
     }

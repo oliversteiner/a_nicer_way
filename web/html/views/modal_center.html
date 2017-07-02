@@ -1,0 +1,74 @@
+<div id="modal-remote-center-content">
+
+    <div id="modal-center" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- modal-content -->
+
+                <!-- inline Remote ModusDemo ore open in new Window-->
+
+                <div id="remote-modal-how-open" style="display:none;">
+                    <div class="well well-transparent">
+                        <ul class="list-group">
+                            <li class="btn-nicer list-group-item remote-button-open-window">Remote in neuem Fenster
+                                öffnen
+                            </li>
+                            <li class="btn-nicer list-group-item remote-button-open-inline">Demo auf der aktuellen
+                                Seite
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- remote-modal-change-directly -->
+                <div id="remote-modal-change-directly" style="display:none;">
+                    <div class="well well-transparent">
+                        <!-- Change direct to Remote Modus-->
+                        <div class="btn-nicer-transparent-2">
+                            <a href="remote.html">
+                                <div class=" go-remote-contdown-number">
+                                    <span class="glyphicon glyphicon-sort "></span>
+                                </div>
+                                <div><h4>zu Remote-Modus wechseln?</h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--INIT DB Frage-->
+                <div id="init-DB-message-wrapper" style="display:none;">
+                    <div class="well well-transparent">
+
+                        <div class="init-DB-message">
+                            <h4>Noch keine Einträge vorhanden.</h4>
+                            <button type="button" class="btn btn-default btn-block btn-nicer" data-dismiss="modal">
+                                Ohne Inhalte fortfahren
+                            </button>
+                            <button type="button" class="btn  btn-block btn-success" onclick="_reset()">
+                                Beispiel laden
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--NIT DB  Processbar-->
+                <div id="init-DB-progress-wrapper" style="display: none">
+                    <div class="well well-transparent">
+                        <div class="progress ">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar"
+                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- /.modal-content -->
+            </div>
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+</div>

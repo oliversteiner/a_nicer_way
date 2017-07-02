@@ -3,21 +3,12 @@
     <!-- Generator: Sketch 45 (43475) - http://www.bohemiancoding.com/sketch -->
     <title>picto/slides</title>
     <desc>Created with Sketch.</desc>
-    <defs>
-        <rect id="path-1" x="3.49557095" y="6.22222222" width="9.03368679" height="26.6666667" rx="3"></rect>
-        <rect id="path-2" x="22.4663132" y="6.22222222" width="9.03368679" height="26.6666667" rx="3"></rect>
-    </defs>
+    <defs></defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="picto/slides">
-            <g id="Rectangle-6">
-                <use fill="#EDEDED" fill-rule="evenodd" xlink:href="#path-1"></use>
-                <rect stroke="#979797" stroke-width="1" x="3.99557095" y="6.72222222" width="8.03368679" height="25.6666667" rx="3"></rect>
-            </g>
-            <g id="Rectangle-6-Copy">
-                <use fill="#EDEDED" fill-rule="evenodd" xlink:href="#path-2"></use>
-                <rect stroke="#979797" stroke-width="1" x="22.9663132" y="6.72222222" width="8.03368679" height="25.6666667" rx="3"></rect>
-            </g>
-            <ellipse id="Oval-5" stroke="#979797" fill="#D8D8D8" cx="17.4977855" cy="20" rx="2.2584217" ry="2.22222222"></ellipse>
+        <g id="picto/slides" stroke="#979797">
+            <rect id="Rectangle-6" x="3.99557095" y="6.72222222" width="8.03368679" height="25.6666667" rx="3"></rect>
+            <rect id="Rectangle-6-Copy" x="22.9663132" y="6.72222222" width="8.03368679" height="25.6666667" rx="3"></rect>
+            <ellipse id="Oval-5" cx="17.4977855" cy="20" rx="1.7584217" ry="1.72222222"></ellipse>
         </g>
     </g>
 </svg>

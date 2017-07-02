@@ -3,12 +3,27 @@
     <!-- Generator: Sketch 45 (43475) - http://www.bohemiancoding.com/sketch -->
     <title>picto/code-active</title>
     <desc>Created with Sketch.</desc>
-    <defs></defs>
+    <defs>
+        <rect id="path-1" x="3.5" y="6.22222222" width="28" height="28" rx="4"></rect>
+        <polygon id="path-2" points="7 11.7428428 7 14.5555556 0.36102955 7.99056295 7 1.14092015 7 4.0145745 3.17524118 7.96070318"></polygon>
+        <polygon id="path-3" points="12 3.79388059 12 0.920226244 18.6389705 7.76986904 12 14.3348616 12 11.5221489 15.8247588 7.74000927"></polygon>
+    </defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="picto/code-active">
-            <rect id="Rectangle-6-Copy" fill="#9B9B9B" x="3.5" y="6.22222222" width="28" height="28.4444444" rx="7"></rect>
-            <polyline id="Path-2" stroke="#EDEDED" stroke-width="2" points="14 14.1409202 7.36102955 20.990563 14 27.5555556"></polyline>
-            <polyline id="Path-2-Copy" stroke="#EDEDED" stroke-width="2" points="21 13.9202262 27.6389705 20.769869 21 27.3348616"></polyline>
+            <g id="Rectangle-6-Copy">
+                <use fill="#0C163E" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <rect stroke="#96C1F3" stroke-width="1" x="4" y="6.72222222" width="27" height="27" rx="4"></rect>
+            </g>
+            <g id="Group" transform="translate(8.000000, 13.000000)" fill-rule="nonzero">
+                <g id="&lt;">
+                    <use fill="#0C163E" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <path stroke="#96C1F3" stroke-width="1" d="M6.5,11.9515925 L2.47168828,7.96816812 L6.5,3.81202726 L6.5,2.37520008 L1.06458246,7.98309801 L6.5,13.3579489 L6.5,11.9515925 Z"></path>
+                </g>
+                <g id="&gt;">
+                    <use fill="#0C163E" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <path stroke="#96C1F3" stroke-width="1" d="M12.5,3.59133335 L16.5283117,7.74747422 L12.5,11.7308986 L12.5,13.137255 L17.9354175,7.7624041 L12.5,2.15450617 L12.5,3.59133335 Z"></path>
+                </g>
+            </g>
         </g>
     </g>
 </svg>

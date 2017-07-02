@@ -1,0 +1,124 @@
+<div id="data-display-content" data-keystroke="d" class="nicer-display" >
+    <div class="well well-display shadow-display">
+
+        <!-- header -->
+        <div class="display-header">
+
+        <span class="display-title">
+            <span class="glyphicon glyphicon-pencil glyphicon-title"></span>
+            Daten bearbeiten
+            </span>
+         <span class="close display-close-button">&times;</span>
+
+        </div>
+
+        <!-- Main -->
+        <div class="display-main">
+
+        <p id="twp-data-info_id"></p>
+
+        <form id="data-display-form" class="form-horizontal">
+
+            <!-- _id -->
+            <input type="hidden" class="form-control" name="_id" id="twp-data-id">
+
+
+            <!--sequence-->
+            <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="twp-data-sequence">Seq</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="sequence" id="twp-data-sequence"
+                           placeholder="sequence">
+                </div>
+
+            </div>
+
+
+            <!--Time-->
+            <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="twp-data-time">Time</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Time" id="twp-data-time" placeholder="Time">
+                </div>
+            </div>
+
+
+            <!--Date-->
+            <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="twp-data-date">Date</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Date" id="twp-data-date" placeholder="Date">
+                </div>
+            </div>
+
+
+            <!--Place-->
+            <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="twp-data-place">Place</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Place" id="twp-data-place" placeholder="Place">
+                </div>
+            </div>
+
+
+            <!--Feeling-->
+            <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="twp-data-feeling">Feeling</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Feeling" id="twp-data-feeling" placeholder="Feeling">
+                </div>
+            </div>
+
+
+            <!--Message-->
+            <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="twp-data-message">Message</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Message" id="twp-data-message" placeholder="Message">
+                </div>
+            </div>
+
+
+            <!--Notice-->
+            <div class="form-group form-group-sm">
+
+                <label class="col-sm-2 control-label" for="twp-data-notice">Notice</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="3" name="Notice" id="twp-data-notice">TEST</textarea>
+                </div>
+
+            </div>
+            <div class="btn-group btn-sm" role="group" aria-label="...">
+
+                <button type="button" id="data-display-button-save" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>
+                </button>
+
+                <button type="button" id="data-display-button-new" class="btn btn-default  btn-sm">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+
+                <button type="button" id="data-display-button-delete" class="btn btn-sm btn-danger">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </button>
+
+                <button type="button" id="data-display-button" class="btn btn-sm btn-default">
+                    &nbsp;
+                </button>
+
+                <button type="button" id="data-display-button-erase-db" class="btn btn-sm btn-default">
+                    E
+                </button>
+
+                <button type="button" id="data-display-button-load-default" class="btn btn-sm btn-default">
+                    L
+                </button>
+            </div>
+        </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="display-footer"></div>
+
+    </div>
+</div>

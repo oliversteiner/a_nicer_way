@@ -1,0 +1,178 @@
+#slide-devices-area {
+  position: relative;
+}
+
+#slide-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 10px;
+  width: 100px;
+  height: 110px;
+}
+
+#slide-details-number {
+  font-size: 3em;
+  float: left;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+#slide-details-name {
+
+}
+
+#slide-details-background {
+
+}
+
+#slide-details-transition {
+
+}
+
+// Devices
+// ------------------
+
+#slide-simulator {
+
+  position: absolute;
+  top: 0px;
+  left: 170px;
+  height: 100px;
+  width: 10px;
+  padding-top: 10px;
+}
+
+#devices-list-container {
+
+  position: absolute;
+  top: 0;
+  left: 0px;
+  height: 105px;
+  // Scrollen
+  overflow-y: hidden;
+  overflow-x: scroll;
+
+}
+
+ul.devices-list {
+
+  position: relative;
+  padding: 0;
+  margin: 0;
+  height: 105px;
+  width: 200px;
+
+}
+
+ul.devices-list li {
+
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+.devices-list-wrapper {
+  position: relative;
+
+  width: 70px;
+  height: 100px;
+}
+
+.devices-list-tumbnail {
+  position: absolute;
+  width: 50px;
+  height: 80px;
+  box-sizing: border-box;
+  background: #797979;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.80);
+  border-radius: 8px;
+  border: solid 1px #626262;
+}
+
+.devices-list-number {
+}
+
+.devices-list-title {
+}
+
+.devices-list-transition {
+}
+
+// Hype
+// ------------------
+#slide-simulator-hype {
+  position: absolute;
+  top: 0;
+  left: 0px;
+
+}
+
+#slide-simulator-hype-title {
+  position: absolute;
+  top: 0;
+  left: -40px;
+
+}
+
+#slide-simulator-title {
+  position: absolute;
+  top: 30px;
+  left: -40px;
+}
+
+#slide-simulator-hype-scene,
+#hype-scene-name,
+#hype-scene-transition,
+#hype-scene-duration {
+  border: solid black 1px;
+  height: 15px;
+  width: 190px;
+  background-color: #171717;
+  margin-bottom: 5px;
+}
+
+#slide-simulator-hype-scene {
+
+}
+
+#hype-scene-name {
+
+}
+
+#hype-scene-transition {
+
+}
+
+#hype-scene-duration {
+
+}
+
+// Timeline
+// ------------------
+
+#slide-simulator-hype-timeline {
+
+}
+
+#hype-timeline-name {
+
+}
+
+#hype-timeline-direction {
+
+}
+
+#hype-timeline-timeInSecond {
+
+}
+
+#hype-timeline-comman {
+
+}
+
+// Command
+// ------------------
+
+#slide-simulator-hype-command {
+}

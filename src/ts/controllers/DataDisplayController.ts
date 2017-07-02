@@ -24,7 +24,6 @@ class DataDisplayController {
         this.elem_Content = document.getElementById(_dataDisplayContentName);
 
         // Views laden
-        // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         console.log('- Data Display load');
 
         // Aktionen verknüpfen
@@ -62,6 +61,7 @@ class DataDisplayController {
      * addKeystrokes
      */
     addKeystrokes() {
+
 
 
     }

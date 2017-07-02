@@ -1,5 +1,5 @@
 class EditorDevicesController {
-
+    private timeWayPointList: any;
 
 
     public area_devices_open: boolean = false;
@@ -47,6 +47,10 @@ class EditorDevicesController {
         }
     }
 
+
+    setList(list: any) {
+        this.timeWayPointList = list;
+    };
 
 
 }

@@ -60,35 +60,57 @@ gulp.task('nw-css', function () {
 
 // HTML
 
-var watch_html = 'src/html/**/*.html';
-var input_html = 'src/html/views/**/*.html';
+var watch_html = './src/html/**/*.html';
+var html_views = './src/html/views/**/*.html';
+var html_panels = './src/html/panels/**/*.html';
+var source_html = './src/html/index.html';
 var output_html = './web';
+var input_js_includes = ['!web/js/remote.js', 'web/js/**/*.js'];  // Alle JS ausser "remote.js"
+
 
 gulp.task('html-inject', function () {
 
     // MAIN
-gulp.src('./src/html/index.html')
-    .pipe(inject(gulp.src([input_html]), {
-        starttag: '<!-- inject:{{path}} -->',
-        relative: true,
-        transform: function (filePath, file) {
-            // return file contents as string
-            return file.contents.toString('utf8')
-        }
-    }))
-    .pipe(gulp.dest(output_html));
+    gulp.src(source_html)
+        // Views
+        .pipe(inject(
+            gulp.src([html_views]), {
+            starttag: '<!-- inject:{{path}} -->',
+            relative: true,
+            transform: function (filePath, file) {
+                // return file contents as string
+                return file.contents.toString('utf8')
+            }
+        }))
+        // Panels
+        .pipe(inject(
+            gulp.src([html_panels]), {
+            starttag: '<!-- inject-panel:{{path}} -->',
+            relative: true,
+            transform: function (filePath, file) {
+                // return file contents as string
+                return file.contents.toString('utf8')
+            }
+        }))
+        // JS includes
+        .pipe(inject(
+            gulp.src(input_js_includes, {read: false}),
+            {ignorePath: 'web/', addRootSlash: false})
+        )
+        .pipe(gulp.dest(output_html));
 
 // REMOTE
-gulp.src('./src/html/remote.html')
-    .pipe(inject(gulp.src([input_html]), {
-        starttag: '<!-- inject:{{path}} -->',
-        relative: true,
-        transform: function (filePath, file) {
-            // return file contents as string
-            return file.contents.toString('utf8')
-        }
-    }))
-    .pipe(gulp.dest('./web'));
+
+    gulp.src('./src/html/remote.html')
+        .pipe(inject(gulp.src([html_views]), {
+            starttag: '<!-- inject:{{path}} -->',
+            relative: true,
+            transform: function (filePath, file) {
+                // return file contents as string
+                return file.contents.toString('utf8')
+            }
+        }))
+        .pipe(gulp.dest('./web'));
 });
 
 

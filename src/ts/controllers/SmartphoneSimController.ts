@@ -206,7 +206,6 @@ class SmartphoneSimController {
         // Devs
         let height: number;
         let width: number;
-        let html: string;
 
         // die höhe und Breite vom smartphone holen
         let elem_height: string = $('#smartphone-frame').css('height');

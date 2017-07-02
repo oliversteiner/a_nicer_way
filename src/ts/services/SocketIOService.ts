@@ -3,9 +3,9 @@ class SocketIOService {
     // Socket io
     private socket: any;
 
-    constructor() {
+    constructor(socket_io:boolean) {
 
-        if(aNicerWay.socket_io) {
+        if(socket_io) {
 
             this.socket = io();
 

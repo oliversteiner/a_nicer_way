@@ -1,4 +1,3 @@
-
 // Design
 @import 'partials/design/colors';
 @import 'partials/design/fonts';
@@ -21,16 +20,21 @@
 @import 'partials/views/footer';
 @import "partials/views/help";
 @import "partials/views/remote_display";
-
 @import "partials/views/modal_center";
 @import "partials/views/character";
 
 // Editor
+@import "editor/design/_colors.scss";
 @import "editor/buttons";
 @import "editor/editor";
+@import "editor/pictos";
 @import "editor/views/slides";
+@import "editor/views/devices";
+@import "editor/views/side_toolbar";
+@import "editor/views/top_toolbar";
 
-
+// Panels
+@import "partials/design/panel";
 
 
 
@@ -38,25 +42,23 @@
 // Well
 // -----------------------------
 
-.well-nicer{
+.well-nicer {
 }
 
-.well-transparent{
-background: none;
+.well-transparent {
+  background: none;
 }
 
-.well-nicer-light{
+.well-nicer-light {
   padding: 0;
   margin: 0;
 }
-
-
 
 // Navigation
 // -----------------------------
 
 .navbar-nicer {
-  background-color:$color-background;;
+  background-color: $color-background;;
 }
 
 .navbar-nicer:hover .navbar-nav > li > a {
@@ -75,7 +77,6 @@ background: none;
   color: $color-background;
 
 }
-
 
 // Pfeilnavigation im Menu
 // -----------------------------
@@ -99,37 +100,30 @@ background: none;
   border-radius: 5px;
   background-color: $color-background;
   color: $color-text-link;
-  cursor:pointer;
+  cursor: pointer;
 }
-
-
 
 // Editor
 // -----------------------------
 body.editor-active main,
 body.editor-active header,
 body.editor-active nav,
-body.editor-active footer{
+body.editor-active footer {
   margin-left: 40px;
 }
-
-
 
 // Scrollbar
 // -----------------------------
 
-::-webkit-scrollbar
-{
-  width: 12px;  /* for vertical scrollbars */
+::-webkit-scrollbar {
+  width: 12px; /* for vertical scrollbars */
   height: 12px; /* for horizontal scrollbars */
 }
 
-::-webkit-scrollbar-track
-{
+::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1);
 }
 
-::-webkit-scrollbar-thumb
-{
+::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.5);
 }

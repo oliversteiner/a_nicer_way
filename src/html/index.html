@@ -85,9 +85,12 @@
 <div id="editor">
     <!-- inject:views/editor/editor.html -->
     <!-- endinject -->
-
 </div>
 
+<div id="panel-blank-container">
+    <!-- inject-panel:panels/panel_blank.html -->
+    <!-- endinject -->
+</div>
 
 <footer>
     <div id="console-container">
@@ -100,6 +103,10 @@
 <div id="blackout"></div>
 
 
+
+
+
+
 <!-- Libraries -->
 <script src="libraries/jquery/jquery-3.2.1.min.js"></script>
 <script src="libraries/bootstrap/bootstrap.min.js"></script>
@@ -108,46 +115,15 @@
 <script src="libraries/jquery/jquery.scrollTo.min.js"></script>
 <script src="libraries/keymaster/keymaster.js"></script>
 
-
-<!-- nur bei hosting über node.js -->
-<script src="socket.io/socket.io.js"></script>
-
-
-<!-- A Nicer Way -->
-<script src="js/utilities.js"></script>
-<script src="js/ANicerWay.js"></script>
+<!-- socket -->
+<script src="/socket.io/socket.io.js"></script>
 
 
-<!-- Services -->
-<script src="js/services/HypeService.js"></script>
-<script src="js/services/PouchDBService.js"></script>
-<script src="js/services/SocketIOService.js"></script>
-<script src="js/services/SocketSimulatorService.js"></script>
+<!-- inject:js -->
+<!-- endinject -->
 
 
-<!-- Controller -->
-<script src="js/controllers/ConsoleController.js"></script>
-<script src="js/controllers/SmartphoneSimController.js"></script>
-<script src="js/controllers/StatusDisplayController.js"></script>
-<script src="js/controllers/TimeWayController.js"></script>
-<script src="js/controllers/NavigationController.js"></script>
-<script src="js/controllers/DataDisplayController.js"></script>
-<script src="js/controllers/RemoteDisplayController.js"></script>
-<script src="js/controllers/HelpController.js"></script>
-<script src="js/controllers/CharacterController.js"></script>
-<script src="js/controllers/DisplayController.js"></script>
 
-
-<!-- Main -->
-<script src="js/main.js"></script>
-<script src="js/test.js"></script>
-
-
-<!-- Editor -->
-<script src="js/editor/controllers/EditorDevicesController.js"></script>
-<script src="js/editor/controllers/EditorSlidesController.js"></script>
-<script src="js/editor/controllers/EditorToolbarSideController.js"></script>
-<script src="js/editor/editor.js"></script>
 
 <script>
 

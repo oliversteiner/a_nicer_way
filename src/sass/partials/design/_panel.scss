@@ -1,0 +1,125 @@
+// Design
+@import 'colors';
+@import 'fonts';
+
+// Panel
+// ---------------------------------
+
+.nicer-panel {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+
+}
+
+.nicer-panel {
+  position: absolute;
+  box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.2);
+  background-color: $color-panel-background;
+  border: 1px solid $color-panel-line-bright;
+  border-radius: 10px;
+
+  left: 100px;
+  top: 200px;
+
+  width: 300px;
+}
+
+// HEADER
+// ---------------------------------
+
+.nicer-panel-header,
+.nicer-panel-section-header {
+  position: relative;
+  height: 35px;
+  padding: 6px 10px;
+  cursor: pointer;
+
+}
+
+.nicer-panel-title,
+.nicer-panel-section-title {
+  position: relative;
+  display: inline-block;
+  color: $color-panel-title;
+
+  > .glyphicon {
+    margin-right: 5px;
+  }
+}
+
+.nicer-panel-header {
+}
+
+.nicer-panel-header.closed {
+  border-bottom: none;
+}
+
+.nicer-panel-close-button,
+.nicer-panel-option-button {
+  position: relative;
+  display: inline-block;
+  float: right;
+}
+
+.nicer-panel-footer {
+  height: 10px;
+
+}
+
+// Section
+// ---------------------------------
+
+.nicer-panel-section {
+
+}
+
+.nicer-panel-section-header {
+
+  border-top: 1px solid $color-panel-line-bright;
+  background-color:  $color-panel-background-darker;
+
+}
+
+.nicer-panel-section-header.closed{
+  border-bottom:none;
+}
+
+.nicer-panel-section-title {
+  color: $color-panel-section-title;
+
+}
+
+.nicer-panel-option-button {
+
+}
+
+.nicer-panel-section-main {
+  padding: 10px;
+}
+
+.nicer-panel-seperator {
+  border: none;
+  border-bottom: 1px solid $color-panel-line-bright;
+  padding: 0;
+  margin: 15px 0;
+}
+
+// nav-pills
+
+.nicer-panel .nav > li > a {
+  padding: 0;
+  margin-right: 15px;
+  color: $color-panel-text-inactive;
+}
+
+.nicer-panel .nav > li > a:hover {
+  background-color: transparent;
+  color: $color-panel-text;
+
+}
+
+.nicer-panel .nav > li.active > a {
+  background-color: transparent;
+  color: $color-panel-link;
+}

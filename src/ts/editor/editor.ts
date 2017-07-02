@@ -3,7 +3,6 @@ class AnwEditor {
     private editorSlidesController: EditorSlidesController;
     private editorToolbarSideController: EditorToolbarSideController;
 
-
     constructor() {
         console.log('AnwEditor');
 
@@ -14,7 +13,7 @@ class AnwEditor {
     }
 
     start() {
-        EditorSlidesController.open();
+      //  EditorSlidesController.open();
     }
 }
 

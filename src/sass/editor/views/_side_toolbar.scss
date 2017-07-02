@@ -1,0 +1,23 @@
+
+#toolbar-buttons {
+  padding-top: 300px;
+  padding-left: 5px;
+
+}
+
+
+.side-toolbar-button {
+  margin-bottom: 10px;
+
+}
+
+#editor-toolbar-side-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 100vh;
+
+  background: $editor-background-dark;
+  border: 1px solid black;
+}

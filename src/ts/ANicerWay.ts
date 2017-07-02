@@ -88,6 +88,8 @@ class ANicerWay {
         this.goTo();
 
 
+
+
     }
 
     update() {
@@ -125,12 +127,17 @@ class ANicerWay {
                 aNicerWay.timeWayController.setList(list);
                 aNicerWay.timeWayController.update();
 
+                // Editor
+                aNWEditor.editorSlidesController.setList(list);
+                aNWEditor.editorSlidesController.update();
+
+
+                // Remote
                 socketIOService.sendList(list);
 
                 clearInterval(timer2);
             }
         }
-
     }
 
     updatePoint() {

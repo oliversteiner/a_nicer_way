@@ -1,0 +1,83 @@
+.picto,
+.picto-panel,
+.picto-20,
+.picto-30,
+.picto-20x45,
+.picto-35x40 {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.picto-panel {
+  width: 20px;
+  height: 20px;
+}
+
+.picto-20 {
+  width: 20px;
+  height: 20px;
+}
+
+.picto-30 {
+  width: 30px;
+  height: 30px;
+}
+
+.picto-20x45 {
+  width: 20px;
+  height: 45px;
+}
+
+.picto-35x40 {
+  width: 35px;
+  height: 40px;
+}
+
+
+.picto {
+  height: 20px;
+  width: 22px;
+}
+
+// -----------------------------------
+
+// smartphone
+.picto-smartphone{
+  background: url("../images/editor/picto/smartphone.svg");
+}
+.picto-smartphone:hover{
+  background: url("../images/editor/picto/smartphone-hover.svg");
+}
+.picto-smartphone:active{
+  background: url("../images/editor/picto/smartphone-active.svg");
+}
+
+
+// Panel
+// -----------------------------------
+
+.picto-options{
+  background: url("../images/editor/picto/options.svg");
+}
+.picto-options:hover{
+  background: url("../images/editor/picto/options-hover.svg");
+}
+.picto-options:active{
+  background: url("../images/editor/picto/options-active.svg");
+}
+
+// close
+.picto-close{
+  background: url("../images/editor/picto/close.svg");
+}
+.picto-close:hover{
+  background: url("../images/editor/picto/close-hover.svg");
+}
+.picto-close:active{
+  background: url("../images/editor/picto/close-active.svg");
+}
+

@@ -6,18 +6,22 @@
     <defs>
         <rect id="path-1" x="3.49557095" y="6.22222222" width="9.03368679" height="26.6666667" rx="3"></rect>
         <rect id="path-2" x="22.4663132" y="6.22222222" width="9.03368679" height="26.6666667" rx="3"></rect>
+        <ellipse id="path-3" cx="17.4977855" cy="20" rx="2.2584217" ry="2.22222222"></ellipse>
     </defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="picto/slides-active">
             <g id="Rectangle-6">
-                <use fill="#9B9B9B" fill-rule="evenodd" xlink:href="#path-1"></use>
-                <rect stroke="#D1D1D1" stroke-width="1" x="3.99557095" y="6.72222222" width="8.03368679" height="25.6666667" rx="3"></rect>
+                <use fill="#0C163E" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <rect stroke="#96C1F3" stroke-width="1" x="3.99557095" y="6.72222222" width="8.03368679" height="25.6666667" rx="3"></rect>
             </g>
             <g id="Rectangle-6-Copy">
-                <use fill="#9B9B9B" fill-rule="evenodd" xlink:href="#path-2"></use>
-                <rect stroke="#D1D1D1" stroke-width="1" x="22.9663132" y="6.72222222" width="8.03368679" height="25.6666667" rx="3"></rect>
+                <use fill="#0C163E" fill-rule="evenodd" xlink:href="#path-2"></use>
+                <rect stroke="#96C1F3" stroke-width="1" x="22.9663132" y="6.72222222" width="8.03368679" height="25.6666667" rx="3"></rect>
             </g>
-            <ellipse id="Oval-5" stroke="#D1D1D1" fill="#9B9B9B" cx="17.4977855" cy="20" rx="2.2584217" ry="2.22222222"></ellipse>
+            <g id="Oval-5">
+                <use fill="#0C163E" fill-rule="evenodd" xlink:href="#path-3"></use>
+                <ellipse stroke="#96C1F3" stroke-width="1" cx="17.4977855" cy="20" rx="1.7584217" ry="1.72222222"></ellipse>
+            </g>
         </g>
     </g>
 </svg>

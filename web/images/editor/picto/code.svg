@@ -6,9 +6,11 @@
     <defs></defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="picto/code">
-            <rect id="Rectangle-6-Copy" fill="#EDEDED" x="3.5" y="6.22222222" width="28" height="28.4444444" rx="7"></rect>
-            <polyline id="Path-2" stroke="#979797" stroke-width="2" points="14 14.1409202 7.36102955 20.990563 14 27.5555556"></polyline>
-            <polyline id="Path-2-Copy" stroke="#979797" stroke-width="2" points="21 13.9202262 27.6389705 20.769869 21 27.3348616"></polyline>
+            <g id="Group" transform="translate(8.000000, 13.000000)" fill-rule="nonzero" fill="#9B9B9B">
+                <polygon id="&lt;" points="7 11.7428428 7 14.5555556 0.36102955 7.99056295 7 1.14092015 7 4.0145745 3.17524118 7.96070318"></polygon>
+                <polygon id="&gt;" points="12 3.79388059 12 0.920226244 18.6389705 7.76986904 12 14.3348616 12 11.5221489 15.8247588 7.74000927"></polygon>
+            </g>
+            <rect id="Rectangle-6-Copy" stroke="#979797" x="4" y="6.72222222" width="27" height="27" rx="4"></rect>
         </g>
     </g>
 </svg>

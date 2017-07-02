@@ -1,6 +1,6 @@
 var SocketIOService = (function () {
-    function SocketIOService() {
-        if (aNicerWay.socket_io) {
+    function SocketIOService(socket_io) {
+        if (socket_io) {
             this.socket = io();
             this.receiveCommand();
             this.receivePing();

@@ -4,15 +4,19 @@
     <title>picto/shape-active</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <rect id="path-1" x="4.375" y="4.44444444" width="22.75" height="24.8888889"></rect>
+        <path d="M27.75,17.6685287 L27.75,9 C27.75,6.790861 25.959139,5 23.75,5 L23.75,5 L9,5 L9,5 C6.790861,5 5,6.790861 5,9 L5,9 L5,25.8888889 C5,28.0980279 6.790861,29.8888889 9,29.8888889 L11.72247,29.8888889 C11.3355398,28.776786 11.125,27.5800371 11.125,26.3333333 C11.125,20.442296 15.8260101,15.6666667 21.625,15.6666667 C23.9108202,15.6666667 26.0260425,16.4086772 27.75,17.6685287 Z" id="path-1"></path>
+        <ellipse id="path-2" cx="20.966494" cy="26.1274638" rx="10.9793908" ry="11.1536668"></ellipse>
     </defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="picto/shape-active">
-            <g id="Rectangle-6">
-                <use fill="#9B9B9B" fill-rule="evenodd" xlink:href="#path-1"></use>
-                <rect stroke="#EDEDED" stroke-width="1" x="4.875" y="4.94444444" width="21.75" height="23.8888889"></rect>
+            <g id="Combined-Shape">
+                <use fill="#0C163E" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <path stroke="#96C1F3" stroke-width="1" d="M27.25,16.7350603 L27.25,9 C27.25,7.06700338 25.6829966,5.5 23.75,5.5 L9,5.5 C7.06700338,5.5 5.5,7.06700338 5.5,9 L5.5,25.8888889 C5.5,27.8218855 7.06700338,29.3888889 9,29.3888889 L11.042003,29.3888889 C10.7665248,28.4038658 10.625,27.3781785 10.625,26.3333333 C10.625,20.1679008 15.5480899,15.1666667 21.625,15.1666667 C23.6365361,15.1666667 25.5673911,15.7164876 27.25,16.7350603 Z"></path>
             </g>
-            <ellipse id="Oval-3" stroke="#EDEDED" fill="#9B9B9B" cx="21" cy="25.7777778" rx="10.5" ry="10.6666667"></ellipse>
+            <g id="Oval-3">
+                <use fill="#0C163E" fill-rule="evenodd" xlink:href="#path-2"></use>
+                <ellipse stroke="#96C1F3" stroke-width="1" cx="20.966494" cy="26.1274638" rx="10.4793908" ry="10.6536668"></ellipse>
+            </g>
         </g>
     </g>
 </svg>

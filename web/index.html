@@ -966,61 +966,60 @@
     <!-- inject:views/editor/editor_toolbar_side.html -->
     <div id="editor-toolbar-side-content" class="shadow-display">
 
-    <!-- tumbnails-area -->
-    <div id="slide-tumbnails-area-close-wrapper">
-        <div id="slide-tumbnails-area-close">
-            <span class="editor-button-20 triangle-close tumbnails-area-toggle-button"></span>
-            <span class="editor-button-20x45 editor-area-switcher-big"></span>
-        </div>
-    </div>
-
-
-    <!-- devices-area -->
-    <div id="slide-devices-area-close">
-        <span class="editor-button-20 triangle-close devices-area-toggle-button"></span>
-        <span class="editor-button-20x45 editor-area-switcher-big"></span>
-    </div>
-
-
     <div id="toolbar-buttons">
 
         <!-- text -->
-        <div><span class="editor-button-35x40 side-toolbar-text-button"></span></div>
+        <div class="side-toolbar-button"><span class="editor-button-35x40 side-toolbar-text-button"></span></div>
 
         <!-- Shape -->
-        <div><span class="editor-button-35x40 side-toolbar-shape-button"></span></div>
+        <div class="side-toolbar-button"><span class="editor-button-35x40 side-toolbar-shape-button"></span></div>
 
         <!-- image file -->
-        <div><span class="editor-button-35x40 side-toolbar-image_file-button"></span></div>
+        <div class="side-toolbar-button"><span class="editor-button-35x40 side-toolbar-image_file-button"></span></div>
 
         <!-- code -->
-        <div><span class="editor-button-35x40 side-toolbar-code-button"></span></div>
+        <div class="side-toolbar-button"><span class="editor-button-35x40 side-toolbar-code-button"></span></div>
 
         <!-- active zone -->
-        <div><span class="editor-button-35x40 side-toolbar-active-zone-button"></span></div>
+        <div class="side-toolbar-button"><span class="editor-button-35x40 side-toolbar-active-zone-button"></span></div>
 
         <!-- Seperator -->
-        <div><span class="side-toolbar-item side-toolbar-seperator"></span></div>
+        <div class="side-toolbar-button"><span class="side-toolbar-item side-toolbar-seperator"></span></div>
 
         <!-- character -->
-        <div><span class="editor-button-35x40 side-toolbar-character-button"></span></div>
+        <div class="side-toolbar-button"><span class="editor-button-35x40 side-toolbar-character-button"></span></div>
 
     </div>
 
 </div>
 
+
+
+<!-- devices-area -->
+<div id="slide-devices-area-close">
+    <span class="editor-button-20 triangle-close devices-area-toggle-button"></span>
+    <span class="editor-button-20x45 editor-area-switcher-big"></span>
+</div>
     <!-- endinject -->
 </div>
 
 
 <div id="editor-toolbar-top-container">
     <!-- inject:views/editor/editor_toolbar_top.html -->
-    <div id="editor-toolbar-top-content">
+    
+
+<div id="editor-toolbar-top-content">
+
+    <!-- tumbnails-area close -->
+    <div id="slide-tumbnails-area-close">
+        <span class="editor-button-20 triangle-close tumbnails-area-toggle-button"></span>
+        <span class="editor-button-20x45 editor-area-switcher-big"></span>
+    </div>
 
     <!-- tumbnails-area -->
     <div id="slide-tumbnails-area" class="shadow-display" style="display: none">
 
-        <div class="slide-list-container">
+        <div id="slide-list-container">
             <ul class="slide-list">
                 <li>
                     <div class="slide-list-wrapper" data-slide="slide-1">
@@ -1124,12 +1123,6 @@
         </div>
     </div>
 
-
-    <!-- devices-area -->
-    <div id="slide-devices-area" class="shadow-display"  style="display: none">
-
-    </div>
-
 </div>
     <!-- endinject -->
 </div>
@@ -1142,9 +1135,216 @@
 </div>
 
     <!-- endinject -->
-
 </div>
 
+<div id="panel-blank-container">
+    <!-- inject-panel:panels/panel_blank.html -->
+    <!-- Nicer Panel -->
+
+<!-- Panel header -->
+<!--    Title -->
+<!--    Close -->
+
+<!-- Panel Main-->
+<!--    Panel Section -->
+<!--    Panel Section Header -->
+<!--        Title -->
+<!--        Options -->
+<!--    Panel Section Main -->
+<!--    Panel Section Footer -->
+
+<!-- Panel Footer -->
+
+
+<!-- Nicer Panel -->
+<div id="nicer-panel-blank" class="nicer-panel" data-keystroke="x" data-nicer-panel="blank">
+
+    <!-- Panel Header -->
+    <div class="nicer-panel-header">
+        <!-- Title -->
+        <div class="nicer-panel-title">
+            <span class="glyphicon glyphicon-asterisk"></span>
+            Untitled
+        </div>
+        <!-- Close -->
+        <div class="nicer-panel-close-button">
+            <span class="picto-panel picto-close"></span>
+
+        </div>
+    </div>
+    <!-- Main -->
+    <div class="nicer-panel-main">
+
+
+    <!-- Panel Section -->
+    <section class="nicer-panel-section" data-panel-section="blank-section-1">
+
+        <!-- Panel Section Header -->
+        <div class="nicer-panel-section-header">
+
+            <!-- Title -->
+            <div class="nicer-panel-section-title">
+                <span class="glyphicon glyphicon-pencil"></span>
+                Section-1
+            </div>
+
+            <!-- Options -->
+            <div class="nicer-panel-option-button">
+                <span class="picto-panel picto-options"></span>
+            </div>
+
+        </div>
+
+        <!-- Panel Section Main -->
+        <div class="nicer-panel-section-main">
+            <ul>
+                <li>
+                    <p>listeneintrag</p>
+                </li>
+                <li>
+                    <p>listeneintrag</p>
+                </li>
+                <li>
+                    <p>listeneintrag</p>
+                </li>
+                <li>
+                    <p>listeneintrag</p>
+                </li>
+                <li>
+                    <p>listeneintrag</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Panel Section Footer -->
+        <div class="nicer-panel-section-footer"></div>
+    </section>
+
+
+    <!-- Panel Section -->
+    <section class="nicer-panel-section" data-panel-section="blank-section-2">
+        <!-- Panel Section Header -->
+
+        <!-- Title -->
+        <div class="nicer-panel-section-header">
+            <div class="nicer-panel-section-title">
+                <span class="glyphicon glyphicon-heart"></span>
+                Section-2
+            </div>
+
+            <!-- options -->
+            <div class="nicer-panel-option-button">
+                <span class="picto-panel picto-options"></span>
+            </div>
+        </div>
+
+        <!-- Panel Section Main -->
+        <div class="nicer-panel-section-main">
+            <p>Rerum reprehenderit quos dolores.
+                Nisi sunt veniam ut illum animi
+                vitae provident et. Corrupti vitae
+                laborum rerum dignissimos nulla blanditiis
+                ipsam voluptatem. Voluptatem magni enim
+                nihil autem debitis
+                eveniet.</p>
+
+            <hr class="nicer-panel-seperator"/>
+
+            <ul>
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+            </ul>
+
+        </div>
+        <!-- Panel Section Footer -->
+        <div class="nicer-panel-section-footer"></div>
+    </section>
+
+
+    <!-- Panel  Section with Tabs -->
+    <section class="nicer-panel-section" data-panel-section="blank-section-3">
+
+        <!-- Panel Section Header -->
+        <div class="nicer-panel-section-header">
+
+            <!-- Nav -->
+            <div class="nicer-panel-section-title">
+                <ul class="nav nav-pills" role="tablist">
+                    <li role="presentation" class="active"><a href="#start" role="tab" data-toggle="tab">Start</a></li>
+                    <li role="presentation"><a href="#profil" role="tab" data-toggle="tab">Profil</a></li>
+                    <li role="presentation"><a href="#nachrichten" role="tab" data-toggle="tab">Nachrichten</a>
+                </ul>
+            </div>
+
+            <!-- options -->
+            <div class="nicer-panel-option-button">
+                <span class="picto-panel picto-options"></span>
+            </div>
+
+        </div>
+
+        <!-- Panel Section Main -->
+        <div class="nicer-panel-section-main">
+
+            <div class="tab-content">
+
+                <!--Tab Tab-1-->
+                <div role="tabpanel" class="tab-pane active" id="start">
+
+                    <p>Rerum reprehenderit quos dolores.
+                        Nisi sunt veniam ut illum animi
+                        vitae provident et. Corrupti vitae
+                        laborum rerum dignissimos nulla blanditiis
+                        ipsam voluptatem. Voluptatem magni enim
+                        nihil autem debitis
+                        eveniet.</p>
+
+                    <hr class="nicer-panel-seperator"/>
+
+                    <ul>
+                        <li><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                    </ul>
+
+                </div>
+
+                <!--Tab Tab-2-->
+                <div role="tabpanel" class="tab-pane active" id="profil">
+                    <p>Corrupti vitae
+                        laborum rerum dignissimos nulla blanditiis
+                        ipsam voluptatem. Voluptatem magni enim
+                        nihil autem debitis
+                        eveniet.</p>
+                </div>
+
+                <!--Tab Tab-3-->
+                <div role="tabpanel" class="tab-pane active" id="nachrichten">
+                    <p>Voluptatem magni enim
+                        nihil autem debitis
+                        eveniet.</p>
+                    <ul>
+                        <li><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                    </ul>
+
+                    <p>Corrupti vitae
+                        laborum rerum dignissimos nulla blanditiis
+                        ipsam voluptatem. Voluptatem magni enim
+                        nihil autem debitis
+                        eveniet.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</div>
+    <!-- Panel Section Footer -->
+    <div class="nicer-panel-section-footer"></div>
+</div>
+    <!-- endinject -->
+</div>
 
 <footer>
     <div id="console-container">
@@ -1175,6 +1375,10 @@
 <div id="blackout"></div>
 
 
+
+
+
+
 <!-- Libraries -->
 <script src="libraries/jquery/jquery-3.2.1.min.js"></script>
 <script src="libraries/bootstrap/bootstrap.min.js"></script>
@@ -1183,46 +1387,41 @@
 <script src="libraries/jquery/jquery.scrollTo.min.js"></script>
 <script src="libraries/keymaster/keymaster.js"></script>
 
+<!-- socket -->
+<script src="/socket.io/socket.io.js"></script>
 
-<!-- nur bei hosting über node.js -->
-<script src="socket.io/socket.io.js"></script>
 
-
-<!-- A Nicer Way -->
-<script src="js/utilities.js"></script>
+<!-- inject:js -->
 <script src="js/ANicerWay.js"></script>
-
-
-<!-- Services -->
+<script src="js/main.js"></script>
+<script src="js/test.js"></script>
+<script src="js/utilities.js"></script>
+<script src="js/controllers/CharacterController.js"></script>
+<script src="js/controllers/ConsoleController.js"></script>
+<script src="js/controllers/DataDisplayController.js"></script>
+<script src="js/controllers/DisplayController.js"></script>
+<script src="js/controllers/HelpController.js"></script>
+<script src="js/controllers/NavigationController.js"></script>
+<script src="js/controllers/PanelController.js"></script>
+<script src="js/controllers/RemoteDisplayController.js"></script>
+<script src="js/controllers/SmartphoneSimController.js"></script>
+<script src="js/controllers/StatusDisplayController.js"></script>
+<script src="js/controllers/TimeWayController.js"></script>
+<script src="js/controllers/TimerController.js"></script>
+<script src="js/editor/editor.js"></script>
 <script src="js/services/HypeService.js"></script>
 <script src="js/services/PouchDBService.js"></script>
 <script src="js/services/SocketIOService.js"></script>
 <script src="js/services/SocketSimulatorService.js"></script>
-
-
-<!-- Controller -->
-<script src="js/controllers/ConsoleController.js"></script>
-<script src="js/controllers/SmartphoneSimController.js"></script>
-<script src="js/controllers/StatusDisplayController.js"></script>
-<script src="js/controllers/TimeWayController.js"></script>
-<script src="js/controllers/NavigationController.js"></script>
-<script src="js/controllers/DataDisplayController.js"></script>
-<script src="js/controllers/RemoteDisplayController.js"></script>
-<script src="js/controllers/HelpController.js"></script>
-<script src="js/controllers/CharacterController.js"></script>
-<script src="js/controllers/DisplayController.js"></script>
-
-
-<!-- Main -->
-<script src="js/main.js"></script>
-<script src="js/test.js"></script>
-
-
-<!-- Editor -->
 <script src="js/editor/controllers/EditorDevicesController.js"></script>
 <script src="js/editor/controllers/EditorSlidesController.js"></script>
+<script src="js/editor/controllers/EditorSlidesDetailsController.js"></script>
 <script src="js/editor/controllers/EditorToolbarSideController.js"></script>
-<script src="js/editor/editor.js"></script>
+<script src="js/editor/services/DataTreeService.js"></script>
+<!-- endinject -->
+
+
+
 
 <script>
 

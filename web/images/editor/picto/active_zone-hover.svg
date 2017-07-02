@@ -4,13 +4,13 @@
     <title>picto/active_zone-hover</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <rect id="path-1" x="3.5" y="6.22222222" width="27.125" height="27.5555556" rx="7"></rect>
-        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="27.125" height="27.5555556" fill="white">
+        <rect id="path-1" x="3.5" y="6.22222222" width="27.5625" height="28" rx="4"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="27.5625" height="28" fill="white">
             <use xlink:href="#path-1"></use>
         </mask>
     </defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-dasharray="4">
-        <g id="picto/active_zone-hover" stroke="#979797" stroke-width="4" fill="#D1D1D1">
+        <g id="picto/active_zone-hover" stroke="#4A90E2" stroke-width="2">
             <use id="Rectangle-6" mask="url(#mask-2)" xlink:href="#path-1"></use>
         </g>
     </g>

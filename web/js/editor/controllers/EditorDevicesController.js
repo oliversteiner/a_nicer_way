@@ -33,5 +33,9 @@ var EditorDevicesController = (function () {
             EditorDevicesController.open();
         }
     };
+    EditorDevicesController.prototype.setList = function (list) {
+        this.timeWayPointList = list;
+    };
+    ;
     return EditorDevicesController;
 }());

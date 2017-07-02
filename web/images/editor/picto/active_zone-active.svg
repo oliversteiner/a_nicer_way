@@ -4,14 +4,14 @@
     <title>picto/active_zone-active</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <rect id="path-1" x="3.5" y="6.22222222" width="27.125" height="27.5555556" rx="7"></rect>
-        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="27.125" height="27.5555556" fill="white">
-            <use xlink:href="#path-1"></use>
-        </mask>
+        <rect id="path-1" x="3.5" y="6.22222222" width="27.5625" height="28" rx="4"></rect>
     </defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-dasharray="4">
-        <g id="picto/active_zone-active" stroke="#EDEDED" stroke-width="4" fill="#9B9B9B">
-            <use id="Rectangle-6" mask="url(#mask-2)" xlink:href="#path-1"></use>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="picto/active_zone-active">
+            <g id="Rectangle-6">
+                <use fill="#0C163E" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <rect stroke="#96C1F3" stroke-width="1" x="4" y="6.72222222" width="26.5625" height="27" rx="4"></rect>
+            </g>
         </g>
     </g>
 </svg>

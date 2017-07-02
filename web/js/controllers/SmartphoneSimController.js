@@ -140,7 +140,6 @@ var SmartphoneSimController = (function () {
         // Devs
         var height;
         var width;
-        var html;
         // die höhe und Breite vom smartphone holen
         var elem_height = $('#smartphone-frame').css('height');
         // vom rückgabewert "0000px" das "px"-suffix wegnehmen

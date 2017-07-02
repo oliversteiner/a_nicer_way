@@ -4,16 +4,15 @@
     <title>picto/image_file-active</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <rect id="path-1" x="4.375" y="6.22222222" width="26.25" height="27.5555556"></rect>
+        <rect id="path-1" x="4.375" y="6.22222222" width="26.25" height="27.5555556" rx="4"></rect>
     </defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="picto/image_file-active">
             <g id="Rectangle-6-Copy">
-                <use fill="#9B9B9B" fill-rule="evenodd" xlink:href="#path-1"></use>
-                <rect stroke="#979797" stroke-width="1" x="4.875" y="6.72222222" width="25.25" height="26.5555556"></rect>
+                <use fill="#0C163E" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <rect stroke="#96C1F3" stroke-width="1" x="4.875" y="6.72222222" width="25.25" height="26.5555556" rx="4"></rect>
             </g>
-            <ellipse id="Oval-4" stroke="#979797" fill="#D8D8D8" cx="15.3125" cy="12.8888889" rx="4.8125" ry="4.88888889"></ellipse>
-            <polygon id="Path-4" stroke="#979797" fill="#D8D8D8" points="30.1875 33.3333333 30.1875 17.3333333 25.8125 13.7777778 17.5 24.4444444 19.6875 27.1111111 14 20 4.8125 33.3333333"></polygon>
+            <path d="M18.3056199,24.8459205 L18.2957914,24.8642384 L13.9955322,21.1454526 L5.83180295,31.163613 L5,30.6085419 L13.7497831,17.4965349 L18.2082463,23.0794991 L26.2642589,12.4965349 L30.3743709,16.4940897 L29.6771479,17.210944 L26.2642589,15.560044 L18.8530379,23.8184141 L20.7274749,26.2691579 L19.9432751,26.8896357 L20.7312969,26.2739884 L19.9470971,26.8944662 L18.3056199,24.8459205 Z M15.3125,15.7708475 C13.4719964,15.7708475 11.9799735,14.2551417 11.9799735,12.3854238 C11.9799735,10.5157058 13.4719964,9 15.3125,9 C17.1530036,9 18.6450265,10.5157058 18.6450265,12.3854238 C18.6450265,14.2551417 17.1530036,15.7708475 15.3125,15.7708475 Z" id="image-landscape-copy" fill="#BFD4EC"></path>
         </g>
     </g>
 </svg>

@@ -3,17 +3,11 @@
     <!-- Generator: Sketch 45 (43475) - http://www.bohemiancoding.com/sketch -->
     <title>picto/image_file-hover</title>
     <desc>Created with Sketch.</desc>
-    <defs>
-        <rect id="path-1" x="4.375" y="6.22222222" width="26.25" height="27.5555556"></rect>
-    </defs>
+    <defs></defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="picto/image_file-hover">
-            <g id="Rectangle-6-Copy">
-                <use fill="#D1D1D1" fill-rule="evenodd" xlink:href="#path-1"></use>
-                <rect stroke="#979797" stroke-width="1" x="4.875" y="6.72222222" width="25.25" height="26.5555556"></rect>
-            </g>
-            <ellipse id="Oval-4" stroke="#979797" fill="#EDEDED" cx="15.3125" cy="12.8888889" rx="4.8125" ry="4.88888889"></ellipse>
-            <polygon id="Path-4" stroke="#979797" fill="#EDEDED" points="30.1875 33.3333333 30.1875 17.3333333 25.8125 13.7777778 17.5 24.4444444 19.6875 27.1111111 14 20 4.8125 33.3333333"></polygon>
+            <rect id="Rectangle-6-Copy" stroke="#4A90E2" x="4.875" y="6.72222222" width="25.25" height="26.5555556" rx="4"></rect>
+            <path d="M18.3056199,25.8459205 L18.2957914,25.8642384 L13.9955322,22.1454526 L5.83180295,32.163613 L5,31.6085419 L13.7497831,18.4965349 L18.2082463,24.0794991 L26.2642589,13.4965349 L30.3743709,17.4940897 L29.6771479,18.210944 L26.2642589,16.560044 L18.8530379,24.8184141 L20.7274749,27.2691579 L19.9432751,27.8896357 L20.7312969,27.2739884 L19.9470971,27.8944662 L18.3056199,25.8459205 Z M15.3125,16.7708475 C13.4719964,16.7708475 11.9799735,15.2551417 11.9799735,13.3854238 C11.9799735,11.5157058 13.4719964,10 15.3125,10 C17.1530036,10 18.6450265,11.5157058 18.6450265,13.3854238 C18.6450265,15.2551417 17.1530036,16.7708475 15.3125,16.7708475 Z" id="image-landscape" fill="#4A90E2"></path>
         </g>
     </g>
 </svg>

@@ -17,5 +17,5 @@ $(document).ready(function () {
     dataTreeService = new DataTreeService();
     aNWEditor = new AnwEditor();
     aNWEditor.start();
-    panels.blank.show();
+    panels.details.show();
 });

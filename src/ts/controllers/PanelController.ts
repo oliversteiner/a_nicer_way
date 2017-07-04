@@ -89,7 +89,7 @@ class PanelController {
 
 
         // Close
-        let closeButton = '#' + panel_id + ' .panel-close-button';
+        let closeButton = '#' + panel_id + ' .-close-button';
         let $closeButton = $(closeButton);
 
         // -- add EventListener
@@ -99,7 +99,7 @@ class PanelController {
 
 
         // Toggle Close
-        let toggleButton = '.' + panel_name + '-toggle-button';
+        let toggleButton = '.' + panel_id + '-toggle-button';
         let $toggleButton = $(toggleButton);
 
         // -- add EventListener
@@ -135,6 +135,16 @@ class PanelController {
             $section_main.slideToggle('fast');
             $(this).toggleClass('closed');
         });
+
+        // close
+        // -- add EventListener
+        $('.nicer-panel-close-button').click(function () {
+
+            let $close_button = $(this).parent().parent();
+            console.log($close_button);
+            $close_button.hide();
+        });
+
 
 
         // Draggable

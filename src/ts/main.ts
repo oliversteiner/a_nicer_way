@@ -41,7 +41,7 @@ $(document).ready(function () {
     aNWEditor = new AnwEditor();
     aNWEditor.start();
 
-    panels.blank.show();
+    panels.details.show();
 
 
 

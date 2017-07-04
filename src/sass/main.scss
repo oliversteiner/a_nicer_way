@@ -2,7 +2,8 @@
 @import 'partials/design/colors';
 @import 'partials/design/fonts';
 @import 'partials/design/button';
-@import 'partials/design/display';
+@import 'partials/design/form';
+
 
 // Utilitis
 @import 'partials/utilities/messages';
@@ -15,8 +16,6 @@
 @import 'partials/views/smartphone_sim';
 @import 'partials/views/status_display';
 @import 'partials/views/timeway';
-@import 'partials/views/navigation';
-@import 'partials/views/data_display';
 @import 'partials/views/footer';
 @import "partials/views/help";
 @import "partials/views/remote_display";
@@ -34,7 +33,10 @@
 @import "editor/views/top_toolbar";
 
 // Panels
-@import "partials/design/panel";
+@import "partials/panels/panel";
+@import "partials/panels/character";
+@import "partials/panels/navigation";
+@import "partials/panels/details";
 
 
 

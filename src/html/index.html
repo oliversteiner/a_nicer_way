@@ -48,10 +48,6 @@
         <!-- endinject -->
     </div>
 
-    <div id="navigation-display-container">
-        <!-- inject:views/navigation_display.html -->
-        <!-- endinject -->
-    </div>
 
     <div id="data-display-container">
         <!-- inject:views/data_display.html -->
@@ -74,10 +70,7 @@
         <!-- endinject -->
     </div>
 
-    <div id="character-display-container">
-        <!-- inject:views/character_display.html -->
-        <!-- endinject -->
-    </div>
+
 
 
 </main>
@@ -87,10 +80,8 @@
     <!-- endinject -->
 </div>
 
-<div id="panel-blank-container">
-    <!-- inject-panel:panels/panel_blank.html -->
-    <!-- endinject -->
-</div>
+
+
 
 <footer>
     <div id="console-container">
@@ -99,6 +90,33 @@
     </div>
 
 </footer>
+
+
+<div id="panels">
+
+    <div id="panel-details-container">
+        <!-- inject-panel:panels/panel_details.html -->
+        <!-- endinject -->
+    </div>
+
+    <div id="panel-blank-container">
+        <!-- inject-panel:panels/panel_blank.html -->
+        <!-- endinject -->
+    </div>
+
+    <div id="panel-navigation-container">
+        <!-- inject-panel:panels/panel_navigation.html -->
+        <!-- endinject -->
+    </div>
+
+    <div id="panel-character-container">
+        <!-- inject-panel:panels/panel_character.html -->
+        <!-- endinject -->
+    </div>
+
+</div>
+
+
 
 <div id="blackout"></div>
 
@@ -117,6 +135,7 @@
 
 <!-- socket -->
 <script src="/socket.io/socket.io.js"></script>
+
 
 
 <!-- inject:js -->

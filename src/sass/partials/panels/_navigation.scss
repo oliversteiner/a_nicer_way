@@ -1,17 +1,16 @@
-@import "../design/colors";
-@import "../design/fonts";
-
-
-#navigation-display-container{
-  position: absolute;
+#nicer-panel-navigation {
   left: 100px;
   top: 100px;
 }
 
-#navigation-display-content {
+#navigation-content {
+  padding: 15px;
 
-  font-size: 0.8em;
+}
 
+#navigation-content {
+
+  font-size: 1em;
 
   ul {
     padding: 0;

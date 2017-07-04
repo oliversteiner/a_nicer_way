@@ -1,7 +1,6 @@
 @import "../design/colors";
 @import "../design/fonts";
 
-
 // Default Nicer
 .btn-nicer {
   background-color: $color-button;
@@ -16,7 +15,6 @@
 .btn-nicer:active {
   background-color: $color-button-active;
 }
-
 
 // Big
 .btn-nicer-big {
@@ -39,7 +37,6 @@
 
 }
 
-
 // transpatent
 .btn-nicer-transparent {
   cursor: pointer;
@@ -60,7 +57,6 @@
 .btn-nicer-transparent a {
   text-decoration: none;
 }
-
 
 // transpatent 2
 .btn-nicer-transparent-2 {
@@ -87,6 +83,16 @@
   text-decoration: none;
 }
 
-.btn-group-inline{
+.btn-group-inline {
   display: inline;
+}
+
+.btn-nicer-color-picker {
+  width: 28px;
+  height: 28px;
+
+  background: #96C1F3;
+  border: 1px solid #19051F;
+  box-shadow: inset -1px -1px 3px 1px rgba(0, 0, 0, 0.50);
+  border-radius: 3px;
 }

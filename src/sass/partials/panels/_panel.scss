@@ -1,6 +1,22 @@
-// Design
-@import 'colors';
-@import 'fonts';
+// Nicer-Panel
+
+$color-panel-highlight: #85b6f3;
+$color-panel-background: #3d3d3d;
+$color-panel-background-darker: #353535;
+
+$color-panel-brighter: #656565;
+$color-panel-darker: #2d2d2d;
+
+$color-panel-line-bright: #545454;
+$color-panel-line-dark: #2D2D2D;
+
+$color-panel-text: #FFFFFF;
+$color-panel-text-inactive: #a0a0a0;
+$color-panel-title: $color-panel-brighter;
+$color-panel-section-title: $color-panel-highlight;
+$color-panel-link: $color-panel-section-title;
+$color-panel-input: #323232;
+
 
 // Panel
 // ---------------------------------
@@ -20,7 +36,7 @@
   border-radius: 10px;
 
   left: 100px;
-  top: 200px;
+  top: 100px;
 
   width: 300px;
 }
@@ -56,7 +72,8 @@
 }
 
 .nicer-panel-close-button,
-.nicer-panel-option-button {
+.nicer-panel-option-button,
+.nicer-panel-tab-option-button{
   position: relative;
   display: inline-block;
   float: right;
@@ -122,4 +139,81 @@
 .nicer-panel .nav > li.active > a {
   background-color: transparent;
   color: $color-panel-link;
+}
+
+// Text
+
+.nicer-panel-col-right{
+  margin-left: 110px;
+  padding-top: 2px;
+}
+
+.nicer-panel-row {
+  border: 1px solid #4f4f4f;
+  margin: 0;
+  padding: 2px;
+  height: 35px;
+}
+
+.nicer-panel-row > label{
+  position: absolute;
+  width: 100px;
+}
+
+
+.nicer-panel-row .input-group-nicer{
+  margin-left: 110px;
+}
+
+
+
+.nicer-panel label{
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 14px;
+  text-align: right;
+  padding-top: 2px;
+
+}
+
+// Button
+
+.btn-nicer-panel{
+  width: 100%;
+
+}
+
+.btn-nicer-panel,
+.btn-nicer-panel-full,
+.btn-nicer-panel-33,
+.btn-nicer-panel-66,
+.btn-nicer-panel-half{
+  background-color: $color-panel-input;
+  border: 1px solid black;
+}
+
+.btn-nicer-panel-full{
+  display: block;
+  width: 228px;
+}
+
+.btn-nicer-panel-half{
+  width: 110px;
+}
+
+.btn-nicer-panel-33{
+  width: 70px;
+}
+
+.btn-nicer-panel-66{
+  width: 150px;
+}
+
+.btn-nicer-panel.btn-danger,
+.btn-nicer-panel-full.btn-danger,
+.btn-nicer-panel-33.btn-danger,
+.btn-nicer-panel-66.btn-danger,
+.btn-nicer-panel-half.btn-danger{
+  background-color: #510000;
+  border: 1px solid #280000;
 }

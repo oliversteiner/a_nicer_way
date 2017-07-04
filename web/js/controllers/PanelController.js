@@ -47,14 +47,14 @@ var PanelController = (function () {
         var panel_name = panel_id.replace('-content', '');
         $panel.hide();
         // Close
-        var closeButton = '#' + panel_id + ' .panel-close-button';
+        var closeButton = '#' + panel_id + ' .-close-button';
         var $closeButton = $(closeButton);
         // -- add EventListener
         $closeButton.click(function () {
             $panel.hide();
         });
         // Toggle Close
-        var toggleButton = '.' + panel_name + '-toggle-button';
+        var toggleButton = '.' + panel_id + '-toggle-button';
         var $toggleButton = $(toggleButton);
         // -- add EventListener
         $toggleButton.click(function () {
@@ -80,6 +80,13 @@ var PanelController = (function () {
             console.log($section_main);
             $section_main.slideToggle('fast');
             $(this).toggleClass('closed');
+        });
+        // close
+        // -- add EventListener
+        $('.nicer-panel-close-button').click(function () {
+            var $close_button = $(this).parent().parent();
+            console.log($close_button);
+            $close_button.hide();
         });
         // Draggable
         $panel.draggable();

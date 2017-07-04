@@ -1,0 +1,21 @@
+#nicer-panel-character{
+}
+
+
+
+
+// Flipp
+#nicer-panel-character > .flip-container {
+  border: none;
+  height: 50px;
+}
+
+#nicer-panel-character > .flip-container.flip {
+  height: 50px;
+}
+
+#nicer-panel-character >.flip-front,
+#nicer-panel-character > .flip-back {
+  border: none;
+  height: 50px;
+}

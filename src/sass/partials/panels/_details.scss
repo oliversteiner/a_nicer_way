@@ -1,0 +1,37 @@
+#nicer-panel-details {
+  top: 100px;
+  left: 400px;
+  //
+  width: 365px;
+}
+
+
+
+#detail-slide-id{}
+#detail-slide-name{
+
+}
+#detail-slide-number{
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  font-size: 48px;
+  color: $color-panel-brighter;
+}
+
+
+#detail-slide-character-button{
+  width: 130px;
+}
+
+#detail-slide-character-action-button{
+  width: 90px;
+}
+
+#detail-slide-name h2 {
+  position: relative;
+  font-size: 1.5em;
+  color: #85b6f3;
+  top: -21px;
+}
+

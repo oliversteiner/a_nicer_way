@@ -26,7 +26,7 @@
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
 </head>
-<body class="editor-active">
+<body class="">
 <nav class="navbar navbar-default navbar-nicer" id="main_navigation">
     <!-- inject:views/main_navigation.html -->
     <div class="container-fluid">
@@ -64,6 +64,7 @@
             <li><a class="modal-center-button-remote"><span class="glyphicon glyphicon-sort"></span></a></li>
             <li><a class="help-button-toggle " data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></a></li>
             <li><a class="nicer-panel-character-toggle-button"><span class="glyphicon glyphicon-knight"></span></a></li>
+            <li><a class="tumbnails-area-toggle-button-2">Editor</a></li>
         </ul>
 
         <ul class="nav  navbar-right">
@@ -75,6 +76,7 @@
                 </ul>
             </nav>
         </ul>
+
 
     </div><!-- /.navbar-collapse -->
 </div><!-- /.container-fluid -->
@@ -118,8 +120,8 @@
         <!-- inject:views/status_display.html -->
         <div id="status-display-content">
     <div class="status-display-navbar">
-        <div class="status-display-elem" id="status-display-feeling" >Feeling</div>
-        <div class="status-display-elem" id="status-display-date" >Datum</div>
+<!--        <div class="status-display-elem" id="status-display-feeling" >Feeling</div>
+        <div class="status-display-elem" id="status-display-date" >Datum</div>-->
         <div class="status-display-elem" id="status-display-place" >Ort</div>
         <div class="status-display-elem smartphone-sim-button-toggle" >
             <span id="status-display-smartphone"></span>
@@ -861,9 +863,10 @@
 
 
 
+
 </main>
 
-<div id="editor">
+<div id="editor" style="display: none">
     <!-- inject:views/editor/editor.html -->
     <div id="editor-toolbar-side-container">
     <!-- inject:views/editor/editor_toolbar_side.html -->
@@ -896,13 +899,6 @@
 
 </div>
 
-
-
-<!-- devices-area -->
-<div id="slide-devices-area-close">
-    <span class="editor-button-20 triangle-close devices-area-toggle-button"></span>
-    <span class="editor-button-20x45 editor-area-switcher-big"></span>
-</div>
     <!-- endinject -->
 </div>
 
@@ -916,7 +912,9 @@
     <!-- tumbnails-area close -->
     <div id="slide-tumbnails-area-close">
         <span class="editor-button-20 triangle-close tumbnails-area-toggle-button"></span>
+<!--
         <span class="editor-button-20x45 editor-area-switcher-big"></span>
+-->
     </div>
 
     <!-- tumbnails-area -->
@@ -1039,6 +1037,7 @@
 
     <!-- endinject -->
 </div>
+
 
 
 
@@ -1211,7 +1210,6 @@
             <!-- Title -->
             <div class="nicer-panel-section-header">
                 <div class="nicer-panel-section-title">
-                    <span class="glyphicon glyphicon-heart"></span>
                     User Journey
                 </div>
 
@@ -1226,7 +1224,7 @@
             <div class="nicer-panel-section-main">
 
                 <!-- Panel Section Options -->
-                <div class="nicer-panel-section-options">
+                <div class="nicer-panel-section-options" style="display: none">
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" id="blankCheckbox1" value="option1" aria-label="...">

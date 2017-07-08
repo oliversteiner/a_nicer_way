@@ -13,7 +13,22 @@ class AnwEditor {
     }
 
     start() {
-      //  EditorSlidesController.open();
+     //   EditorSlidesController.open();
+    }
+
+
+    addEventListeners() {
+
+        // toggle
+        $('.tumbnails-area-toggle-button').click(function () {
+            // editor modus
+
+            EditorSlidesController.toggle();
+
+        });
+
+
+
     }
 }
 

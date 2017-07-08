@@ -7,7 +7,14 @@ var AnwEditor = (function () {
         this.editorToolbarSideController = new EditorToolbarSideController();
     }
     AnwEditor.prototype.start = function () {
-        //  EditorSlidesController.open();
+        //   EditorSlidesController.open();
+    };
+    AnwEditor.prototype.addEventListeners = function () {
+        // toggle
+        $('.tumbnails-area-toggle-button').click(function () {
+            // editor modus
+            EditorSlidesController.toggle();
+        });
     };
     return AnwEditor;
 }());

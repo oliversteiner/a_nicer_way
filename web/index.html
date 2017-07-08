@@ -22,6 +22,9 @@
     <link rel="manifest" href="/images/icon/manifest.json">
     <meta name="theme-color" content="#ffffff">
 
+    <!-- Google Font Muli-->
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
 </head>
 <body class="editor-active">
 <nav class="navbar navbar-default navbar-nicer" id="main_navigation">
@@ -1101,23 +1104,19 @@
             <!-- Title -->
             <div class="nicer-panel-section-header">
                 <div class="nicer-panel-section-title">
-                    <span class="glyphicon glyphicon-heart"></span>
-                    User Journey
+
+                    <!--Slide Number -->
+                    <div id="detail-slide-number">99</div>
+
+                    <!-- Slide Title -->
+                    <div id="detail-slide-name" class="nicer-panel-col-right"><h2>Slide 2</h2></div>
                 </div>
 
-                <!-- options -->
-                <div class="nicer-panel-option-button">
-                    <span class="picto-panel picto-options"></span>
-                </div>
             </div>
 
 
             <!-- Panel Section Main -->
             <div class="nicer-panel-section-main">
-                <div class="nicer-panel-row">
-                    <div id="detail-slide-number">99</div>
-                    <div id="detail-slide-name" class="nicer-panel-col-right"><h2>Slide 2</h2></div>
-                </div>
                 <!-- Background -->
                 <div class="nicer-panel-row">
                     <label for="detail-slide-background">Hintergrund</label>
@@ -1177,7 +1176,7 @@
 
                         <button type="button"
                                 id="slide-detail-transition"
-                                class="btn btn-default btn-nicer-panel-full dropdown-toggle"
+                                class="btn btn-default btn-nicer-panel-100 dropdown-toggle"
                                 data-toggle="dropdown"
                                 aria-haspopup="true"
                                 aria-expanded="false">
@@ -1222,211 +1221,266 @@
                 </div>
             </div>
 
+
             <!-- Panel Section Main -->
             <div class="nicer-panel-section-main">
 
-                <!-- Zeit / Datum -->
+                <!-- Panel Section Options -->
+                <div class="nicer-panel-section-options">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="blankCheckbox1" value="option1" aria-label="...">
+                            </label>
+                            Checkbox Option
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="blankCheckbox2" value="option1" aria-label="...">
+                            </label>
+                            Checkbox Option
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="blankCheckbox3" value="option1" aria-label="...">
+                            </label>
+                            Checkbox Option
+                        </div>
 
-                <!-- Stadt -->
+                    </div>
+
+            <!-- Zeit / Datum -->
+
+
+            <div class="nicer-panel-row">
+
+                <label for="slide-detail-city">Datum / Zeit</label>
+
+                <div class="input-group input-group-nicer">
+                    <input id="slide-detail-city-input" name="slide-detail-city" type="text" class="form-control"
+                           aria-label="...">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div><!-- /btn-group -->
+                </div><!-- /input-group -->
+            </div>
+
+            <!-- Ort -->
+            <div class="nicer-panel-row">
+
+                <label for="slide-detail-place">Ort</label>
+
+                <div class="input-group input-group-nicer">
+                    <input id="slide-detail-place" name="slide-detail-place" type="text" class="form-control"
+                           aria-label="...">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div><!-- /btn-group -->
+                </div><!-- /input-group -->
+            </div>
+
+            <!-- Stadt -->
+
+            <div class="nicer-panel-row">
+
+                <label for="slide-detail-city">Stadt</label>
+
+                <div class="input-group input-group-nicer">
+                    <input id="slide-detail-city" name="slide-detail-city" type="text" class="form-control"
+                           aria-label="...">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div><!-- /btn-group -->
+                </div><!-- /input-group -->
+            </div>
+
+            <!-- Feeling -->
+            <div class="nicer-panel-row">
+
+                <label for="slide-detail-feeling">Feeling</label>
+                <div class="btn-group btn-group-xs nicer-panel-col-right" role="group">
+
+                    <button type="button"
+                            id="slide-detail-feeling"
+                            class="btn btn-default btn-nicer-panel-100 dropdown-toggle"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                        Neutral
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Gut</a></li>
+                        <li><a href="#">Neutral</a></li>
+                        <li><a href="#">Schlecht</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+            </div>
+
+    </div>
+    <!-- Panel Section Footer -->
+    <div class="nicer-panel-section-footer"></div>
+    </section>
+
+
+    <!-- Panel  Section with Tabs -->
+    <section class="nicer-panel-section" data-panel-section="details-section-3">
+
+        <!-- Panel Section Header -->
+        <div class="nicer-panel-section-header">
+
+            <!-- options -->
+            <div class="nicer-panel-tab-option-button">
+                <span class="picto-panel picto-options"></span>
+            </div>
+
+            <!-- Nav -->
+            <div class="nicer-panel-section-title">
+                <ul class="nav nav-pills" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#tab-screens" role="tab" data-toggle="tab">Screens</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#tab-hype" role="tab" data-toggle="tab">Hype</a></li>
+                    <li role="presentation">
+                        <a href="#tab-datenbank" role="tab" data-toggle="tab">Datenbank</a>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <!-- Panel Section Main -->
+        <div class="nicer-panel-section-main">
+
+            <!-- Panel Section Options -->
+            <div class="nicer-panel-section-options">
+                <!-- Device -->
 
                 <div class="nicer-panel-row">
 
-                    <label for="slide-detail-city">Stadt</label>
+                    <label for="slide-detail-screens-device">Device</label>
 
-                    <div class="input-group input-group-nicer">
-                        <input id="slide-detail-city-input" name="slide-detail-city" type="text" class="form-control"
-                               aria-label="...">
-                        <div class="input-group-btn">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </div><!-- /btn-group -->
-                    </div><!-- /input-group -->
-                </div>
-
-                <!-- Ort -->
-                <div class="nicer-panel-row">
-
-                    <label for="slide-detail-place">Ort</label>
-
-                    <div class="input-group input-group-nicer">
-                        <input id="slide-detail-place" name="slide-detail-place" type="text" class="form-control"
-                               aria-label="...">
-                        <div class="input-group-btn">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </div><!-- /btn-group -->
-                    </div><!-- /input-group -->
-                </div>
-
-                <!-- Stadt -->
-
-                <div class="nicer-panel-row">
-
-                    <label for="slide-detail-city">Stadt</label>
-
-                    <div class="input-group input-group-nicer">
-                        <input id="slide-detail-city" name="slide-detail-city" type="text" class="form-control"
-                               aria-label="...">
-                        <div class="input-group-btn">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </div><!-- /btn-group -->
-                    </div><!-- /input-group -->
-                </div>
-
-                <!-- Feeling -->
-                <div class="nicer-panel-row">
-
-                    <label for="slide-detail-feeling">Feeling</label>
                     <div class="btn-group btn-group-xs nicer-panel-col-right" role="group">
 
                         <button type="button"
-                                id="slide-detail-feeling"
-                                class="btn btn-default btn-nicer-panel-full dropdown-toggle"
+                                id="slide-detail-screens-device"
+                                class="btn btn-default btn-nicer-panel-100 dropdown-toggle"
                                 data-toggle="dropdown"
                                 aria-haspopup="true"
                                 aria-expanded="false">
-                            Neutral
+                            iPhone 6
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Gut</a></li>
-                            <li><a href="#">Neutral</a></li>
-                            <li><a href="#">Schlecht</a></li>
+                            <li><a href="#">iPhone 6</a></li>
+                            <li><a href="#">iPad Mini</a></li>
+                            <li><a href="#">iPad</a></li>
+                            <li><a href="#">iPad Pro</a></li>
+                            <li><a href="#">Desktop</a></li>
                         </ul>
                     </div><!-- /btn-group -->
                 </div>
 
-            </div>
-            <!-- Panel Section Footer -->
-            <div class="nicer-panel-section-footer"></div>
-        </section>
-
-
-        <!-- Panel  Section with Tabs -->
-        <section class="nicer-panel-section" data-panel-section="details-section-3">
-
-            <!-- Panel Section Header -->
-            <div class="nicer-panel-section-header">
-
-                <!-- options -->
-                <div class="nicer-panel-tab-option-button">
-                    <span class="picto-panel picto-options"></span>
-                </div>
-
-                <!-- Nav -->
-                <div class="nicer-panel-section-title">
-                    <ul class="nav nav-pills" role="tablist">
-                        <li role="presentation" class="active">
-                            <a href="#tab-screens" role="tab" data-toggle="tab">Screens</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#tab-hype" role="tab" data-toggle="tab">Hype</a></li>
-                        <li role="presentation">
-                            <a href="#tab-datenbank" role="tab" data-toggle="tab">Datenbank</a>
-                    </ul>
-                </div>
-
 
             </div>
 
-            <!-- Panel Section Main -->
-            <div class="nicer-panel-section-main">
 
-                <div class="tab-content">
+            <div class="tab-content">
 
-                    <!--Tab Tab-Screen-->
-                    <div role="tabpanel" class="tab-pane active" id="tab-screens">
+                <!--Tab Tab-Screen-->
+                <div role="tabpanel" class="tab-pane active" id="tab-screens">
 
-                        <!-- Screens -->
+                    <!-- Screens -->
 
 
-                        <!-- Background -->
-                        <div class="nicer-panel-row">
-                            <label for="slide-details-background-screens">Hintergrund</label>
-                            <div id="slide-details-background-screens">
-                                <div class="input-group input-group-nicer">
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default btn-nicer-color-picker"></button>
-                                    </div>
-
-                                    <input class="form-control" name="slide-details-background-screens" aria-label="">
-
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default dropdown-toggle"
-                                                data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false"><span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-right">
-                                            <li><a href="#">bild</a></li>
-                                            <li><a href="#">nichts</a></li>
-                                        </ul>
-                                    </div><!-- /btn-group -->
-
+                    <!-- Background -->
+                    <div class="nicer-panel-row">
+                        <label for="slide-details-background-screens">Hintergrund</label>
+                        <div id="slide-details-background-screens">
+                            <div class="input-group input-group-nicer">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default btn-nicer-color-picker"></button>
                                 </div>
 
+                                <input class="form-control" name="slide-details-background-screens" aria-label="">
+
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false"><span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#">bild</a></li>
+                                        <li><a href="#">nichts</a></li>
+                                    </ul>
+                                </div><!-- /btn-group -->
+
                             </div>
+
                         </div>
+                    </div>
 
-                        <!-- übergang -->
+                    <!-- übergang -->
 
-                        <div class="nicer-panel-row">
+                    <div class="nicer-panel-row">
 
-                            <label for="slide-detail-screens-transition">Übergang</label>
+                        <label for="slide-detail-screens-transition">Übergang</label>
 
-                            <div class="btn-group btn-group-xs nicer-panel-col-right" role="group">
+                        <div class="btn-group btn-group-xs nicer-panel-col-right" role="group">
 
-                                <button type="button"
-                                        id="slide-detail-screens-transition"
-                                        class="btn btn-default btn-nicer-panel-full dropdown-toggle"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false">
-                                    normal
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">slide in</a></li>
-                                    <li><a href="#">slide left</a></li>
-                                    <li><a href="#">flip</a></li>
-                                    <li><a href="#">Erscheinen</a></li>
-                                </ul>
-                            </div><!-- /btn-group -->
-                        </div>
+                            <button type="button"
+                                    id="slide-detail-screens-transition"
+                                    class="btn btn-default btn-nicer-panel-100 dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false">
+                                normal
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">slide in</a></li>
+                                <li><a href="#">slide left</a></li>
+                                <li><a href="#">flip</a></li>
+                                <li><a href="#">Erscheinen</a></li>
+                            </ul>
+                        </div><!-- /btn-group -->
+                    </div>
 
-                        <!-- Figur -->
-                        <div class="nicer-panel-row">
+                    <!-- Figur -->
+                    <div class="nicer-panel-row">
 
-                            <label for="detail-slide-character">Figur</label>
+                        <label for="detail-slide-character">Figur</label>
 
-                            <div class="btn-group btn-group-xs nicer-panel-col-right"
-                                 role="group">
+                        <div class="btn-group btn-group-xs nicer-panel-col-right"
+                             role="group">
 
-                                <!-- Character -->
+                            <!-- Character -->
 
-                                <span id="detail-slide-character">
+                            <span id="detail-slide-character">
                                         <button id="detail-slide-character-button"
                                                 type="button"
-                                                class="btn btn-default btn-xs dropdown-toggle btn-nicer-panel"
+                                                class="btn btn-default btn-xs dropdown-toggle btn-nicer-panel-66"
                                                 data-toggle="dropdown"
                                                 aria-haspopup="true" aria-expanded="false">
                                             Person
@@ -1440,12 +1494,12 @@
                                         </ul>
                                 </span>
 
-                                <!-- Character Action-->
-                                <span id="detail-slide-character-action">
+                            <!-- Character Action-->
+                            <span id="detail-slide-character-action">
 
                                     <!-- /btn-group -->
                                     <button id="detail-slide-character-action-button"
-                                            class="btn btn-default btn-xs dropdown-toggle btn-nicer-panel"
+                                            class="btn btn-default btn-xs dropdown-toggle btn-nicer-panel-33"
                                             type="button"
                                             data-toggle="dropdown"
                                             aria-haspopup="true"
@@ -1458,74 +1512,74 @@
                                         <li><a href="#">Warten</a></li>
                                     </ul>
                                 </span>
-                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <!--Tab Tab-HYPE-->
-                    <div role="tabpanel" class="tab-pane active" id="tab-hype">
+                <!--Tab Tab-HYPE-->
+                <div role="tabpanel" class="tab-pane" id="tab-hype">
 
 
-                        <!-- scene -->
-                        <div class="nicer-panel-row">
+                    <!-- scene -->
+                    <div class="nicer-panel-row">
 
-                            <label for="slide-detail-hype-screne">Scene</label>
+                        <label for="slide-detail-hype-screne">Scene</label>
 
-                            <div class="btn-group btn-group-xs nicer-panel-col-right" role="group">
+                        <div class="btn-group btn-group-xs nicer-panel-col-right" role="group">
 
-                                <button type="button"
-                                        id="slide-detail-hype-screne"
-                                        class="btn btn-default btn-nicer-panel-full dropdown-toggle"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false">
-                                    Scene 1
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Scene 1</a></li>
-                                    <li><a href="#">Scene 2</a></li>
-                                    <li><a href="#">Scene 3</a></li>
-                                    <li><a href="#">Scene 4</a></li>
-                                </ul>
-                            </div><!-- /btn-group -->
-                        </div>
+                            <button type="button"
+                                    id="slide-detail-hype-screne"
+                                    class="btn btn-default btn-nicer-panel-100 dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false">
+                                Scene 1
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Scene 1</a></li>
+                                <li><a href="#">Scene 2</a></li>
+                                <li><a href="#">Scene 3</a></li>
+                                <li><a href="#">Scene 4</a></li>
+                            </ul>
+                        </div><!-- /btn-group -->
+                    </div>
 
-                        <!-- übergang -->
-                        <div class="nicer-panel-row">
+                    <!-- übergang -->
+                    <div class="nicer-panel-row">
 
-                            <label for="slide-detail-hype-transition">Übergang</label>
+                        <label for="slide-detail-hype-transition">Übergang</label>
 
-                            <div class="btn-group btn-group-xs nicer-panel-col-right" role="group">
+                        <div class="btn-group btn-group-xs nicer-panel-col-right" role="group">
 
-                                <button type="button"
-                                        id="slide-detail-hype-transition"
-                                        class="btn btn-default btn-nicer-panel-full dropdown-toggle"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false">
-                                    normal
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">slide in</a></li>
-                                    <li><a href="#">slide left</a></li>
-                                    <li><a href="#">flip</a></li>
-                                    <li><a href="#">Erscheinen</a></li>
-                                </ul>
-                            </div><!-- /btn-group -->
+                            <button type="button"
+                                    id="slide-detail-hype-transition"
+                                    class="btn btn-default btn-nicer-panel-100 dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false">
+                                normal
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">slide in</a></li>
+                                <li><a href="#">slide left</a></li>
+                                <li><a href="#">flip</a></li>
+                                <li><a href="#">Erscheinen</a></li>
+                            </ul>
+                        </div><!-- /btn-group -->
 
-                        </div>
+                    </div>
 
-                        <!-- timeline -->
-                        <div class="nicer-panel-row">
+                    <!-- timeline -->
+                    <div class="nicer-panel-row">
 
-                            <label for="detail-slide-hype-timeline">Timeline</label>
+                        <label for="detail-slide-hype-timeline">Timeline</label>
 
-                            <div class="btn-group btn-group-xs nicer-panel-col-right"
-                                 role="group">
+                        <div class="btn-group btn-group-xs nicer-panel-col-right"
+                             role="group">
 
-                                <!-- Character -->
+                            <!-- Character -->
 
-                                <span id="detail-slide-hype-timeline">
+                            <span id="detail-slide-hype-timeline">
                                         <button id="detail-slide-hype-timeline-button"
                                                 type="button"
                                                 class="btn btn-default btn-xs dropdown-toggle btn-nicer-panel-66"
@@ -1540,8 +1594,8 @@
                                         </ul>
                                 </span>
 
-                                <!-- Character Action-->
-                                <span id="detail-slide-hype-timeline-action">
+                            <!-- Character Action-->
+                            <span id="detail-slide-hype-timeline-action">
 
                                     <!-- /btn-group -->
                                     <button id="detail-slide-hype-timeline-action-button"
@@ -1558,77 +1612,77 @@
                                         <li><a href="#">goTo..</a></li>
                                     </ul>
                                 </span>
-                            </div>
                         </div>
+                    </div>
 
-                        <!-- spezial -->
-                        <div class="nicer-panel-row">
+                    <!-- spezial -->
+                    <div class="nicer-panel-row">
 
-                            <label for="slide-detail-hype-special">Stadt</label>
+                        <label for="slide-detail-hype-special">Stadt</label>
 
+                        <div class="input-group input-group-nicer">
+                            <input id="slide-detail-hype-special"
+                                   name="slide-detail-hype-special"
+                                   type="text"
+                                   class="form-control"
+                                   aria-label="...">
+
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false"><span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div><!-- /btn-group -->
+                        </div><!-- /input-group -->
+                    </div>
+
+                    <!-- hr -->
+                    <hr class="nicer-panel-seperator"/>
+
+                    <!-- hintergrund -->
+                    <div class="nicer-panel-row">
+                        <label for="slide-details-background-hype-screens">Hintergrund</label>
+                        <div id="slide-details-background-hype-screens">
                             <div class="input-group input-group-nicer">
-                                <input id="slide-detail-hype-special"
-                                       name="slide-detail-hype-special"
-                                       type="text"
-                                       class="form-control"
-                                       aria-label="...">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default btn-nicer-color-picker"></button>
+                                </div>
+
+                                <input class="form-control" name="slide-details-background-screens" aria-label="">
 
                                 <div class="input-group-btn">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    <button type="button" class="btn btn-default dropdown-toggle"
+                                            data-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false"><span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">Separated link</a></li>
+                                        <li><a href="#">bild</a></li>
+                                        <li><a href="#">nichts</a></li>
                                     </ul>
                                 </div><!-- /btn-group -->
-                            </div><!-- /input-group -->
-                        </div>
-
-                        <!-- hr -->
-                        <hr class="nicer-panel-seperator"/>
-
-                        <!-- hintergrund -->
-                        <div class="nicer-panel-row">
-                            <label for="slide-details-background-hype-screens">Hintergrund</label>
-                            <div id="slide-details-background-hype-screens">
-                                <div class="input-group input-group-nicer">
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default btn-nicer-color-picker"></button>
-                                    </div>
-
-                                    <input class="form-control" name="slide-details-background-screens" aria-label="">
-
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default dropdown-toggle"
-                                                data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false"><span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-right">
-                                            <li><a href="#">bild</a></li>
-                                            <li><a href="#">nichts</a></li>
-                                        </ul>
-                                    </div><!-- /btn-group -->
-
-                                </div>
 
                             </div>
+
                         </div>
+                    </div>
 
-                        <!-- figur -->
-                        <div class="nicer-panel-row">
+                    <!-- figur -->
+                    <div class="nicer-panel-row">
 
-                            <label for="detail-slide-hype-character">Figur</label>
+                        <label for="detail-slide-hype-character">Figur</label>
 
-                            <div class="btn-group btn-group-xs nicer-panel-col-right"
-                                 role="group">
+                        <div class="btn-group btn-group-xs nicer-panel-col-right"
+                             role="group">
 
-                                <!-- Character -->
+                            <!-- Character -->
 
-                                <span id="detail-slide-hype-character">
+                            <span id="detail-slide-hype-character">
                                         <button id="detail-slide-hype-character-button"
                                                 type="button"
                                                 class="btn btn-default btn-xs dropdown-toggle btn-nicer-panel-66"
@@ -1646,8 +1700,8 @@
                                         </ul>
                                 </span>
 
-                                <!-- Character Action-->
-                                <span id="detail-slide-hype-character-action">
+                            <!-- Character Action-->
+                            <span id="detail-slide-hype-character-action">
 
                                     <!-- /btn-group -->
                                     <button id="detail-slide-hype-character-action-button"
@@ -1665,53 +1719,63 @@
                                         <li><a href="#">Warten</a></li>
                                     </ul>
                                 </span>
-                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tab Tab-Database-->
+                <div role="tabpanel" class="tab-pane" id="tab-datenbank">
+
+                    <!-- Delete Slide -->
+                    <div class="nicer-panel-row">
+                        <div class="nicer-panel-col-right">
+
+                            <button type="button"
+                                    id="data-display-button-delete"
+                                    class="btn btn-xs btn-nicer-panel-100 btn-danger nicer-panel-col-right">
+
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+
+                                Slide löschen
+                            </button>
                         </div>
                     </div>
 
-                    <!--Tab Tab-Database-->
-                    <div role="tabpanel" class="tab-pane active" id="tab-datenbank">
+                    <!-- Empty Database -->
+                    <div class="nicer-panel-row">
+                        <div class="nicer-panel-col-right">
 
-                        <!-- Delete Slide -->
-                        <div class="nicer-panel-row">
-                            <button type="button"
-                                    id="data-display-button-delete"
-                                    class="btn btn-xs btn-nicer-panel-full btn-danger nicer-panel-col-right">
-
-                                <span class="glyphicon glyphicon-trash" aria-hidden="true">Slide löschen</span>
-                            </button>
-                        </div>
-
-                        <!-- Empty Database -->
-                        <div class="nicer-panel-row">
                             <button type="button"
                                     id="data-display-button-erase-db"
-                                    class="btn btn-xs btn-nicer-panel-full btn-danger nicer-panel-col-right">
+                                    class="btn btn-xs btn-nicer-panel-100 btn-danger nicer-panel-col-right">
                                 Datenbank leeren
                             </button>
                         </div>
+                    </div>
 
-                        <!-- Fill with Default-->
-                        <div class="nicer-panel-row">
+
+                    <!-- Fill with Default-->
+                    <div class="nicer-panel-row">
+                        <div class="nicer-panel-col-right">
                             <button type="button"
                                     id="data-display-button-load-default"
-                                    class="btn btn-xs btn-nicer-panel-full btn-default nicer-panel-col-right">
+                                    class="btn btn-xs btn-nicer-panel-100 btn-default ">
                                 Musterdaten füllen
                             </button>
                         </div>
-
-
                     </div>
 
-                </div> <!-- tab-content -->
+                </div>
 
-            </div>
+            </div> <!-- tab-content -->
 
-        </section>
+        </div>
 
-    </div>
-    <!-- Panel Section Footer -->
-    <div class="nicer-panel-section-footer"></div>
+    </section>
+
+</div>
+<!-- Panel Section Footer -->
+<div class="nicer-panel-section-footer"></div>
 </div>
         <!-- endinject -->
     </div>
@@ -2094,7 +2158,9 @@
 
 
 <script>
-
+/*    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })*/
 
 </script>
 

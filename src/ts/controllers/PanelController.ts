@@ -123,7 +123,13 @@ class PanelController {
 
         });
 
+
+
+
+
+
         // section
+        // --------------------------------------
         let section_header = '#' + panel_id + ' .nicer-panel-section-header';
         let $section_header = $(section_header);
 
@@ -135,6 +141,28 @@ class PanelController {
             $section_main.slideToggle('fast');
             $(this).toggleClass('closed');
         });
+
+
+        // options
+        // --------------------------------------
+        let options_button = '#' + panel_id + ' .nicer-panel-option-button';
+        let $options_button = $(options_button);
+
+
+
+        // -- add EventListener
+        $options_button.click(function () {
+
+            let $section_option = $(this).parent().parent().find('.nicer-panel-section-options');
+            console.log($(this).parent().parent());
+            console.log($section_option);
+
+            $section_option.slideToggle('fast');
+            $(this).toggleClass('closed');
+        });
+
+
+
 
         // close
         // -- add EventListener

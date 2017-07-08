@@ -70,6 +70,9 @@ http://interactjs.io
 
 - keymaster
 
+- bootstrap 3 Datepicker
+https://eonasdan.github.io/bootstrap-datetimepicker/#minimum-setup
+
 
 
 ## Next / Todo

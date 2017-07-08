@@ -140,10 +140,10 @@ class TimeWayController {
 
                     // Append
                     p_titel.appendChild(text_title);
-                    div_number.appendChild(text_number);
+                  //  div_number.appendChild(text_number);
 
-                    div_twp.appendChild(div_number);
-                    div_twp.appendChild(p_titel);
+                  //  div_twp.appendChild(div_number);
+                  //  div_twp.appendChild(p_titel);
 
                     elemNav.appendChild(div_twp);
 

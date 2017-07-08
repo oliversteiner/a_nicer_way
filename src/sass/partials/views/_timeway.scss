@@ -211,44 +211,60 @@ $width-max: 16000px;
 // 14
 .schmuck-baerenplatz {
   background-image: url("../images/schmuck/schmuck-baerenplatz.png");
+  background-size: contain;
 
+}
+
+#layer-schmuck {
+  position: relative;
+  height: 600px;
+  width: $width-max;
+  top: 100px;
+  left: 0;
 }
 
 // schmuck
 .schmuck {
-  pointer-events: none;
   position: absolute;
-
+  pointer-events: none;
   display: inline-block;
-  background-position: left bottom;
+  margin-left: 60px;
+  background-size: cover;
+  height: 600px;
+  width: 300px;
+  background-position: bottom left;
   background-repeat: no-repeat;
 
-  width: 600px;
-  height: 600px;
-  background-color: transparent;
 }
-
-
 
 .schmuck-brunnen {
   background-image: url("../images/schmuck/schmuck-brunnen.png");
-  margin-left: 450px;
+  margin-left: 3000px;
+  height: 600px;
+  width: 300px;
 
 }
 
 .schmuck-denkmal-vadian {
   background-image: url("../images/schmuck/schmuck-denkmal-vadian.png");
-  margin-left: 400px;
+  margin-left: 5300px;
+  width: 400px;
 
 }
 
 .schmuck-parkbank {
   background-image: url("../images/schmuck/schmuck-parkbank.png");
   margin-left: 500px;
+  background-size: contain;
+  width: 400px;
+  margin-bottom: 50px;
+
 }
 
 .schmuck-strassenlaterne {
   background-image: url("../images/schmuck/schmuck-strassenlaterne.png");
-  margin-left: 300px;
+  margin-left: 800px;
+
+  width: 50px;
 
 }

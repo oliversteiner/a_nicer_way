@@ -33,7 +33,7 @@ var TimeWayController = (function () {
      * @param target
      */
     TimeWayController.scrollTo = function (target) {
-        $('#timeway-content').scrollTo('#' + target, 1000);
+        $('#timeway-content').scrollTo('#' + target, 2000);
     };
     TimeWayController.prototype.parallax = function () {
         var parent_old = 0;
@@ -49,10 +49,13 @@ var TimeWayController = (function () {
             else {
                 richtung = '-';
             }
-            ostParallax('#layer-1-himmel', '2', richtung);
-            ostParallax('#layer-2-berge', '3', richtung);
-            ostParallax('#layer-3-aktiv', '5', richtung);
-            ostParallax('#layer-4-baume', '6', richtung);
+            /*   ostParallax('#layer-1-himmel', '2', richtung);
+             ostParallax('#layer-2-berge', '3', richtung);
+             ostParallax('#layer-3-aktiv', '5', richtung);
+             ostParallax('#layer-4-baume', '6', richtung);*/
+            ostParallax('#layer-1-himmel', '0', richtung);
+            ostParallax('#layer-3-aktiv', '2', richtung);
+            ostParallax('#layer-4-baume', '3', richtung);
             parent_old = parent;
         });
     };

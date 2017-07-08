@@ -50,6 +50,7 @@ $(document).ready(function () {
         $('boby').toggleClass('editor-active');
         EditorSlidesController.toggle();
 
+
     });
 
 

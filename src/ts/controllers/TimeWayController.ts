@@ -112,11 +112,16 @@ class TimeWayController {
                 if (doc) {
                     let div_twp = document.createElement('div');
 
+
                     // a.class
-                    div_twp.setAttribute('class', 'timewaypoint');
+                    div_twp.setAttribute('class', 'timewaypoint timewaypoint-images '+doc.image);
+
+
 
                     // a.data-i
                     div_twp.setAttribute('id', doc._id);
+
+                    // div_twp.setAttribute('width', doc.width); // fehler muss style sein.
 
                     // P
                     let p_titel = document.createElement('p');

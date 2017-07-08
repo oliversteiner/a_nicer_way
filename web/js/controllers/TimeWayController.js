@@ -71,9 +71,10 @@ var TimeWayController = (function () {
                 if (doc) {
                     var div_twp = document.createElement('div');
                     // a.class
-                    div_twp.setAttribute('class', 'timewaypoint');
+                    div_twp.setAttribute('class', 'timewaypoint timewaypoint-images ' + doc.image);
                     // a.data-i
                     div_twp.setAttribute('id', doc._id);
+                    // div_twp.setAttribute('width', doc.width); // fehler muss style sein.
                     // P
                     var p_titel = document.createElement('p');
                     p_titel.setAttribute('class', 'timewaypoint-titel');

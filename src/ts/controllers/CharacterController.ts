@@ -93,16 +93,16 @@ class CharacterController {
     wink() {
 
         $('.character-active').addClass('wink');
-        $('.character-active').addClass('walk');
+       // $('.character-active').addClass('walk');
         let old = $('.character-active').css('background-color');
 
-        $('.character-active').css('background-color', 'red');
+     //   $('.character-active').css('background-color', 'red');
 
 
         setTimeout(function () {
             $('.character-active').removeClass('wink');
-            $('.character-active').removeClass('walk');
-            $('.character-active').css('background-color', old);
+          //  $('.character-active').removeClass('walk');
+          //  $('.character-active').css('background-color', old);
 
         }, 800);
     }

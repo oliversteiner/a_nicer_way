@@ -14,8 +14,9 @@
 }
 
 .wink {
-  border: 3px solid red;
-  background-color: red;
+
+  background-image: url("../images/character/character-kevin-winken.png");
+
 }
 
 // Test
@@ -25,7 +26,12 @@
 }
 
 #proto-1.character-test {
-  background-color: #b6b31d;
+  background-color: transparent;
+  background-image: url("../images/character/character-kevin-laufen.png");
+  background-size: cover;
+  height: 250px;
+  width: 140px;
+
 }
 
 #proto-2.character-test {

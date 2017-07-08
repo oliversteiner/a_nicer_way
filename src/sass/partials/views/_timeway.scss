@@ -3,6 +3,8 @@
 
 $color-timeway-ebene-viewport: rgb(164, 213, 237);
 
+$width-max: 16000px;
+
 #timeway {
   height: 600px;
   overflow: hidden;
@@ -29,7 +31,7 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
   background-repeat: repeat-x;
   background-size: 4000px;
 
-  width: 14000px;
+  width: $width-max;
   height: 600px;
 }
 
@@ -39,20 +41,20 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
   background-repeat: repeat-x;
   background-size: 4000px;
 
-  width: 14000px;
+  width: $width-max;
   height: 600px;
 }
 
 #layer-3-aktuell {
 
-  width: 14000px;
+  width: $width-max;
   height: 600px;
 }
 
 #layer-4-baume {
   pointer-events: none;
 
-  width: 14000px;
+  width: $width-max;
   height: 600px;
 }
 
@@ -63,7 +65,7 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
   display: inline-block;
   width: 1000px;
   height: 600px;
-  border: 1px solid green;
+  //  border: 1px solid green;
 
 }
 
@@ -130,10 +132,11 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
 }
 
 .timewaypoint-images {
-  background-position: center bottom;
+  background-position: left bottom;
   background-repeat: no-repeat;
-  // background-size: 300px;
   width: 1000px;
+  background-size: contain;
+
 }
 
 // 1
@@ -147,25 +150,38 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
 }
 
 // 4
-.haus-stadtbild {
-  background-image: url("../images/haus/haus-stadtbild.png");
-  width: 2580px;
+.haus-stadtbild-1 {
+  background-image: url("../images/haus/haus-stadtbild-1.png");
+  background-size: contain;
+}
+
+.haus-stadtbild-2 {
+  background-image: url("../images/haus/haus-stadtbild-2.png");
+  background-size: contain;
+}
+
+.haus-stadtbild-3 {
+  background-image: url("../images/haus/haus-stadtbild-3.png");
   background-size: contain;
 }
 
 .haus-bushaltestelle {
-  background-image: url("../images/haus/shaus-bushaltestelle.png");
+  background-image: url("../images/haus/haus-bushaltestelle.png");
 
 }
 
 .zimmer-kevins-schlafzimmer {
   background-image: url("../images/zimmer/zimmer-kevins-schlafzimmer.png");
+}
+
+// 13
+.haus-schulhaus {
+  background-image: url("../images/haus/haus-schulhaus.png");
 
 }
 
 .zimmer-schulzimmer {
   background-image: url("../images/zimmer/zimmer-schulzimmer.png");
-
 }
 
 // 10
@@ -174,37 +190,65 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
 
 }
 
-
-
-
 // 8 + 11
-.haus-treppe{
+.haus-treppe {
   background-image: url("../images/haus/haus-treppe.png");
 
 }
 
 // 12
-.zimmer-gruppenarbeit{
+.zimmer-gruppenarbeit {
   background-image: url("../images/zimmer/zimmer-gruppenarbeit.png");
 
 }
 
-
 // 13
-.haus-kornhaus{
-  background-image: url("../images/haus/haus-kornhaus.png");
-
-}
-
-
-// 13
-.haus-kornhaus{
+.haus-kornhaus {
   background-image: url("../images/haus/haus-kornhaus.png");
 
 }
 
 // 14
-.schmuck-baerenplatz{
+.schmuck-baerenplatz {
   background-image: url("../images/schmuck/schmuck-baerenplatz.png");
+
+}
+
+// schmuck
+.schmuck {
+  pointer-events: none;
+  position: absolute;
+
+  display: inline-block;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+
+  width: 600px;
+  height: 600px;
+  background-color: transparent;
+}
+
+
+
+.schmuck-brunnen {
+  background-image: url("../images/schmuck/schmuck-brunnen.png");
+  margin-left: 450px;
+
+}
+
+.schmuck-denkmal-vadian {
+  background-image: url("../images/schmuck/schmuck-denkmal-vadian.png");
+  margin-left: 400px;
+
+}
+
+.schmuck-parkbank {
+  background-image: url("../images/schmuck/schmuck-parkbank.png");
+  margin-left: 500px;
+}
+
+.schmuck-strassenlaterne {
+  background-image: url("../images/schmuck/schmuck-strassenlaterne.png");
+  margin-left: 300px;
 
 }

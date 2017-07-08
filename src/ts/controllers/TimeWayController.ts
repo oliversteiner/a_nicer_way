@@ -34,7 +34,6 @@ class TimeWayController {
         console.log('- Timeway ready');
 
 
-
     }
 
     update() {
@@ -52,7 +51,7 @@ class TimeWayController {
      */
     static  scrollTo(target: string) {
 
-        $('#timeway-content').scrollTo('#' + target, 1000);
+        $('#timeway-content').scrollTo('#' + target, 2000);
 
     }
 
@@ -76,10 +75,15 @@ class TimeWayController {
             } else {
                 richtung = '-';
             }
-            ostParallax('#layer-1-himmel', '2', richtung);
-            ostParallax('#layer-2-berge', '3', richtung);
-            ostParallax('#layer-3-aktiv', '5', richtung);
-            ostParallax('#layer-4-baume', '6', richtung);
+            /*   ostParallax('#layer-1-himmel', '2', richtung);
+             ostParallax('#layer-2-berge', '3', richtung);
+             ostParallax('#layer-3-aktiv', '5', richtung);
+             ostParallax('#layer-4-baume', '6', richtung);*/
+
+
+            ostParallax('#layer-1-himmel', '0', richtung);
+            ostParallax('#layer-3-aktiv', '2', richtung);
+            ostParallax('#layer-4-baume', '3', richtung);
 
             parent_old = parent;
         });
@@ -114,8 +118,7 @@ class TimeWayController {
 
 
                     // a.class
-                    div_twp.setAttribute('class', 'timewaypoint timewaypoint-images '+doc.image);
-
+                    div_twp.setAttribute('class', 'timewaypoint timewaypoint-images ' + doc.image);
 
 
                     // a.data-i

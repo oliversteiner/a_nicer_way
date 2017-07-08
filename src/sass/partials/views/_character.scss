@@ -23,6 +23,7 @@
 .character-test {
   width: 60px;
   height: 200px;
+  background-repeat: no-repeat;
 }
 
 #proto-1.character-test {
@@ -34,13 +35,21 @@
 
 }
 
-#proto-2.character-test {
-  background-color: #ff61f3;
-}
-
+// Bus
 #proto-3.character-test {
-  background-color: #6067ff;
-}
+  background-color: transparent;
+  background-image: url("../images/character/character-bus.png");
+  background-size: cover;
+  height: 250px;
+  width: 460px;}
+
+// bus
+#proto-2.character-test {
+  background-color: transparent;
+  background-image: url("../images/character/character-gruppe.png");
+  background-size: contain;
+  height: 260px;
+  width: 210px;}
 
 // Speech Bubble
 

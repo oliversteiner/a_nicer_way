@@ -10,7 +10,7 @@ var EditorSlidesController = (function () {
      */
     EditorSlidesController.prototype.addEventListeners = function () {
         // toggle
-        $('.slide-list-tumbnail').click(function () {
+        $('.tumbnails-area-toggle-button').click(function () {
             EditorSlidesController.toggle();
         });
     };
@@ -115,7 +115,8 @@ var EditorSlidesController = (function () {
         var $slide = $('#slide-list-wrapper-id-' + number + ' .slide-list-tumbnail');
         console.log($slide);
         $slide.addClass('slide-list-tumbnail-active');
-        aNicerWay.displayController.data.show();
+        //  aNicerWay.displayController.data.show();
+        panels.details.show();
         aNicerWay.goTo(this.timeWayPointList[number]._id);
     };
     ;

@@ -87,9 +87,6 @@ class ANicerWay {
         this.addEventListeners();
         this.goTo();
 
-
-
-
     }
 
     update() {

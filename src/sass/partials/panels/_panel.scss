@@ -10,22 +10,49 @@ $color-panel-darker: #2d2d2d;
 $color-panel-line-bright: #545454;
 $color-panel-line-dark: #2D2D2D;
 
-$color-panel-text: #FFFFFF;
+// Text
+$color-panel-text: #b3b2c0;
 $color-panel-text-inactive: #a0a0a0;
 $color-panel-title: $color-panel-brighter;
 $color-panel-section-title: $color-panel-highlight;
 $color-panel-link: $color-panel-section-title;
-$color-panel-input: #323232;
 
+// Input Buttons
+$color-panel-input: #323232;
+$color-panel-buttons: $color-panel-input;
+$color-panel-buttons-hover: #222222;
+$color-panel-buttons-active: #000000;
+
+// Sizes
+
+$size-panel-right-content: 170px;
+$size-panel-left-content: 70px;
+$size-panel-from-left: 85px;
 
 // Panel
 // ---------------------------------
 
-.nicer-panel {
-  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+.nicer-panel,
+.nicer-panel label,
+.btn-xs, .btn-group-xs > .btn,
+.input-group-nicer > .form-control,
+.input-group-nicer > .input-group-addon,
+.input-group-nicer > .input-group-btn > .btn,
+.dropdown-menu {
+  font-family: "Muli", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
   font-weight: 300;
+  line-height: 1.3;
+  color: $color-panel-text;
 
+}
+
+.input-group-nicer > .form-control,
+.input-group-nicer > .input-group-addon,
+.input-group-nicer > .input-group-btn > .btn {
+  height: 23px;
+  padding: 2px 4px;
+  border-radius: 2px
 }
 
 .nicer-panel {
@@ -38,7 +65,7 @@ $color-panel-input: #323232;
   left: 100px;
   top: 100px;
 
-  width: 300px;
+  width: 250px;
 }
 
 // HEADER
@@ -73,7 +100,7 @@ $color-panel-input: #323232;
 
 .nicer-panel-close-button,
 .nicer-panel-option-button,
-.nicer-panel-tab-option-button{
+.nicer-panel-tab-option-button {
   position: relative;
   display: inline-block;
   float: right;
@@ -94,12 +121,12 @@ $color-panel-input: #323232;
 .nicer-panel-section-header {
 
   border-top: 1px solid $color-panel-line-bright;
-  background-color:  $color-panel-background-darker;
+  background-color: $color-panel-background-darker;
 
 }
 
-.nicer-panel-section-header.closed{
-  border-bottom:none;
+.nicer-panel-section-header.closed {
+  border-bottom: none;
 }
 
 .nicer-panel-section-title {
@@ -143,34 +170,30 @@ $color-panel-input: #323232;
 
 // Text
 
-.nicer-panel-col-right{
-  margin-left: 110px;
+.nicer-panel-col-right {
+  margin-left: 83px;
   padding-top: 2px;
 }
 
 .nicer-panel-row {
-  border: 1px solid #4f4f4f;
+  // border: 1px solid #4f4f4f;
   margin: 0;
   padding: 2px;
-  height: 35px;
+  height: 30px;
 }
 
-.nicer-panel-row > label{
+.nicer-panel-row > label {
   position: absolute;
-  width: 100px;
+  width: $size-panel-left-content;
+  text-align: right;
 }
 
-
-.nicer-panel-row .input-group-nicer{
-  margin-left: 110px;
+.nicer-panel-row .input-group-nicer {
+  margin-left: $size-panel-from-left;
 }
 
-
-
-.nicer-panel label{
+.nicer-panel label {
   text-decoration: none;
-  font-weight: normal;
-  font-size: 14px;
   text-align: right;
   padding-top: 2px;
 
@@ -178,42 +201,109 @@ $color-panel-input: #323232;
 
 // Button
 
-.btn-nicer-panel{
-  width: 100%;
-
-}
-
 .btn-nicer-panel,
-.btn-nicer-panel-full,
 .btn-nicer-panel-33,
 .btn-nicer-panel-66,
-.btn-nicer-panel-half{
-  background-color: $color-panel-input;
+.btn-nicer-panel-50,
+.btn-nicer-panel-100 {
+
+  // Default
+  width: 100%;
+
+  background-color: $color-panel-buttons;
   border: 1px solid black;
+  height: 23px;
+  padding: 0;
+  margin: 0;
+
+  &:hover {
+    background-color: $color-panel-buttons-hover;
+    border: 1px solid black;
+  }
+  &:active {
+    background-color: $color-panel-buttons-active;
+    border: 1px solid black;
+
+  }
+
+  // Danger
+  &.btn-danger {
+    background-color: #3f0000;
+    border: 1px solid #280000;
+  }
+
+  &.btn-danger:hover {
+    background-color: #b10000;
+    border: 1px solid #280000;
+  }
+
+  &.btn-danger:active {
+    background-color: #000000;
+    color: red;
+  }
+
+  // Drop-down
+
 }
 
-.btn-nicer-panel-full{
+// Sizes
+
+.btn-nicer-panel-100 {
   display: block;
-  width: 228px;
+  width: $size-panel-right-content; // 170px
 }
 
-.btn-nicer-panel-half{
+.btn-nicer-panel-50 {
+  width: $size-panel-right-content / 2;
+}
+
+.btn-nicer-panel-33 {
+  width: 57px;
+}
+
+.btn-nicer-panel-66 {
   width: 110px;
 }
 
-.btn-nicer-panel-33{
-  width: 70px;
+// Dropdown Menu
+
+.nicer-panel .dropdown-menu {
+  background-color: $color-panel-input;
+  width: $size-panel-right-content;
+
+  margin: 0;
+  border: solid 1px black;
+  border-radius: 0 0 3px 3px;
+
 }
 
-.btn-nicer-panel-66{
-  width: 150px;
+// Form & Input
+
+.nicer-panel .input-group {
+  border: solid 1px black;
+  max-width: $size-panel-right-content;
+  border-radius: 5px;
+
 }
 
-.btn-nicer-panel.btn-danger,
-.btn-nicer-panel-full.btn-danger,
-.btn-nicer-panel-33.btn-danger,
-.btn-nicer-panel-66.btn-danger,
-.btn-nicer-panel-half.btn-danger{
-  background-color: #510000;
-  border: 1px solid #280000;
+// Inputs
+.nicer-panel input {
+  background-color: $color-panel-input;
+  color: white;
 }
+
+// Optionen
+
+.nicer-panel-section-options {
+  position: relative;
+  top: -10px;
+  border-bottom: 1px solid $color-panel-line-bright;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+
+  .checkbox{
+    margin: 5px 0 5px 0;
+  }
+}
+
+

@@ -18,7 +18,7 @@ class EditorSlidesController {
     addEventListeners() {
 
         // toggle
-        $('.slide-list-tumbnail').click(function () {
+        $('.tumbnails-area-toggle-button').click(function () {
             EditorSlidesController.toggle()
         });
 
@@ -154,7 +154,9 @@ class EditorSlidesController {
         console.log($slide);
 
         $slide.addClass('slide-list-tumbnail-active');
-        aNicerWay.displayController.data.show();
+      //  aNicerWay.displayController.data.show();
+        panels.details.show();
+
         aNicerWay.goTo(this.timeWayPointList[number]._id);
 
     };

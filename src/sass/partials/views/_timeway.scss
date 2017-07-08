@@ -21,40 +21,38 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
   overflow-y: hidden;
   height: 600px;
 
-
-
 }
 
 #layer-1-himmel {
-  background: url("../images/timeway/ANW_Himmel.jpg");
+  background: url("../images/papierhintergrund.jpg");
   background-position: left bottom;
   background-repeat: repeat-x;
   background-size: 4000px;
 
-  width: 8000px;
+  width: 14000px;
   height: 600px;
 }
 
 #layer-2-berge {
-  background: url("../images/timeway/ANW_Berge.png");
+  // background: url("../images/timeway/ANW_Berge.png");
   background-position: left bottom;
   background-repeat: repeat-x;
   background-size: 4000px;
 
-  width: 8000px;
+  width: 14000px;
   height: 600px;
 }
 
 #layer-3-aktuell {
 
-  width: 8000px;
+  width: 14000px;
   height: 600px;
 }
 
 #layer-4-baume {
-  pointer-events:none;
+  pointer-events: none;
 
-  width: 8000px;
+  width: 14000px;
   height: 600px;
 }
 
@@ -63,8 +61,10 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
   padding: 0;
   position: relative;
   display: inline-block;
-  width: 700px;
+  width: 1000px;
   height: 600px;
+  border: 1px solid green;
+
 }
 
 .ost-parallax {
@@ -78,27 +78,27 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
 // Bäume:
 
 .baum-1 {
-  background: url("../images/timeway/ANW_Baum_1.png");
+  // background: url("../images/timeway/ANW_Baum_1.png");
 }
 
 .baum-2 {
-  background: url("../images/timeway/ANW_Baum_2.png");
+  // background: url("../images/timeway/ANW_Baum_2.png");
 }
 
 .baum-3 {
-  background: url("../images/timeway/ANW_Baum_3.png");
+  // background: url("../images/timeway/ANW_Baum_3.png");
 }
 
 .busch-1 {
-  background: url("../images/timeway/ANW_Busch_1.png");
+  // background: url("../images/timeway/ANW_Busch_1.png");
 }
 
 .busch-2 {
-  background: url("../images/timeway/ANW_Busch_2.png");
+  //  background: url("../images/timeway/ANW_Busch_2.png");
 }
 
 .deko {
-  pointer-events:none;
+  pointer-events: none;
 
   display: inline-block;
   background-position: left bottom;
@@ -117,14 +117,94 @@ $color-timeway-ebene-viewport: rgb(164, 213, 237);
   margin-right: 500px;
 }
 
-.timewaypoint-sequence-number{
+.timewaypoint-sequence-number {
   margin-top: 20px;
   margin-left: 100px;
   font-size: 50px;
   color: rgba(255, 255, 255, 0.5);
 }
 
-.timewaypoint-titel{
+.timewaypoint-titel {
   margin-top: 10px;
   margin-left: 100px;
+}
+
+.timewaypoint-images {
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  // background-size: 300px;
+  width: 1000px;
+}
+
+// 1
+.schmuck-busstop {
+  background-image: url("../images/schmuck/schmuck-busstop.png");
+}
+
+// 2
+.haus-kevins-haus {
+  background-image: url("../images/haus/haus-kevins-haus.png");
+}
+
+// 4
+.haus-stadtbild {
+  background-image: url("../images/haus/haus-stadtbild.png");
+  width: 2580px;
+  background-size: contain;
+}
+
+.haus-bushaltestelle {
+  background-image: url("../images/haus/shaus-bushaltestelle.png");
+
+}
+
+.zimmer-kevins-schlafzimmer {
+  background-image: url("../images/zimmer/zimmer-kevins-schlafzimmer.png");
+
+}
+
+.zimmer-schulzimmer {
+  background-image: url("../images/zimmer/zimmer-schulzimmer.png");
+
+}
+
+// 10
+.zimmer-mensa {
+  background-image: url("../images/zimmer/zimmer-mensa.png");
+
+}
+
+
+
+
+// 8 + 11
+.haus-treppe{
+  background-image: url("../images/haus/haus-treppe.png");
+
+}
+
+// 12
+.zimmer-gruppenarbeit{
+  background-image: url("../images/zimmer/zimmer-gruppenarbeit.png");
+
+}
+
+
+// 13
+.haus-kornhaus{
+  background-image: url("../images/haus/haus-kornhaus.png");
+
+}
+
+
+// 13
+.haus-kornhaus{
+  background-image: url("../images/haus/haus-kornhaus.png");
+
+}
+
+// 14
+.schmuck-baerenplatz{
+  background-image: url("../images/schmuck/schmuck-baerenplatz.png");
+
 }

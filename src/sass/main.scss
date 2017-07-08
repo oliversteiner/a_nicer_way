@@ -129,3 +129,18 @@ body.editor-active footer {
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.5);
 }
+
+
+
+#data-display-content {
+  position: absolute;
+  top: 60px;
+  left: 60px;
+
+}
+
+
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+  margin-left: 60px;
+}

@@ -41,7 +41,17 @@ $(document).ready(function () {
     aNWEditor = new AnwEditor();
     aNWEditor.start();
 
-    panels.details.show();
+
+    // toggle
+    $('.tumbnails-area-toggle-button-2').click(function () {
+        // editor modus
+
+        $('#editor').toggle();
+        $('boby').toggleClass('editor-active');
+        EditorSlidesController.toggle();
+
+
+    });
 
 
 

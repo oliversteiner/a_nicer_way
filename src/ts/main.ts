@@ -14,6 +14,9 @@ declare let aNWEditor: any;
 // Panels
 declare  let panels: any;
 
+// others
+declare let scroll_direction: string;
+
 
 let options = {
     simulator_size: 'mittel', // voll, halb, klein, mittel, gross
@@ -55,5 +58,30 @@ $(document).ready(function () {
 
 
 
+
 });
 
+
+$(function () {
+// https://jsfiddle.net/ZzaichikK/MUvsG/
+
+    // show hide subnav depending on scroll direction
+    var position = $(window).scrollLeft();
+
+    $(window).scroll(function () {
+        var scroll = $(window).scrollLeft();
+
+        if (scroll > position) {
+
+            scroll_direction = "right";
+
+        } else {
+
+            scroll_direction = "left";
+
+        }
+
+        position = scroll;
+    });
+
+});

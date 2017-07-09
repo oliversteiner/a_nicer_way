@@ -37,8 +37,13 @@ var CharacterController = (function () {
         for (var i = 0; i < list.length && i < charcodes_num.length; i++) {
             _loop_1(i);
         }
+        // winken
         key('w', function () {
             aNicerWay.characterController.wink();
+        });
+        // toggle Mobile
+        key('m', function () {
+            aNicerWay.characterController.toggleMobile();
         });
     };
     /**
@@ -56,7 +61,7 @@ var CharacterController = (function () {
                 aNicerWay.characterController.wink();
                 break;
             case 'wait':
-                aNicerWay.characterController.wait();
+                aNicerWay.characterController.toggleMobile();
                 break;
             default:
                 break;
@@ -68,14 +73,11 @@ var CharacterController = (function () {
      */
     CharacterController.prototype.wink = function () {
         $('.character-active').addClass('wink');
-        // $('.character-active').addClass('walk');
-        var old = $('.character-active').css('background-color');
-        $('.character-active').css('background-color', 'red');
+        $('.character-active').removeClass('wate');
         setTimeout(function () {
             $('.character-active').removeClass('wink');
-            //  $('.character-active').removeClass('walk');
-            $('.character-active').css('background-color', old);
-        }, 1800);
+            $('.character-active').addClass('wate');
+        }, 1000);
     };
     /**
      *
@@ -83,21 +85,41 @@ var CharacterController = (function () {
      */
     CharacterController.prototype.walk = function () {
         $('#timeway-content').scroll(function () {
+            var direction = scroll_direction;
             // fire only once
             if (_fired === false) {
-                $('.character').addClass('walk');
+                $('.character').removeClass('wate mobile wink');
+                if (direction == "right") {
+                    $('.character').addClass('walk');
+                }
+                else {
+                    $('.character').addClass('walk-backward');
+                }
                 _fired = true;
             }
             $('.character').addClass('walk');
             clearTimeout($.data(this, "scrollCheck"));
             $.data(this, "scrollCheck", setTimeout(function () {
-                $('.character').removeClass('walk');
+                $('.character').addClass('wate');
+                $('.character').removeClass('walk walk-backward');
                 // reset
                 _fired = false;
-            }, 250));
+            }, 200));
         });
     };
-    CharacterController.prototype.wait = function () {
+    CharacterController.prototype.mobile = function () {
+        $('.character-active').removeClass('wate');
+        $('.character-active').addClass('mobile');
+    };
+    CharacterController.prototype.toggleMobile = function () {
+        var check = $('.character-active').hasClass('mobile');
+        if (check) {
+            $('.character-active').removeClass('mobile');
+            $('.character-active').addClass('wate');
+        }
+        else {
+            this.mobile();
+        }
     };
     CharacterController.prototype.talk = function (text) {
         $('.speech-bubble').show();
@@ -122,7 +144,7 @@ var CharacterController = (function () {
             // nach Ende der Animation ausblenden
             $(elem).hide();
             $(elem).removeClass('flipdown');
-        }, 500);
+        }, 300);
     };
     /**
      *
@@ -139,7 +161,7 @@ var CharacterController = (function () {
             $(elem).click(function () {
                 aNicerWay.characterController.wink();
             });
-        }, 500);
+        }, 300);
     };
     /**
      *
@@ -166,7 +188,7 @@ var CharacterController = (function () {
             setTimeout(function () {
                 // neue Figur holen
                 aNicerWay.characterController.flipUp(elem_new_1);
-            }, 800);
+            }, 600);
         }
     };
     /**
@@ -262,7 +284,7 @@ var CharacterController = (function () {
                 if (character) {
                     var div_char = document.createElement('div');
                     div_char.setAttribute('id', character.id);
-                    div_char.setAttribute('class', 'character character-test');
+                    div_char.setAttribute('class', 'character wate');
                     div_char.setAttribute('style', 'display:none;');
                     elemNav.appendChild(div_char);
                     // Speachbubble

@@ -25,3 +25,18 @@ $(document).ready(function () {
         EditorSlidesController.toggle();
     });
 });
+$(function () {
+    // https://jsfiddle.net/ZzaichikK/MUvsG/
+    // show hide subnav depending on scroll direction
+    var position = $(window).scrollLeft();
+    $(window).scroll(function () {
+        var scroll = $(window).scrollLeft();
+        if (scroll > position) {
+            scroll_direction = "right";
+        }
+        else {
+            scroll_direction = "left";
+        }
+        position = scroll;
+    });
+});

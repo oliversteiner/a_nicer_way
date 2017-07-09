@@ -26,7 +26,7 @@ $width-max: 16000px;
 }
 
 #layer-1-himmel {
-  background: url("../images/papierhintergrund.jpg");
+  background: url("../images/papier/papierhintergrund.jpg");
   background-position: left bottom;
   background-repeat: repeat-x;
   background-size: 4000px;
@@ -34,6 +34,7 @@ $width-max: 16000px;
   width: $width-max;
   height: 600px;
 }
+
 
 #layer-2-berge {
   // background: url("../images/timeway/ANW_Berge.png");
@@ -238,7 +239,7 @@ $width-max: 16000px;
 }
 
 .schmuck-brunnen {
-  background-image: url("../images/schmuck/schmuck-brunnen.png");
+  background-image: url("../images/schmuck/schmuck-brunnen-1.png");
   margin-left: 3000px;
   height: 600px;
   width: 300px;

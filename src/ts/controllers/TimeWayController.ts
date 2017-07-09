@@ -9,6 +9,7 @@ class TimeWayController {
     private elem_Root: any;
     private elem_Content: any;
     private timeWayPointList: any;
+    public walk_direction: string;
 
 
     /**
@@ -20,6 +21,7 @@ class TimeWayController {
         // Vars
         this.elem_Root = document.getElementById('timeway-container');
         this.elem_Content = document.getElementById('timeway-content');
+        this.walk_direction = 'right';
 
 
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
@@ -72,6 +74,8 @@ class TimeWayController {
 
             if (parent_old < parent) {
                 richtung = '+';
+
+
             } else {
                 richtung = '-';
             }

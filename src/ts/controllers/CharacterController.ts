@@ -53,9 +53,16 @@ class CharacterController {
             });
         }
 
+        // winken
         key('w', function () {
             aNicerWay.characterController.wink();
         });
+
+        // toggle Mobile
+        key('m', function () {
+            aNicerWay.characterController.toggleMobile();
+        });
+
 
     }
 
@@ -77,7 +84,7 @@ class CharacterController {
                 break;
 
             case 'wait':
-                aNicerWay.characterController.wait();
+                aNicerWay.characterController.toggleMobile();
                 break;
 
             default:
@@ -93,18 +100,14 @@ class CharacterController {
     wink() {
 
         $('.character-active').addClass('wink');
-       // $('.character-active').addClass('walk');
-        let old = $('.character-active').css('background-color');
-
-        $('.character-active').css('background-color', 'red');
+        $('.character-active').removeClass('wate');
 
 
         setTimeout(function () {
             $('.character-active').removeClass('wink');
-          //  $('.character-active').removeClass('walk');
-            $('.character-active').css('background-color', old);
+            $('.character-active').addClass('wate');
 
-        }, 1800);
+        }, 1000);
     }
 
     /**
@@ -115,10 +118,22 @@ class CharacterController {
         $('#timeway-content').scroll(function () {
 
 
+            let direction = scroll_direction;
+
+
             // fire only once
             if (_fired === false) {
 
-                $('.character').addClass('walk');
+                $('.character').removeClass('wate mobile wink');
+
+                if (direction == "right") {
+                    $('.character').addClass('walk');
+
+                } else {
+
+                    $('.character').addClass('walk-backward');
+
+                }
 
                 _fired = true;
             }
@@ -132,19 +147,36 @@ class CharacterController {
             $.data(this, "scrollCheck", setTimeout(function () {
 
 
-                $('.character').removeClass('walk');
+                $('.character').addClass('wate');
+                $('.character').removeClass('walk walk-backward');
 
                 // reset
                 _fired = false;
 
-            }, 250));
+            }, 200));
 
         });
 
     }
 
-    wait() {
+    mobile() {
+        $('.character-active').removeClass('wate');
+        $('.character-active').addClass('mobile');
+    }
 
+
+    toggleMobile() {
+
+        let check = $('.character-active').hasClass('mobile');
+
+        if (check) {
+            $('.character-active').removeClass('mobile');
+            $('.character-active').addClass('wate');
+
+        }
+        else {
+            this.mobile();
+        }
     }
 
 
@@ -185,7 +217,7 @@ class CharacterController {
             $(elem).hide();
             $(elem).removeClass('flipdown');
 
-        }, 500)
+        }, 300)
     }
 
     /**
@@ -209,7 +241,7 @@ class CharacterController {
 
             })
 
-        }, 500)
+        }, 300)
     }
 
     /**
@@ -251,7 +283,7 @@ class CharacterController {
                 aNicerWay.characterController.flipUp(elem_new);
 
 
-            }, 800)
+            }, 600)
         }
     }
 
@@ -380,7 +412,7 @@ class CharacterController {
 
                     div_char.setAttribute('id', character.id);
 
-                    div_char.setAttribute('class', 'character character-test');
+                    div_char.setAttribute('class', 'character wate');
                     div_char.setAttribute('style', 'display:none;');
 
                     elemNav.appendChild(div_char);

@@ -13,52 +13,67 @@
   cursor: pointer;
 }
 
-// Test
-.character-test {
-  width: 60px;
-  height: 200px;
-  background-repeat: no-repeat;
-}
+
 
 // Kevin
-#proto-1.character-test {
+#proto-1 {
   background-color: transparent;
-  background-image: url("../images/character/character-kevin-laufen.png");
   background-size: cover;
   height: 400px;
-  width: 220px;
+  width: 250px;
+}
+
+#proto-1.wink {
+  background-image: url("../images/character/character-kevin-winken.png");
+}
+
+#proto-1.walk {
+  background-image: url("../images/character/character-kevin-laufen.png");
+}
+
+#proto-1.walk-backward {
+  background-image: url("../images/character/character-kevin-laufen-zurueck.png");
 
 }
 
+#proto-1.wate {
+  background-image: url("../images/character/character-kevin-warten.png");
+}
 
-#proto-1.character-test.wink {
+#proto-1.mobile {
+  background-image: url("../images/character/character-kevin-mobile.png");
+}
 
+
+
+// gruppe
+#proto-2 {
   background-color: transparent;
-  background-image: url("../images/character/character-kevin-winken.png");
-  background-size: cover;
+  background-image: url("../images/character/character-gruppe.png");
+  background-size: contain;
   height: 400px;
-  width: 220px;
+  width: 400px;
 }
 
 
 // Bus
-#proto-3.character-test {
+#proto-3 {
   background-color: transparent;
-  background-image: url("../images/character/character-bus.png");
+  background-image: url("../images/character/character-bus-mit-kevin.png");
   background-size: cover;
-  height: 322px;
-  width: 603px;
-  top:200px;
+  height: 400px;
+  width: 743px;
+
+  // nach links verschieben
+  left: -280px;
+
+  // die räder auf den weg
+  bottom: -30px
 }
 
-// gruppe
-#proto-2.character-test {
-  background-color: transparent;
-  background-image: url("../images/character/character-gruppe.png");
-  background-size: contain;
-  height: 370px;
-  width: 350px;
-}
+
+
+
 
 // Speech Bubble
 
@@ -79,9 +94,11 @@
   transform: scale(0);
 }
 
+
 // Animation Classes
 
-.walk {
+.walk,
+.walk-backward {
   animation: bounce 500ms infinite;
 }
 
@@ -90,20 +107,20 @@
 }
 
 .blobdown {
-  animation: blobup 500ms;
+  animation: blobup 300ms;
   transform-origin: bottom;
   animation-direction: reverse;
   transform: scale(0);
 }
 
 .flipdown {
-  animation: flipdown 500ms;
+  animation: flipdown 300ms;
   transform-origin: bottom;
   animation-timing-function: linear;
 }
 
 .flipup {
-  animation: flipdown 500ms;
+  animation: flipdown 300ms;
   transform-origin: bottom;
   animation-direction: reverse;
   animation-timing-function: linear;
@@ -116,7 +133,7 @@
     transform: scale(1, 1) translateY(0);
   }
   50% {
-    transform: scale(1.1, .9) translateY(10px);
+    transform: scale(1.05, .95) translateY(5px);
   }
   100% {
     transform: scale(1, 1) translateY(0);
@@ -128,7 +145,7 @@
     transform: rotateX(0deg);
   }
   to {
-    transform: rotateX(100deg);
+    transform: rotateX(90deg);
 
   }
 }

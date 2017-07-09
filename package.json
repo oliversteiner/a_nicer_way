@@ -28,8 +28,12 @@
     "gulp-sourcemaps": "^2.6.0",
     "has-flag": "^2.0.0",
     "merge2": "^1.1.0",
+    "native": "^0.3.3",
+    "natives": "^1.1.0",
+    "node-sass": "^4.5.3",
     "pouchdb": "^6.2.0",
     "serve-static": "^1.12.3",
+    "sigmund": "^1.0.1",
     "socket.io": "^2.0.3"
   }
 }

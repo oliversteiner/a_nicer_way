@@ -11,6 +11,7 @@ var TimeWayController = (function () {
         // Vars
         this.elem_Root = document.getElementById('timeway-container');
         this.elem_Content = document.getElementById('timeway-content');
+        this.walk_direction = 'right';
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         console.log('- Timeway load');
         // Aktionen verknüpfen

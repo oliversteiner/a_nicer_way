@@ -78,7 +78,9 @@ var TimeWayController = (function () {
                     div_twp.setAttribute('class', 'timewaypoint timewaypoint-images ' + doc.image);
                     // a.data-i
                     div_twp.setAttribute('id', doc._id);
-                    // div_twp.setAttribute('width', doc.width); // fehler muss style sein.
+                    if (doc.width > 0) {
+                        div_twp.setAttribute('style', 'width : ' + doc.width);
+                    }
                     // P
                     var p_titel = document.createElement('p');
                     p_titel.setAttribute('class', 'timewaypoint-titel');
@@ -89,9 +91,17 @@ var TimeWayController = (function () {
                     div_number.setAttribute('class', 'timewaypoint-sequence-number');
                     var sequence = doc.sequence;
                     var text_number = document.createTextNode(sequence);
+                    // Elemente im vordergrund
+                    var div_parallax_front = document.createElement('div');
+                    div_parallax_front.setAttribute('class', 'parallax-front');
+                    // Elemente im hintergrund
+                    var div_parallax_back = document.createElement('div');
+                    div_parallax_back.setAttribute('class', 'parallax-back');
                     // Append
                     p_titel.appendChild(text_title);
                     //  div_number.appendChild(text_number);
+                    div_twp.appendChild(div_parallax_front);
+                    div_twp.appendChild(div_parallax_back);
                     //  div_twp.appendChild(div_number);
                     //  div_twp.appendChild(p_titel);
                     elemNav.appendChild(div_twp);

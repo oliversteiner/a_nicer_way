@@ -128,7 +128,10 @@ class TimeWayController {
                     // a.data-i
                     div_twp.setAttribute('id', doc._id);
 
-                    // div_twp.setAttribute('width', doc.width); // fehler muss style sein.
+                    if( doc.width > 0 ){
+                        div_twp.setAttribute('style', 'width : '+ doc.width);
+
+                    }
 
                     // P
                     let p_titel = document.createElement('p');
@@ -142,9 +145,24 @@ class TimeWayController {
                     let sequence = doc.sequence;
                     let text_number = document.createTextNode(sequence);
 
+
+                    // Elemente im vordergrund
+                    let div_parallax_front = document.createElement('div');
+                    div_parallax_front.setAttribute('class', 'parallax-front');
+
+                    // Elemente im hintergrund
+                    let div_parallax_back = document.createElement('div');
+                    div_parallax_back.setAttribute('class', 'parallax-back');
+
+
+
+
                     // Append
                     p_titel.appendChild(text_title);
                   //  div_number.appendChild(text_number);
+
+                    div_twp.appendChild(div_parallax_front);
+                    div_twp.appendChild(div_parallax_back);
 
                   //  div_twp.appendChild(div_number);
                   //  div_twp.appendChild(p_titel);

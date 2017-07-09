@@ -33,7 +33,7 @@ var TimeWayController = (function () {
      * @param target
      */
     TimeWayController.scrollTo = function (target) {
-        $('#timeway-content').scrollTo('#' + target, 1000);
+        $('#timeway-content').scrollTo('#' + target, 2000);
     };
     TimeWayController.prototype.parallax = function () {
         var parent_old = 0;
@@ -49,10 +49,13 @@ var TimeWayController = (function () {
             else {
                 richtung = '-';
             }
-            ostParallax('#layer-1-himmel', '2', richtung);
-            ostParallax('#layer-2-berge', '3', richtung);
-            ostParallax('#layer-3-aktiv', '5', richtung);
-            ostParallax('#layer-4-baume', '6', richtung);
+            /*   ostParallax('#layer-1-himmel', '2', richtung);
+             ostParallax('#layer-2-berge', '3', richtung);
+             ostParallax('#layer-3-aktiv', '5', richtung);
+             ostParallax('#layer-4-baume', '6', richtung);*/
+            ostParallax('#layer-1-himmel', '0', richtung);
+            ostParallax('#layer-3-aktiv', '2', richtung);
+            ostParallax('#layer-4-baume', '3', richtung);
             parent_old = parent;
         });
     };
@@ -71,9 +74,10 @@ var TimeWayController = (function () {
                 if (doc) {
                     var div_twp = document.createElement('div');
                     // a.class
-                    div_twp.setAttribute('class', 'timewaypoint');
+                    div_twp.setAttribute('class', 'timewaypoint timewaypoint-images ' + doc.image);
                     // a.data-i
                     div_twp.setAttribute('id', doc._id);
+                    // div_twp.setAttribute('width', doc.width); // fehler muss style sein.
                     // P
                     var p_titel = document.createElement('p');
                     p_titel.setAttribute('class', 'timewaypoint-titel');
@@ -86,9 +90,9 @@ var TimeWayController = (function () {
                     var text_number = document.createTextNode(sequence);
                     // Append
                     p_titel.appendChild(text_title);
-                    div_number.appendChild(text_number);
-                    div_twp.appendChild(div_number);
-                    div_twp.appendChild(p_titel);
+                    //  div_number.appendChild(text_number);
+                    //  div_twp.appendChild(div_number);
+                    //  div_twp.appendChild(p_titel);
                     elemNav.appendChild(div_twp);
                 }
             }

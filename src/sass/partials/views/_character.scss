@@ -13,34 +13,59 @@
   cursor: pointer;
 }
 
-.wink {
-  border: 3px solid red;
-  background-color: red;
-}
-
 // Test
 .character-test {
   width: 60px;
   height: 200px;
+  background-repeat: no-repeat;
 }
 
+// Kevin
 #proto-1.character-test {
-  background-color: #b6b31d;
+  background-color: transparent;
+  background-image: url("../images/character/character-kevin-laufen.png");
+  background-size: cover;
+  height: 400px;
+  width: 220px;
+
 }
 
-#proto-2.character-test {
-  background-color: #ff61f3;
+
+#proto-1.character-test.wink {
+
+  background-color: transparent;
+  background-image: url("../images/character/character-kevin-winken.png");
+  background-size: cover;
+  height: 400px;
+  width: 220px;
 }
 
+
+// Bus
 #proto-3.character-test {
-  background-color: #6067ff;
+  background-color: transparent;
+  background-image: url("../images/character/character-bus.png");
+  background-size: cover;
+  height: 322px;
+  width: 603px;
+  top:200px;
+}
+
+// gruppe
+#proto-2.character-test {
+  background-color: transparent;
+  background-image: url("../images/character/character-gruppe.png");
+  background-size: contain;
+  height: 370px;
+  width: 350px;
 }
 
 // Speech Bubble
 
 .speech-bubble {
   position: absolute;
-  top: -100%;
+  top: -170px;
+  left: 100px;
   min-height: 100px;
   min-width: 200px;
   font-size: 1.5em;
@@ -60,11 +85,9 @@
   animation: bounce 500ms infinite;
 }
 
-
 .blobup {
   transform: scale(1);
 }
-
 
 .blobdown {
   animation: blobup 500ms;
@@ -73,13 +96,11 @@
   transform: scale(0);
 }
 
-
 .flipdown {
   animation: flipdown 500ms;
   transform-origin: bottom;
   animation-timing-function: linear;
 }
-
 
 .flipup {
   animation: flipdown 500ms;
@@ -87,7 +108,6 @@
   animation-direction: reverse;
   animation-timing-function: linear;
 }
-
 
 // keyframes
 
@@ -102,7 +122,6 @@
     transform: scale(1, 1) translateY(0);
   }
 }
-
 
 @keyframes flipdown {
   from {

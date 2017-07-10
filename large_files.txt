@@ -1,0 +1,18 @@
+153927689 daten/bilder/ANW_Berge.psd
+100039690 daten/bilder/ANW_Himmel.psd
+60578810 daten/Scribbles/NiCER v3.pdf
+10134251 node_modules/typescript/lib/typescriptServices.js
+10134251 node_modules/typescript/lib/typescript.js
+8298118 node_modules/typescript/lib/tsserver.js
+8242873 node_modules/typescript/lib/tsserverlibrary.js
+5831351 node_modules/typescript/lib/tsc.js
+3087271 web/images/timeway/ANW_Berge.png
+3017648 node_modules/node-sass/vendor/darwin-x64-51/binding.node
+2673919 daten/bilder neu/crumpled-paper-1551434.jpg
+1495203 node_modules/caniuse-db/fulldata-json/data-2.0.json
+1481651 node_modules/caniuse-db/fulldata-json/data-1.0.json
+1481651 node_modules/caniuse-db/data.json
+1454628 web/images/himmel/ANW_Berge.png
+1454628 daten/bilder/ANW_Berge.png
+1421312 daten/bilder neu/banner-1571858.jpg
+1232595 daten/bilder neu/banner-1571861.jpg

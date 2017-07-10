@@ -1,4 +1,5 @@
 /// <reference path="../definitions/jquery-scrollTo.d.ts" />
+// Global
 /**
  *  timewayController
  *
@@ -11,7 +12,7 @@ var TimeWayController = (function () {
         // Vars
         this.elem_Root = document.getElementById('timeway-container');
         this.elem_Content = document.getElementById('timeway-content');
-        this.walk_direction = 'right';
+        this.scroll_direction = 'right';
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         console.log('- Timeway load');
         // Aktionen verknüpfen
@@ -46,9 +47,11 @@ var TimeWayController = (function () {
             var parent = $('#timeway-content').scrollLeft();
             if (parent_old < parent) {
                 richtung = '+';
+                aNicerWay.timeWayController.scroll_direction = 'right';
             }
             else {
                 richtung = '-';
+                aNicerWay.timeWayController.scroll_direction = 'left';
             }
             /*   ostParallax('#layer-1-himmel', '2', richtung);
              ostParallax('#layer-2-berge', '3', richtung);

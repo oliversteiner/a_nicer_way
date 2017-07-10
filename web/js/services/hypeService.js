@@ -89,7 +89,7 @@ var HypeService = (function () {
             if (window.HYPE) {
                 console.log('HYPE angebunden');
                 clearInterval(timerLoadHype);
-                console.log(window.HYPE.documents.NICER_v5);
+                //  console.log(window.HYPE.documents.NICER_v5);
                 hypeService.hypeDoc = window.HYPE.documents.NICER_v5;
             }
             else {
@@ -166,7 +166,7 @@ var HypeService = (function () {
         //  optionalTransition
         //  optionalDuration
         if (doc) {
-            console.log(doc);
+            // console.log(doc);
             // Command
             if (doc.command) {
                 hypeService[doc.command]();

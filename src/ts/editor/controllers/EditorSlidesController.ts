@@ -6,7 +6,7 @@ class EditorSlidesController {
     private timeWayPointList: any;
 
     constructor() {
-        console.log('EditorSlidesController');
+        // console.log('EditorSlidesController');
 
         this.addEventListeners();
         //   this.addKeystrokes();
@@ -58,7 +58,7 @@ class EditorSlidesController {
      * @param list
      */
     setList(list: any) {
-        console.log();
+        // console.log();
         this.timeWayPointList = list;
         this.numberOfSlides = list.length;
     };
@@ -75,14 +75,14 @@ class EditorSlidesController {
      *
      */
     deleteSlide() {
-        console.log('deleteSlide');
+        // console.log('deleteSlide');
     };
 
     /**
      *
      */
     addNewSlide() {
-        console.log('numberOfSlides:' + this.numberOfSlides);
+        // console.log('numberOfSlides:' + this.numberOfSlides);
         const sequence = this.numberOfSlides;
         this.numberOfSlides++;
 
@@ -132,7 +132,7 @@ class EditorSlidesController {
         });
 
         $('#slide-list-wrapper-id-'+sequence+' .slide-list-tumbnail').click( function () {
-            console.log('test');
+            // console.log('test');
             aNWEditor.editorSlidesController.showSlideDetail(sequence)
         });
 
@@ -143,7 +143,7 @@ class EditorSlidesController {
      *
      */
     showSlideDetail(number: number) {
-        console.log(number);
+        // console.log(number);
 
         // close all other Details:
         $('.slide-list-tumbnail-active').removeClass('slide-list-tumbnail-active');
@@ -151,7 +151,7 @@ class EditorSlidesController {
         // add Div to Wrapper
         const $slide = $('#slide-list-wrapper-id-'+number+ ' .slide-list-tumbnail');
 
-        console.log($slide);
+        // console.log($slide);
 
         $slide.addClass('slide-list-tumbnail-active');
       //  aNicerWay.displayController.data.show();
@@ -167,7 +167,7 @@ class EditorSlidesController {
      * @param number
      */
     showTransitionMenu(number: number) {
-        console.log(number);
+        // console.log(number);
 
     }
 
@@ -195,13 +195,13 @@ class EditorSlidesController {
             let anzahl = list.length;
             let width = anzahl * 140;
             ul.style.width = width + "px";
-            console.log('slide-list - berechnete länge:' + width);
+            // console.log('slide-list - berechnete länge:' + width);
 
 
             for (let i = 1; i < (anzahl + 1); i++) {
                 let doc = list[i];
 
-                console.log(doc);
+                // console.log(doc);
 
                 if (doc) {
 
@@ -301,7 +301,7 @@ class EditorSlidesController {
 
         }
         else {
-            console.log('leere Liste');
+            // console.log('leere Liste');
         }
 
 

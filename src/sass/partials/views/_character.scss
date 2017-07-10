@@ -24,10 +24,10 @@
 }
 
 #proto-1.wink {
-  background-image: url("../images/character/character-kevin-winken.png");
+  background-image: url("../images/character/kevin-winkt-animated-30fps.png");
 }
 
-#proto-1.walk {
+#proto-1.walk-forward {
   background-image: url("../images/character/character-kevin-laufen.png");
 }
 
@@ -97,7 +97,7 @@
 
 // Animation Classes
 
-.walk,
+.walk-forward,
 .walk-backward {
   animation: bounce 500ms infinite;
 }

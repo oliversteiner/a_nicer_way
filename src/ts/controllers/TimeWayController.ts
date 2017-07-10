@@ -1,5 +1,7 @@
 /// <reference path="../definitions/jquery-scrollTo.d.ts" />
 
+// Global
+
 
 /**
  *  timewayController
@@ -9,8 +11,7 @@ class TimeWayController {
     private elem_Root: any;
     private elem_Content: any;
     private timeWayPointList: any;
-    public walk_direction: string;
-
+    public scroll_direction: string;
 
     /**
      * constructor
@@ -21,7 +22,7 @@ class TimeWayController {
         // Vars
         this.elem_Root = document.getElementById('timeway-container');
         this.elem_Content = document.getElementById('timeway-content');
-        this.walk_direction = 'right';
+        this.scroll_direction = 'right';
 
 
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
@@ -74,11 +75,14 @@ class TimeWayController {
 
             if (parent_old < parent) {
                 richtung = '+';
-
+                aNicerWay.timeWayController.scroll_direction = 'right';
 
             } else {
                 richtung = '-';
+                aNicerWay.timeWayController.scroll_direction = 'left';
+
             }
+
             /*   ostParallax('#layer-1-himmel', '2', richtung);
              ostParallax('#layer-2-berge', '3', richtung);
              ostParallax('#layer-3-aktiv', '5', richtung);

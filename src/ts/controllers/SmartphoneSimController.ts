@@ -31,8 +31,7 @@ class SmartphoneSimController {
         this.simulator_size = simulator_size;
 
 
-        // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
-        console.log('- Smartphone Simulator load');
+         console.log('- Smartphone Simulator load');
 
         // Aktionen verknüpfen
         SmartphoneSimController.setSize(this.simulator_size);
@@ -287,7 +286,7 @@ class SmartphoneSimController {
 
     static
     homeButton() {
-        console.log('Homebutton gedrückt');
+        // console.log('Homebutton gedrückt');
 
         // Sim Console ein/ausblenden
         SmartphoneSimController.consoleToggle();
@@ -337,7 +336,7 @@ class SmartphoneSimController {
     }
 
     static addToConsole(text: string, status ?: any, tab ?: number) {
-        console.log('add To Console');
+        // console.log('add To Console');
         let elem_prompt = '#smartphone-console-prompt';
         let class_status: string;
         let class_tab: string;

@@ -6,6 +6,7 @@ var CharacterController = (function () {
         this.walk();
         this.generateButtons();
         this.addEventListeners();
+        // Scroll
         setTimeout(function () {
             aNicerWay.characterController.changeCharacter(1);
             aNicerWay.characterController.addKeystrokes();
@@ -77,7 +78,7 @@ var CharacterController = (function () {
         setTimeout(function () {
             $('.character-active').removeClass('wink');
             $('.character-active').addClass('wate');
-        }, 1000);
+        }, 1900);
     };
     /**
      *
@@ -85,23 +86,22 @@ var CharacterController = (function () {
      */
     CharacterController.prototype.walk = function () {
         $('#timeway-content').scroll(function () {
-            var direction = scroll_direction;
+            console.log(aNicerWay.timeWayController.scroll_direction);
             // fire only once
             if (_fired === false) {
                 $('.character').removeClass('wate mobile wink');
-                if (direction == "right") {
-                    $('.character').addClass('walk');
+                if (aNicerWay.timeWayController.scroll_direction == "right") {
+                    $('.character').addClass('walk-forward');
                 }
                 else {
                     $('.character').addClass('walk-backward');
                 }
                 _fired = true;
             }
-            $('.character').addClass('walk');
             clearTimeout($.data(this, "scrollCheck"));
             $.data(this, "scrollCheck", setTimeout(function () {
                 $('.character').addClass('wate');
-                $('.character').removeClass('walk walk-backward');
+                $('.character').removeClass('walk-forward walk-backward');
                 // reset
                 _fired = false;
             }, 200));

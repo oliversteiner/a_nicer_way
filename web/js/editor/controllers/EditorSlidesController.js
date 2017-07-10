@@ -1,7 +1,7 @@
 var EditorSlidesController = (function () {
     function EditorSlidesController() {
+        // console.log('EditorSlidesController');
         this.area_open = false;
-        console.log('EditorSlidesController');
         this.addEventListeners();
         //   this.addKeystrokes();
     }
@@ -39,7 +39,7 @@ var EditorSlidesController = (function () {
      * @param list
      */
     EditorSlidesController.prototype.setList = function (list) {
-        console.log();
+        // console.log();
         this.timeWayPointList = list;
         this.numberOfSlides = list.length;
     };
@@ -54,14 +54,14 @@ var EditorSlidesController = (function () {
      *
      */
     EditorSlidesController.prototype.deleteSlide = function () {
-        console.log('deleteSlide');
+        // console.log('deleteSlide');
     };
     ;
     /**
      *
      */
     EditorSlidesController.prototype.addNewSlide = function () {
-        console.log('numberOfSlides:' + this.numberOfSlides);
+        // console.log('numberOfSlides:' + this.numberOfSlides);
         var sequence = this.numberOfSlides;
         this.numberOfSlides++;
         // alter Add-Button in Transition-Button ändern
@@ -100,7 +100,7 @@ var EditorSlidesController = (function () {
             aNWEditor.editorSlidesController.addNewSlide();
         });
         $('#slide-list-wrapper-id-' + sequence + ' .slide-list-tumbnail').click(function () {
-            console.log('test');
+            // console.log('test');
             aNWEditor.editorSlidesController.showSlideDetail(sequence);
         });
     };
@@ -108,12 +108,12 @@ var EditorSlidesController = (function () {
      *
      */
     EditorSlidesController.prototype.showSlideDetail = function (number) {
-        console.log(number);
+        // console.log(number);
         // close all other Details:
         $('.slide-list-tumbnail-active').removeClass('slide-list-tumbnail-active');
         // add Div to Wrapper
         var $slide = $('#slide-list-wrapper-id-' + number + ' .slide-list-tumbnail');
-        console.log($slide);
+        // console.log($slide);
         $slide.addClass('slide-list-tumbnail-active');
         //  aNicerWay.displayController.data.show();
         panels.details.show();
@@ -126,7 +126,7 @@ var EditorSlidesController = (function () {
      * @param number
      */
     EditorSlidesController.prototype.showTransitionMenu = function (number) {
-        console.log(number);
+        // console.log(number);
     };
     /**
      *
@@ -145,10 +145,9 @@ var EditorSlidesController = (function () {
             var anzahl = list.length;
             var width = anzahl * 140;
             ul.style.width = width + "px";
-            console.log('slide-list - berechnete länge:' + width);
             var _loop_1 = function (i) {
                 var doc = list[i];
-                console.log(doc);
+                // console.log(doc);
                 if (doc) {
                     // li > div.slide-list-wrapper
                     // > div.slide-list-tumbnail
@@ -218,12 +217,13 @@ var EditorSlidesController = (function () {
                 elem_container.appendChild(ul);
                 // addListeners
             };
+            // console.log('slide-list - berechnete länge:' + width);
             for (var i = 1; i < (anzahl + 1); i++) {
                 _loop_1(i);
             }
         }
         else {
-            console.log('leere Liste');
+            // console.log('leere Liste');
         }
     };
     return EditorSlidesController;

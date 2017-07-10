@@ -14,6 +14,8 @@ class CharacterController {
         this.generateButtons();
         this.addEventListeners();
 
+        // Scroll
+
 
         setTimeout(function () {
             aNicerWay.characterController.changeCharacter(1);
@@ -107,7 +109,7 @@ class CharacterController {
             $('.character-active').removeClass('wink');
             $('.character-active').addClass('wate');
 
-        }, 1000);
+        }, 1900);
     }
 
     /**
@@ -118,7 +120,7 @@ class CharacterController {
         $('#timeway-content').scroll(function () {
 
 
-            let direction = scroll_direction;
+            console.log(aNicerWay.timeWayController.scroll_direction);
 
 
             // fire only once
@@ -126,8 +128,8 @@ class CharacterController {
 
                 $('.character').removeClass('wate mobile wink');
 
-                if (direction == "right") {
-                    $('.character').addClass('walk');
+                if (aNicerWay.timeWayController.scroll_direction == "right") {
+                    $('.character').addClass('walk-forward');
 
                 } else {
 
@@ -139,8 +141,6 @@ class CharacterController {
             }
 
 
-            $('.character').addClass('walk');
-
             clearTimeout($.data(this, "scrollCheck"));
 
 
@@ -148,7 +148,7 @@ class CharacterController {
 
 
                 $('.character').addClass('wate');
-                $('.character').removeClass('walk walk-backward');
+                $('.character').removeClass('walk-forward walk-backward');
 
                 // reset
                 _fired = false;

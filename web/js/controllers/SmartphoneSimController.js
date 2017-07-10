@@ -18,7 +18,6 @@ var SmartphoneSimController = (function () {
         this.elem_Root = document.getElementById(_smartphoneSimName);
         this.elem_Content = document.getElementById(_smartphoneSimContentName);
         this.simulator_size = simulator_size;
-        // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         console.log('- Smartphone Simulator load');
         // Aktionen verknüpfen
         SmartphoneSimController.setSize(this.simulator_size);
@@ -198,7 +197,7 @@ var SmartphoneSimController = (function () {
         return size;
     };
     SmartphoneSimController.homeButton = function () {
-        console.log('Homebutton gedrückt');
+        // console.log('Homebutton gedrückt');
         // Sim Console ein/ausblenden
         SmartphoneSimController.consoleToggle();
     };
@@ -229,7 +228,7 @@ var SmartphoneSimController = (function () {
         $('.smartphone-console-status').text('console');
     };
     SmartphoneSimController.addToConsole = function (text, status, tab) {
-        console.log('add To Console');
+        // console.log('add To Console');
         var elem_prompt = '#smartphone-console-prompt';
         var class_status;
         var class_tab;

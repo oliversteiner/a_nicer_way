@@ -104,7 +104,7 @@ class HypeService {
                 console.log('HYPE angebunden');
                 clearInterval(timerLoadHype);
 
-                console.log(window.HYPE.documents.NICER_v5);
+              //  console.log(window.HYPE.documents.NICER_v5);
                 hypeService.hypeDoc = window.HYPE.documents.NICER_v5;
 
             } else {
@@ -229,7 +229,7 @@ class HypeService {
 
         if (doc) {
 
-            console.log(doc);
+           // console.log(doc);
 
             // Command
             if (doc.command) {

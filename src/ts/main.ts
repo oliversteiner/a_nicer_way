@@ -15,7 +15,7 @@ declare let aNWEditor: any;
 declare  let panels: any;
 
 // others
-declare let scroll_direction: string;
+declare let _scroll_direction: string;
 
 
 let options = {
@@ -54,34 +54,6 @@ $(document).ready(function () {
         EditorSlidesController.toggle();
 
 
-    });
-
-
-
-
-});
-
-
-$(function () {
-// https://jsfiddle.net/ZzaichikK/MUvsG/
-
-    // show hide subnav depending on scroll direction
-    var position = $(window).scrollLeft();
-
-    $(window).scroll(function () {
-        var scroll = $(window).scrollLeft();
-
-        if (scroll > position) {
-
-            scroll_direction = "right";
-
-        } else {
-
-            scroll_direction = "left";
-
-        }
-
-        position = scroll;
     });
 
 });

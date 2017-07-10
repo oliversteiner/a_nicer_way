@@ -15,13 +15,13 @@ var SocketIOService = (function () {
     }
     // SEND
     SocketIOService.prototype.send = function (type, msg) {
-        console.log('aNicerWay.socket_io: ' + aNicerWay.socket_io);
+        // console.log('aNicerWay.socket_io: ' +aNicerWay.socket_io);
         if (aNicerWay.socket_io === false) {
             // Nachricht schicken
             socketSimulatorService.receive(type, msg);
         }
         else {
-            console.log('emit' + type + ' : ' + msg);
+            //  console.log('emit'+ type + ' : ' + msg);
             this.socket.emit(type, msg);
         }
     };
@@ -53,7 +53,7 @@ var SocketIOService = (function () {
          ------------------------------
          */
         this.socket.on('command', function (cmd) {
-            console.log(cmd);
+            //   console.log(cmd);
             var found_action = cmd.search('action-');
             var found_character = cmd.search('character-');
             // Nach "action-" suchen

@@ -25,7 +25,7 @@ class SocketIOService {
 
     // SEND
     send(type: any, msg: any) {
-        console.log('aNicerWay.socket_io: ' +aNicerWay.socket_io);
+       // console.log('aNicerWay.socket_io: ' +aNicerWay.socket_io);
 
         if(aNicerWay.socket_io === false){
             // Nachricht schicken
@@ -33,7 +33,7 @@ class SocketIOService {
 
         }
         else{
-            console.log('emit'+ type + ' : ' + msg);
+          //  console.log('emit'+ type + ' : ' + msg);
 
             this.socket.emit(type, msg);
 
@@ -84,7 +84,7 @@ class SocketIOService {
          */
         this.socket.on('command', function (cmd: string) {
 
-                console.log(cmd);
+             //   console.log(cmd);
 
 
                 let found_action = cmd.search('action-');

@@ -79,7 +79,8 @@ var TimeWayController = (function () {
                     // a.data-i
                     div_twp.setAttribute('id', doc._id);
                     if (doc.width > 0) {
-                        div_twp.setAttribute('style', 'width : ' + doc.width);
+                        // div_twp.setAttribute('style', 'width : '+ doc.width);
+                        div_twp.style.width = doc.width;
                     }
                     // P
                     var p_titel = document.createElement('p');

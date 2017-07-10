@@ -13,7 +13,6 @@ $(document).ready(function () {
     pouchDBService = new PouchDBService();
     socketSimulatorService = new SocketSimulatorService();
     panels = new PanelController();
-    // Editor
     dataTreeService = new DataTreeService();
     aNWEditor = new AnwEditor();
     aNWEditor.start();
@@ -25,6 +24,17 @@ $(document).ready(function () {
         EditorSlidesController.toggle();
     });
 });
+dataTreeService = new DataTreeService();
+aNWEditor = new AnwEditor();
+aNWEditor.start();
+// toggle
+$('.tumbnails-area-toggle-button-2').click(function () {
+    // editor modus
+    $('#editor').toggle();
+    $('boby').toggleClass('editor-active');
+    EditorSlidesController.toggle();
+});
+;
 $(function () {
     // https://jsfiddle.net/ZzaichikK/MUvsG/
     // show hide subnav depending on scroll direction

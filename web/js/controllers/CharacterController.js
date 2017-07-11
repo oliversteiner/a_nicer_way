@@ -78,7 +78,7 @@ var CharacterController = (function () {
         setTimeout(function () {
             $('.character-active').removeClass('wink');
             $('.character-active').addClass('wate');
-        }, 1900);
+        }, 3000);
     };
     /**
      *
@@ -104,7 +104,7 @@ var CharacterController = (function () {
                 $('.character').removeClass('walk-forward walk-backward');
                 // reset
                 _fired = false;
-            }, 200));
+            }, 100));
         });
     };
     CharacterController.prototype.mobile = function () {

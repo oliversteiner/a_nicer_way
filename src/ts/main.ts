@@ -32,6 +32,7 @@ $(document).ready(function () {
     aNicerWay = new ANicerWay(options);
     aNicerWay.start();
 
+
     // Services:
     socketIOService = new SocketIOService(true);
     hypeService = new HypeService();
@@ -43,6 +44,10 @@ $(document).ready(function () {
     dataTreeService = new DataTreeService();
     aNWEditor = new AnwEditor();
     aNWEditor.start();
+
+    // ------- Start Debug
+    SmartphoneSimController.close();
+    // ------- End Debug
 
 
     // toggle

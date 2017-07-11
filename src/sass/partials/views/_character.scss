@@ -15,6 +15,7 @@
 
 
 
+
 // Kevin
 #proto-1 {
   background-color: transparent;
@@ -28,13 +29,31 @@
 }
 
 #proto-1.walk-forward {
-  background-image: url("../images/character/character-kevin-laufen.png");
+  background-image: url("../images/character/character-kevin-laufen-30fps.png");
 }
 
 #proto-1.walk-backward {
-  background-image: url("../images/character/character-kevin-laufen-zurueck.png");
+ // background-image: url("../images/character/character-kevin-laufen-30fps.png");
 
 }
+
+
+#proto-1.walk-backward:before {position: relative;
+  display: block;
+  content:"";
+  height: 400px;
+  width: 250px;
+  background-image: url("../images/character/character-kevin-laufen-30fps.png");
+}
+
+
+#proto-1.walk-backward:before {
+  transform:scaleX(-1);
+
+}
+
+
+
 
 #proto-1.wate {
   background-image: url("../images/character/character-kevin-warten.png");

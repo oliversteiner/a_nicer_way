@@ -13,6 +13,7 @@ var TimeWayController = (function () {
         this.elem_Root = document.getElementById('timeway-container');
         this.elem_Content = document.getElementById('timeway-content');
         this.scroll_direction = 'right';
+        this.time_to_scroll = 3000;
         // wenn die Views geladen sind, die UI-Elemente mit den Aktionen verknüpfen
         console.log('- Timeway load');
         // Aktionen verknüpfen
@@ -35,31 +36,41 @@ var TimeWayController = (function () {
      * @param target
      */
     TimeWayController.scrollTo = function (target) {
-        $('#timeway-content').scrollTo('#' + target, 2000);
+        $('#timeway-content').scrollTo('#' + target, aNicerWay.timeWayController.time_to_scroll);
     };
     TimeWayController.prototype.parallax = function () {
         var parent_old = 0;
         function ostParallax(elem, faktor, richtung) {
-            $(elem).css("left", richtung + "=" + faktor);
+            // $(elem).css("left", richtung + "=" + faktor);
+            //  $('.parallax-front').css("left", richtung + "=" + 0.3);
+        }
+        function ostParallax2(richtung_vorzeichen) {
+            var elements = document.getElementsByClassName('parallax-front');
+            for (var i = 0; i < elements.length; i++) {
+                var position = $(elements[i]).position();
+                var position_original = position.left;
+                var postition_new = position_original + 1;
+                var position_translate = postition_new + 'px';
+                elements[i].style.transformStyle = 'preserve-3d';
+                elements[i].style.transform = 'translateX(' + position_translate + ')';
+            }
         }
         $('#timeway-content').scroll(function () {
-            var richtung = '';
+            var richtung_vorzeichen = '';
             var parent = $('#timeway-content').scrollLeft();
             if (parent_old < parent) {
-                richtung = '+';
+                richtung_vorzeichen = '+';
                 aNicerWay.timeWayController.scroll_direction = 'right';
             }
             else {
-                richtung = '-';
+                richtung_vorzeichen = '-';
                 aNicerWay.timeWayController.scroll_direction = 'left';
             }
-            /*   ostParallax('#layer-1-himmel', '2', richtung);
-             ostParallax('#layer-2-berge', '3', richtung);
-             ostParallax('#layer-3-aktiv', '5', richtung);
-             ostParallax('#layer-4-baume', '6', richtung);*/
-            ostParallax('#layer-1-himmel', '0', richtung);
-            ostParallax('#layer-3-aktiv', '2', richtung);
-            ostParallax('#layer-4-baume', '3', richtung);
+            // ostParallax('#layer-1-himmel', '2', richtung);
+            // ostParallax('#layer-2-berge', '3', richtung);
+            // ostParallax('#layer-3-aktiv', '5', richtung);
+            // ostParallax('#layer-4-baume', '6', richtung);
+            ostParallax2(richtung_vorzeichen);
             parent_old = parent;
         });
     };
@@ -98,9 +109,11 @@ var TimeWayController = (function () {
                     // Elemente im vordergrund
                     var div_parallax_front = document.createElement('div');
                     div_parallax_front.setAttribute('class', 'parallax-front');
+                    div_parallax_front.style.backgroundImage = 'url("/images/' + doc.imageForeground + '")';
                     // Elemente im hintergrund
                     var div_parallax_back = document.createElement('div');
                     div_parallax_back.setAttribute('class', 'parallax-back');
+                    div_parallax_back.style.backgroundImage = 'url("/images/' + doc.imageBackground + '")';
                     // Append
                     p_titel.appendChild(text_title);
                     //  div_number.appendChild(text_number);

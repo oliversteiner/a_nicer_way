@@ -43,6 +43,8 @@
       "message": "Nachricht 1",
       "notice": "",
       "image": "haus-kevins-haus",
+      "imageForeground": "schmuck/schmuck-busstop.png",
+      "imageBackground": "haus/haus-stadtbild.png",
       "type": "TimeWayPoint",
       "hype": {
         "command": "",
@@ -90,6 +92,8 @@
       "message": "Nachricht 1",
       "notice": "",
       "image": "zimmer-kevins-schlafzimmer",
+      "imageForeground": "schmuck/schmuck-strassenlaterne.png",
+      "imageBackground": "haus/haus-stadtbild.png",
       "type": "TimeWayPoint",
       "hype": {
         "command": "",

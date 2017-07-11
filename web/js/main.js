@@ -17,6 +17,9 @@ $(document).ready(function () {
     dataTreeService = new DataTreeService();
     aNWEditor = new AnwEditor();
     aNWEditor.start();
+    // ------- Start Debug
+    SmartphoneSimController.close();
+    // ------- End Debug
     // toggle
     $('.tumbnails-area-toggle-button-2').click(function () {
         // editor modus

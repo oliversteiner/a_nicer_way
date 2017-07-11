@@ -24,14 +24,12 @@ class SmartphoneSimController {
      */
     constructor(simulator_size?: string) {
 
-
         // Vars
         this.elem_Root = document.getElementById(_smartphoneSimName);
         this.elem_Content = document.getElementById(_smartphoneSimContentName);
         this.simulator_size = simulator_size;
 
-
-         console.log('- Smartphone Simulator load');
+        console.log('- Smartphone Simulator load');
 
         // Aktionen verknüpfen
         SmartphoneSimController.setSize(this.simulator_size);
@@ -40,7 +38,6 @@ class SmartphoneSimController {
         this.makeDraggable();
 
         SmartphoneSimController.open();
-
         SmartphoneSimController.consoleOpen();
         SmartphoneSimController.consoleClear();
         SmartphoneSimController.consoleClose();
@@ -50,7 +47,6 @@ class SmartphoneSimController {
         //
         console.log('- Smartphone Simulator ready');
 
-
     }
 
 
@@ -58,7 +54,6 @@ class SmartphoneSimController {
      * addEventsListeners
      */
     addEventListeners() {
-
 
         // Main-Menu : Show / Hide Simulator
         $('.smartphone-sim-button-toggle').click(SmartphoneSimController.toggle);
@@ -93,12 +88,12 @@ class SmartphoneSimController {
             aNicerWay.smartphoneSimController.toggleSolo()
         });
 
-
     }
 
     /**
      * addKeystrokes
      */
+
     addKeystrokes() {
         key('s', function () {
             SmartphoneSimController.toggle();

@@ -70,6 +70,32 @@ $width-max: 16000px;
 
 }
 
+
+
+.parallax-front,
+.parallax-back{
+  margin: 0;
+  padding: 0;
+
+  position: relative;
+  pointer-events: none;
+  display: inline-block;
+  background-size: contain;
+  width: 1000px;
+  height: 600px;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+}
+
+
+.parallax-front{
+  bottom: -80px;
+  z-index: +10;
+}
+
+
+
+
 .ost-parallax {
   left: 1px;
   top: 0;

@@ -109,7 +109,7 @@ class CharacterController {
             $('.character-active').removeClass('wink');
             $('.character-active').addClass('wate');
 
-        }, 1900);
+        }, 3000);
     }
 
     /**
@@ -153,7 +153,7 @@ class CharacterController {
                 // reset
                 _fired = false;
 
-            }, 200));
+            }, 100));
 
         });
 
